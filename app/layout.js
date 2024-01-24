@@ -1,8 +1,23 @@
+import { Lato, Playfair_Display } from 'next/font/google';
+
 import Navigation from '@/components/navigation/navigation.component';
+
 import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
+
+const latoFont = Lato({
+	subsets: ['latin'],
+	weight: ['100', '300', '400'],
+	variable: '--font-lato',
+});
+
+const pfDisplay = Playfair_Display({
+	subsets: ['latin'],
+	weight: ['400', '500', '600', '700', '800', '900'],
+	variable: '--font-playfair_display',
+});
 
 export const metadata = {
 	title: 'Create Next App',
@@ -12,10 +27,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<body>
+			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				{children}
-        <BootstrapClient  />
+				<BootstrapClient />
 			</body>
 		</html>
 	);

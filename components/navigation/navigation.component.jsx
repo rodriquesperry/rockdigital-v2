@@ -8,13 +8,11 @@ import Image from 'next/image';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import logo from '@/assets/RockDigitalLogo-196px.jpeg';
 
 import styles from './navigation.module.css';
-import NavLink from '../nav_link/NavLink';
 
 const Navigation = () => {
 	const offCanvasRef = useRef();
@@ -52,7 +50,7 @@ const Navigation = () => {
 						/>
 					</Link>
 
-					<Navbar.Toggle aria-controls='responsive-navbar-nav' />
+					<Navbar.Toggle className={styles.toggler} aria-controls='responsive-navbar-nav' />
 					<Navbar.Offcanvas
 						id='offcanvasNavbar-expand'
 						aria-labelledby='offcanvasNavbarLabel-expand'
@@ -71,7 +69,7 @@ const Navigation = () => {
 						</Offcanvas.Header>
 						<Offcanvas.Body>
 							<Nav
-								className={`justify-content-end flex-grow-1 pe-3 ${styles.navbar_nav}`}
+								className={`justify-content-end flex-grow-1 pe-3 lato ${styles.navbar_nav}`}
 							>
 								<Link
 									href='/services'

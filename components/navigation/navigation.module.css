@@ -9,7 +9,7 @@
 	transition: all linear 0.8s;
 	width: 31%;
 	height: 100%;
-  margin-left: .8rem;
+	margin-left: 0.8rem;
 }
 
 .navbar_brand img {
@@ -30,26 +30,28 @@
 }
 
 .navbar_nav {
-  margin-right: 5rem;
+	margin-right: 5rem;
 }
 
 .link {
 	text-decoration: none;
-  font-size: 1.2rem;
-  color: rgb(56, 46, 48);
-  margin-left: 2rem;
+	font-size: 1.2rem;
+	color: rgb(56, 46, 48);
+	margin-left: 2rem;
 }
-
 
 .link:hover {
 	color: rgb(207, 168, 68);
 }
 
-
 @media screen and (min-width: 768px) and (max-width: 1023px) {
+	.toggler { 
+    margin-right: 30px;
+  }
+
 	.navbar .navbar_brand {
 		transition: all linear 0.8s;
-		width: 15%;
+		/* width: 15%; */
 	}
 
 	.resize {
