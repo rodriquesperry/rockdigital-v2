@@ -6,21 +6,9 @@ import Link from 'next/link';
 
 import Carousel from 'react-bootstrap/Carousel';
 
-import WebDesign239w from '@/assets/web-design-full_239px.jpeg';
-import WebDesign344w from '@/assets/web-design-full_344px.jpeg';
-import WebDesign687w from '@/assets/web-design-full_687px.jpeg';
-import WebDesign1359w from '@/assets/web-design-full_1359px.jpeg';
-import WebDesign2479w from '@/assets/web-design-full_2479px.jpeg';
-
-import DigitalMarketing344w from '@/assets/digital-marketing_344px.jpeg';
-import DigitalMarketing687w from '@/assets/digital-marketing_687px.jpeg';
-import DigitalMarketing1359w from '@/assets/digital-marketing_1359px.jpeg';
-import DigitalMarketing2479w from '@/assets/digital-marketing_2479px.jpeg';
-
-import SheratonHotel344w from '@/assets/sheraton-houston-st-san-antonio-tx_344px.jpeg';
-import SheratonHotel687w from '@/assets/sheraton-houston-st-san-antonio-tx_687px.jpeg';
-import SheratonHotel1359w from '@/assets/sheraton-houston-st-san-antonio-tx_1359px.jpeg';
-import SheratonHotel2479w from '@/assets/sheraton-houston-st-san-antonio-tx_2479px.jpeg';
+import WebDesign2479w from '@/assets/web-design-full_2479px.webp';
+import DigitalMarketing2479w from '@/assets/digital-marketing_2479px.webp';
+import SheratonHotel2479w from '@/assets/sheraton-houston-st-san-antonio-tx_2479px.webp';
 
 import styles from './carousel.module.css';
 
@@ -40,11 +28,9 @@ const CarouselTopPage = () => {
 				<Carousel.Item className={styles.carousel_item}>
 					<Image
 						className={`d-block img-fluid ${styles.web_design}`}
-						fetchpriority='high'
 						src={WebDesign2479w}
-						// srcSet={`${WebDesign239w} 239w, ${WebDesign344w} 344w, ${WebDesign687w} 687w, ${WebDesign1359w} 1359w, ${WebDesign2479w} 2479w `}
-						// sizes='(min-width:320) 239px, (min-width: 375px) 344px, (min-width: 768px) 687px, (min-width: 1024px) 1359px, (min-width: 2560px) 2479px'
 						alt='First slide'
+            priority
 					/>
 					<Carousel.Caption className={styles.carousel_caption}>
 						<div className={styles.carousel_caption_block}>
@@ -96,7 +82,7 @@ const CarouselTopPage = () => {
 				<Carousel.Item className={styles.carousel_item}>
 					<Image
 						className='d-block img-fluid'
-						src={SheratonHotel1359w}
+						src={SheratonHotel2479w}
 						alt='Third slide'
 					/>
 

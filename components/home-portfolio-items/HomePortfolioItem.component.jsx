@@ -34,7 +34,6 @@ const HomePortfolioItem = () => {
 				portfolioItems.map((portfolioItem, i) => {
 					if (i >= portfolioItems.length - 4)
 						return (
-							<>
 								<div className={styles.portfolio_item} key={i}>
 									<Link
 										href={portfolioItem.attributes.url}
@@ -51,7 +50,6 @@ const HomePortfolioItem = () => {
 									</Link>
 									<h4>{portfolioItem.attributes.name}</h4>
 								</div>
-							</>
 						);
 					return null;
 				})}

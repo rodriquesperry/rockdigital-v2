@@ -1,0 +1,19 @@
+.powered_by {
+  background-color: rgb(48, 48, 48);
+  color: #fff;
+}
+
+.powered_by small {
+  font-weight: bold;
+}
+
+.powered_by a {
+  color: #fff;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 2560px) {
+  .powered_by {
+    font-size: 1.7rem;
+  }
+}

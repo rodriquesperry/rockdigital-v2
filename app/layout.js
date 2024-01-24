@@ -1,6 +1,7 @@
 import { Lato, Playfair_Display } from 'next/font/google';
 
 import Navigation from '@/components/navigation/navigation.component';
+import Powered from '@/components/powered_foooter/powered.component';
 
 import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
 
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				{children}
+        <Powered  />
 				<BootstrapClient />
 			</body>
 		</html>
