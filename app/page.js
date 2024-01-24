@@ -128,8 +128,9 @@ const Home = () => {
             </div>
           </div>
 
-          {/* Portfolio Page*/}
           <div className={styles.parallax2}></div>
+
+          {/* Portfolio Home Page*/}
           <div className={styles.homepage_portfolio_container}>
             <h2>SOME OF OUR WORK</h2>
             <hr />

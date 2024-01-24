@@ -542,10 +542,6 @@
 		margin: 5rem 0 15rem;
 	}
 
-	.home_container .portfolio-item:nth-child(odd) {
-		top: 15rem;
-	}
-
 	.ready_container {
 		background-color: rgb(242, 242, 242);
 		width: 80%;
@@ -756,21 +752,17 @@
 		grid-template-rows: auto;
 		row-gap: 0.1rem;
 		padding: 1rem 0 5rem 0;
-		grid-column-gap: 12px;
-		grid-row-gap: 15px;
+		grid-column-gap: 120px;
+		grid-row-gap: 150px;
 		justify-items: center;
 		margin: 5rem 0 15rem;
-	}
-
-	.home_container .portfolio-item:nth-child(odd) {
-		top: 15rem;
 	}
 
 	.ready_container {
 		background-color: rgb(242, 242, 242);
 		width: 80%;
 		height: 500px;
-		margin: auto auto 9rem auto;
+		margin: 9rem auto 9rem auto;
 	}
 
 	.ready_header {
@@ -989,9 +981,6 @@
 		margin: 5rem 0 15rem;
 	}
 
-	.home_container .portfolio-item:nth-child(odd) {
-		top: 15rem;
-	}
 
 	.ready_container {
 		background-color: rgb(242, 242, 242);
