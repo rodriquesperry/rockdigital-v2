@@ -109,11 +109,11 @@ const Home = () => {
           <div className={styles.parallax1}>
             <div id={styles['parallax_1_text']}>
               <div className={styles.parallax_1_heading}>
-                <h3>
+                <h3 className='playfair'>
                   READY TO <br /> START YOUR PROJECT?
                 </h3>
                 <div className={styles.parallax_btn_container}>
-                  <Link href='/contact' className={styles.parallax_btn}>
+                  <Link href='/contact' className={`${styles.parallax_btn} lato`}>
                     CONTACT US
                   </Link>
                 </div>
