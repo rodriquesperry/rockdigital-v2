@@ -76,17 +76,17 @@ const Home = () => {
 
           <div className={styles.skills}>
             <div className={styles.skill_set}>
-              <Image src={rec} alt='' />
+              <Image src={rec} alt='Skills bullet image' />
               <h4>Custom Design</h4>
               <p>
                 Get found in search engines and loved by customers with custom
                 website design and development. A great looking, mobile-ready,
-                and user friendly website that is unique to your brand and
-                optimized for your users as well as search engines.
+                and user friendly website unique to your brand and
+                optimized for your users and search engines.
               </p>
             </div>
             <div className={styles.skill_set}>
-              <Image src={rec} alt='' />
+              <Image src={rec} alt='Skills bullet image' />
               <h4>Responsive Layout</h4>
               <p>
                 From desktop to mobile, have your customers interact with your
@@ -96,13 +96,13 @@ const Home = () => {
               </p>
             </div>
             <div className={styles.skill_set}>
-              <Image src={rec} alt='' />
+              <Image src={rec} alt='Skills bullet image' />
               <h4>Search Engine Optimized</h4>
               <p>
-                Your website finally doing what it&apos;s designed to. Our websites
+                Your website doing what it&apos;s designed to do. Our websites
                 are built with SEO in mind and will get you greater visibility
                 in search engine results pages. This means more visitors to your
-                site, more clicks and more purchases from your business.
+                site and more purchases from your business.
               </p>
             </div>
           </div>

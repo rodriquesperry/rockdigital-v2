@@ -36,6 +36,7 @@ const HomePortfolioItem = () => {
 						return (
 								<div className={styles.portfolio_item} key={i}>
 									<Link
+                  className={styles.portfolio_link}
 										href={portfolioItem.attributes.url}
 										target='_blank'
 										rel='noreferrer'
@@ -48,7 +49,7 @@ const HomePortfolioItem = () => {
 											/>
 										</div>
 									</Link>
-									<h4>{portfolioItem.attributes.name}</h4>
+									<h4 className='text-center'>{portfolioItem.attributes.name}</h4>
 								</div>
 						);
 					return null;

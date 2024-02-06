@@ -23,6 +23,7 @@ const CarouselTopPage = () => {
 				interval={7300}
 				className={`container ${styles.carousel}`}
 				indicators={false}
+        controls={false}
 				fade
 			>
 				<Carousel.Item className={styles.carousel_item}>
