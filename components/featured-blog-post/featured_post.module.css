@@ -1,0 +1,156 @@
+.card {
+  border-radius: 3%;
+}
+
+.featured_image_container img {
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+
+}
+
+@media screen and (min-width: 375px) and (max-width: 424px) {
+  .card {
+		margin-bottom: 2rem;
+	}
+  
+  .featured_image_container {
+		position: relative;
+		height: 195px;
+	}
+}
+
+@media screen and (min-width: 425px) and (max-width: 767px) {
+  .feature_section {
+		width: 100%;
+		height: auto;
+		box-sizing: border-box;
+	}
+
+	.card {
+		margin-bottom: 2rem;
+	}
+
+	.featured_image_container {
+		position: relative;
+		height: 332px;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.feature_section {
+		width: 100%;
+		min-height: auto;
+		box-sizing: border-box;
+    margin-bottom: 5rem;
+	}
+
+	.card {
+		margin-bottom: 5rem;
+	}
+
+	.featured {
+		width: 100%;
+		height: 90.5%;
+	}
+
+	.featured_image_container {
+		position: relative;
+		height: 610px;
+	}
+
+	.headline_posts_col {
+		height: 1148px;
+	}
+
+	.headline_posts {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+	.feature_section {
+    width: 100%;
+    height: 595px;
+    box-sizing: border-box;
+    margin-bottom: 3rem;
+  }
+
+	.headline_posts_col .card:nth-child(odd){
+		margin-bottom: 3rem;
+	}
+
+	.featured {
+		width: 100%;
+		height: 92.3%;
+	}
+
+	.featured_image_container {
+		position: relative;
+		height: 500px;
+	}
+
+	.headline_posts {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 1440px) and (max-width: 2559px) {
+	.feature_section {
+    width: 100%;
+    height: 735px;
+    box-sizing: border-box;
+    margin-bottom: 3rem;
+  }
+
+	.headline_posts_col .card:nth-child(odd){
+		margin-bottom: 3rem;
+	}
+
+  .featured_container {
+    height: 704px;
+  }
+
+	.featured {
+		width: 100%;
+		height: 100%;
+	}
+
+	.featured_image_container {
+		position: relative;
+		height: 900px;
+	}
+
+	.headline_posts {
+		width: 100%;
+		height: auto;
+	}
+}
+
+@media screen and (min-width: 2560px) {
+	.feature_section {
+		width: 100%;
+		height: 1055px;
+		box-sizing: border-box;
+	}
+
+	.card {
+		margin-bottom: 5rem;
+	}
+
+	.featured {
+		width: 100%;
+		height: 92.3%;
+	}
+
+	.featured_image_container {
+		position: relative;
+		height: 970px;
+	}
+
+	.headline_posts {
+		width: 100%;
+		height: auto;
+	}
+}

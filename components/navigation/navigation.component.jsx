@@ -63,7 +63,7 @@ const Navigation = () => {
 									id='offcanvasNavbarLabel-expand'
 									className={styles.offCanvasTitle}
 								>
-									<Image src={logo} alt='Rock Digital Logo' className='img-fluid' />
+									<Image src={logo} alt='Rock Digital Logo' className='img-fluid' priority />
 								</Offcanvas.Title>
 							</Link>
 						</Offcanvas.Header>
