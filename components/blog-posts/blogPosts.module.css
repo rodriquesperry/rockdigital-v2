@@ -42,7 +42,6 @@
   .posts .card {
     width: 94%;
     height: 350px;
-    /* margin: 0 2rem 3rem; */
   }
 }
 
@@ -51,22 +50,11 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    /* justify-content: center; */
     margin: 0 0 4rem 1rem;
   }
-/* 
-  .posts .post_col {
-    padding: 0;
-  }
-*/
+
   .post_col {
     margin: 0 0 3rem;
   }
 
-  /*.posts .card {
-    width: 94%;
-    height: 350px;
-    margin-bottom: 3rem;
-    border-radius: 0;
-  } */
 }
