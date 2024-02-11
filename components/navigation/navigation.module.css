@@ -45,8 +45,8 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
-	.toggler { 
-    margin-right: 30px;
+  .toggler { 
+    /* margin-right: 30px; */
   }
 
 	.navbar .navbar_brand {
