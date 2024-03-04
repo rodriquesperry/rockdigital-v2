@@ -1,5 +1,11 @@
 .card {
   border-radius: 3%;
+  margin-bottom: 2rem;
+}
+
+.featured_image_container {
+  position: relative;
+  height: 158px;
 }
 
 .featured_image_container img {
@@ -14,9 +20,12 @@
 	}
   
   .featured_image_container {
-		position: relative;
 		height: 195px;
 	}
+
+  .feature_section {
+    margin-bottom: 0;
+  }
 }
 
 @media screen and (min-width: 425px) and (max-width: 767px) {
@@ -31,7 +40,6 @@
 	}
 
 	.featured_image_container {
-		position: relative;
 		height: 332px;
 	}
 }
@@ -54,7 +62,6 @@
 	}
 
 	.featured_image_container {
-		position: relative;
 		height: 610px;
 	}
 
@@ -86,7 +93,6 @@
 	}
 
 	.featured_image_container {
-		position: relative;
 		height: 500px;
 	}
 
@@ -118,7 +124,6 @@
 	}
 
 	.featured_image_container {
-		position: relative;
 		height: 900px;
 	}
 
@@ -145,7 +150,6 @@
 	}
 
 	.featured_image_container {
-		position: relative;
 		height: 970px;
 	}
 

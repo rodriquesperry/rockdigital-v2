@@ -31,6 +31,7 @@ const CarouselTopPage = () => {
 						className={`d-block img-fluid ${styles.web_design}`}
 						src={WebDesign2479w}
 						alt='First slide'
+            fill
             priority
 					/>
 					<Carousel.Caption className={styles.carousel_caption}>
@@ -58,6 +59,7 @@ const CarouselTopPage = () => {
 						className='d-block img-fluid'
 						src={DigitalMarketing2479w}
 						alt='Second slide'
+            fill
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
@@ -85,6 +87,7 @@ const CarouselTopPage = () => {
 						className='d-block img-fluid'
 						src={SheratonHotel2479w}
 						alt='Third slide'
+            fill
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
