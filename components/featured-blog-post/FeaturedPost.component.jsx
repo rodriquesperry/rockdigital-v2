@@ -26,7 +26,6 @@ const FeaturedPost = () => {
 		getPosts();
 	}, [posts]);
 
-
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
 	}
@@ -90,11 +89,13 @@ const FeaturedPost = () => {
 											key={i}
 											className={`${styles.headline_posts} ${styles.card} order-2`}
 										>
-											<Card.Img
-												variant='top'
-												src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
-												className={styles.img_fluid}
-											/>
+											<div className={styles.headline_posts_image_container}>
+												<Image
+													src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
+													className={styles.img_fluid}
+                          fill
+												/>
+											</div>
 											<Card.Body>
 												<Card.Title>
 													{post.attributes.title.length > 38
