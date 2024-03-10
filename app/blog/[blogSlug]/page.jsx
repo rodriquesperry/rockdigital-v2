@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-
+import Image from 'next/image';
 import axios from 'axios';
-
 import styles from './blogPost.module.css';
 
 const BlogPost = ({ params }) => {
@@ -57,10 +56,10 @@ const BlogPost = ({ params }) => {
 							<div className={styles.blog_post_header_background}></div>
 							<div className={styles.header_content_container}>
 								<div className={`col ${styles.blog_image_container}`}>
-									<img
+									<Image
 										src={`https://rockdigital.agency/dashboard${featImage}`}
-										alt=''
-										fluid
+										alt={title}
+										fill
 									/>
 								</div>
 								<div className={`col ${styles.header_text}`}>
