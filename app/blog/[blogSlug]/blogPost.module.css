@@ -49,7 +49,6 @@
 .author_info {
   display: flex;
   width: 100%;
-  /* left: 35.5rem; */
   left: calc(calc(100% / 2) + .5rem);
 }
 
@@ -316,7 +315,7 @@
     display: flex;
     width: 49.5%;
     position: relative;
-    left: 37.5rem;
+    left: calc(calc(100% / 2) - 3rem);
     margin-top: .5rem;
   }
 
@@ -418,7 +417,7 @@
     display: flex;
     width: 49.5%;
     position: relative;
-    left: 70.5rem;
+    left: calc(calc(100% / 2) - 4.5rem);
     margin-top: 1.5rem;
   }
 
