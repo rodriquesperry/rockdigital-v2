@@ -31,20 +31,21 @@ const PortfolioItem = () => {
 				portfolioItems.map((portfolioItem, i) => {
 					return (
 						<div className={styles.portfolio_item} key={i}>
-							<div className={styles.portfolio_item_img_container}>
 								<a
 									href={portfolioItem.attributes.url}
 									target='_blank'
 									rel='noreferrer'
 								>
+							<div className={styles.portfolio_item_img_container}>
 									<Image
 										src={`https://rockdigital.agency/dashboard${portfolioItem.attributes.image.data.attributes.url}`}
 										alt={portfolioItem.attributes.name}
 										fill
+                    priority
 									/>
+							</div>
 
 								</a>
-							</div>
 							<h4>{portfolioItem.attributes.name}</h4>
 
 						</div>
