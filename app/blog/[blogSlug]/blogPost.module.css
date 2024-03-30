@@ -225,7 +225,7 @@
     margin-top: 0.7rem;
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: flex-start;
   }
 
   .info_text .author, .date {
