@@ -5,6 +5,6 @@ module.exports = nextConfig;
 
 module.exports = {
 	images: {
-		domains: ['rockdigital.agency'],
+		remotePatterns: ['rockdigital.agency'],
 	},
 };
