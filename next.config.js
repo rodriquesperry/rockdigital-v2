@@ -5,6 +5,12 @@ module.exports = nextConfig;
 
 module.exports = {
 	images: {
-		remotePatterns: ['rockdigital.agency'],
+		remotePatterns: [
+			{
+				protocol: 'https',
+				hostname: 'rockdigital.agency',
+				pathname: '**',
+			},
+		],
 	},
 };
