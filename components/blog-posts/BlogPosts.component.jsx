@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
@@ -32,13 +33,13 @@ const BlogPost = ({ params }) => {
 					if (!post.attributes.featured && i >= 2) {
 						return (
 							<Col md={6} lg={3} className={styles.post_col} key={i}>
-								<a href={`/blog/${post.attributes.slug}`}>
+								<Link href={`/blog/${post.attributes.slug}`}>
 									<Card className={styles.card}>
 										<div className={styles.BlogPost_image_container}>
 											<Image
 												// variant='top'
 												src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
-                        fill
+												fill
 											/>
 										</div>
 										<Card.Body>
@@ -57,7 +58,7 @@ const BlogPost = ({ params }) => {
 											</Card.Text>
 										</Card.Body>
 									</Card>
-								</a>
+								</Link>
 							</Col>
 						);
 					}

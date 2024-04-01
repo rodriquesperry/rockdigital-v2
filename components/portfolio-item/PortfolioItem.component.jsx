@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import axios from 'axios';
 import styles from './portfolioItem.module.css';
 
@@ -31,7 +32,7 @@ const PortfolioItem = () => {
 				portfolioItems.map((portfolioItem, i) => {
 					return (
 						<div className={styles.portfolio_item} key={i}>
-								<a
+								<Link
 									href={portfolioItem.attributes.url}
 									target='_blank'
 									rel='noreferrer'
@@ -45,7 +46,7 @@ const PortfolioItem = () => {
 									/>
 							</div>
 
-								</a>
+								</Link>
 							<h4>{portfolioItem.attributes.name}</h4>
 
 						</div>

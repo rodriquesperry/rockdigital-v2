@@ -84,7 +84,7 @@ const FeaturedPost = () => {
 						posts.map((post, i) => {
 							if (!post.attributes.featured && i <= 1)
 								return (
-									<a href={`/blog/${post.attributes.slug}`} key={i}>
+									<Link href={`/blog/${post.attributes.slug}`} key={i}>
 										<Card
 											key={i}
 											className={`${styles.headline_posts} ${styles.card} order-2`}
@@ -112,7 +112,7 @@ const FeaturedPost = () => {
 												</Card.Text>
 											</Card.Body>
 										</Card>
-									</a>
+									</Link>
 								);
 							return null;
 						})}
