@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
-import WebDesignService from '../../assets/web-design-service.webp';
-import SeoService from '../../assets/seo-service.webp';
-import WebsiteImprovement from '../../assets/website-improvement-maintenance.webp';
+import WebDesignService from '@/assets/web-design-service.webp';
+import SeoService from '@/assets/seo-service.webp';
+import WebsiteImprovement from '@/assets/website-improvement-maintenance.webp';
 
 import styles from './services.styles.module.css';
 
