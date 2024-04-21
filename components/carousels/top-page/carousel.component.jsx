@@ -6,9 +6,9 @@ import Link from 'next/link';
 
 import Carousel from 'react-bootstrap/Carousel';
 
-import WebDesign2479w from '@/assets/web-design-full_2479px.webp';
-import DigitalMarketing2479w from '@/assets/digital-marketing_2479px.webp';
-import SheratonHotel2479w from '@/assets/sheraton-houston-st-san-antonio-tx_2479px.webp';
+import WebDesign1359w from '@/assets/web-design-full_1359px.webp';
+import DigitalMarketing1359w from '@/assets/digital-marketing_1359px.webp';
+import SheratonHotel1359w from '@/assets/sharaton-houston-st-san-antonio-tx_1359px.webp';
 
 import styles from './carousel.module.css';
 
@@ -29,7 +29,7 @@ const CarouselTopPage = () => {
 				<Carousel.Item className={styles.carousel_item}>
 					<Image
 						className={`d-block img-fluid ${styles.web_design}`}
-						src={WebDesign2479w}
+						src={WebDesign1359w}
 						alt='First slide'
             fill
             priority
@@ -57,9 +57,10 @@ const CarouselTopPage = () => {
 				<Carousel.Item className={styles.carousel_item}>
 					<Image
 						className='d-block img-fluid'
-						src={DigitalMarketing2479w}
+						src={DigitalMarketing1359w}
 						alt='Second slide'
             fill
+            priority
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
@@ -85,9 +86,10 @@ const CarouselTopPage = () => {
 				<Carousel.Item className={styles.carousel_item}>
 					<Image
 						className='d-block img-fluid'
-						src={SheratonHotel2479w}
+						src={SheratonHotel1359w}
 						alt='Third slide'
             fill
+            priority
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
