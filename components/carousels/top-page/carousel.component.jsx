@@ -8,7 +8,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 import WebDesign1359w from '@/assets/web-design-full_1359px.webp';
 import DigitalMarketing1359w from '@/assets/digital-marketing_1359px.webp';
-import SheratonHotel1359w from '@/assets/sharaton-houston-st-san-antonio-tx_1359px.webp';
+import SheratonHotel1359w from '@/assets/sheraton-houston-st-san-antonio-tx_1359px.webp';
 
 import styles from './carousel.module.css';
 
