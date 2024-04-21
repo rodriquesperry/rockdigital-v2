@@ -33,6 +33,7 @@ const CarouselTopPage = () => {
 						alt='First slide'
             fill
             priority
+            sizes='100%'
 					/>
 					<Carousel.Caption className={styles.carousel_caption}>
 						<div className={styles.carousel_caption_block}>
@@ -61,6 +62,7 @@ const CarouselTopPage = () => {
 						alt='Second slide'
             fill
             priority
+            sizes='100%'
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
@@ -90,6 +92,7 @@ const CarouselTopPage = () => {
 						alt='Third slide'
             fill
             priority
+            sizes='100%'
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
