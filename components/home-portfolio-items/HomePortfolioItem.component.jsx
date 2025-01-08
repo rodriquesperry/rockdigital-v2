@@ -16,12 +16,15 @@ const HomePortfolioItem = () => {
 		const getPortfolioItems = async () => {
 			await axios
 				.get(
-					'https://rockdigital.agency/dashboard/api/portfolio-items?populate=*'
+					'http://127.0.0.1:1337/api/portfolio-items?populate=*'
 				)
-				.then((data) => setPortfolioItems(data.data.data))
+				.then((data) => {
+          setPortfolioItems(data.data.data)
+        })
 				.catch((error) => setError(error));
 		};
 		getPortfolioItems();
+    
 	}, []);
 
 	if (error) {
@@ -37,19 +40,19 @@ const HomePortfolioItem = () => {
 								<div className={styles.portfolio_item} key={i}>
 									<Link
                   className={styles.portfolio_link}
-										href={portfolioItem.attributes.url}
+										href={portfolioItem.url}
 										target='_blank'
 										rel='noreferrer'
 									>
 										<div className={styles.portfolio_image_container}>
 											<Image
-												src={`https://rockdigital.agency/dashboard${portfolioItem.attributes.image.data.attributes.url}`}
-												alt={portfolioItem.attributes.name}
+												src={portfolioItem.url}
+												alt={portfolioItem.name}
 												fill
 											/>
 										</div>
 									</Link>
-									<h4 className='text-center'>{portfolioItem.attributes.name}</h4>
+									<h4 className='text-center'>{portfolioItem.name}</h4>
 								</div>
 						);
 					return null;

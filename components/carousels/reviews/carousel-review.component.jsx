@@ -15,8 +15,10 @@ const CarouselReview = () => {
 	useEffect(() => {
 		const getReviews = async () => {
 			await axios
-				.get('https://rockdigital.agency/dashboard/api/reviews?populate=*')
-				.then((data) => setReviews(data.data.data))
+				.get('http://127.0.0.1:1337/api/reviews?populate=*')
+				.then((data) => {
+          setReviews(data.data.data)
+        })
 				.catch((error) => setError(error));
 		};
 		getReviews();
@@ -38,14 +40,14 @@ const CarouselReview = () => {
 										<div className={`col ${styles.review_container}`}>
 											<p>
 												<span className={styles.quote}>&quot;</span>
-												{review.attributes.review_quote}
+												{review.review}
 												<span className={styles.quote}>&quot;</span>
 											</p>
 										</div>
 										<div className={styles.reviewer_container}>
 											<p>~</p>
 											<h4 className={styles.reviewer}>
-												{review.attributes.reviewer_name}
+												{review.name}
 											</h4>
 										</div>
 									</div>

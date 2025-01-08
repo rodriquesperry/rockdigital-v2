@@ -19,7 +19,7 @@ const FeaturedPost = () => {
 	useEffect(() => {
 		const getPosts = async () => {
 			await axios
-				.get('https://rockdigital.agency/dashboard/api/posts?populate=*')
+				.get('http://127.0.0.1:1337/api/posts?populate=*')
 				.then((data) => setPosts(data.data.data.reverse()))
 				.catch((error) => setError(error));
 		};
@@ -28,44 +28,44 @@ const FeaturedPost = () => {
 
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
-	}
+	}  
 
 	return (
 		<section className={`${styles.feature_section} container`}>
 			<Row>
 				{posts &&
 					posts.map((post, i) => {
-						if (post.attributes.featured) {
+						if (post.featured) {
 							return (
 								<Col
 									className={styles.featured_container}
 									md={(6, { order: 1 })}
 									key={i}
 								>
-									<Link href={`/blog/${post.attributes.slug}`}>
+									<Link href={`/blog/${post.slug}`}>
 										<Card
 											key={i}
 											className={`${styles.featured} ${styles.card}`}
 										>
 											<div className={styles.featured_image_container}>
 												<Image
-													src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
+													src={`http://127.0.0.1:1337${post.featured_image.url}`}
 													fill
 												/>
 											</div>
 											<Card.Body>
 												<Card.Title>
-													{post.attributes.title.length > 60
-														? `${post.attributes.title.slice(0, 60)}...`
-														: post.attributes.title}
+													{post.title.length > 60
+														? `${post.title.slice(0, 60)}...`
+														: post.title}
 												</Card.Title>
 												<Card.Text>
-													{post.attributes.short_description.length > 150
-														? `${post.attributes.short_description.substring(
+													{post.short_description.length > 150
+														? `${post.short_description.substring(
 																0,
 																150
 														  )}...`
-														: post.attributes.short_description}
+														: post.short_description}
 												</Card.Text>
 											</Card.Body>
 										</Card>
@@ -82,33 +82,33 @@ const FeaturedPost = () => {
 				>
 					{posts &&
 						posts.map((post, i) => {
-							if (!post.attributes.featured && i <= 1)
+							if (!post.featured && i <= 1)
 								return (
-									<Link href={`/blog/${post.attributes.slug}`} key={i}>
+									<Link href={`/blog/${post.slug}`} key={i}>
 										<Card
 											key={i}
 											className={`${styles.headline_posts} ${styles.card} order-2`}
 										>
 											<div className={styles.headline_posts_image_container}>
 												<Image
-													src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
+													src={`http://localhost:1337${post.featured_image.url}`}
 													className={styles.img_fluid}
                           fill
 												/>
 											</div>
 											<Card.Body>
 												<Card.Title>
-													{post.attributes.title.length > 38
-														? `${post.attributes.title.slice(0, 38)}...`
-														: post.attributes.title}
+													{post.title.length > 38
+														? `${post.title.slice(0, 38)}...`
+														: post.title}
 												</Card.Title>
 												<Card.Text>
-													{post.attributes.short_description.length > 40
-														? `${post.attributes.short_description.substring(
+													{post.short_description.length > 40
+														? `${post.short_description.substring(
 																0,
 																40
 														  )}...`
-														: post.attributes.short_description}
+														: post.short_description}
 												</Card.Text>
 											</Card.Body>
 										</Card>

@@ -15,13 +15,15 @@ import logo from '@/assets/RockDigitalLogo-196px.jpeg';
 import styles from './navigation.module.css';
 
 const Navigation = () => {
-	const offCanvasRef = useRef();
+	// const offCanvasRef = useRef();
 	const [scroll, setScroll] = useState(false);
+	const [showOffcanvas, setShowOffcanvas] = useState(false);
 
-	const closeOffcanvas = () => offCanvasRef.current.backdrop.click();
+	// const closeOffcanvas = () => offCanvasRef.current.backdrop.click();
+	const closeOffcanvas = () => setShowOffcanvas(false);
 
 	useEffect(() => {
-		const handleScroll = (e) => {
+		const handleScroll = () => {
 			if (
 				document.body.scrollTop > 0 ||
 				document.documentElement.scrollTop > 0
@@ -50,12 +52,18 @@ const Navigation = () => {
 						/>
 					</Link>
 
-					<Navbar.Toggle className={styles.toggler} aria-controls='responsive-navbar-nav' />
+					<Navbar.Toggle
+						className={styles.toggler}
+						aria-controls='responsive-navbar-nav'
+						onClick={() => setShowOffcanvas(true)}
+					/>
+
 					<Navbar.Offcanvas
 						id='offcanvasNavbar-expand'
 						aria-labelledby='offcanvasNavbarLabel-expand'
 						placement='end'
-						ref={offCanvasRef}
+						show={showOffcanvas}
+						onHide={closeOffcanvas}
 					>
 						<Offcanvas.Header closeButton>
 							<Link href='/' onClick={closeOffcanvas}>
@@ -63,7 +71,12 @@ const Navigation = () => {
 									id='offcanvasNavbarLabel-expand'
 									className={styles.offCanvasTitle}
 								>
-									<Image src={logo} alt='Rock Digital Logo' className='img-fluid' priority />
+									<Image
+										src={logo}
+										alt='Rock Digital Logo'
+										className='img-fluid'
+										priority
+									/>
 								</Offcanvas.Title>
 							</Link>
 						</Offcanvas.Header>

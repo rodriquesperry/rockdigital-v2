@@ -1,11 +1,20 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  images: {
+	images: {
 		remotePatterns: [
 			{
 				protocol: 'https',
 				hostname: 'rockdigital.agency',
-				pathname: '**',
+				pathname: '/media/**',
+			},
+			{
+				protocol: 'https',
+				hostname: 'rockdigital.agency',
+				pathname: '/dashboard/uploads/**',
+			},
+			{
+				protocol: 'http',
+				hostname: 'localhost',
 			},
 		],
 	},

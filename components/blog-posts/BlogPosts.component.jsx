@@ -16,8 +16,10 @@ const BlogPost = ({ params }) => {
 	useEffect(() => {
 		const getPosts = async () => {
 			await axios
-				.get('https://rockdigital.agency/dashboard/api/posts?populate=*')
-				.then((data) => setPosts(data.data.data.reverse()))
+				.get('http://127.0.0.1:1337/api/posts?populate=*')
+				.then((data) => {
+					setPosts(data.data.data.reverse());
+				})
 				.catch((error) => setError(error));
 		};
 		getPosts();
@@ -30,31 +32,31 @@ const BlogPost = ({ params }) => {
 		<section className={styles.posts}>
 			{posts &&
 				posts.map((post, i) => {
-					if (!post.attributes.featured && i >= 2) {
+					if (!post.featured && i >= 2) {
 						return (
 							<Col md={6} lg={3} className={styles.post_col} key={i}>
-								<Link href={`/blog/${post.attributes.slug}`}>
+								<Link href={`/blog/${post.slug}`}>
 									<Card className={styles.card}>
 										<div className={styles.BlogPost_image_container}>
 											<Image
 												// variant='top'
-												src={`https://rockdigital.agency/dashboard${post.attributes.featured_image.data.attributes.url}`}
+												src={`http://127.0.0.1:1337{post.featured_image.url}`}
 												fill
 											/>
 										</div>
 										<Card.Body>
 											<Card.Title>
-												{post.attributes.title.length > 48
-													? `${post.attributes.title.slice(0, 48)}...`
-													: post.attributes.title}
+												{post.title.length > 48
+													? `${post.title.slice(0, 48)}...`
+													: post.title}
 											</Card.Title>
 											<Card.Text>
-												{post.attributes.short_description.length > 60
-													? `${post.attributes.short_description.substring(
+												{post.short_description.length > 60
+													? `${post.short_description.substring(
 															0,
 															60
 													  )}...`
-													: post.attributes.short_description}
+													: post.short_description}
 											</Card.Text>
 										</Card.Body>
 									</Card>
