@@ -16,9 +16,12 @@ const BlogPost = ({ params }) => {
 	useEffect(() => {
 		const getPosts = async () => {
 			await axios
-				.get('http://127.0.0.1:1337/api/posts?populate=*')
+				.get(
+					'http://127.0.0.1:1337/api/posts?filters[publishedAt][$notNull]=true&populate=*'
+				)
 				.then((data) => {
-					setPosts(data.data.data.reverse());
+          
+          setPosts(data.data.data.reverse());
 				})
 				.catch((error) => setError(error));
 		};
@@ -28,6 +31,9 @@ const BlogPost = ({ params }) => {
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
 	}
+
+  console.log('posts: ', posts);
+
 	return (
 		<section className={styles.posts}>
 			{posts &&
@@ -37,14 +43,15 @@ const BlogPost = ({ params }) => {
 							<Col md={6} lg={3} className={styles.post_col} key={i}>
 								<Link href={`/blog/${post.slug}`}>
 									<Card className={styles.card}>
-										<div className={styles.BlogPost_image_container}>
+										<div className={styles.blogPost_image_container}>
 											<Image
 												// variant='top'
-												src={`http://127.0.0.1:1337{post.featured_image.url}`}
+												src={`http://127.0.0.1:1337${post.featured_image.url}`}
+												alt={'Featured Image'}
 												fill
 											/>
 										</div>
-										<Card.Body>
+										<Card.Body className={styles.card_body}>
 											<Card.Title>
 												{post.title.length > 48
 													? `${post.title.slice(0, 48)}...`
@@ -52,10 +59,7 @@ const BlogPost = ({ params }) => {
 											</Card.Title>
 											<Card.Text>
 												{post.short_description.length > 60
-													? `${post.short_description.substring(
-															0,
-															60
-													  )}...`
+													? `${post.short_description.substring(0, 60)}...`
 													: post.short_description}
 											</Card.Text>
 										</Card.Body>

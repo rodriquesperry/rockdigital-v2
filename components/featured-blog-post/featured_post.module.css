@@ -1,54 +1,61 @@
 .card {
-  border-radius: 3%;
-  margin-bottom: 2rem;
+	border-radius: 3%;
+	margin-bottom: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
 }
 
 .feature_section {
-  margin-bottom: 0;
+	margin-bottom: 0;
 }
 
 .featured_image_container {
-  position: relative;
-  height: 158px;
+	position: relative;
+	height: 158px;
 }
 
 .featured_image_container img {
-  border-top-left-radius: 2%;
-  border-top-right-radius: 2%;
+	border-top-left-radius: 2%;
+	border-top-right-radius: 2%;
+  object-fit: cover;
 }
 
 .headline_posts {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 .headline_posts_image_container {
-  position: relative;
-  width: 237px;
-  height: 158px;
+	position: relative;
+	width: 237px;
+	height: 158px;
+}
+
+.headline_posts_image_container img {
+  border-top-left-radius: 2%;
+	border-top-right-radius: 2%;
 }
 
 @media screen and (min-width: 375px) and (max-width: 424px) {
-  .card {
+	.card {
 		margin-bottom: 2rem;
 	}
-  
-  .featured_image_container {
+
+	.featured_image_container {
 		height: 195px;
 	}
 
-  .feature_section {
-    margin-bottom: 0;
-  }
+	.feature_section {
+		margin-bottom: 0;
+	}
 
-  .headline_posts_image_container {
-    width: 292px;
-    height: 195px;
-  }
+	.headline_posts_image_container {
+		width: 292px;
+		height: 195px;
+	}
 }
 
 @media screen and (min-width: 425px) and (max-width: 767px) {
-  .feature_section {
+	.feature_section {
 		width: 100%;
 		height: auto;
 		box-sizing: border-box;
@@ -59,13 +66,13 @@
 	}
 
 	.featured_image_container {
-		height: 332px;
+		height: 228px;
 	}
 
-  .headline_posts_image_container {
-    width: 342px;
-    height: 228px;
-  }
+	.headline_posts_image_container {
+		width: 342px;
+		height: 228px;
+	}
 }
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
@@ -73,7 +80,7 @@
 		width: 100%;
 		min-height: auto;
 		box-sizing: border-box;
-    margin-bottom: 5rem;
+		margin-bottom: 5rem;
 	}
 
 	.card {
@@ -86,75 +93,93 @@
 	}
 
 	.featured_image_container {
-		height: 610px;
+		/* height: 610px; */
+    width: 100%;
+    height: 457px;
+	}
+
+  .featured_image_container img {
+    width: 100%;
 	}
 
 	.headline_posts_col {
 		height: 1148px;
 	}
 
-  .headline_posts_image_container {
-    width: 685px;
-    height: 457px;
+	.headline_posts_image_container {
+		width: 100%;
+		height: 457px;
+	}
+
+  .headline_posts_image_container img {
+    width: 100%;
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
 	.feature_section {
-    width: 100%;
-    height: 595px;
-    box-sizing: border-box;
-    margin-bottom: 3rem;
-  }
+		width: 100%;
+		height: 595px;
+		box-sizing: border-box;
+		margin-bottom: 1rem;
+	}
 
-	.headline_posts_col .card:nth-child(odd){
-		margin-bottom: 3rem;
+	.headline_posts_col .card:nth-child(odd) {
+		margin-bottom: 1.5rem;
 	}
 
 	.featured {
 		width: 100%;
-		height: 92.3%;
+		height: 88.5%;
 	}
 
 	.featured_image_container {
 		height: 500px;
 	}
 
-  .headline_posts_image_container {
-    width: 217px;
-    height: 147px;
-  }
+	.headline_posts_image_container {
+		width: 217px;
+		height: 147px;
+	}
 }
 
 @media screen and (min-width: 1440px) and (max-width: 2559px) {
 	.feature_section {
-    width: 100%;
-    height: 735px;
-    box-sizing: border-box;
-    margin-bottom: 0rem;
-  }
+		width: 100%;
+		height: 700px;
+		box-sizing: border-box;
+    margin: 2rem 0 2rem;
 
-	.headline_posts_col .card:nth-child(odd){
-		margin-bottom: 3rem;
 	}
 
-  .featured_container {
-    height: 704px;
-  }
+	.featured_container {
+		height: 690px;
+	}
 
 	.featured {
-		width: 100%;
-		height: 100%;
+		width: 99%;
+		height: 44.5rem;
 	}
 
 	.featured_image_container {
 		height: 900px;
 	}
 
+	.headline_posts_col {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    gap: 1rem;
+	}
+
+	.headline_posts_col .card:nth-child(odd) {
+		margin-bottom: 1rem;
+	}
+
   .headline_posts_image_container {
-    width: 320px;
-    height: 213px;
-  }
+		width: 100%;
+		height: 235px;
+	}
 }
 
 @media screen and (min-width: 2560px) {
@@ -177,8 +202,8 @@
 		height: 970px;
 	}
 
-  .headline_posts_image_container {
-    width: 600px;
-    height: 395px;
-  }
+	.headline_posts_image_container {
+		width: 600px;
+		height: 395px;
+	}
 }

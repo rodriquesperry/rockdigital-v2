@@ -8,36 +8,33 @@ import styles from './blogPost.module.css';
 const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [post, setPost] = useState({});
-	const [authorImage, setAuthorImage] = useState({});
-	const [featImage, setFeatImage] = useState({});
-
-	console.log(params);
+	const [authorImage, setAuthorImage] = useState('');
+	const [featImage, setFeatImage] = useState('');
 
 	useEffect(() => {
 		const getPost = async () => {
-			await axios
-				.get(
-					`https://rockdigital.agency/dashboard/api/posts/${params.blogSlug}?populate=*`
-				)
-				.then((data) => {
-					console.log(data);
-					setPost(data.data.data.attributes);
-					setAuthorImage(
-						data.data.data.attributes.author_image.data.attributes.url
-					);
-					setFeatImage(
-						data.data.data.attributes.featured_image.data.attributes.url
-					);
-				})
-				.catch((error) => setError(error));
+			try {
+				const response = await axios.get(
+					`http://127.0.0.1:1337/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+				);
+				const postData = response.data.data[0];
+				setPost(postData);
+        console.log('postData.publishedAt: ', postData.publishedAt);
+
+				// Safely extract image URLs
+				setAuthorImage(postData.author_image?.url || '');
+				setFeatImage(postData.featured_image?.url || '');
+			} catch (error) {
+				setError(error);
+			}
 		};
 		getPost();
 	}, [params.blogSlug]);
 
 	const { publishedAt, author, title, body, read_time, short_description } =
-		post;
+		post;  
 
-	let date = new Date(publishedAt);
+	let date = new Date(publishedAt); // Fallback for date
 
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
@@ -57,8 +54,8 @@ const BlogPost = ({ params }) => {
 							<div className={styles.header_content_container}>
 								<div className={`col ${styles.blog_image_container}`}>
 									<Image
-										src={`https://rockdigital.agency/dashboard${featImage}`}
-										alt={title}
+										src={`http://localhost:1337${featImage}`}
+										alt={title + ' image.' || 'Featured Image'}
 										fill
 									/>
 								</div>
