@@ -56,7 +56,7 @@ const FeaturedPost = () => {
 						loading={isFeatured && index === 0 ? undefined : 'lazy'}
 					/>
 				</div>
-				<Card.Body>
+				<Card.Body className={styles.headline_posts_card_body}>
 					<Card.Title>
 						{post.title.length > (isFeatured ? 60 : 38)
 							? `${post.title.slice(0, isFeatured ? 60 : 38)}...`
