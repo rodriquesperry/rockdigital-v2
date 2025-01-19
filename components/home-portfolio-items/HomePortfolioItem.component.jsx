@@ -11,15 +11,18 @@ import styles from './home_portfolio.styles.module.css';
 const HomePortfolioItem = () => {
 	const [error, setError] = useState(null);
 	const [portfolioItems, setPortfolioItems] = useState([]);
+  const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getPortfolioItems = async () => {
 			await axios
 				.get(
-					'http://127.0.0.1:1337/api/portfolio-items?populate=*'
+					`${baseURL}/api/portfolio-items?populate=*`
 				)
 				.then((data) => {
           setPortfolioItems(data.data.data)
+          console.log(data.data.data);
+          
         })
 				.catch((error) => setError(error));
 		};
@@ -46,7 +49,7 @@ const HomePortfolioItem = () => {
 									>
 										<div className={styles.portfolio_image_container}>
 											<Image
-												src={portfolioItem.url}
+												src={`${baseURL}${portfolioItem.image.url}`}
 												alt={portfolioItem.name}
 												fill
 											/>

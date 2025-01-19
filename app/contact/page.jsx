@@ -1,7 +1,8 @@
 import React from 'react';
+import dynamic from 'next/dynamic';
 
-
-import ContactPageForm from '@/components/contact-forms/contact-page-contact-form.compnent';
+// const ContactPageForm = dynamic(() => import('../../components/contact-forms/contact-page-contact-form.compnent'));
+import ContactPageForm from '@/components/contact-forms/ContactPageForm';
 import styles from './contact.module.css';
 
 const Contact = () => {

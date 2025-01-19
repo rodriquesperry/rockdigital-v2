@@ -269,6 +269,10 @@
 		justify-content: center;
 	}
 
+  .btn > p {
+    margin: .5rem 0;
+  }
+
 	.min_btn_width {
 		width: 35%;
 	}
@@ -483,6 +487,10 @@
 		font-weight: bold;
 		justify-content: center;
 	}
+
+  .btn > p {
+    margin: .5rem 0;
+  }
 
 	.min_btn_width {
 		width: 35%;
