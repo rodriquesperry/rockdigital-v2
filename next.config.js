@@ -24,7 +24,7 @@ const nextConfig = {
 			},
 			{
 				protocol: 'https',
-				hostname: 'rockdigital-v2-qmvqsz0hj-rodriques-projects.vercel.app',
+				hostname: 'rockdigital-v2.vercel.app',
 				pathname: '/**',
 			},
 		],
