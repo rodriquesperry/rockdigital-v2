@@ -38,7 +38,7 @@ const ContactPageForm = () => {
 		if (errors.root) {
 			setFocus('email');
 		}
-	}, [errors.root]);
+	}, [errors.root, setFocus]);
 
 	const postLead = async (data) => {
 		try {
