@@ -23,6 +23,11 @@ const nextConfig = {
 				pathname: '/**',
 			},
 			{
+				protocol: 'http',
+				hostname: '127.0.0.1:1337',
+				pathname: '/**',
+			},
+			{
 				protocol: 'https',
 				hostname: 'rockdigital-v2.vercel.app',
 				pathname: '/**',

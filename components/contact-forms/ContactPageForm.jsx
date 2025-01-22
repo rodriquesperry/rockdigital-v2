@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './contactPage.module.css';
 
 const ContactPageForm = () => {
-	const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:1337';
+	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
 	const {
@@ -19,7 +19,7 @@ const ContactPageForm = () => {
 		setError,
 		reset,
 		setValue,
-    setFocus,
+		setFocus,
 		formState: { errors, isSubmitting },
 	} = useForm({
 		defaultValues: {

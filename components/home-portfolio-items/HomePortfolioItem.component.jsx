@@ -11,23 +11,19 @@ import styles from './home_portfolio.styles.module.css';
 const HomePortfolioItem = () => {
 	const [error, setError] = useState(null);
 	const [portfolioItems, setPortfolioItems] = useState([]);
-  const baseURL = process.env.NEXT_PUBLIC_API_URL || 'http://127.0.0.1:1337';
+	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getPortfolioItems = async () => {
 			await axios
-				.get(
-					`${baseURL}/api/portfolio-items?populate=*`
-				)
+				.get(`${baseURL}/api/portfolio-items?populate=*`)
 				.then((data) => {
-          setPortfolioItems(data.data.data)
-          console.log(data.data.data);
-          
-        })
+					setPortfolioItems(data.data.data);
+					console.log(data.data.data);
+				})
 				.catch((error) => setError(error));
 		};
 		getPortfolioItems();
-    
 	}, []);
 
 	if (error) {
@@ -40,23 +36,23 @@ const HomePortfolioItem = () => {
 				portfolioItems.map((portfolioItem, i) => {
 					if (i >= portfolioItems.length - 4)
 						return (
-								<div className={styles.portfolio_item} key={i}>
-									<Link
-                  className={styles.portfolio_link}
-										href={portfolioItem.url}
-										target='_blank'
-										rel='noreferrer'
-									>
-										<div className={styles.portfolio_image_container}>
-											<Image
-												src={`${baseURL}${portfolioItem.image.url}`}
-												alt={portfolioItem.name}
-												fill
-											/>
-										</div>
-									</Link>
-									<h4 className='text-center'>{portfolioItem.name}</h4>
-								</div>
+							<div className={styles.portfolio_item} key={i}>
+								<Link
+									className={styles.portfolio_link}
+									href={portfolioItem.url}
+									target='_blank'
+									rel='noreferrer'
+								>
+									<div className={styles.portfolio_image_container}>
+										<Image
+											src={`${baseURL}${portfolioItem.image.url}`}
+											alt={portfolioItem.name}
+											fill
+										/>
+									</div>
+								</Link>
+								<h4 className='text-center'>{portfolioItem.name}</h4>
+							</div>
 						);
 					return null;
 				})}
