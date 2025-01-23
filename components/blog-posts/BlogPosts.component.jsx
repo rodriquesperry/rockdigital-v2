@@ -17,7 +17,7 @@ const BlogPost = ({ params }) => {
 		const getPosts = async () => {
 			await axios
 				.get(
-					'http://127.0.0.1:1337/api/posts?filters[publishedAt][$notNull]=true&populate=*'
+					`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
 				)
 				.then((data) => {
           
@@ -46,7 +46,7 @@ const BlogPost = ({ params }) => {
 										<div className={styles.blogPost_image_container}>
 											<Image
 												// variant='top'
-												src={`http://127.0.0.1:1337${post.featured_image.url}`}
+												src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.featured_image.url}`}
 												alt={'Featured Image'}
 												fill
 											/>

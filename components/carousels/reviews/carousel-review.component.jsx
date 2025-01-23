@@ -15,7 +15,7 @@ const CarouselReview = () => {
 	useEffect(() => {
 		const getReviews = async () => {
 			await axios
-				.get('http://127.0.0.1:1337/api/reviews?populate=*')
+				.get(`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/reviews?populate=*`)
 				.then((data) => {
           setReviews(data.data.data)
         })

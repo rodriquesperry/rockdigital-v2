@@ -19,7 +19,7 @@ const FeaturedPost = () => {
 		const fetchPosts = async () => {
 			try {
 				const { data } = await axios.get(
-					'http://127.0.0.1:1337/api/posts?populate=*'
+					`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/posts?populate=*`
 				);
 				setPosts(data.data.reverse());
 			} catch (err) {
@@ -49,7 +49,7 @@ const FeaturedPost = () => {
 					}
 				>
 					<Image
-						src={`http://127.0.0.1:1337${post.featured_image.url}`}
+						src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.featured_image.url}`}
 						alt='Featured Image'
 						fill
 						priority={isFeatured && index === 0}
