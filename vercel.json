@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/admin",
+      "destination": "http://142.93.253.106:1337/admin"
+    }
+  ]
+}
