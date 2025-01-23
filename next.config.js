@@ -5,12 +5,7 @@ const nextConfig = {
 			{
 				protocol: 'https',
 				hostname: 'rockdigital.agency',
-				pathname: '/media/**',
-			},
-			{
-				protocol: 'https',
-				hostname: 'rockdigital.agency',
-				pathname: '/dashboard/uploads/**',
+				pathname: '/**',
 			},
 			{
 				protocol: 'http',
