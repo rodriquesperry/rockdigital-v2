@@ -11,13 +11,13 @@ import styles from './blogPosts.module.css';
 const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-	// const id = params.id;
+  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getPosts = async () => {
 			await axios
 				.get(
-					`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
+					`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
 				)
 				.then((data) => {
           
@@ -46,7 +46,7 @@ const BlogPost = ({ params }) => {
 										<div className={styles.blogPost_image_container}>
 											<Image
 												// variant='top'
-												src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.featured_image.url}`}
+												src={`${baseURL}${post.featured_image.url}`}
 												alt={'Featured Image'}
 												fill
 											/>

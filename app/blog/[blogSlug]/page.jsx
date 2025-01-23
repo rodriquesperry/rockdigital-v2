@@ -10,12 +10,13 @@ const BlogPost = ({ params }) => {
 	const [post, setPost] = useState({});
 	const [authorImage, setAuthorImage] = useState('');
 	const [featImage, setFeatImage] = useState('');
+  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
-					`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+					`${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
 				);
 				const postData = response.data.data[0];
 				setPost(postData);
@@ -54,7 +55,7 @@ const BlogPost = ({ params }) => {
 							<div className={styles.header_content_container}>
 								<div className={`col ${styles.blog_image_container}`}>
 									<Image
-										src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${featImage}`}
+										src={`${baseURL}${featImage}`}
 										alt={title + ' image.' || 'Featured Image'}
 										fill
 									/>

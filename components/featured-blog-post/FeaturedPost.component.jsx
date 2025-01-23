@@ -14,12 +14,13 @@ import styles from './featured_post.module.css';
 const FeaturedPost = () => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
+  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
 				const { data } = await axios.get(
-					`${process.env.NEXT_PUBLIC_STRAPI_URL}/api/posts?populate=*`
+					`${baseURL}/api/posts?populate=*`
 				);
 				setPosts(data.data.reverse());
 			} catch (err) {
@@ -49,7 +50,7 @@ const FeaturedPost = () => {
 					}
 				>
 					<Image
-						src={`${process.env.NEXT_PUBLIC_STRAPI_URL}${post.featured_image.url}`}
+						src={`${baseURL}${post.featured_image.url}`}
 						alt='Featured Image'
 						fill
 						priority={isFeatured && index === 0}
