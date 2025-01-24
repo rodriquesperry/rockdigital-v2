@@ -23,8 +23,8 @@
 	border-top: none;
 	border-left: none;
 	border-right: none;
-	border-width: 0.06rem;
-	border-color: #1c2a3a;
+	border-width: 0.062rem !important;
+	border-color: #1c2a3a !important;
 	color: rgb(56, 46, 48);
 }
 

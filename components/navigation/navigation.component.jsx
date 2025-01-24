@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
@@ -15,11 +15,9 @@ import logo from '@/assets/RockDigitalLogo-196px.jpeg';
 import styles from './navigation.module.css';
 
 const Navigation = () => {
-	// const offCanvasRef = useRef();
 	const [scroll, setScroll] = useState(false);
 	const [showOffcanvas, setShowOffcanvas] = useState(false);
 
-	// const closeOffcanvas = () => offCanvasRef.current.backdrop.click();
 	const closeOffcanvas = () => setShowOffcanvas(false);
 
 	useEffect(() => {
