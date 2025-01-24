@@ -19,6 +19,10 @@
 		{
 			"source": "/:path*",
 			"destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/:path*"
+		},
+		{
+			"source": "/blog/:path*",
+			"destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/:path*"
 		}
 	]
 }
