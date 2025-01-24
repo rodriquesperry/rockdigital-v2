@@ -3,6 +3,19 @@
     {
       "source": "/admin/:path*",
       "destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/admin/:path*"
+    },
+    {
+      "source": "/content-manager/:path*",
+      "destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/content-manager/:path*"
+    },
+    {
+      "source": "/upload/:path*",
+      "destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/upload/:path*"
+    },
+    {
+      "source": "/:path*",
+      "destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/:path*"
     }
   ]
 }
+
