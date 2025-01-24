@@ -21,7 +21,8 @@ const BlogPost = ({ params }) => {
 				);
 
         console.log("API Response:", response.data);  // Debugging
-
+        console.log("response.data.data[0]: ", response.data.data[0]);
+        
 				const postData = response.data.data[0];
 				setPost(postData);
         console.log('postData.publishedAt: ', postData.publishedAt);
