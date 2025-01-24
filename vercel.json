@@ -1,8 +1,8 @@
 {
   "rewrites": [
     {
-      "source": "/admin",
-      "destination": "https://rockdigital.agency:1337/admin"
+      "source": "/admin/:path*",
+      "destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/admin/:path*"
     }
   ]
 }
