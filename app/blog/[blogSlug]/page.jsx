@@ -10,22 +10,24 @@ const BlogPost = ({ params }) => {
 	const [post, setPost] = useState({});
 	const [authorImage, setAuthorImage] = useState('');
 	const [featImage, setFeatImage] = useState('');
-  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
+	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
-    console.log("blogSlug: ", params.blogSlug); // Debugging    
+		console.log('blogSlug: ', params.blogSlug); // Debugging
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
 					`${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
 				);
 
-        console.log("API Response:", response.data);  // Debugging
-        console.log("response.data.data[0]: ", response.data.data[0]);
-        
-				const postData = response.data.data[0];
+				console.log('API Response:', response.data); // Debugging        
+        const postData = response.data.data[0];
+
+				if (!postData) {
+					throw new Error('Post not found.');
+				}
+
 				setPost(postData);
-        console.log('postData.publishedAt: ', postData.publishedAt);
 
 				// Safely extract image URLs
 				setAuthorImage(postData.author_image?.url || '');
@@ -38,7 +40,7 @@ const BlogPost = ({ params }) => {
 	}, [params.blogSlug]);
 
 	const { publishedAt, author, title, body, read_time, short_description } =
-		post;  
+		post;
 
 	let date = new Date(publishedAt); // Fallback for date
 
