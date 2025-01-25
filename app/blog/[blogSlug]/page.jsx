@@ -17,11 +17,11 @@ const BlogPost = ({ params }) => {
 	useEffect(() => {
 		const getPost = async () => {
 			try {
-				const response = await axios.get(
-					`${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
-				);
+				// const response = await axios.get(
+				// 	`${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+				// );
 
-				console.log('API Response:', response.data); // Debugging        
+				// console.log('API Response:', response.data); // Debugging        
         const postData = response.data.data[0];
 
 				if (!postData) {
