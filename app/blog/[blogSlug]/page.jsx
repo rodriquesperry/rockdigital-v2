@@ -5,6 +5,8 @@ import Image from 'next/image';
 import axios from 'axios';
 import styles from './blogPost.module.css';
 
+console.log('blogSlug: ', params.blogSlug); // Debugging
+
 const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [post, setPost] = useState({});
@@ -13,7 +15,6 @@ const BlogPost = ({ params }) => {
 	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
-		console.log('blogSlug: ', params.blogSlug); // Debugging
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
