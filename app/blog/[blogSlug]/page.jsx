@@ -15,6 +15,9 @@ const BlogPost = ({ params }) => {
 
 	useEffect(() => {
     console.log('blogSlug: ', blogSlug); // Debugging
+    console.log("API Endpoint: ", 					`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+);
+      // Debugging
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
@@ -23,6 +26,9 @@ const BlogPost = ({ params }) => {
 
 				console.log('API Response:', response.data); // Debugging        
         const postData = response.data.data[0];
+
+        console.log("postData: ", postData);
+        
 
 				if (!postData) {
 					throw new Error('Post not found.');
