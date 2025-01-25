@@ -13,9 +13,7 @@ const BlogPost = ({ params }) => {
   const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
-    console.log("blogSlug: ", params.blogSlug); // Debugging
-    console.log("${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*: ", `${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`); // Debugging
-    
+    console.log("blogSlug: ", params.blogSlug); // Debugging    
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
