@@ -5,9 +5,8 @@ import Image from 'next/image';
 import axios from 'axios';
 import styles from './blogPost.module.css';
 
-console.log('blogSlug: ', params.blogSlug); // Debugging
-
 const BlogPost = ({ params }) => {
+  const blogSlug = React.use(params).blogSlug;
 	const [error, setError] = useState(null);
 	const [post, setPost] = useState({});
 	const [authorImage, setAuthorImage] = useState('');
@@ -15,13 +14,14 @@ const BlogPost = ({ params }) => {
 	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
+    console.log('blogSlug: ', blogSlug); // Debugging
 		const getPost = async () => {
 			try {
-				// const response = await axios.get(
-				// 	`${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
-				// );
+				const response = await axios.get(
+					`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+				);
 
-				// console.log('API Response:', response.data); // Debugging        
+				console.log('API Response:', response.data); // Debugging        
         const postData = response.data.data[0];
 
 				if (!postData) {
@@ -38,7 +38,7 @@ const BlogPost = ({ params }) => {
 			}
 		};
 		getPost();
-	}, [params.blogSlug]);
+	}, [blogSlug]);
 
 	const { publishedAt, author, title, body, read_time, short_description } =
 		post;
