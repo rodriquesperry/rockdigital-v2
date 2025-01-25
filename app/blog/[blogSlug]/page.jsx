@@ -14,6 +14,8 @@ const BlogPost = ({ params }) => {
 
 	useEffect(() => {
     console.log("blogSlug: ", params.blogSlug); // Debugging
+    console.log("${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*: ", `${baseURL}/api/posts?filters[slug][$eq]=${params.blogSlug}&filters[publishedAt][$notNull]=true&populate=*`); // Debugging
+    
 		const getPost = async () => {
 			try {
 				const response = await axios.get(
