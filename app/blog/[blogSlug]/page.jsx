@@ -13,57 +13,57 @@ const BlogPost = ({ params }) => {
 	const [featImage, setFeatImage] = useState('');
 	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
-	// useEffect(() => {
-	// 	const getPost = async () => {
-	// 		try {
-	// 			const response = await axios.get(
-	// 				`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
-	// 			);
+	useEffect(() => {
+		const getPost = async () => {
+			try {
+				const response = await axios.get(
+					`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
+				);
 
-  //       const postData = response.data.data[0];
+        const postData = response.data.data[0];
 
-	// 			if (!postData) {
-	// 				throw new Error('Post not found.');
-	// 			}
+				if (!postData) {
+					throw new Error('Post not found.');
+				}
 
-	// 			setPost(postData);
+				setPost(postData);
 
-	// 			// Safely extract image URLs
-	// 			setAuthorImage(postData.author_image?.url || '');
-	// 			setFeatImage(postData.featured_image?.url || '');
-	// 		} catch (error) {
-	// 			setError(error);
-	// 		}
-	// 	};
-	// 	getPost();
-	// }, [blogSlug]);
+				// Safely extract image URLs
+				setAuthorImage(postData.author_image?.url || '');
+				setFeatImage(postData.featured_image?.url || '');
+			} catch (error) {
+				setError(error);
+			}
+		};
+		getPost();
+	}, [blogSlug]);
 
-	// const { publishedAt, author, title, body, read_time, short_description } =
-	// 	post;
+	const { publishedAt, author, title, body, read_time, short_description } =
+		post;
 
-	// let date = new Date(publishedAt); // Fallback for date
+	let date = new Date(publishedAt); // Fallback for date
 
-	// if (error) {
-	// 	return <div>An error occurred: {error.message}</div>;
-	// }
+	if (error) {
+		return <div>An error occurred: {error.message}</div>;
+	}
 
-	// if (!post) {
-	// 	return <div>Loading...</div>;
-	// }
+	if (!post) {
+		return <div>Loading...</div>;
+	}
 
 	return (
 		<>
 			<div className={styles.blog_post_container}>
 				<h1>Blog Post</h1>
         
-        {/* {post && (
+        {post && (
 					<div className={styles.blog_post_container}>
 						<div className={styles.blog_post_header}>
 							<div className={styles.blog_post_header_background}></div>
 							<div className={styles.header_content_container}>
 								<div className={`col ${styles.blog_image_container}`}>
 									<Image
-										src={`${baseURL}${featImage}`}
+										src={`${baseURL}${featImage.url}`}
 										alt={title + ' image.' || 'Featured Image'}
 										fill
 									/>
@@ -95,7 +95,7 @@ const BlogPost = ({ params }) => {
 							<p>{body}</p>
 						</div>
 					</div>
-				)} */}
+				)}
 			</div>
 		</>
 	);
