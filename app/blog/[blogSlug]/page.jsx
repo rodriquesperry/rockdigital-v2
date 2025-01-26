@@ -1,104 +1,89 @@
-'use client';
-
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import axios from 'axios';
+import Image from 'next/image';
 import styles from './blogPost.module.css';
+import config from '@/config';
 
-const BlogPost = ({ params }) => {
-  const blogSlug = React.use(params).blogSlug;
-	const [error, setError] = useState(null);
-	const [post, setPost] = useState({});
-	const [authorImage, setAuthorImage] = useState('');
-	const [featImage, setFeatImage] = useState('');
-	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
+// Generates paths at build time (optional, for static generation)
+export async function generateStaticParams() {
+	const { data } = await axios.get(`${config.api}/api/posts`);
+	return data.data.map((post) => ({
+		blogSlug: post.slug,
+	}));
+}
 
-	useEffect(() => {
-		const getPost = async () => {
-			try {
-				const response = await axios.get(
-					`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&filters[publishedAt][$notNull]=true&populate=*`
-				);
+export default async function BlogPostPage({ params }) {
+	const { blogSlug } = params;
 
-        const postData = response.data.data[0];
+	try {
+		const { data } = await axios.get(
+			`${config.api}/api/posts?filters[slug][$eq]=${blogSlug}&populate=*`
+		);
 
-				if (!postData) {
-					throw new Error('Post not found.');
-				}
+		const post = data.data[0];
 
-				setPost(postData);
+		if (!post) {
+			return notFound(); // Triggers Next.js 404 page
+		}
 
-				// Safely extract image URLs
-				setAuthorImage(postData.author_image?.url || '');
-				setFeatImage(postData.featured_image?.url || '');
-			} catch (error) {
-				setError(error);
-			}
-		};
-		getPost();
-	}, [blogSlug]);
+		const {
+			publishedAt,
+			author,
+			title,
+			body,
+			read_time,
+			short_description,
+			featured_image,
+			author_image,
+		} = post;
 
-	const { publishedAt, author, title, body, read_time, short_description } =
-		post;
+		const featImage = featured_image?.url || '';
+		const authorImg = author_image?.url || '';
 
-	let date = new Date(publishedAt); // Fallback for date
+		const date = new Date(publishedAt);
 
-	if (error) {
-		return <div>An error occurred: {error.message}</div>;
-	}
-
-	if (!post) {
-		return <div>Loading...</div>;
-	}
-
-	return (
-		<>
+		return (
 			<div className={styles.blog_post_container}>
-				<h1>Blog Post</h1>
-        
-        {post && (
-					<div className={styles.blog_post_container}>
-						<div className={styles.blog_post_header}>
-							<div className={styles.blog_post_header_background}></div>
-							<div className={styles.header_content_container}>
-								<div className={`col ${styles.blog_image_container}`}>
-									<Image
-										src={`${baseURL}${featImage}`}
-										alt={title + ' image.' || 'Featured Image'}
-										fill
-									/>
-								</div>
-								<div className={`col ${styles.header_text}`}>
-									<h2 className={styles.header_text_h2}>{title}</h2>
-									<p
-										className={`${styles.short_description} d-none d-md-block`}
-									>
-										{short_description}
-									</p>
-									<p className={styles.read_time}>READ TIME: {read_time}mins</p>
-								</div>
-							</div>
-
-							<div className={styles.author_info}>
-								<div className={`col-3 ${styles.info_pic}`}>
-									<div className={styles.info_text}>
-										<h5 className={styles.author}>{author}</h5>
-										<h6 className={styles.date}>{date.toDateString()}</h6>
-										<small className={styles.category}>
-											Tags, categories, hashtags
-										</small>
-									</div>
-								</div>
-							</div>
+				<div className={styles.blog_post_header}>
+					<div className={styles.blog_post_header_background}></div>
+					<div className={styles.header_content_container}>
+						<div className={`col ${styles.blog_image_container}`}>
+							<Image
+								src={`${config.api}${featImage}`}
+								alt={title || 'Featured Image'}
+								fill
+							/>
 						</div>
-						<div className={styles.blog_post}>
-							<p>{body}</p>
+						<div className={`col ${styles.header_text}`}>
+							<h2 className={styles.header_text_h2}>{title}</h2>
+							<p className={`${styles.short_description} d-none d-md-block`}>
+								{short_description}
+							</p>
+							<p className={styles.read_time}>READ TIME: {read_time} mins</p>
 						</div>
 					</div>
-				)}
-			</div>
-		</>
-	);
-};
 
-export default BlogPost;
+					<div className={styles.author_info}>
+						<div className={`col-3 ${styles.info_pic}`}>
+							<div className={styles.info_text}>
+								<h5 className={styles.author}>{author}</h5>
+								<h6 className={styles.date}>{date.toDateString()}</h6>
+								<small className={styles.category}>
+									Tags, categories, hashtags
+								</small>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className={styles.blog_post}>
+					<p>{body}</p>
+				</div>
+			</div>
+		);
+	} catch (error) {
+		return (
+			<div className={styles.error_container}>
+				<p>An error occurred: {error.message}</p>
+			</div>
+		);
+	}
+}
