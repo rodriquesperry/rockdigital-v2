@@ -20,6 +20,10 @@
 			"source": "/:path*",
 			"destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/:path*"
 		},
+    {
+      "source": "/blog/:slug",
+      "destination": "/blog/:slug"
+    },
 		{
 			"source": "/:slug",
 			"destination": "https://rock-digital-strapi-app-ss4w6.ondigitalocean.app/api/posts/:slug"
