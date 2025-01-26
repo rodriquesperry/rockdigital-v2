@@ -2,11 +2,9 @@
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  /* margin-top: 3rem; */
 }
 
 .posts .post_col {
-  /* padding: 0 0.5rem; */
   margin: 0 0 3rem;
 }
 
@@ -118,20 +116,18 @@
 
   .post_col {
     margin: 0 0 3rem;
-    /* display: flex; */
-    /* flex-direction: column; */
+
     
   }
 
   .post_col .card {
-    /* display: flex; */
     margin-left: .6rem;
   }
 
   .posts .card {
     width: 94%;
     height: 350px;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
 
   .blogPost_image_container {

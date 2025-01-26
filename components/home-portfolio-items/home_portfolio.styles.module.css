@@ -57,7 +57,7 @@
     height: 425px;
   }
 
-  .portfolio_item:nth-child(odd) {
+  .portfolio_item:nth-child(even) {
 		top: 15rem;
 	}
 
@@ -77,7 +77,7 @@
     height: 450px;
   }
 
-  .portfolio_item:nth-child(odd) {
+  .portfolio_item:nth-child(even) {
 		top: 15rem;
 	}
 
@@ -98,7 +98,7 @@
     height: 755px;
   }
 
-  .portfolio_item:nth-child(odd) {
+  .portfolio_item:nth-child(even) {
 		top: 15rem;
 	}
 

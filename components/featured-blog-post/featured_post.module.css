@@ -161,7 +161,6 @@
 		height: 700px;
 		box-sizing: border-box;
     margin: 2rem 0 2rem;
-
 	}
 
 	.featured_container {
@@ -170,7 +169,7 @@
 
 	.featured {
 		width: 99%;
-		height: 44.5rem;
+		height: 43rem;
 	}
 
 	.featured_image_container {
