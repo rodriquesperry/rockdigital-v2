@@ -63,7 +63,7 @@ const BlogPost = ({ params }) => {
 							<div className={styles.header_content_container}>
 								<div className={`col ${styles.blog_image_container}`}>
 									<Image
-										src={`${baseURL}${featImage.url}`}
+										src={`${baseURL}${featImage}`}
 										alt={title + ' image.' || 'Featured Image'}
 										fill
 									/>
