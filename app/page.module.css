@@ -766,13 +766,13 @@
 
 	.ready_container {
 		background-color: rgb(242, 242, 242);
-		width: 80%;
-		height: 500px;
-		margin: 9rem auto 8rem auto;
+		width: 90%;
+		height: 400px;
+		margin: 4rem auto 8rem auto;
 	}
 
 	.ready_header {
-		padding-top: 9%;
+		padding-top: 4%;
 	}
 
 	.ready_header p {
