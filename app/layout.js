@@ -1,9 +1,9 @@
 import { Lato, Playfair_Display } from 'next/font/google';
+import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
 
 import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
-import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 

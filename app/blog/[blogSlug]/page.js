@@ -6,12 +6,28 @@ import config from '@/config';
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
 	const { data } = await axios.get(`${config.api}/api/posts`);
+  
 	return data.data.map((post) => ({
 		blogSlug: post.slug,
 	}));
 }
 
-export default async function BlogPostPage({ params }) {
+export async function generateMetadata({ params, searchParams }, parent) {
+	// Read route params
+	const blogSlug = (await params).blogSlug;
+  
+	// Fetch data
+	// const { post } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
+  const { data } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
+  const post = data.data;
+
+	return {
+		title: `Rock Digital | ${post.title}`,
+		description: post.short_description,
+	};
+}
+
+export default async function BlogPostPage({ params, searchParams }) {
 	const { blogSlug } = params;
 
 	try {
