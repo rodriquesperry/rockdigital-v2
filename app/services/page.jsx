@@ -21,7 +21,7 @@ const Services = () => {
 
 				<div className={styles.services}>
 					<div className={`${styles.services_img}  ${styles.small_screens}`}>
-						<Image src={WebDesignService} alt='website Design image' fill />
+						<Image src={WebDesignService} alt='website Design image' fill sizes='auto' />
 					</div>
 					<div id={styles['first_service']} className={styles.service}>
 						<div className={styles.service_text_container}>
@@ -38,12 +38,12 @@ const Services = () => {
 							</div>
 						</div>
 						<div className={`${styles.services_img} ${styles.floating_right_image} ${styles.large_screens}`}>
-							<Image src={WebDesignService} alt='website Design image' fill />
+							<Image src={WebDesignService} alt='website Design image' fill  sizes='auto' />
 						</div>
 					</div>
 					<div id={styles['second_service']} className={styles.service}>
 						<div className={`${styles.services_img} ${styles.second_image}`}>
-							<Image src={SeoService} alt='SEO Services image' fill />
+							<Image src={SeoService} alt='SEO Services image' fill sizes='auto' />
 						</div>
 						<div className={styles.service_text_container}>
 							<h2 className={styles.service_text_header}>
@@ -79,6 +79,7 @@ const Services = () => {
 								src={WebsiteImprovement}
 								alt='Website Improvement image'
 								fill
+                sizes='auto'
 							/>
 						</div>
 					</div>
