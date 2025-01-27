@@ -24,16 +24,23 @@ export async function generateMetadata({ params, searchParams }, parent) {
 	return {
 		title: `Rock Digital | ${post.title}`,
 		description: post.short_description,
+    // openGraph: {
+    //   images: [
+    //     {
+    //       url: post.image
+    //     }
+    //   ]
+    // }
 	};
 }
 
 export default async function BlogPostPage({ params, searchParams }) {
-	const { blogSlug } = params;
+	const { blogSlug } = await params;
 
 	try {
 		const { data } = await axios.get(
 			`${config.api}/api/posts?filters[slug][$eq]=${blogSlug}&populate=*`
-		);
+		);    
 
 		const post = data.data[0];
 
