@@ -75,6 +75,9 @@
 
   .design_and_development_text p {
     margin: 1rem;
-    /* color: rebeccapurple; */
+  }
+
+  .design_and_development_contact_form {
+    margin: 5rem 0 10rem;
   }
 }
