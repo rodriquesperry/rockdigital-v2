@@ -47,6 +47,7 @@ const BlogPost = ({ params }) => {
 												src={`${baseURL}${post.featured_image.url}`}
 												alt={'Featured Image'}
 												fill
+                        sizes='auto'
 											/>
 										</div>
 										<Card.Body className={styles.card_body}>

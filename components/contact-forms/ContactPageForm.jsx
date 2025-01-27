@@ -185,7 +185,8 @@ const ContactPageForm = () => {
 						className={`${styles.alert_div} sticky-top alert alert-success`}
 						role='alert'
 					>
-						Success! Check your email for Login information.
+            Success! Check your email for Login information.
+
 					</div>
 				)}
 

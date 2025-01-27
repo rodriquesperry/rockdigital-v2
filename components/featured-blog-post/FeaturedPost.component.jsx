@@ -14,14 +14,12 @@ import styles from './featured_post.module.css';
 const FeaturedPost = () => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
+	const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const fetchPosts = async () => {
 			try {
-				const { data } = await axios.get(
-					`${baseURL}/api/posts?populate=*`
-				);
+				const { data } = await axios.get(`${baseURL}/api/posts?populate=*`);
 				setPosts(data.data.reverse());
 			} catch (err) {
 				setError(err);
@@ -35,12 +33,11 @@ const FeaturedPost = () => {
 	}
 
 	const renderCard = (post, isFeatured, index) => (
-		<Link href={`/blog/${post.slug}`}>
+		<Link href={`/blog/${post.slug}`} key={`card-${post.id}-${index}`}>
 			<Card
 				className={`${isFeatured ? styles.featured : styles.headline_posts} ${
 					styles.card
 				}`}
-				key={post.id}
 			>
 				<div
 					className={
@@ -53,6 +50,7 @@ const FeaturedPost = () => {
 						src={`${baseURL}${post.featured_image.url}`}
 						alt='Featured Image'
 						fill
+						sizes='auto'
 						priority={isFeatured && index === 0}
 						loading={isFeatured && index === 0 ? undefined : 'lazy'}
 					/>
@@ -79,7 +77,7 @@ const FeaturedPost = () => {
 				{posts.map((post, index) =>
 					post.featured ? (
 						<Col
-							key={post.id}
+							key={`headline-${post.id}`}
 							md={(6, { order: 1 })}
 							lg={9}
 							className={styles.featured_container}
