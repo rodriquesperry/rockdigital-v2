@@ -54,7 +54,6 @@ export default async function BlogPostPage({ params, searchParams }) {
 
 		const featImage = featured_image?.url || '';
 		const authorImg = author_image?.url || '';
-
 		const date = new Date(publishedAt);
 
 		return (
