@@ -19,7 +19,6 @@ const HomePortfolioItem = () => {
 				.get(`${baseURL}/api/portfolio-items?populate=*`)
 				.then((data) => {
 					setPortfolioItems(data.data.data);
-					console.log(data.data.data);
 				})
 				.catch((error) => setError(error));
 		};

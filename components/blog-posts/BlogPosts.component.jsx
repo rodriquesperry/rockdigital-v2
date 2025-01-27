@@ -32,8 +32,6 @@ const BlogPost = ({ params }) => {
 		return <div>An error occurred: {error.message}</div>;
 	}
 
-  console.log('posts: ', posts);
-
 	return (
 		<section className={styles.posts}>
 			{posts &&
