@@ -4,7 +4,8 @@ import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
 import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
-import { SpeedInsights } from "@vercel/speed-insights/next"
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
 				<Navigation />
 				{children}
         <SpeedInsights  />
+        <Analytics  />
 				<Powered />
 				<BootstrapClient />
 			</body>
