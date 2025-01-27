@@ -4,6 +4,7 @@ import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
 import BootstrapClient from '@/components/bootstrap_client/BootstrapClient';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				{children}
+        <SpeedInsights  />
 				<Powered />
 				<BootstrapClient />
 			</body>
