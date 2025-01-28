@@ -1,12 +1,27 @@
 import axios from 'axios';
+import { notFound } from 'next/navigation';
 
 export default async function sitemap() {
-	const baseURL = process.env.NEXT_PUBLIC_BASE_URL;
+	const baseURL =
+		process.env.NEXT_PUBLIC_BASE_URL || 'https://rockdigital.agency';
 
-	const { data } = await axios.get(
-		`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
-	);
-	const posts = data.data;
+	let posts = [];
+
+	try {
+		const { data } = await axios.get(
+			`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
+		);
+
+		posts = data?.data || [];
+	} catch (e) {
+		console.error('Failed to fetch posts for sitemap: ', e.message);
+	}
+
+	if (!data) {
+		return {
+			notFound: true,
+		};
+	}
 
 	console.log('baseURL: ', baseURL);
 
@@ -21,15 +36,15 @@ export default async function sitemap() {
 		{
 			url: `${baseURL}/blog`,
 		},
-    {
-      url: `${baseURL}/services`,
-    },
-    {
-      url: `${baseURL}/portfolio`,
-    },
-    {
-      url: `${baseURL}/contact`,
-    },
+		{
+			url: `${baseURL}/services`,
+		},
+		{
+			url: `${baseURL}/portfolio`,
+		},
+		{
+			url: `${baseURL}/contact`,
+		},
 		...postEntries,
 	];
 }
