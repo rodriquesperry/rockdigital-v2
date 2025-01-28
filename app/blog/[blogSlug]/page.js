@@ -6,7 +6,7 @@ import config from '@/config';
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
 	const { data } = await axios.get(`${config.api}/api/posts`);
-  
+
 	return data.data.map((post) => ({
 		blogSlug: post.slug,
 	}));
@@ -15,22 +15,22 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params, searchParams }, parent) {
 	// Read route params
 	const blogSlug = (await params).blogSlug;
-  
+
 	// Fetch data
 	// const { post } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
-  const { data } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
-  const post = data.data;
+	const { data } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
+	const post = data.data;
 
 	return {
 		title: `Rock Digital | ${post.title}`,
 		description: post.short_description,
-    // openGraph: {
-    //   images: [
-    //     {
-    //       url: post.image
-    //     }
-    //   ]
-    // }
+		// openGraph: {
+		//   images: [
+		//     {
+		//       url: post.image
+		//     }
+		//   ]
+		// }
 	};
 }
 
@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 	try {
 		const { data } = await axios.get(
 			`${config.api}/api/posts?filters[slug][$eq]=${blogSlug}&populate=*`
-		);    
+		);
 
 		const post = data.data[0];
 
@@ -73,6 +73,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 								src={`${config.api}${featImage}`}
 								alt={title || 'Featured Image'}
 								fill
+								sizes='auto'
 							/>
 						</div>
 						<div className={`col ${styles.header_text}`}>
