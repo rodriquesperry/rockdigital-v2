@@ -7,9 +7,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
-import styles from './contactPage.module.css';
+import styles from './contactForm.module.css';
 
-const ContactPageForm = () => {
+const ContactForm = () => {
 	const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
@@ -240,4 +240,4 @@ const schema = z.object({
 		.max(500, 'Description cannot exceed 500 characters.'),
 });
 
-export default ContactPageForm;
+export default ContactForm;

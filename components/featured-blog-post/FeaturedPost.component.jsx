@@ -9,7 +9,7 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
 
-import styles from './featured_post.module.css';
+import styles from './featuredPost.module.css';
 
 const FeaturedPost = () => {
 	const [error, setError] = useState(null);

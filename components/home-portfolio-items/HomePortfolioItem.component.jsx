@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import axios from 'axios';
 
-import styles from './home_portfolio.styles.module.css';
+import styles from './homePortfolio.module.css';
 
 const HomePortfolioItem = () => {
 	const [error, setError] = useState(null);

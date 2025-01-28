@@ -1,5 +1,5 @@
 import React from 'react';
-import ContactPageForm from '@/components/contact-forms/ContactPageForm';
+import ContactForm from '@/components/contact-forms/ContactForm.component';
 import styles from './designAndDevelopment.module.css';
 
 const DesignAndDevelopment = () => {
@@ -35,7 +35,7 @@ const DesignAndDevelopment = () => {
 						</p>
 					</div>
 					<div className={styles.contact_form}>
-						<ContactPageForm />
+						<ContactForm />
 					</div>
 				</div>
 			</div>

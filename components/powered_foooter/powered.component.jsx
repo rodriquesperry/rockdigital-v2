@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link'
-import styles from './powered.styles.module.css'
+import styles from './powered.module.css'
 
 const PoweredBy = () => {
   return (

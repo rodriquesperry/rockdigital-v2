@@ -2,8 +2,8 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CarouselTopPage from '@/components/carousels/top-page/carousel.component';
-import CarouselReview from '@/components/carousels/reviews/carousel-review.component';
+import CarouselTopPage from '@/components/carousels/top-page/Carousel.component';
+import CarouselReview from '@/components/carousels/reviews/CarouselReview.component';
 import HomePortfolioItem from '@/components/home-portfolio-items/HomePortfolioItem.component';
 
 import rec from '@/assets/rec.png';

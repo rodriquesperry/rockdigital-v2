@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import Carousel from 'react-bootstrap/Carousel';
 
-import styles from './carousel_review.module.css';
+import styles from './carouselReview.module.css';
 
 const CarouselReview = () => {
 	const [error, setError] = useState(null);
