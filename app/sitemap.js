@@ -8,7 +8,7 @@ export default async function sitemap() {
 	);
 	const posts = data.data;
 
-	console.log('posts: ', posts);
+	console.log('baseURL: ', baseURL);
 
 	const postEntries = posts.map((post) => ({
 		url: `${baseURL}/blog/${post.slug}`,
