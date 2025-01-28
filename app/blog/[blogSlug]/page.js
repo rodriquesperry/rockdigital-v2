@@ -3,9 +3,11 @@ import Image from 'next/image';
 import styles from './blogPost.module.css';
 import config from '@/config';
 
+const baseURL = config.api || 'http://127.0.0.1:1337';
+
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
-	const { data } = await axios.get(`${config.api}/api/posts`);
+	const { data } = await axios.get(`${baseURL}/api/posts`);
 
 	// Return an array of slugs that will be used so that the page can be built stacically instead of dynamic/ good for seo (page speed)
 	return data.data.map((post) => ({
@@ -18,7 +20,7 @@ export async function generateMetadata({ params, searchParams }, parent) {
 	const blogSlug = (await params).blogSlug;
 
 	// Fetch data
-	const { data } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
+	const { data } = await axios.get(`${baseURL}/api/posts/${blogSlug}`);
 	const post = data.data;
 
 	return {
@@ -32,7 +34,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 
 	try {
 		const { data } = await axios.get(
-			`${config.api}/api/posts?filters[slug][$eq]=${blogSlug}&populate=*`
+			`${baseURL}/api/posts?filters[slug][$eq]=${blogSlug}&populate=*`
 		);
 
 		const post = data.data[0];
@@ -63,7 +65,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 					<div className={styles.header_content_container}>
 						<div className={`col ${styles.blog_image_container}`}>
 							<Image
-								src={`${config.api}${featImage}`}
+								src={`${baseURL}${featImage}`}
 								alt={title || 'Featured Image'}
 								fill
 								sizes='auto'

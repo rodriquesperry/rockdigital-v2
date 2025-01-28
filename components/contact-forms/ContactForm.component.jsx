@@ -10,7 +10,7 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './contactForm.module.css';
 
 const ContactForm = () => {
-	const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://127.0.0.1:1337';
+  const baseURL = config.api || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
 	const {

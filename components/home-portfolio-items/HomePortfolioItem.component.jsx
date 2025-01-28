@@ -11,7 +11,9 @@ import styles from './homePortfolio.module.css';
 const HomePortfolioItem = () => {
 	const [error, setError] = useState(null);
 	const [portfolioItems, setPortfolioItems] = useState([]);
-	const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://127.0.0.1:1337';
+  const baseURL = config.api || 'http://127.0.0.1:1337';
+
+  
 
 	useEffect(() => {
 		const getPortfolioItems = async () => {

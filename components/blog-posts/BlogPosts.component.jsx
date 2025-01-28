@@ -6,12 +6,13 @@ import Link from 'next/link';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import axios from 'axios';
+import config from '@/config';
 import styles from './blogPosts.module.css';
 
 const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://rockdigital.agency';
+  const baseURL = config.api || 'https://rockdigital.agency';
   
 	useEffect(() => {
 		const getPosts = async () => {

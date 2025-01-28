@@ -14,7 +14,7 @@ import styles from './featuredPost.module.css';
 const FeaturedPost = () => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-	const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://rockdigital.agency';
+  const baseURL = config.api || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const fetchPosts = async () => {

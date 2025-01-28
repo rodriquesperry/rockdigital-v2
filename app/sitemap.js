@@ -1,9 +1,7 @@
 import axios from 'axios';
-import { notFound } from 'next/navigation';
-
+import config from '@/config';
 export default async function sitemap() {
-	const baseURL =
-		process.env.NEXT_PUBLIC_BASE_URL || 'https://rockdigital.agency';
+	const baseURL = config.api || 'https://rockdigital.agency';
 
 	let posts = [];
 
