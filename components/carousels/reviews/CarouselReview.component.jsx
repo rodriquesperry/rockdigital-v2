@@ -25,9 +25,6 @@ const CarouselReview = () => {
 		getReviews();
 	}, []);
 
-  console.log(config.api);
-  alert("Hello Out THere!")
-
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
 	}
