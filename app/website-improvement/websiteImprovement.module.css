@@ -32,10 +32,9 @@
   position: relative;
   color: #ffffff;
   background: rgba(128, 128, 128, 0.295);
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   line-height: 1;
   text-align: center;
-  font-weight: bold;
   padding: 0 1rem;
   width: 100%;
 }
