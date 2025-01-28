@@ -7,6 +7,7 @@ import config from '@/config';
 export async function generateStaticParams() {
 	const { data } = await axios.get(`${config.api}/api/posts`);
 
+	// Return an array of slugs that will be used so that the page can be built stacically instead of dynamic/ good for seo (page speed)
 	return data.data.map((post) => ({
 		blogSlug: post.slug,
 	}));

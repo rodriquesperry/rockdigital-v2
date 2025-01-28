@@ -11,7 +11,7 @@ import styles from './carousel_review.module.css';
 const CarouselReview = () => {
 	const [error, setError] = useState(null);
 	const [reviews, setReviews] = useState([]);
-  const baseURL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://127.0.0.1:1337';
+  const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getReviews = async () => {
