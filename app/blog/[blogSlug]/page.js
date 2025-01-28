@@ -18,20 +18,12 @@ export async function generateMetadata({ params, searchParams }, parent) {
 	const blogSlug = (await params).blogSlug;
 
 	// Fetch data
-	// const { post } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
 	const { data } = await axios.get(`${config.api}/api/posts/${blogSlug}`);
 	const post = data.data;
 
 	return {
 		title: `Rock Digital | ${post.title}`,
 		description: post.short_description,
-		// openGraph: {
-		//   images: [
-		//     {
-		//       url: post.image
-		//     }
-		//   ]
-		// }
 	};
 }
 

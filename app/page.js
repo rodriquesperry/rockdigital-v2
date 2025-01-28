@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import CarouselTopPage from '@/components/carousels/top-page/carousel.component';
+import CarouselTopPage from '@/components/carousels/top_page/Carousel.component';
 import CarouselReview from '@/components/carousels/reviews/CarouselReview.component';
 import HomePortfolioItem from '@/components/home-portfolio-items/HomePortfolioItem.component';
 
