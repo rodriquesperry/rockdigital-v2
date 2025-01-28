@@ -34,7 +34,7 @@ const DesignAndDevelopment = () => {
 							instructions. We look forward to working with you.
 						</p>
 					</div>
-					<div className={styles.design_and_development_contact_form}>
+					<div className={styles.contact_form}>
 						<ContactPageForm />
 					</div>
 				</div>

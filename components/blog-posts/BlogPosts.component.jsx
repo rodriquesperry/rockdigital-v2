@@ -12,8 +12,6 @@ const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
   const baseURL = process.env.NEXT_PUBLIC_BASE_URL || 'https://rockdigital.agency';
-
-  console.log('baseURL: ', baseURL);
   
 	useEffect(() => {
 		const getPosts = async () => {
