@@ -4,7 +4,7 @@ import WebDesignService from '@/assets/web-design-service.webp';
 import SeoService from '@/assets/seo-service.webp';
 import WebsiteImprovement from '@/assets/website-improvement-maintenance.webp';
 
-import styles from './services.styles.module.css';
+import styles from './services.module.css';
 
 export const metadata = {
 	title: 'Services',
