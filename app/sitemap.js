@@ -17,12 +17,6 @@ export default async function sitemap() {
 		console.error('Failed to fetch posts for sitemap: ', e.message);
 	}
 
-	if (!data) {
-		return {
-			notFound: true,
-		};
-	}
-
 	console.log('baseURL: ', baseURL);
 
 	const postEntries = posts.map((post) => ({
