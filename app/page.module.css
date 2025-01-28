@@ -44,6 +44,10 @@
 	align-items: center;
 }
 
+.homepage_portfolio_container {
+  position: relative;
+}
+
 
 .full_service_container h2,
 .build_relationships_container h2,
@@ -208,6 +212,16 @@
 	font-weight: bold;
 }
 
+.parallax2 {
+  background-image: url('../assets/placeholder.avif');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 45vh;
+  width: 100%;
+}
+
 .global_hr {
 	margin: 0 auto 1rem;
 }
@@ -216,6 +230,8 @@
 	margin-top: 2rem;
 	display: grid;
 	grid-template-columns: 1fr;
+  width: 90%;
+  position: relative;
 }
 
 .ready_container {
@@ -397,6 +413,7 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+    width: 100%;
 	}
 
 	.full_service_container h2 {
@@ -526,16 +543,6 @@
 		background-color: #fff;
 		color: rgb(255, 183, 0);
 		border: 1px solid rgb(255, 183, 0);
-	}
-
-	.parallax2 {
-		background-image: url('../assets/placeholder.avif');
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
-		background-attachment: fixed;
-		height: 45vh;
-		width: 100%;
 	}
 
 	.portfolio_items {
@@ -742,21 +749,11 @@
 		border: 1px solid rgb(255, 183, 0);
 	}
 
-	.parallax2 {
-		background-image: url('../assets/placeholder.avif');
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
-		background-attachment: fixed;
-		height: 45vh;
-		width: 100%;
-	}
-
 	.portfolio_items {
 		display: grid;
-		grid-template-columns: 1.5fr 1.5fr;
+		grid-template-columns: 1fr 1fr;
 		grid-template-rows: auto;
-		row-gap: 0.1rem;
+		row-gap: 0.5rem;
 		padding: 1rem 0 5rem 0;
 		grid-column-gap: 120px;
 		grid-row-gap: 150px;
@@ -962,16 +959,6 @@
 		background-color: #fff;
 		color: rgb(255, 183, 0);
 		border: 1px solid rgb(255, 183, 0);
-	}
-
-	.parallax2 {
-		background-image: url('../assets/placeholder.avif');
-		background-repeat: no-repeat;
-		background-position: center center;
-		background-size: cover;
-		background-attachment: fixed;
-		height: 45vh;
-		width: 100%;
 	}
 
 	.portfolio_items {
