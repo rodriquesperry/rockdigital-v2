@@ -11,13 +11,11 @@ export default async function sitemap() {
 		const { data } = await axios.get(
 			`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
 		);
-
 		posts = data?.data || [];
+
 	} catch (e) {
 		console.error('Failed to fetch posts for sitemap: ', e.message);
 	}
-
-	console.log('baseURL: ', baseURL);
 
 	const postEntries = posts.map((post) => ({
 		url: `${baseURL}/blog/${post.slug}`,
