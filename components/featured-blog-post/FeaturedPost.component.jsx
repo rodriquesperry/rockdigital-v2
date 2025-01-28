@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import axios from 'axios';
+import config from '@/config';
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';

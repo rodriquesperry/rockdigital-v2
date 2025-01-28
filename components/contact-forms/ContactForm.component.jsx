@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import config from '@/config';
 import { v4 as uuidv4 } from 'uuid';
 
 import styles from './contactForm.module.css';

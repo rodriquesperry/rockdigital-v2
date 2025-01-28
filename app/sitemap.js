@@ -1,5 +1,6 @@
 import axios from 'axios';
 import config from '@/config';
+
 export default async function sitemap() {
 	const baseURL = config.api || 'https://rockdigital.agency';
 

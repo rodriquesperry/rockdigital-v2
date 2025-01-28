@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import axios from 'axios';
+import config from '@/config';
 
 import styles from './homePortfolio.module.css';
 
