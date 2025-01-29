@@ -49,7 +49,9 @@ const HomePortfolioItem = () => {
 										<Image
 											src={`${baseURL}${portfolioItem.image.url}`}
 											alt={portfolioItem.name}
-											fill
+                      height={450}
+                      width={451}
+                      sizes='auto'
                       priority
 										/>
 									</div>
