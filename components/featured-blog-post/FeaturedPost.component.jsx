@@ -52,7 +52,7 @@ const FeaturedPost = () => {
 						alt='Featured Image'
 						fill
 						sizes='auto'
-						priority={isFeatured && index === 0}
+						priority={isFeatured}
 						loading={isFeatured && index === 0 ? undefined : 'lazy'}
 					/>
 				</div>
