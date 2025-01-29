@@ -19,7 +19,9 @@ const PortfolioItem = () => {
 				.get(
 					`${baseURL}/api/portfolio-items?populate=*`
 				)
-				.then((data) => setPortfolioItems(data.data.data))
+				.then((data) => {
+          setPortfolioItems(data.data.data);
+        })
 				.catch((error) => setError(error));
 		};
 		getPortfolioItems();
@@ -29,6 +31,8 @@ const PortfolioItem = () => {
 		return <div>An error occurred: {error.message}</div>;
 	}
 
+  console.log(portfolioItems);
+
 	return (
 		<>
 			{portfolioItems &&
@@ -36,21 +40,21 @@ const PortfolioItem = () => {
 					return (
 						<div className={styles.portfolio_item} key={i}>
 								<Link
-									href={portfolioItem.attributes.url}
+									href={portfolioItem.url}
 									target='_blank'
 									rel='noreferrer'
 								>
 							<div className={styles.portfolio_item_img_container}>
 									<Image
-										src={`https://rockdigital.agency/dashboard${portfolioItem.attributes.image.data.attributes.url}`}
-										alt={portfolioItem.attributes.name}
+										src={`${baseURL}${portfolioItem.image.url}`}
+										alt={portfolioItem.name}
 										fill
                     priority
 									/>
 							</div>
 
 								</Link>
-							<h4>{portfolioItem.attributes.name}</h4>
+							<h4>{portfolioItem.name}</h4>
 
 						</div>
 					);
