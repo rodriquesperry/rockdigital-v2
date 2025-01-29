@@ -15,7 +15,7 @@ import styles from './featuredPost.module.css';
 const FeaturedPost = () => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-  const baseURL = config.api || 'http://127.0.0.1:1337';
+	const baseURL = config.api || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const fetchPosts = async () => {
@@ -53,7 +53,7 @@ const FeaturedPost = () => {
 						fill
 						sizes='auto'
 						priority={isFeatured}
-						loading={isFeatured && index === 0 ? undefined : 'lazy'}
+						loading={isFeatured ? undefined : 'lazy'}
 					/>
 				</div>
 				<Card.Body className={styles.headline_posts_card_body}>
