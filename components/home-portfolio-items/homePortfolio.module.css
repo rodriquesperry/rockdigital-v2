@@ -13,6 +13,8 @@
 .portfolio_item img {
   width: 325px;
   height: 194px;
+  border-radius: 0; /* Ensures straight edges */
+  box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.3); /* Shadow coming from bottom-left */
 ;}
 
 .portfolio_link {
@@ -59,6 +61,7 @@
   .portfolio_item {
     width: 451px;
     height: 475px;
+
   }
 
   .portfolio_item:nth-child(even) {
@@ -67,12 +70,16 @@
 
   .portfolio_link {
     width: 100%;
-    height: 390px;
+    height: 200px;
   }
 
   .portfolio_image_container {
     width: 500px;
     height: 450px;
+  }
+  
+  .portfolio_item img {
+    width: 100%;
   }
 
   .portfolio_item h4 {
@@ -98,9 +105,14 @@
   }
 
   .portfolio_image_container {
-    width: 500px;
+    width: 100%;
     height: 450px;
     position: relative;
+  }
+
+  .portfolio_item img {
+    width: 100%;
+    height: 450px;
   }
 
   .portfolio_item h4 {
