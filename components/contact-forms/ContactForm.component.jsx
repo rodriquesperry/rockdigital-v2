@@ -11,8 +11,9 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './contactForm.module.css';
 
 const ContactForm = () => {
-  const baseURL = config.api || 'http://127.0.0.1:1337';
+	const baseURL = config.api || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+	const [uuid, setUuid] = useState('');
 
 	const {
 		register,
@@ -25,7 +26,7 @@ const ContactForm = () => {
 	} = useForm({
 		defaultValues: {
 			active: true,
-			uuid: uuidv4(),
+			lead_uuid: uuid,
 			name: '',
 			email: '',
 			phone_num: '',
@@ -36,6 +37,13 @@ const ContactForm = () => {
 	});
 
 	useEffect(() => {
+		const newUuid = uuidv4();
+		console.log('Generated UUID: ', newUuid);
+		setUuid(uuidv4().toString());
+		setValue('lead_uuid', newUuid);
+	}, [setValue]);
+
+	useEffect(() => {
 		if (errors.root) {
 			setFocus('email');
 		}
@@ -44,8 +52,15 @@ const ContactForm = () => {
 	const postLead = async (data) => {
 		try {
 			const response = await axios.post(`${baseURL}/api/leads`, { data });
+			console.log('API response:', response); // Check the full response
+
 			if (response?.data?.error) {
 				console.error('API Error:', response.data.error);
+				if (response.data.error.message === 'Email already in use.') {
+					setError('email', { message: 'Email is already registered.' });
+				} else {
+					setError('root', { message: response.data.error.message });
+				}
 				throw new Error(response.data.error.message || 'Unknown error');
 			}
 			return response; // Return the successful response
@@ -58,13 +73,14 @@ const ContactForm = () => {
 				error.response?.data?.error?.message || 'An unknown error occurred';
 			const errorDetails =
 				error.response?.data?.error?.details?.errors?.[0]?.path?.[0] || '';
-
 			setError('root', { message: `${errorMessage}: ${errorDetails}` });
 			throw error; // Re-throw the error to handle it in `onSubmit`
 		}
 	};
 
 	const onSubmit = async (data) => {
+		console.log('Form submitted with data:', data); // Add this for debugging
+
 		try {
 			const response = await postLead(data); // Await API call
 
@@ -73,7 +89,7 @@ const ContactForm = () => {
 				setIsSubmitSuccessful(true);
 				reset({
 					active: true,
-					uuid: uuidv4(),
+					lead_uuid: uuidv4(),
 					name: '',
 					email: '',
 					phone_num: '',
@@ -91,9 +107,10 @@ const ContactForm = () => {
 	return (
 		<div className={styles.form_container}>
 			<form id={styles['form']} onSubmit={handleSubmit(onSubmit)}>
+				{console.log('errors: ', errors)}{' '}
+				{/* Log the errors to see if they are populated */}
 				<input type='hidden' {...register('active')} />
-				<input type='hidden' {...register('uuid')} />
-
+				<input type='hidden' {...register('lead_uuid')} />
 				<label htmlFor='name'>Name</label>
 				<input
 					id='name'
@@ -106,7 +123,6 @@ const ContactForm = () => {
 				{errors.name && (
 					<div className={styles.error}>{errors.name.message}</div>
 				)}
-
 				<label htmlFor='email'>Email</label>
 				<input
 					id='email'
@@ -122,7 +138,6 @@ const ContactForm = () => {
 				{errors.root && (
 					<div className={styles.error}>Email already in use.</div>
 				)}
-
 				{/* <label htmlFor='password'>Password</label>
 				<input
 					id='password'
@@ -135,7 +150,6 @@ const ContactForm = () => {
 				{errors.password && (
 					<div className={styles.error}>{errors.password.message}</div>
 				)} */}
-
 				<label htmlFor='phone_num'>Phone Number</label>
 				<input
 					id='phone_num'
@@ -148,7 +162,6 @@ const ContactForm = () => {
 				{errors.phone_num && (
 					<div className={styles.error}>{errors.phone_num.message}</div>
 				)}
-
 				<label htmlFor='service'>Service</label>
 				<select
 					id='service'
@@ -167,7 +180,6 @@ const ContactForm = () => {
 				{errors.service && (
 					<div className={styles.error}>{errors.service.message}</div>
 				)}
-
 				<label htmlFor='description'>Description</label>
 				<textarea
 					id='description'
@@ -180,17 +192,14 @@ const ContactForm = () => {
 				{errors.description && (
 					<div className={styles.error}>{errors.description.message}</div>
 				)}
-
 				{isSubmitSuccessful && (
 					<div
 						className={`${styles.alert_div} sticky-top alert alert-success`}
 						role='alert'
 					>
-            Success! Check your email for Login information.
-
+						Success! Check your email for Login information.
 					</div>
 				)}
-
 				<div className={styles.contact_form_button_container}>
 					<button
 						disabled={isSubmitting}
@@ -206,7 +215,7 @@ const ContactForm = () => {
 };
 
 const schema = z.object({
-	uuid: z.string().uuid('Invalid UUID.'), // Added UUID validation
+	lead_uuid: z.string().uuid('Invalid UUID.'), // Added UUID validation
 	active: z.boolean(), // Added active field
 	name: z
 		.string()

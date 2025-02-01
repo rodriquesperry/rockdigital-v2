@@ -1,5 +1,4 @@
 import React from 'react';
-import dynamic from 'next/dynamic';
 
 import ContactForm from '@/components/contact-forms/ContactForm.component';
 import styles from './contact.module.css';
