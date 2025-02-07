@@ -12,7 +12,7 @@ import styles from './blogPosts.module.css';
 const BlogPost = ({ params }) => {
 	const [error, setError] = useState(null);
 	const [posts, setPosts] = useState([]);
-  const baseURL = config.api || 'https://rockdigital.agency';
+  const baseURL = config.api || 'http://localhost:1337';
   
 	useEffect(() => {
 		const getPosts = async () => {
@@ -21,6 +21,8 @@ const BlogPost = ({ params }) => {
 					`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
 				)
 				.then((data) => {
+          console.log('data: ', data.data.data.reverse());
+          
           setPosts(data.data.data.reverse());
 				})
 				.catch((error) => setError(error));
