@@ -21,6 +21,7 @@ const FeaturedPost = () => {
 		const fetchPosts = async () => {
 			try {
 				const { data } = await axios.get(`${baseURL}/api/posts?populate=*`);
+        
 				setPosts(data.data.reverse());
 			} catch (err) {
 				setError(err);
