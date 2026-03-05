@@ -19,6 +19,7 @@ const ContactForm = () => {
 		register,
 		handleSubmit,
 		setError,
+		clearErrors,
 		reset,
 		setValue,
 		setFocus,
@@ -67,7 +68,7 @@ const ContactForm = () => {
 		} catch (error) {
 			console.error(
 				'Error posting lead:',
-				error.response?.data || error.message
+				error.response?.data || error.message,
 			);
 			const errorMessage =
 				error.response?.data?.error?.message || 'An unknown error occurred';
@@ -78,13 +79,29 @@ const ContactForm = () => {
 		}
 	};
 
+	const sendLeadEmail = async (data) => {
+		try {
+			const response = await axios.post('/api/send-email', data);
+			if (response?.data?.userEmailSent === false) {
+				console.warn('User confirmation email was not sent:', response.data);
+			}
+		} catch (error) {
+			console.error(
+				'Error sending email:',
+				error.response?.data || error.message,
+			);
+		}
+	};
+
 	const onSubmit = async (data) => {
 		console.log('Form submitted with data:', data); // Add this for debugging
 
 		try {
+			clearErrors('root');
 			const response = await postLead(data); // Await API call
 
 			if (response?.status === 201) {
+				await sendLeadEmail(data);
 				// Check if the response is successful
 				setIsSubmitSuccessful(true);
 				reset({
@@ -104,14 +121,18 @@ const ContactForm = () => {
 		}
 	};
 
+	const onInvalid = () => {
+		setIsSubmitSuccessful(false);
+	};
+
 	return (
 		<div className={styles.form_container}>
-			<form id={styles['form']} onSubmit={handleSubmit(onSubmit)}>
+			<form id={styles['form']} onSubmit={handleSubmit(onSubmit, onInvalid)}>
 				{console.log('errors: ', errors)}{' '}
 				{/* Log the errors to see if they are populated */}
 				<input type='hidden' {...register('active')} />
 				<input type='hidden' {...register('lead_uuid')} />
-				<label htmlFor='name'>Name</label>
+				<label htmlFor='name'>First Name</label>
 				<input
 					id='name'
 					{...register('name')}
@@ -136,7 +157,7 @@ const ContactForm = () => {
 					<div className={styles.error}>{errors.email.message}</div>
 				)}
 				{errors.root && (
-					<div className={styles.error}>Email already in use.</div>
+					<div className={styles.error}>{errors.root.message}</div>
 				)}
 				{/* <label htmlFor='password'>Password</label>
 				<input
@@ -222,7 +243,7 @@ const schema = z.object({
 		.min(1, 'First name is required.')
 		.regex(
 			/^[A-Za-z]+$/,
-			'First name must contain only alphabetic characters.'
+			'First name must contain only alphabetic characters.',
 		),
 	email: z.string().email('Invalid email address.'),
 	// password: z
@@ -242,7 +263,7 @@ const schema = z.object({
 			errorMap: () => ({
 				message: 'Service must be selected from the provided options.',
 			}),
-		}
+		},
 	),
 	description: z
 		.string()

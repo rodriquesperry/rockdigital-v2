@@ -51,6 +51,7 @@
 
 	.portfolio_item_img_container {
 		height: 350px;
+    border: 1px solid red;
 	}
 
 	.portfolio_item img {
