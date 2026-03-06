@@ -23,7 +23,7 @@ const CarouselTopPage = () => {
 				interval={7300}
 				className={`container ${styles.carousel}`}
 				indicators={false}
-        controls={false}
+				controls={false}
 				fade
 			>
 				<Carousel.Item className={styles.carousel_item}>
@@ -31,26 +31,26 @@ const CarouselTopPage = () => {
 						className={`d-block img-fluid ${styles.web_design}`}
 						src={WebDesign1359w}
 						alt='First slide'
-            fill
-            priority
-            sizes='100%'
+						fill
+						priority
+						sizes='100%'
 					/>
 					<Carousel.Caption className={styles.carousel_caption}>
 						<div className={styles.carousel_caption_block}>
 							<div className={styles.carousel_heading}>
 								<h3 className='playfair'>
-									STYLISH &<br />
-									<span>ORIGINAL</span>
+									Custom Websites That Turn Visitors Into Customers
 								</h3>
 							</div>
 							<p className={styles.carousel_paragraph}>
-								Custom websites designed with your customers in mind.
+								Strategically designed websites that showcase your brand and
+								convert visitors into customers.
 							</p>
 							<Link
 								href='/website-design-and-development'
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Website Design</p>
+								<p>Start Your Website Project</p>
 							</Link>
 						</div>
 					</Carousel.Caption>
@@ -60,27 +60,27 @@ const CarouselTopPage = () => {
 						className='d-block img-fluid'
 						src={DigitalMarketing1359w}
 						alt='Second slide'
-            fill
-            priority
-            sizes='100%'
+						fill
+						priority
+						sizes='100%'
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
 						<div className={styles.carousel_caption_block}>
 							<div className={styles.carousel_heading}>
 								<h3 className='playfair'>
-									STABILITY &<br />
-									<span>SUPERIORITY</span>
+									Strategic Web Design Built for Growth
 								</h3>
 							</div>
 							<p className={styles.carousel_paragraph}>
-								Outperform your competitors with proven processes.
+								Outperform competitors with strategy-driven design and proven
+								digital processes.
 							</p>
 							<Link
 								href='/website-improvement'
-								className={`${styles.btn} lato`}
+								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Online Presence Improvement</p>
+								<p>Start Growing Online</p>
 							</Link>
 						</div>
 					</Carousel.Caption>
@@ -90,28 +90,28 @@ const CarouselTopPage = () => {
 						className='d-block img-fluid'
 						src={SheratonHotel1359w}
 						alt='Third slide'
-            fill
-            priority
-            sizes='100%'
+						fill
+						priority
+						sizes='100%'
 					/>
 
 					<Carousel.Caption className={styles.carousel_caption}>
 						<div className={styles.carousel_caption_block}>
 							<div className={styles.carousel_heading}>
 								<h3 className='playfair'>
-									EFFECTIVE &<br />
-									<span>CONSISTENT</span>
+									Is Your Website Holding Your Business Back?
 								</h3>
 							</div>
 							<p className={styles.carousel_paragraph}>
-								Customers will love to interact with your business online
+								Discover what’s working, what’s not, and how to turn your website into a powerful growth tool.{' '}
 							</p>
 							<Link
 								href={routes[rando]}
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Get Started Now</p>
+								<p>Get a Website Audit</p>
 							</Link>
+              <span className={styles.carousel_span}>Professional analysis delivered within 48 hours</span>
 						</div>
 					</Carousel.Caption>
 				</Carousel.Item>

@@ -29,26 +29,29 @@
 	-o-animation: fadeOut ease 2s;
 	-ms-animation: fadeOut ease 2s;
 	animation-delay: 6.3s;
+	padding: 0 1.5rem;
 }
 
 .carousel_caption_block h3 {
 	font-weight: 700;
 	font-style: italic;
-	font-size: 1.8rem;
+	font-size: 1rem;
 }
 
 .carousel_paragraph {
 	margin-bottom: 11rem;
+	padding: 0 1rem;
 }
 
 .carousel_caption_block p {
 	text-align: center;
 	padding: 0 1rem;
 	margin-bottom: 1rem;
+	font-size: 0.8rem;
 }
 
 .btn {
-  font-family: "Lato", sans-serif;
+	font-family: 'Lato', sans-serif;
 	margin: auto;
 	display: flex;
 	justify-content: center;
@@ -74,7 +77,6 @@
 }
 
 @media screen and (min-width: 375px) and (max-width: 767px) {
-
 	.carousel_item {
 		width: 100%;
 		max-height: 700px;
@@ -108,12 +110,11 @@
 	}
 
 	.carousel_caption_block h3 {
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 
 	.carousel_caption_block p {
 		text-align: center;
-		padding: 0 0;
 	}
 
 	.btn {
@@ -126,7 +127,8 @@
 		background-color: rgb(255, 183, 0);
 		border-radius: 0;
 		font-weight: bold;
-		padding: 1rem .5rem 0;
+		padding: 1rem 0.5rem 0;
+		margin-top: 1rem;
 	}
 
 	.min_btn_width {
@@ -156,9 +158,9 @@
 		margin: 4rem;
 	}
 
-  .carousel_caption_block h3 {
-    font-size: 2rem;
-  }
+	.carousel_caption_block h3 {
+		font-size: 2rem;
+	}
 
 	.btn {
 		margin-top: 1rem;
@@ -211,16 +213,15 @@
 		}
 	}
 
-  .carousel_item {
-    max-height: 550px;
-    width: 100%;
-    min-height: 450px;
-  }
+	.carousel_item {
+		max-height: 550px;
+		width: 100%;
+		min-height: 450px;
+	}
 
 	.carousel_item img {
 		width: 100%;
-    object-fit: cover;
-
+		object-fit: cover;
 	}
 
 	.carousel_inner .carousel_caption {
@@ -248,33 +249,38 @@
 	}
 
 	.carousel_heading h3 {
-		font-size: 5rem;
+		font-size: 3.5rem;
 	}
 
 	.carousel_caption_block p {
 		font-size: 1.7rem;
-		text-align-last: left;
+		text-align-last: center;
 		padding: 0 0;
 	}
 
 	.btn {
-		margin: 1rem 0 0;
+		margin: 1rem auto;
 		font-size: 1.5rem;
+		min-width: 35%;
 		max-width: 480px;
+		padding: 0 20px;
 		color: #fff;
 		border: 1px solid rgb(34, 21, 6);
 		background-color: rgb(255, 183, 0);
 		border-radius: 0;
 		font-weight: bold;
 		justify-content: center;
+		align-self: center;
 	}
 
-  .btn > p {
-    margin: .5rem 0;
-  }
+	.btn > p {
+		margin: 0.5rem 0;
+	}
 
-	.min_btn_width {
-		width: 35%;
+	.carousel_span {
+		font-size: 0.7rem;
+		margin-top: 0.5rem;
+		color: #fff;
 	}
 }
 
@@ -323,10 +329,9 @@
 		}
 	}
 
-  .carousel_item {
-    min-height: 500px;
-    
-  }
+	.carousel_item {
+		min-height: 500px;
+	}
 
 	.carousel_item img {
 		width: 100%;
@@ -376,7 +381,7 @@
 		background-color: rgb(255, 183, 0);
 		border-radius: 0;
 		font-weight: bold;
-		padding-top: .8rem;
+		padding-top: 0.8rem;
 	}
 
 	.min_btn_width {
@@ -387,7 +392,7 @@
 @media screen and (min-width: 2560px) {
 	.carousel {
 		margin: 2rem auto;
-    max-width: 2400px;
+		max-width: 2400px;
 	}
 
 	.carousel_caption {
@@ -430,16 +435,15 @@
 		}
 	}
 
-  .carousel_item {
-    max-height: 900px;
-    min-height: 900px;
-    width: 100%;
-  }
+	.carousel_item {
+		max-height: 900px;
+		min-height: 900px;
+		width: 100%;
+	}
 
 	.carousel_item img {
 		width: 100%;
-    object-fit: cover;
-
+		object-fit: cover;
 	}
 
 	.carousel_item .carousel_caption {
@@ -488,9 +492,9 @@
 		justify-content: center;
 	}
 
-  .btn > p {
-    margin: .5rem 0;
-  }
+	.btn > p {
+		margin: 0.5rem 0;
+	}
 
 	.min_btn_width {
 		width: 35%;
