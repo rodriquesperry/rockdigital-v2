@@ -18,7 +18,7 @@ const CarouselTopPage = () => {
 	let routes = ['/website-improvement', '/website-design-and-development'];
 
 	return (
-		<div>
+		<div className={styles.carousel_div}>
 			<Carousel
 				interval={7300}
 				className={`container ${styles.carousel}`}
@@ -50,7 +50,7 @@ const CarouselTopPage = () => {
 								href='/website-design-and-development'
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Start Your Website Project</p>
+								<span>Start Your Website Project</span>
 							</Link>
 						</div>
 					</Carousel.Caption>
@@ -80,7 +80,7 @@ const CarouselTopPage = () => {
 								href='/website-improvement'
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Start Growing Online</p>
+								<span>Start Growing Online</span>
 							</Link>
 						</div>
 					</Carousel.Caption>
@@ -109,7 +109,7 @@ const CarouselTopPage = () => {
 								href={routes[rando]}
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
-								<p>Get a Website Audit</p>
+								<span>Get a Website Audit</span>
 							</Link>
               <span className={styles.carousel_span}>Professional analysis delivered within 48 hours</span>
 						</div>

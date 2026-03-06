@@ -646,7 +646,7 @@
 	}
 }
 
-@media screen and (min-width: 1440px) and (max-width: 2559px) {
+@media screen and (min-width: 1440px) {
 	.home_container {
 		height: 100%;
 		margin-top: 2rem;
@@ -867,7 +867,7 @@
 	}
 }
 
-@media screen and (min-width: 2560px) {
+/* @media screen and (min-width: 2560px) {
 	.home_container {
 		height: 100%;
 		margin-top: 2rem;
@@ -1086,7 +1086,7 @@
 		border-radius: 0;
 		font-weight: bold;
 	}
-}
+} */
 
 .process_container {
 	margin: 4rem 0;
