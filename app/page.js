@@ -4,11 +4,55 @@ import Link from 'next/link';
 
 import CarouselTopPage from '@/components/carousels/top_page/Carousel.component';
 import CarouselReview from '@/components/carousels/reviews/CarouselReview.component';
-import HomePortfolioItem from '@/components/home-portfolio-items/HomePortfolioItem.component';
+import ContactForm from '@/components/contact-forms/ContactForm.component';
 
 import rec from '@/assets/rec.png';
+import webMaintenanceImage from '@/assets/website-maintenance.avif';
+import webImprovementImage from '@/assets/website-improvement.avif';
+import discoveryImage from '@/assets/discoveryclay.png';
+import designImage from '@/assets/design.png';
+import ongoingImage from '@/assets/ongoing.png';
+import launchImage from '@/assets/launch.png';
 
 import styles from './page.module.css';
+
+const processSteps = [
+  {
+    title: 'Get to Know You',
+    description:
+      'We start with discovery calls to understand your business goals, audience, offers, and what success should look like for your website.',
+    image: discoveryImage,
+    imageAlt: 'Team planning a website strategy.',
+  },
+  {
+    title: 'Design',
+    description:
+      'We map the structure and craft a clean visual direction focused on trust, clarity, and conversion-ready user journeys.',
+    image: designImage,
+    imageAlt: 'Website design mockup on a laptop.',
+  },
+  {
+    title: 'Development',
+    description:
+      'Once approved, we build responsive pages, optimize performance, and integrate your key tools so everything works reliably.',
+    image: webMaintenanceImage,
+    imageAlt: 'Developer building a modern website.',
+  },
+  {
+    title: 'Launch',
+    description:
+      'We run final QA, connect forms and analytics, and deploy with a checklist to make sure your new site is ready on day one.',
+    image: launchImage,
+    imageAlt: 'Website launch and optimization workflow.',
+  },
+  {
+    title: 'Ongoing Growth Care',
+    description:
+      'After launch, we help with updates, performance tuning, and strategic improvements so your site keeps driving results.',
+    image: ongoingImage,
+    imageAlt: 'Ongoing website maintenance and support.',
+  },
+];
 
 const Home = () => {
   return (
@@ -120,22 +164,39 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className={styles.reviews_container}>
+          
+          {/* <div className={styles.reviews_container}>
             <h2 className={styles.reviewer}>REVIEWS</h2>
             <hr />
             <div className={styles.reviews}>
               <CarouselReview />
             </div>
-          </div>
+          </div> */}
 
-          <div className={`${styles.parallax2} d-none d-lg-block d-xl-block`}></div>
+          {/* <div className={`${styles.parallax2} d-none d-lg-block d-xl-block`}></div> */}
 
-          {/* Portfolio Home Page*/}
-          <div className={styles.homepage_portfolio_container}>
-            <h2>SOME OF OUR WORK</h2>
+          <div className={styles.process_container}>
+            <h2>OUR PROCESS</h2>
             <hr />
-            <div className={styles.portfolio_items}>
-              <HomePortfolioItem />
+            <p>
+              A clear, collaborative path from your first conversation to long-term
+              support.
+            </p>
+            <div className={styles.process_timeline}>
+              {processSteps.map((step, index) => (
+                <article key={step.title} className={styles.process_step}>
+                  <div className={styles.process_content}>
+                    <span className={styles.process_number}>
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <h3>{step.title}</h3>
+                    <p>{step.description}</p>
+                  </div>
+                  <div className={styles.process_image_wrap}>
+                    <Image src={step.image} alt={step.imageAlt} />
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
           <div className={styles.ready_container}>
@@ -146,15 +207,11 @@ const Home = () => {
                 Ready to step your business&apos; web game up? <br /> It would be our
                 pleasure to create a custom website design experience that
                 represents your brand, communicates your brand message and
-                generates your business more leads which increases your overall
-                revenue.
+                <strong> converts more leads</strong> which increases your overall
+                revenue. Fill out the form to get started.
               </p>
             </div>
-            <div className={styles.ready_btn}>
-              <Link href='/contact' className={styles.btn}>
-                Contact us to get started!
-              </Link>
-            </div>
+              <ContactForm />
           </div>
         </div>
       </div>

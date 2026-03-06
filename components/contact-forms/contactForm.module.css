@@ -4,17 +4,22 @@
 
 #form {
 	display: flex;
-	justify-content: center;
+	justify-content: flex-start;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 1rem;
+	padding-bottom: 3rem;
 }
 
 #form > label {
 	margin-top: 3rem;
-	width: 45rem;
+	min-width: 312px;
+	max-width: 600px;
+	width: auto;
 	color: rgb(56, 46, 48);
 	font-size: 1.3rem;
+	text-align: left;
+	align-self: flex-start;
 }
 
 #form > input,
@@ -24,8 +29,9 @@
 	border-left: none;
 	border-right: none;
 	border-width: 0.062rem !important;
-	border-color: #1c2a3a !important;
+	border-color: #1c2a3a51 !important;
 	color: rgb(56, 46, 48);
+	border-radius: 3px;
 }
 
 #form > input:focus,
@@ -55,7 +61,7 @@
 }
 
 .contact_form_button_container {
-	width: 45rem;
+	width: auto;
 	display: flex;
 	justify-content: flex-end;
 	margin-top: 2rem;
@@ -66,7 +72,7 @@
 	/* bottom: 0; */
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (min-width: 425px) and (max-width: 767px) {
 	.form_container {
 		width: 100%;
 		padding: 0 1rem; /* Optional: Adds some spacing on the sides */
@@ -74,7 +80,9 @@
 
 	#form {
 		width: 100%;
+		max-width: 600px;
 		margin: 0 auto;
+		align-items: stretch;
 	}
 
 	#form > label,
@@ -86,6 +94,7 @@
 	#form > select,
 	#form > textarea {
 		width: 100%;
+		min-height: 3rem;
 	}
 
 	#form .error {
@@ -93,12 +102,59 @@
 	}
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) and (max-width: 991px) {
+	#form {
+		width: 100%;
+		max-width: 600px;
+		margin: 0 auto;
+		align-items: stretch;
+	}
+
 	#form > input,
 	#form > select,
 	#form > textarea,
+	#form > label,
 	#form > .error {
-		width: 45rem;
+		width: 100%;
 		height: 3rem;
+	}
+}
+
+@media screen and (min-width: 992px) and (max-width: 1439px) {
+	#form > input,
+	#form > select,
+	#form > textarea,
+	#form > label,
+	#form > .error {
+		width: auto;
+		min-width: 500px;
+		height: 3rem;
+		align-self: center;
+	}
+}
+
+@media screen and (min-width: 1440px) {
+	#form {
+		width: 100%;
+		max-width: 700px;
+		margin: 0 auto;
+		align-items: stretch;
+	}
+
+	#form > label,
+	#form > input,
+	#form > select,
+	#form > textarea,
+	#form > .error,
+	.contact_form_button_container {
+		width: 100%;
+		min-width: 0;
+		align-self: stretch;
+	}
+
+	#form > input,
+	#form > select,
+	#form > textarea {
+		min-height: 3rem;
 	}
 }

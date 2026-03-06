@@ -227,7 +227,7 @@ const ContactForm = () => {
 						type='submit'
 						className='btn btn-warning'
 					>
-						{isSubmitting ? 'Loading...' : 'Submit'}
+						{isSubmitting ? 'Loading...' : 'Get Started'}
 					</button>
 				</div>
 			</form>
