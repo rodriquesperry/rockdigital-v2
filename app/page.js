@@ -8,11 +8,10 @@ import ContactForm from '@/components/contact-forms/ContactForm.component';
 
 import rec from '@/assets/rec.png';
 import webMaintenanceImage from '@/assets/website-maintenance.avif';
-import webImprovementImage from '@/assets/website-improvement.avif';
 import discoveryImage from '@/assets/discoveryclay.png';
-import designImage from '@/assets/design.png';
-import ongoingImage from '@/assets/ongoing.png';
-import launchImage from '@/assets/launch.png';
+import designImage from '@/assets/design.webp';
+import ongoingImage from '@/assets/ongoing.webp';
+import launchImage from '@/assets/launch.webp';
 
 import styles from './page.module.css';
 

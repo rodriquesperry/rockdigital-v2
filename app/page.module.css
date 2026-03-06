@@ -173,7 +173,7 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
-	height: 40vh;
+	/* height: 40vh; */
 	margin-bottom: 4rem;
 	width: 100%;
 }
@@ -182,12 +182,16 @@
 	font-family: 'Playfair Display', serif;
 	font-weight: 700;
 	font-style: italic;
-	position: relative;
+	position: static;
 	color: #fff;
 	display: grid;
 	align-items: center;
-	top: 30%;
-	margin: 0 2.3rem;
+  justify-content: center;
+	/* top: 30%; */
+  padding: 2.5rem 2rem;
+  width: auto;
+  max-width: 400px;
+  
 }
 
 .parallax_1_heading h3 {
@@ -272,6 +276,54 @@
 	border: 1px solid rgb(255, 183, 0);
 }
 
+@media screen and (max-width: 767px) {
+	.parallax1 {
+		background-position: center center;
+		background-size: cover;
+		background-attachment: scroll;
+		min-height: 260px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 1.5rem 1rem;
+	}
+
+	#parallax_1_text {
+		position: static;
+		top: auto;
+		width: 100%;
+		max-width: 100%;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+	}
+
+	.parallax_1_heading h3 {
+		font-size: clamp(1.35rem, 6.2vw, 2rem);
+		line-height: 1.25;
+	}
+
+	.parallax_btn_container {
+		margin: 0.85rem 0 0;
+		display: flex;
+		justify-content: center;
+	}
+
+	.parallax_btn {
+		display: inline-block;
+		width: auto;
+		font-size: clamp(0.9rem, 3.6vw, 1rem);
+		padding: 0.55rem 0.9rem;
+	}
+}
+
+@media screen and (max-width: 374px) {
+	.parallax1 {
+		min-height: 230px;
+		padding: 1.25rem 0.75rem;
+	}
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 	.home_container {
 		height: 100%;
@@ -337,7 +389,7 @@
 		background-position: center center;
 		background-size: cover;
 		background-attachment: fixed;
-		height: 85vh;
+		height: 45vh;
 		width: 100%;
 	}
 
@@ -348,6 +400,9 @@
 		display: grid;
 		place-items: center;
 		top: 23%;
+    width: auto;
+    max-width: none;
+    margin: 0 2.3rem;
 	}
 
 	.parallax_1_heading h3 {
@@ -522,6 +577,9 @@
 		display: grid;
 		place-items: center;
 		top: 27%;
+    width: auto;
+    max-width: none;
+    margin: 0 2.3rem;
 	}
 
 	.parallax_1_heading h3 {
@@ -726,6 +784,9 @@
 		display: grid;
 		place-items: center;
 		top: 30%;
+    width: auto;
+    max-width: none;
+    margin: 0 2.3rem;
 	}
 
 	.parallax_1_heading h3 {
