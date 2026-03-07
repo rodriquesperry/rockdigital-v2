@@ -1,0 +1,39 @@
+.audit_container {
+	padding-right: calc(2.8rem * 0.9);
+	padding-left: calc(2.8rem * 0.9);
+	margin-top: 2rem;
+}
+
+.audit_header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	margin-bottom: 2rem;
+}
+
+.audit_header h1 {
+	font-size: 2.4rem;
+	margin-bottom: 0.8rem;
+}
+
+.audit_header p {
+	max-width: 700px;
+	font-size: 1.05rem;
+}
+
+@media screen and (max-width: 767px) {
+	.audit_container {
+		padding-right: 0;
+		padding-left: 0;
+		margin-top: 1rem;
+	}
+
+	.audit_header {
+		padding: 0 1rem;
+	}
+
+	.audit_header h1 {
+		font-size: 1.8rem;
+	}
+}

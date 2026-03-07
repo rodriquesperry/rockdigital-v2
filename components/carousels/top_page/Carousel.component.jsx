@@ -13,10 +13,6 @@ import SheratonHotel1359w from '@/assets/sheraton-houston-st-san-antonio-tx_1359
 import styles from './carousel.module.css';
 
 const CarouselTopPage = () => {
-	let rando = Math.floor(Math.random() * 2);
-
-	let routes = ['/website-improvement', '/website-design-and-development'];
-
 	return (
 		<div className={styles.carousel_div}>
 			<Carousel
@@ -106,7 +102,7 @@ const CarouselTopPage = () => {
 								Discover what’s working, what’s not, and how to turn your website into a powerful growth tool.{' '}
 							</p>
 							<Link
-								href={routes[rando]}
+								href='/website-audit'
 								className={`${styles.btn} ${styles.min_btn_width} lato`}
 							>
 								<span>Get a Website Audit</span>

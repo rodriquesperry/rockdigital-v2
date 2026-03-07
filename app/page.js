@@ -8,7 +8,7 @@ import ContactForm from '@/components/contact-forms/ContactForm.component';
 
 import rec from '@/assets/rec.png';
 import developmentImage from '@/assets/development.webp';
-import discoveryImage from '@/assets/discoveryclay.webp';
+import discoveryImage from '@/assets/discovery.webp';
 import designImage from '@/assets/design.webp';
 import ongoingImage from '@/assets/ongoing.webp';
 import launchImage from '@/assets/launch.webp';
