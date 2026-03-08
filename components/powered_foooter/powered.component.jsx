@@ -6,10 +6,10 @@ const PoweredBy = () => {
   return (
     <div className={`${styles.powered_by} text-center py-3'`}>
       <small>
-        &copy;2022 Rock Digital Web Agency | Powered by &nbsp;
-        <Link href='http://rockdigital.agency' rel='noreferrer'>
+        &copy;2022 Rock Digital Agency 
+        {/* <Link href='http://rockdigital.agency' rel='noreferrer'>
           Rock Digital
-        </Link>
+        </Link> */}
       </small>
     </div>
   );

@@ -2,6 +2,8 @@
   background-color: rgb(48, 48, 48);
   color: #fff;
   margin-top: 3rem;
+  font-size: 0.8rem;
+  padding: .7rem 0;
 }
 
 .powered_by small {
@@ -15,6 +17,6 @@
 
 @media screen and (min-width: 2560px) {
   .powered_by {
-    font-size: 1.7rem;
+    font-size: 1.2rem;
   }
 }

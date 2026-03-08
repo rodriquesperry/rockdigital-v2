@@ -46,7 +46,7 @@
 
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 	.toggler {
-		/* margin-right: 30px; */
+		margin-right: 30px;
 	}
 
 	.navbar .navbar_brand {
@@ -108,7 +108,7 @@
 	}
 
 	.link {
-		font-size: 1.2rem;
+		font-size: 1rem;
 		color: rgb(34, 21, 6);
 	}
 

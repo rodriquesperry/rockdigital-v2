@@ -1,13 +1,38 @@
+:root {
+	--primary-font-color-rgb: 64, 38, 10;
+	--primary-font-color: rgb(var(--primary-font-color-rgb));
+	--bs-heading-color: var(--primary-font-color);
+	--bs-heading-color-rgb: var(--primary-font-color-rgb);
+	--bs-body-color: rgba(var(--primary-font-color-rgb), 0.82);
+	--bs-body-color-rgb: var(--primary-font-color-rgb);
+}
+
 body {
-  background-color: #fff;
-  font-family: "Lato", sans-serif;
-  color: rgb(34, 21, 6);
+	background-color: #fff;
+	font-family: 'Lato', sans-serif;
+	font-weight: 100;
+	color: var(--bs-body-color);
+  padding-left: calc(1.8rem * 0.9);
+	padding-right: calc(1.8rem * 0.9);
 }
 
 .lato {
-  font-family: var(--font-lato);
+	font-family: var(--font-lato);
 }
 
 .playfair {
-  font-family: var(font-playfair_display);
+	font-family: var(--font-playfair_display);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--bs-heading-color);
+}
+
+p {
+	color: var(--bs-body-color);
 }
