@@ -430,7 +430,7 @@
 		font-size: 1.5rem;
 		min-width: 20%;
     width: auto;
-		max-width: 80px;
+		max-width: 480px;
 		color: #fff;
 		border: 1px solid rgb(34, 21, 6);
 		background-color: rgb(255, 183, 0);
@@ -442,9 +442,7 @@
 
 	}
 
-	.min_btn_width {
-		width: 35%;
-	}
+
 }
 
 /* @media screen and (min-width: 2560px) {
