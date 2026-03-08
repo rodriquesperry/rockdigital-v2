@@ -73,7 +73,7 @@ const cardReveal = {
 		opacity: 1,
 		y: 0,
 		scale: 1,
-		transition: { duration: 0.8, ease: premiumEase },
+		transition: { duration: 1.8, ease: premiumEase },
 	},
 };
 

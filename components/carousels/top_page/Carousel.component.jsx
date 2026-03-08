@@ -44,7 +44,7 @@ const CarouselTopPage = () => {
 							</p>
 							<Link
 								href='/website-design-and-development'
-								className={`${styles.btn} ${styles.min_btn_width} lato`}
+								className={`${styles.btn} lato`}
 							>
 								<span>Start Your Website Project</span>
 							</Link>
@@ -74,7 +74,7 @@ const CarouselTopPage = () => {
 							</p>
 							<Link
 								href='/website-improvement'
-								className={`${styles.btn} ${styles.min_btn_width} lato`}
+								className={`${styles.btn} lato`}
 							>
 								<span>Start Growing Online</span>
 							</Link>
@@ -103,7 +103,7 @@ const CarouselTopPage = () => {
 							</p>
 							<Link
 								href='/website-audit'
-								className={`${styles.btn} ${styles.min_btn_width} lato`}
+								className={`${styles.btn} lato`}
 							>
 								<span>Get a Website Audit</span>
 							</Link>
