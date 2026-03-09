@@ -72,7 +72,9 @@
 }
 
 .div1 {
-	background-image: url('../assets/web-design.avif');
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+		url('../assets/web-design.avif');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -83,7 +85,9 @@
 }
 
 .div2 {
-	background-image: url('../assets/web-improvement.avif');
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+		url('../assets/web-improvement.avif');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
@@ -94,7 +98,9 @@
 }
 
 .div3 {
-	background-image: url('../assets/web-maintenance.avif');
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+		url('../assets/web-maintenance.avif');
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: cover;
