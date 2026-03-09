@@ -52,6 +52,11 @@
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .contact_container {
+    max-width: 1500px;
+    margin: 0 auto;
+  }
+
   .contact_img_container {
     height: 200px;
   }
