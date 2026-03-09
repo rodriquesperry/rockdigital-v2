@@ -10,7 +10,7 @@
 
 .posts a {
   text-decoration: none;
-  color: rgb(34, 21, 6);
+  color: var(--color-ink-900);
 }
 
 .card {

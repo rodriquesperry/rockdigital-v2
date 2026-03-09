@@ -18,7 +18,7 @@
 	font-family: 'News Cycle', sans-serif;
 	font-style: none;
 	font-size: 2rem;
-	color: rgb(255, 183, 0);
+	color: var(--color-accent);
   padding: 0 .3rem;
 }
 
@@ -48,7 +48,7 @@
 .review_image {
 	max-width: 50%;
 	border-radius: 50%;
-	border: 0.1px solid rgb(34, 21, 6);
+	border: 0.1px solid var(--color-ink-900);
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
@@ -88,7 +88,7 @@
 		display: flex;
 		align-items: center;
 		max-width: 98%;
-		border: 0.1px solid rgb(34, 21, 6);
+		border: 0.1px solid var(--color-ink-900);
 	}
 
 	.reviewer_container {
@@ -145,7 +145,7 @@
 		display: flex;
 		align-items: center;
 		max-width: 98%;
-		border: 0.1px solid rgb(34, 21, 6);
+		border: 0.1px solid var(--color-ink-900);
 	}
 
 	.reviewer_container {
@@ -202,7 +202,7 @@
 		display: flex;
 		align-items: center;
 		max-width: 98%;
-		border: 0.1px solid rgb(34, 21, 6);
+		border: 0.1px solid var(--color-ink-900);
 	}
 
 	.reviewer_container {

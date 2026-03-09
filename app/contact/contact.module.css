@@ -1,6 +1,6 @@
 .contact_container {
-  padding-right: calc(2.8rem * 0.9);
-  padding-left: calc(2.8rem * 0.9);
+  padding-right: var(--gutter-desktop);
+  padding-left: var(--gutter-desktop);
 }
 
 .contact_img_container {
@@ -34,7 +34,7 @@
 
 #contact_img_container_text {
   position: relative;
-  color: #fff;
+  color: var(--color-white);
   background: rgba(65, 79, 92, 0.295);
   font-size: 4rem;
   line-height: 1;

@@ -5,7 +5,7 @@
 }
 
 .form_note {
-	color: rgb(56, 46, 48);
+	color: var(--color-ink-800);
 	font-size: clamp(0.95rem, 2.5vw, 1rem);
 	text-align: center;
 	margin: 0 auto 1.5rem;
@@ -28,7 +28,7 @@
 #audit_form > label {
 	margin-top: 1.5rem;
 	width: 100%;
-	color: rgb(56, 46, 48);
+	color: var(--color-ink-800);
 	font-size: clamp(1rem, 2.5vw, 1.1rem);
 	text-align: left;
 }
@@ -40,9 +40,9 @@
 	border-left: none;
 	border-right: none;
 	border-width: 0.062rem !important;
-	border-color: #1c2a3a51 !important;
-	color: rgb(56, 46, 48);
-	border-radius: 3px;
+	border-color: var(--color-border-soft) !important;
+	color: var(--color-ink-800);
+	border-radius: var(--radius-sm);
 	padding: 0.5rem 0.2rem;
 	font-size: 1rem;
 	box-sizing: border-box;
@@ -57,7 +57,7 @@
 }
 
 .required {
-	color: #b40000;
+	color: var(--color-danger);
 }
 
 .audit_form_button_container {
@@ -74,7 +74,7 @@
 .success_message {
 	margin-top: 1rem;
 	text-align: center;
-	color: #1f6f00;
+	color: var(--color-success);
 	font-weight: 600;
 }
 

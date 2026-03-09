@@ -116,7 +116,7 @@
 		width: 100%;
 		position: relative;
 		top: 0;
-		background-color: #f0cd7b;
+		background-color: var(--color-accent-soft);
 		margin-bottom: 18rem;
 	}
 
@@ -136,15 +136,15 @@
 		width: 95%;
 		height: 550px;
 		position: relative;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-white);
 		object-fit: cover;
 	}
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
 	.blog_post_container {
-		padding-right: calc(2.8rem * 0.9);
-		padding-left: calc(2.8rem * 0.9);
+		padding-right: var(--gutter-desktop);
+		padding-left: var(--gutter-desktop);
 	}
 
 	.blog_post_header_background {
@@ -152,7 +152,7 @@
 		width: 100%;
 		position: relative;
 		top: 0;
-		background-color: #f0cd7b;
+		background-color: var(--color-accent-soft);
 	}
 
 	.header_img_and_text_container {
@@ -177,7 +177,7 @@
 		height: 550px;
 		position: relative;
 		left: 0.7rem;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-white);
 		object-fit: cover;
 	}
 
@@ -253,8 +253,8 @@
 
 @media screen and (min-width: 1440px) and (max-width: 2559px) {
 	.blog_post_container {
-		padding-right: calc(2.8rem * 0.9);
-		padding-left: calc(2.8rem * 0.9);
+		padding-right: var(--gutter-desktop);
+		padding-left: var(--gutter-desktop);
 	}
 
 	.blog_post_header_background {
@@ -262,7 +262,7 @@
 		width: 100%;
 		position: relative;
 		top: 0;
-		background-color: #f0cd7b;
+		background-color: var(--color-accent-soft);
 	}
 
 	.header_img_and_text_container {
@@ -285,7 +285,7 @@
 		height: 550px;
 		position: relative;
 		left: 2.5rem;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-white);
 		object-fit: cover;
 	}
 
@@ -355,8 +355,8 @@
 
 @media screen and (min-width: 2560px) {
 	.blog_post_container {
-		padding-right: calc(2.8rem * 0.9);
-		padding-left: calc(2.8rem * 0.9);
+		padding-right: var(--gutter-desktop);
+		padding-left: var(--gutter-desktop);
 	}
 
 	.blog_post_header_background {
@@ -364,7 +364,7 @@
 		width: 100%;
 		position: relative;
 		top: 0;
-		background-color: #f0cd7b;
+		background-color: var(--color-accent-soft);
 	}
 
 	.header_img_and_text_container {
@@ -389,7 +389,7 @@
 		height: 550px;
 		position: relative;
 		left: 2.5rem;
-		border: 2px solid #fff;
+		border: 2px solid var(--color-white);
 		object-fit: cover;
 	}
 

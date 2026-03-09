@@ -16,7 +16,7 @@
 	min-width: 312px;
 	max-width: 600px;
 	width: auto;
-	color: rgb(56, 46, 48);
+	color: var(--color-ink-800);
 	font-size: 1.3rem;
 	text-align: left;
 	align-self: flex-start;
@@ -29,9 +29,9 @@
 	border-left: none;
 	border-right: none;
 	border-width: 0.062rem !important;
-	border-color: #1c2a3a51 !important;
-	color: rgb(56, 46, 48);
-	border-radius: 3px;
+	border-color: var(--color-border-soft) !important;
+	color: var(--color-ink-800);
+	border-radius: var(--radius-sm);
 }
 
 #form > input:focus,

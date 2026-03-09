@@ -1,6 +1,6 @@
 .powered_by {
-  background-color: rgb(51, 29, 5);
-  color: #fff;
+  background-color: var(--color-footer-deep);
+  color: var(--color-white);
   margin-top: 3rem;
   font-size: 0.8rem;
   padding: .7rem 0;
@@ -11,7 +11,7 @@
 }
 
 .powered_by a {
-  color: #fff;
+  color: var(--color-white);
   text-decoration: none;
 }
 

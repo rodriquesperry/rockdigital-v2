@@ -1,6 +1,6 @@
 .services_container {
-	padding-right: calc(2.8rem * 0.9);
-	padding-left: calc(2.8rem * 0.9);
+	padding-right: var(--gutter-desktop);
+	padding-left: var(--gutter-desktop);
 	margin: 0 auto;
 }
 
@@ -33,7 +33,7 @@
 	font-size: 2.8rem;
 	text-align: center;
 	margin-top: 0.5rem;
-  color: #fff;
+  color: var(--color-white);
 }
 
 .services {
@@ -58,7 +58,7 @@
 
 .service_text_header {
 	margin: 1rem 0;
-	color: var(--bs-heading-color, rgb(64, 38, 10));
+	color: var(--bs-heading-color, var(--color-ink-700));
 }
 
 .services_text {

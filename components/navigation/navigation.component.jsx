@@ -110,6 +110,20 @@ const Navigation = () => {
 								>
 									BLOG
 								</Link>
+								<Link
+									href='/login'
+									className={styles.link}
+									onClick={closeOffcanvas}
+								>
+									LOGIN
+								</Link>
+								<Link
+									href='/website-audit'
+									className={`${styles.link} ${styles.auditLink}`}
+									onClick={closeOffcanvas}
+								>
+									Get a Website Audit
+								</Link>
 							</Nav>
 						</Offcanvas.Body>
 					</Navbar.Offcanvas>

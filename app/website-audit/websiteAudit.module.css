@@ -1,6 +1,6 @@
 .audit_container {
-	padding-right: calc(2.8rem * 0.9);
-	padding-left: calc(2.8rem * 0.9);
+	padding-right: var(--gutter-desktop);
+	padding-left: var(--gutter-desktop);
 	margin-top: 2rem;
 }
 

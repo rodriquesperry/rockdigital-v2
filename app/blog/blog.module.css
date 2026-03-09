@@ -2,7 +2,7 @@
 	max-width: 1240px;
 	margin: 0 auto;
 	padding: 2.5rem 1.25rem 4rem;
-	color: rgb(64, 38, 10);
+	color: var(--color-ink-700);
 }
 
 .heroSection {
@@ -40,8 +40,8 @@
 	align-items: flex-end;
 	min-height: 500px;
 	overflow: hidden;
-	border-radius: 4px;
-	background: #1a1a1a;
+	border-radius: var(--radius-md);
+	background: var(--color-neutral-825);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -62,7 +62,7 @@
 	width: 100%;
 	padding: 1.3rem 1.4rem;
 	background: linear-gradient(to top, rgba(0, 0, 0, 0.76), rgba(0, 0, 0, 0));
-	color: #fff;
+	color: var(--color-white);
 }
 
 .mainFeatureContent h2 {
@@ -89,9 +89,9 @@
 	grid-template-rows: 1fr auto;
 	min-height: 240px;
 	overflow: hidden;
-	border-radius: 4px;
-	background: #111;
-	color: #fff;
+	border-radius: var(--radius-md);
+	background: var(--color-neutral-900);
+	color: var(--color-white);
 	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
@@ -117,12 +117,12 @@
 	letter-spacing: 0.08em;
 	text-transform: uppercase;
 	opacity: 0.92;
-  color: #fff;
+  color: var(--color-white);
 }
 
 .filtersSection {
-	border-top: 1px solid #e8e8e8;
-	border-bottom: 1px solid #e8e8e8;
+	border-top: 1px solid var(--color-neutral-250);
+	border-bottom: 1px solid var(--color-neutral-250);
 	padding: 1.1rem 0;
 	margin-bottom: 2rem;
 }
@@ -134,10 +134,10 @@
 }
 
 .chip {
-	border: 1px solid #cfcfcf;
-	border-radius: 999px;
-	background: #fff;
-	color: #222;
+	border: 1px solid var(--color-neutral-400);
+	border-radius: var(--radius-pill);
+	background: var(--color-white);
+	color: var(--color-neutral-800);
 	padding: 0.45rem 0.82rem;
 	font-size: 0.8rem;
 	line-height: 1;
@@ -151,15 +151,15 @@
 }
 
 .chip:hover {
-	border-color: #1f1f1f;
+	border-color: var(--color-neutral-850);
 	transform: translateY(-1px);
 	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.09);
 }
 
 .chipActive {
-	background: #1f1f1f;
-	border-color: #1f1f1f;
-	color: #fff;
+	background: var(--color-neutral-850);
+	border-color: var(--color-neutral-850);
+	color: var(--color-white);
 }
 
 .postsGrid {
@@ -171,10 +171,10 @@
 .postCard {
 	display: grid;
 	grid-template-rows: auto 1fr;
-	border-radius: 4px;
+	border-radius: var(--radius-md);
 	overflow: hidden;
-	background: #fff;
-	border: 1px solid #ececec;
+	background: var(--color-white);
+	border: 1px solid var(--color-neutral-200);
 	height: 100%;
 	box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
 }
@@ -182,7 +182,7 @@
 .postMedia {
 	position: relative;
 	aspect-ratio: 16 / 9;
-	background: #ececec;
+	background: var(--color-neutral-200);
 }
 
 .postBody {
@@ -204,7 +204,7 @@
 	margin: 0;
 	font-size: 0.93rem;
 	line-height: 1.45;
-	color: #3a3a3a;
+	color: var(--color-neutral-700);
 	display: -webkit-box;
 	-webkit-line-clamp: 3;
 	-webkit-box-orient: vertical;
@@ -218,7 +218,7 @@
 }
 
 .error {
-	color: #af2020;
+	color: var(--color-danger-strong);
 }
 
 .mainFeatureCard:hover,

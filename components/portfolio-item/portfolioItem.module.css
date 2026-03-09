@@ -15,7 +15,7 @@
 	display: block;
 	width: 100%;
 	height: 100%;
-  border-radius: 0; /* Ensures straight edges */
+  border-radius: var(--radius-none); /* Ensures straight edges */
   box-shadow: -10px 10px 20px rgba(0, 0, 0, 0.3); /* Shadow coming from bottom-left */
 }
 

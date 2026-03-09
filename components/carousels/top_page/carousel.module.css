@@ -1,7 +1,17 @@
 .carousel_item {
+	position: relative;
 	width: 100%;
 	min-height: 300px;
-	color: #fff;
+	color: var(--color-white);
+}
+
+.carousel_item::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: rgba(20, 12, 4, 0.5);
+	pointer-events: none;
+	z-index: 1;
 }
 
 .carousel_item img {
@@ -19,7 +29,7 @@
 	top: 0;
 	left: 0;
 	width: 100%;
-	background-color: rgba(34, 21, 6, 0.349);
+	z-index: 2;
 }
 
 .carousel_caption .carousel_caption_block {
@@ -38,14 +48,16 @@
 	font-weight: 700;
 	font-style: italic;
 	font-size: 1rem;
+  max-width: 900px;
 }
 
 .carousel_paragraph {
 	max-width: 52vw;
 	margin: 0 auto;
 	padding: 0 1rem;
-	line-height: 18px;
-  color: #fff;
+	line-height: 20px;
+  color: var(--color-white);
+  max-width: 500px;
 }
 
 .carousel_caption_block p {
@@ -61,24 +73,24 @@
 	display: flex;
 	justify-content: center;
 	max-width: 180px;
-	color: rgb(34, 21, 6);
-	border: 0.5px solid rgb(34, 21, 6);
-	background-color: rgb(255, 183, 0);
-	border-radius: 0;
+	color: var(--color-ink-900);
+	border: 0.5px solid var(--color-ink-900);
+	background-color: var(--color-accent);
+	border-radius: var(--radius-none);
 	font-weight: bold;
 	text-decoration: none;
 }
 
 .btn:hover {
-	background-color: rgb(224, 161, 0);
-	color: #fff;
-	border: 1px solid rgb(184, 131, 0);
+	background-color: var(--color-accent-hover);
+	color: var(--color-white);
+	border: 1px solid var(--color-accent-border-hover);
 	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .carousel_heading h3 {
 	font-family: 'Playfair Display', serif;
-	font-weight: 700;
+	font-weight: 100;
 	font-style: italic;
 }
 
@@ -101,7 +113,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		background-color: rgba(34, 21, 6, 0.349);
+		z-index: 2;
 	}
 
 	.carousel_caption .carousel_caption_block {
@@ -129,10 +141,10 @@
 		justify-content: center;
 		min-width: 55%;
 		max-width: 280px;
-		color: #fff;
-		border: 0.5px solid rgb(34, 21, 6);
-		background-color: rgb(255, 183, 0);
-		border-radius: 0;
+		color: var(--color-white);
+		border: 0.5px solid var(--color-ink-900);
+		background-color: var(--color-accent);
+		border-radius: var(--radius-none);
 		font-weight: bold;
 		padding: 0.5rem 0.5rem;
 		margin-top: 1rem;
@@ -141,7 +153,7 @@
 	.carousel_span {
 		font-size: 0.6rem;
 		margin-top: 0.5rem;
-		color: #fff;
+		color: var(--color-white);
 	}
 }
 
@@ -159,7 +171,7 @@
 		top: 0;
 		left: 0;
 		width: 100%;
-		background-color: rgba(34, 21, 6, 0.349);
+		z-index: 2;
 	}
 
 	.carousel_caption .carousel_caption_block {
@@ -198,7 +210,7 @@
 	.carousel_span {
 		font-size: 0.6rem;
 		margin-top: 0.5rem;
-		color: #fff;
+		color: var(--color-white);
 	}
 }
 
@@ -305,15 +317,14 @@
 		font-size: 1.5rem;
 		min-width: 35%;
 		max-width: 280px;
-		color: #fff;
-		border: 1px solid rgb(34, 21, 6);
-		background-color: rgb(255, 183, 0);
-		border-radius: 0;
+		color: var(--color-white);
+		border: 1px solid var(--color-ink-900);
+		background-color: var(--color-accent);
+		border-radius: var(--radius-none);
 		font-weight: bold;
 		justify-content: center;
 		align-self: center;
 		padding: 0.8rem 0;
-    border: red solid 1px;
 	}
 
 	.btn > p {
@@ -323,7 +334,7 @@
 	.carousel_span {
 		font-size: 0.7rem;
 		margin-top: 0.5rem;
-		color: #fff;
+		color: var(--color-white);
 	}
 }
 
@@ -413,13 +424,15 @@
 
 	.carousel_heading h3 {
 		font-size: 5rem;
+    line-height: 70px;
+    margin-bottom: 2rem;
 	}
 
 	.carousel_paragraph {
 		text-align: center;
 		padding: 0 2.5rem;
 		margin-bottom: 1rem;
-		line-height: 36px;
+		line-height: 40px;
 	}
 
 	.carousel_caption_block p {
@@ -432,8 +445,8 @@
 		min-width: 20%;
     width: auto;
 		max-width: 480px;
-		/* color: #fff; */
-		border-radius: 0;
+		/* color: var(--color-white); */
+		border-radius: var(--radius-none);
 		font-weight: bold;
 		justify-content: center;
 		align-self: center;
@@ -547,10 +560,10 @@
     font-size: 1.5rem;
     min-width: 35%;
     max-width: 480px;
-    color: #fff;
-    border: 1px solid rgb(34, 21, 6);
-    background-color: rgb(255, 183, 0);
-    border-radius: 0;
+    color: var(--color-white);
+    border: 1px solid var(--color-ink-900);
+    background-color: var(--color-accent);
+    border-radius: var(--radius-none);
     font-weight: bold;
     justify-content: center;
     align-self: center;

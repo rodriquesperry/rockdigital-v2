@@ -99,7 +99,7 @@ const CarouselTopPage = () => {
 								</h3>
 							</div>
 							<p className={styles.carousel_paragraph}>
-								Discover what’s working, what’s not, and how to turn your website into a powerful growth tool.{' '}
+								We design high-performing websites that attract customers and turn visitors into revenue.{' '}
 							</p>
 							<Link
 								href='/website-audit'
