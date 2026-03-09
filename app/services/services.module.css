@@ -217,7 +217,13 @@
 	}
 }
 
-@media screen and (min-width: 1440px) and (max-width: 2559px) {
+@media screen and (min-width: 1440px) {
+.services_container {
+  max-width: 1500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 	.services_img_container {
 		height: 200px;
 	}
@@ -275,7 +281,7 @@
 	}
 }
 
-@media screen and (min-width: 2560px) {
+/* @media screen and (min-width: 2560px) {
   .services_img_container {
 		height: 400px;
 	}
@@ -339,4 +345,4 @@
   .second_image {
     margin-left: 2rem;
   }
-}
+} */

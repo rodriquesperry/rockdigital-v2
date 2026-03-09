@@ -1,7 +1,7 @@
 import axios from 'axios';
-import Image from 'next/image';
-import styles from './blogPost.module.css';
 import config from '@/config';
+import { notFound } from 'next/navigation';
+import BlogPostAnimated from './BlogPostAnimated.client';
 
 const baseURL = config.api || 'http://127.0.0.1:1337';
 
@@ -51,55 +51,26 @@ export default async function BlogPostPage({ params, searchParams }) {
 			read_time,
 			short_description,
 			featured_image,
-			author_image,
 		} = post;
 
 		const featImage = featured_image?.url || '';
-		const authorImg = author_image?.url || '';
 		const date = new Date(publishedAt);
 
 		return (
-			<div className={styles.blog_post_container}>
-				<div className={styles.blog_post_header}>
-					<div className={styles.blog_post_header_background}></div>
-					<div className={styles.header_content_container}>
-						<div className={`col ${styles.blog_image_container}`}>
-							<Image
-								src={`${baseURL}${featImage}`}
-								alt={title || 'Featured Image'}
-								fill
-								sizes='auto'
-							/>
-						</div>
-						<div className={`col ${styles.header_text}`}>
-							<h2 className={styles.header_text_h2}>{title}</h2>
-							<p className={`${styles.short_description} d-none d-md-block`}>
-								{short_description}
-							</p>
-							<p className={styles.read_time}>READ TIME: {read_time} mins</p>
-						</div>
-					</div>
-
-					<div className={styles.author_info}>
-						<div className={`col-3 ${styles.info_pic}`}>
-							<div className={styles.info_text}>
-								<h5 className={styles.author}>{author}</h5>
-								<h6 className={styles.date}>{date.toDateString()}</h6>
-								<small className={styles.category}>
-									Tags, categories, hashtags
-								</small>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className={styles.blog_post}>
-					<p>{body}</p>
-				</div>
-			</div>
+			<BlogPostAnimated
+				baseURL={baseURL}
+				featImage={featImage}
+				title={title}
+				shortDescription={short_description}
+				readTime={read_time}
+				author={author}
+				dateString={date.toDateString()}
+				body={body}
+			/>
 		);
 	} catch (error) {
 		return (
-			<div className={styles.error_container}>
+			<div>
 				<p>An error occurred: {error.message}</p>
 			</div>
 		);

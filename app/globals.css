@@ -10,10 +10,11 @@
 body {
 	background-color: #fff;
 	font-family: 'Lato', sans-serif;
-	font-weight: 100;
 	color: var(--bs-body-color);
-  padding-left: calc(1.8rem * 0.9);
+	padding-left: calc(1.8rem * 0.9);
 	padding-right: calc(1.8rem * 0.9);
+	
+	margin: 0 auto;
 }
 
 .lato {
@@ -35,4 +36,35 @@ h6 {
 
 p {
 	color: var(--bs-body-color);
+	font-weight: 200;
+}
+
+:where(button, .btn, input[type='submit'], input[type='button']) {
+	transition:
+		transform 220ms ease,
+		box-shadow 220ms ease,
+		border-color 220ms ease,
+		background-color 220ms ease,
+		color 220ms ease;
+}
+
+:where(button, .btn, input[type='submit'], input[type='button']):hover {
+	transform: translateY(-2px);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+:where(button, .btn, input[type='submit'], input[type='button']):disabled {
+	transform: none;
+	box-shadow: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	:where(button, .btn, input[type='submit'], input[type='button']) {
+		transition: none;
+	}
+
+	:where(button, .btn, input[type='submit'], input[type='button']):hover {
+		transform: none;
+		box-shadow: none;
+	}
 }
