@@ -61,7 +61,7 @@
 	display: flex;
 	justify-content: center;
 	max-width: 180px;
-	color: #fff;
+	color: rgb(34, 21, 6);
 	border: 0.5px solid rgb(34, 21, 6);
 	background-color: rgb(255, 183, 0);
 	border-radius: 0;
@@ -70,9 +70,10 @@
 }
 
 .btn:hover {
-	background-color: #fff;
-	color: rgb(255, 183, 0);
-	border: 1px solid rgb(255, 183, 0);
+	background-color: rgb(224, 161, 0);
+	color: #fff;
+	border: 1px solid rgb(184, 131, 0);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 .carousel_heading h3 {
@@ -431,14 +432,12 @@
 		min-width: 20%;
     width: auto;
 		max-width: 480px;
-		color: #fff;
-		border: 1px solid rgb(34, 21, 6);
-		background-color: rgb(255, 183, 0);
+		/* color: #fff; */
 		border-radius: 0;
 		font-weight: bold;
 		justify-content: center;
 		align-self: center;
-		padding: 0.8rem 0;
+		padding: 0.8rem 0.5rem;
 
 	}
 

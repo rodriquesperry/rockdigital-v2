@@ -210,7 +210,7 @@
 
 .parallax_btn {
 	font-family: 'Lato', sans-serif;
-	color: #fff;
+	color: rgb(34, 21, 6);
 	background-color: rgb(255, 183, 0);
 	text-decoration: none;
 	font-size: 1rem;
@@ -274,9 +274,10 @@
 }
 
 .ready_btn .btn:hover {
-	background-color: #fff;
-	color: rgb(255, 183, 0);
-	border: 1px solid rgb(255, 183, 0);
+	background-color: rgb(224, 161, 0);
+	color: #fff;
+	border: 1px solid rgb(184, 131, 0);
+	box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 }
 
 @media screen and (max-width: 767px) {
@@ -413,7 +414,7 @@
 	}
 
 	.parallax_btn {
-		color: #fff;
+		/* color: #fff; */
 		background-color: rgb(255, 183, 0);
 		font-family: Montserrat, sans-serif;
 		text-decoration: none;
@@ -426,9 +427,10 @@
 	}
 
 	.parallax_btn:hover {
-		background-color: #fff;
-		color: rgb(255, 183, 0);
-		border: 1px solid rgb(255, 183, 0);
+		background-color: rgb(224, 161, 0);
+		color: #fff;
+		border: 1px solid rgb(184, 131, 0);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 	}
 
 	.ready_header p {
@@ -590,7 +592,7 @@
 	}
 
 	.parallax_btn {
-		color: #fff;
+		/* color: #fff; */
 		background-color: rgb(255, 183, 0);
 		font-family: Montserrat, sans-serif;
 		text-decoration: none;
@@ -603,9 +605,10 @@
 	}
 
 	.parallax_btn:hover {
-		background-color: #fff;
-		color: rgb(255, 183, 0);
-		border: 1px solid rgb(255, 183, 0);
+		background-color: rgb(224, 161, 0);
+		color: #fff;
+		border: 1px solid rgb(184, 131, 0);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 	}
 
 	.portfolio_items {
@@ -803,22 +806,24 @@
 	}
 
 	.parallax_btn {
-		color: #fff;
+		/* color: #fff; */
 		background-color: rgb(255, 183, 0);
 		font-family: Montserrat, sans-serif;
 		text-decoration: none;
-		font-size: 2rem;
-		padding: 0.5rem;
+		font-size: 1.5rem;
+		padding: 0.5rem 1rem;
 		font-weight: bold;
 		margin-top: 2rem;
 		width: 20%;
 		text-align: center;
+    
 	}
 
 	.parallax_btn:hover {
-		background-color: #fff;
-		color: rgb(255, 183, 0);
-		border: 1px solid rgb(255, 183, 0);
+		background-color: rgb(224, 161, 0);
+		color: #fff;
+		border: 1px solid rgb(184, 131, 0);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 	}
 
 	.portfolio_items {
@@ -1042,9 +1047,10 @@
 	}
 
 	.parallax_btn:hover {
-		background-color: #fff;
-		color: rgb(255, 183, 0);
-		border: 1px solid rgb(255, 183, 0);
+		background-color: rgb(224, 161, 0);
+		color: #fff;
+		border: 1px solid rgb(184, 131, 0);
+		box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
 	}
 
 	.portfolio_items {

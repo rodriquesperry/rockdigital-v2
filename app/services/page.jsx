@@ -14,14 +14,19 @@ export const metadata = {
 const Services = () => {
 	return (
 		<>
-			<div className={`${styles.services_container} conatiner`}>
+			<div className={`${styles.services_container} container`}>
 				<div className={styles.services_img_container}>
 					<h1 className={styles.services_header_text}>SERVICES</h1>
 				</div>
 
 				<div className={styles.services}>
 					<div className={`${styles.services_img}  ${styles.small_screens}`}>
-						<Image src={WebDesignService} alt='website Design image' fill sizes='auto' />
+						<Image
+							src={WebDesignService}
+							alt='website Design image'
+							fill
+							sizes='auto'
+						/>
 					</div>
 					<div id={styles['first_service']} className={styles.service}>
 						<div className={styles.service_text_container}>
@@ -37,13 +42,25 @@ const Services = () => {
 								business&rsquo; website.
 							</div>
 						</div>
-						<div className={`${styles.services_img} ${styles.floating_right_image} ${styles.large_screens}`}>
-							<Image src={WebDesignService} alt='website Design image' fill  sizes='auto' />
+						<div
+							className={`${styles.services_img} ${styles.floating_right_image} ${styles.large_screens}`}
+						>
+							<Image
+								src={WebDesignService}
+								alt='website Design image'
+								fill
+								sizes='auto'
+							/>
 						</div>
 					</div>
 					<div id={styles['second_service']} className={styles.service}>
 						<div className={`${styles.services_img} ${styles.second_image}`}>
-							<Image src={SeoService} alt='SEO Services image' fill sizes='auto' />
+							<Image
+								src={SeoService}
+								alt='SEO Services image'
+								fill
+								sizes='auto'
+							/>
 						</div>
 						<div className={styles.service_text_container}>
 							<h2 className={styles.service_text_header}>
@@ -74,12 +91,14 @@ const Services = () => {
 								vision.
 							</div>
 						</div>
-						<div className={`${styles.services_img} ${styles.floating_right_image}`}>
+						<div
+							className={`${styles.services_img} ${styles.floating_right_image}`}
+						>
 							<Image
 								src={WebsiteImprovement}
 								alt='Website Improvement image'
 								fill
-                sizes='auto'
+								sizes='auto'
 							/>
 						</div>
 					</div>

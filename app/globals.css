@@ -13,7 +13,6 @@ body {
 	color: var(--bs-body-color);
 	padding-left: calc(1.8rem * 0.9);
 	padding-right: calc(1.8rem * 0.9);
-	
 	margin: 0 auto;
 }
 
