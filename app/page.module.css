@@ -178,7 +178,9 @@
 }
 
 .parallax1 {
-	background-image: url('../assets/pexels-hasan-albari-1229861.avif');
+	background-image:
+		linear-gradient(rgba(20, 12, 4, 0.5), rgba(20, 12, 4, 0.5)),
+		url('../assets/pexels-hasan-albari-1229861.avif');
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-size: contain;
@@ -222,6 +224,7 @@
 	font-size: 1rem;
 	padding: 0.5rem;
 	/* font-weight: bold; */
+  font-weight: 300;
 }
 
 .parallax2 {
