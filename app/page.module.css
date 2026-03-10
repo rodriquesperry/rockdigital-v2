@@ -221,7 +221,7 @@
 	text-decoration: none;
 	font-size: 1rem;
 	padding: 0.5rem;
-	font-weight: bold;
+	/* font-weight: bold; */
 }
 
 .parallax2 {
@@ -274,7 +274,7 @@
 	color: var(--color-white);
 	border: 0.5px solid var(--color-ink-900);
 	background-color: var(--color-accent);
-	font-weight: bold;
+	/* font-weight: bold; */
 	text-decoration: none;
 	padding: 0.5rem;
 }
@@ -426,7 +426,7 @@
 		text-decoration: none;
 		font-size: 2rem;
 		padding: 0.5rem;
-		font-weight: bold;
+		/* font-weight: bold; */
 		margin-top: 2rem;
 		width: 20%;
 		text-align: center;
@@ -604,7 +604,7 @@
 		text-decoration: none;
 		font-size: 2rem;
 		padding: 0.5rem;
-		font-weight: bold;
+		/* font-weight: bold; */
 		margin-top: 2rem;
 		width: 20%;
 		text-align: center;
@@ -818,7 +818,7 @@
 		text-decoration: none;
 		font-size: 1.5rem;
 		padding: 0.5rem 1rem;
-		font-weight: bold;
+		/* font-weight: bold; */
 		margin-top: 2rem;
 		width: 20%;
 		text-align: center;
@@ -883,7 +883,7 @@
 		font-weight: 500;
 		color: var(--color-white);
 		border-radius: var(--radius-none);
-		font-weight: bold;
+		/* font-weight: bold; */
 	}
 }
 
