@@ -59,7 +59,7 @@
 		var(--color-accent-warm) 100%
 	);
 	color: var(--color-ink-900);
-	font-weight: 700;
+	font-weight: 200;
 	letter-spacing: 0.02em;
 	white-space: nowrap;
 	box-shadow: 0 10px 20px rgba(34, 21, 6, 0.12);
