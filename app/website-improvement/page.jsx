@@ -4,6 +4,12 @@ import ContactForm from '@/components/contact-forms/ContactForm.component';
 
 import styles from './websiteImprovement.module.css';
 
+export const metadata = {
+	title: 'Digital Presence Improvement Services | Rock Digital',
+	description:
+		'Improve your digital presence with Rock Digital through local SEO, PPC, and content marketing strategies designed to drive traffic, increase visibility, and generate leads.',
+};
+
 const WebsiteImprovement = () => {
 	return (
 		<>

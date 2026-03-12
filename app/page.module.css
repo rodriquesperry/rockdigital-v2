@@ -169,6 +169,8 @@
 
 .skill_set h4 {
 	text-align: center;
+  min-height: 50px;
+  max-width: 350px;
 }
 
 .skill_set p {
@@ -198,8 +200,8 @@
 	display: grid;
 	align-items: center;
   justify-content: center;
-	/* top: 30%; */
-  padding: 2.5rem 2rem;
+	top: 30%;
+  padding: 1.5rem 2rem 0;
   width: auto;
   max-width: 400px;
   
@@ -402,7 +404,7 @@
 		background-position: center center;
 		background-size: cover;
 		background-attachment: fixed;
-		height: 45vh;
+		height: 60vh;
 		width: 100%;
 	}
 
@@ -412,14 +414,15 @@
 		color: var(--color-white);
 		display: grid;
 		place-items: center;
-		top: 23%;
     width: auto;
     max-width: none;
     margin: 0 2.3rem;
+    top: 16%;
 	}
 
 	.parallax_1_heading h3 {
 		font-size: 3rem;
+    margin-bottom: 2rem;
 	}
 
 	.parallax_btn {
@@ -427,7 +430,7 @@
 		background-color: var(--color-accent);
 		font-family: Montserrat, sans-serif;
 		text-decoration: none;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		padding: 0.5rem;
 		/* font-weight: bold; */
 		margin-top: 2rem;
@@ -580,7 +583,7 @@
 		background-position: center center;
 		background-size: cover;
 		background-attachment: fixed;
-		height: 55vh;
+		height: 65vh;
 		width: 100%;
 	}
 
@@ -598,6 +601,7 @@
 
 	.parallax_1_heading h3 {
 		font-size: 4rem;
+    margin-bottom: 3rem;
 	}
 
 	.parallax_btn {
@@ -714,7 +718,7 @@
 	}
 
 	.build_relationships_container {
-		margin: 6rem 0 6rem;
+		margin: 6rem 0 3rem;
 	}
 
 	.divs {
@@ -770,7 +774,7 @@
 	}
 
 	.skill_set img {
-		width: 20%;
+		width: 30%;
 		height: auto;
 	}
 

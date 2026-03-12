@@ -1,12 +1,9 @@
-'use client';
-
-import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'motion/react';
 
 import CarouselTopPage from '@/components/carousels/top_page/Carousel.component';
 import ContactForm from '@/components/contact-forms/ContactForm.component';
+import HomePageAnimations from './HomePageAnimations.client';
 
 import rec from '@/assets/rec.png';
 import developmentImage from '@/assets/development.webp';
@@ -16,6 +13,12 @@ import ongoingImage from '@/assets/ongoing.webp';
 import launchImage from '@/assets/launch.webp';
 
 import styles from './page.module.css';
+
+export const metadata = {
+	title: 'Web Design, SEO, and Digital Marketing Agency',
+	description:
+		'Rock Digital helps businesses grow online with custom web design, SEO, website optimization, and digital marketing services built to increase traffic and conversions.',
+};
 
 const processSteps = [
 	{
@@ -55,51 +58,17 @@ const processSteps = [
 	},
 ];
 
-const premiumEase = [0.16, 1, 0.3, 1];
-const viewport = { once: true, amount: 0.3 };
-
-const fadeUp = {
-	hidden: { opacity: 0, y: 22 },
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: { duration: 1.9, ease: premiumEase },
-	},
-};
-
-const cardReveal = {
-	hidden: { opacity: 0, y: 18, scale: 0.985 },
-	show: {
-		opacity: 1,
-		y: 0,
-		scale: 1,
-		transition: { duration: 1.8, ease: premiumEase },
-	},
-};
-
-const staggerParent = {
-	hidden: {},
-	show: {
-		transition: {
-			delayChildren: 0.12,
-			staggerChildren: 0.18,
-		},
-	},
-};
-
 const Home = () => {
 	return (
 		<>
 			<div className={styles.home_container}>
+				<HomePageAnimations />
 				<CarouselTopPage />
 
 				<div className={`${styles.main_container} w-100`}>
-					<motion.div
+					<div
 						className={`${styles.full_service_container} w-100`}
-						variants={fadeUp}
-						initial='hidden'
-						whileInView='show'
-						viewport={viewport}
+						data-animate='fade-up'
 					>
 						<h2>
 							A FULL SERVICE DIGITAL <span>&nbsp;AGENCY&nbsp; </span>
@@ -115,58 +84,39 @@ const Home = () => {
 							customers will love and converts like crazy. Click the area below
 							you are interested in.
 						</p>
-					</motion.div>
+					</div>
 
-					<motion.div
+					<div
 						className={styles.divs}
-						variants={staggerParent}
-						initial='hidden'
-						whileInView='show'
-						viewport={viewport}
 					>
-						<motion.div
-							className={styles.div1}
-							variants={cardReveal}
-							whileHover={{ y: -3, scale: 1.004, transition: { duration: 0.35, ease: premiumEase } }}
-						>
+						<div className={`${styles.div1} homepage-card-hover`} data-animate='card-reveal'>
 							<Link href='/website-design-and-development'>
 								<div className={styles.div_content}>
 									<h1>Custom Website Design</h1>
 									{/* <h3 id={styles['development']}>& DEVELOPMENT</h3> */}
 								</div>
 							</Link>
-						</motion.div>
+						</div>
 
-						<motion.div
-							className={styles.div2}
-							variants={cardReveal}
-							whileHover={{ y: -3, scale: 1.004, transition: { duration: 0.35, ease: premiumEase } }}
-						>
+						<div className={`${styles.div2} homepage-card-hover`} data-animate='card-reveal'>
 							<Link href='/website-maintenance'>
 								<div className={styles.div_content}>
 									<h3>Website Optimization</h3>
 								</div>
 							</Link>
-						</motion.div>
+						</div>
 
-						<motion.div
-							className={styles.div3}
-							variants={cardReveal}
-							whileHover={{ y: -3, scale: 1.004, transition: { duration: 0.35, ease: premiumEase } }}
-						>
+						<div className={`${styles.div3} homepage-card-hover`} data-animate='card-reveal'>
 							<Link href='/website-improvement'>
 								<div className={styles.div_content}>
 									<h3>Digital Growth Strategy</h3>
 								</div>
 							</Link>
-						</motion.div>
-					</motion.div>
-					<motion.div
+						</div>
+					</div>
+					<div
 						className={styles.build_relationships_container}
-						variants={fadeUp}
-						initial='hidden'
-						whileInView='show'
-						viewport={viewport}
+						data-animate='fade-up'
 					>
 						<h2>
 							WE CREATE DIGITAL SOLUTIONS <br /> THAT BUILD RELATIONSHIPS
@@ -179,19 +129,14 @@ const Home = () => {
 							killer content. Let&apos;s reshape the way your customers interact
 							with your business online.
 						</p>
-					</motion.div>
+					</div>
 
-					<motion.div
+					<div
 						className={styles.skills}
-						variants={staggerParent}
-						initial='hidden'
-						whileInView='show'
-						viewport={viewport}
 					>
-						<motion.div
-							className={styles.skill_set}
-							variants={cardReveal}
-							whileHover={{ y: -2, scale: 1.003, transition: { duration: 0.35, ease: premiumEase } }}
+						<div
+							className={`${styles.skill_set} homepage-skill-hover`}
+							data-animate='skills-stagger-item'
 						>
 							<Image src={rec} alt='Skills bullet image' />
 							<h4>Custom Design</h4>
@@ -201,11 +146,10 @@ const Home = () => {
 								and user friendly website unique to your brand and optimized for
 								your users and search engines.
 							</p>
-						</motion.div>
-						<motion.div
-							className={styles.skill_set}
-							variants={cardReveal}
-							whileHover={{ y: -2, scale: 1.003, transition: { duration: 0.35, ease: premiumEase } }}
+						</div>
+						<div
+							className={`${styles.skill_set} homepage-skill-hover`}
+							data-animate='skills-stagger-item'
 						>
 							<Image src={rec} alt='Skills bullet image' />
 							<h4>Responsive Layout</h4>
@@ -215,11 +159,10 @@ const Home = () => {
 								your customers can browse on the go. They adjust to different
 								screen sizes while still looking amazing.
 							</p>
-						</motion.div>
-						<motion.div
-							className={styles.skill_set}
-							variants={cardReveal}
-							whileHover={{ y: -2, scale: 1.003, transition: { duration: 0.35, ease: premiumEase } }}
+						</div>
+						<div
+							className={`${styles.skill_set} homepage-skill-hover`}
+							data-animate='skills-stagger-item'
 						>
 							<Image src={rec} alt='Skills bullet image' />
 							<h4>Search Engine Optimized</h4>
@@ -229,15 +172,12 @@ const Home = () => {
 								in search engine results pages. This means more visitors to your
 								site and more purchases from your business.
 							</p>
-						</motion.div>
-					</motion.div>
+						</div>
+					</div>
 					<div className={styles.parallax1}>
-						<motion.div
+						<div
 							id={styles['parallax_1_text']}
-							initial={{ opacity: 0, y: 14, scale: 0.985 }}
-							whileInView={{ opacity: 1, y: 0, scale: 1 }}
-							viewport={viewport}
-							transition={{ duration: 0.95, ease: premiumEase }}
+							data-animate='fade-up'
 						>
 							<div className={styles.parallax_1_heading}>
 								<h3 className='playfair'>
@@ -252,7 +192,7 @@ const Home = () => {
 									</Link>
 								</div>
 							</div>
-						</motion.div>
+						</div>
 					</div>
 
 					{/* <div className={styles.reviews_container}>
@@ -265,61 +205,44 @@ const Home = () => {
 
 					{/* <div className={`${styles.parallax2} d-none d-lg-block d-xl-block`}></div> */}
 
-					<motion.section
+					<section
 						className={styles.process_container}
-						initial='hidden'
-						whileInView='show'
-						viewport={{ once: true, amount: 0.2 }}
-						variants={staggerParent}
+						data-animate='process-section'
 					>
-						<motion.h2 variants={fadeUp}>OUR PROCESS</motion.h2>
-						<motion.hr variants={fadeUp} />
-						<motion.p variants={fadeUp}>
+						<h2 data-animate='process-heading'>OUR PROCESS</h2>
+						<hr data-animate='process-heading' />
+						<p data-animate='process-heading'>
 							A clear, collaborative path from your first conversation to
 							long-term support.
-						</motion.p>
+						</p>
 						<div className={styles.process_timeline}>
 							{processSteps.map((step, index) => (
-								<motion.article
+								<article
 									key={step.title}
 									className={styles.process_step}
-									initial={{ opacity: 0, y: 22, x: index % 2 === 0 ? -28 : 28 }}
-									whileInView={{ opacity: 1, y: 0, x: 0 }}
-									viewport={{ once: true, amount: 0.3 }}
-									transition={{
-										duration: 1.02,
-										delay: index * 0.1,
-										ease: premiumEase,
-									}}
+									data-animate='process-step'
 								>
-									<motion.div
-										className={styles.process_content}
-										whileHover={{ y: -2, scale: 1.004 }}
-										transition={{ duration: 0.35, ease: premiumEase }}
+									<div
+										className={`${styles.process_content} homepage-process-content-hover`}
 									>
 										<span className={styles.process_number}>
 											{String(index + 1).padStart(2, '0')}
 										</span>
 										<h3>{step.title}</h3>
 										<p>{step.description}</p>
-									</motion.div>
-									<motion.div
-										className={styles.process_image_wrap}
-										whileHover={{ y: -2, scale: 1.004 }}
-										transition={{ duration: 0.35, ease: premiumEase }}
+									</div>
+									<div
+										className={`${styles.process_image_wrap} homepage-process-image-hover`}
 									>
 										<Image src={step.image} alt={step.imageAlt} />
-									</motion.div>
-								</motion.article>
+									</div>
+								</article>
 							))}
 						</div>
-					</motion.section>
-					<motion.div
+					</section>
+					<div
 						className={styles.ready_container}
-						variants={fadeUp}
-						initial='hidden'
-						whileInView='show'
-						viewport={viewport}
+						data-animate='fade-up'
 					>
 						<div className={styles.ready_header}>
 							<h2>WE&apos;RE HERE TO HELP YOUR BUSINESS SUCCEED:</h2>
@@ -333,7 +256,7 @@ const Home = () => {
 							</p>
 						</div>
 						<ContactForm />
-					</motion.div>
+					</div>
 				</div>
 			</div>
 		</>
