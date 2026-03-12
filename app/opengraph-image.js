@@ -99,7 +99,7 @@ export default async function Image() {
 							maxWidth: 680,
 						}}
 					>
-						Premium digital experiences engineered to turn attention into revenue.
+						Premium digital experiences. 
 					</div>
 					<div
 						style={{
