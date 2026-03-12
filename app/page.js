@@ -15,9 +15,33 @@ import launchImage from '@/assets/launch.webp';
 import styles from './page.module.css';
 
 export const metadata = {
+	metadataBase: new URL('https://rockdigital.agency'),
 	title: 'Web Design, SEO, and Digital Marketing Agency',
 	description:
 		'Rock Digital helps businesses grow online with custom web design, SEO, website optimization, and digital marketing services built to increase traffic and conversions.',
+	openGraph: {
+		title: 'Web Design, SEO, and Digital Marketing Agency | Rock Digital',
+		description:
+			'Rock Digital helps businesses grow online with custom web design, SEO, website optimization, and digital marketing services built to increase traffic and conversions.',
+		url: 'https://rockdigital.agency',
+		siteName: 'Rock Digital',
+		type: 'website',
+		images: [
+			{
+				url: '/opengraph-image',
+				width: 1200,
+				height: 630,
+				alt: 'Rock Digital homepage preview with logo and marketing blurb',
+			},
+		],
+	},
+	twitter: {
+		card: 'summary_large_image',
+		title: 'Web Design, SEO, and Digital Marketing Agency | Rock Digital',
+		description:
+			'Custom websites, SEO, optimization, and marketing strategy that help businesses grow online.',
+		images: ['/opengraph-image'],
+	},
 };
 
 const processSteps = [
