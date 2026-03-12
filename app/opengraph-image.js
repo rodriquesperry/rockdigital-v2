@@ -49,11 +49,10 @@ export default async function Image() {
 					<div
 						style={{
 							display: 'flex',
-							width: 300,
-							height: 300,
+							width: 340,
+							height: 340,
 							borderRadius: 36,
-							background: '#ffffff',
-							boxShadow: '0 24px 60px rgba(31, 20, 8, 0.18)',
+							background: 'transparent',
 							alignItems: 'center',
 							justifyContent: 'center',
 						}}
@@ -61,8 +60,8 @@ export default async function Image() {
 						<img
 							src={logoSrc}
 							alt='Rock Digital logo'
-							width='220'
-							height='220'
+							width='280'
+							height='280'
 							style={{ objectFit: 'contain' }}
 						/>
 					</div>
@@ -100,7 +99,7 @@ export default async function Image() {
 							maxWidth: 680,
 						}}
 					>
-						Web design and digital growth built to convert.
+						Premium digital experiences engineered to turn attention into revenue.
 					</div>
 					<div
 						style={{
@@ -111,9 +110,9 @@ export default async function Image() {
 							maxWidth: 650,
 						}}
 					>
-						Custom websites, SEO, optimization, and marketing strategy that help
-						businesses attract better traffic and turn more visitors into
-						customers.
+						Custom websites, SEO, and growth strategy crafted to elevate your
+						brand, attract qualified leads, and convert more of the traffic you
+						already earn.
 					</div>
 				</div>
 			</div>
