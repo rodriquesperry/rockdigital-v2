@@ -84,140 +84,128 @@ const processSteps = [
 
 const Home = () => {
 	return (
-		<>
-			<div className={styles.home_container}>
-				<HomePageAnimations />
-				<CarouselTopPage />
+		<div className={styles.home_container}>
+			<HomePageAnimations />
+			<CarouselTopPage />
 
-				<div className={`${styles.main_container} w-100`}>
+			<div className={`${styles.main_container} w-100`}>
+				<div
+					className={`${styles.full_service_container} w-100`}
+					data-animate='fade-up'
+				>
+					<h2>
+						A FULL SERVICE DIGITAL <span>&nbsp;AGENCY&nbsp; </span>
+					</h2>
+					<hr />
+					<p>
+						When you partner with Rock Digital for your online presence needs,
+						you can breathe easy knowing that your business is under the care
+						of skillful web design and development experts so you can be
+						confident that you&apos;ll always get the perfect website that fits
+						your style and budget. Let&apos;s create you a jaw-dropping
+						designed, mobile ready, and easy to use website that your customers
+						will love and converts like crazy. Click the area below you are
+						interested in.
+					</p>
+				</div>
+
+				<div className={styles.divs}>
+					<div className={`${styles.div1} homepage-card-hover`} data-animate='card-reveal'>
+						<Link href='/website-design-and-development'>
+							<div className={styles.div_content}>
+								<h3>Custom Website Design</h3>
+							</div>
+						</Link>
+					</div>
+
+					<div className={`${styles.div2} homepage-card-hover`} data-animate='card-reveal'>
+						<Link href='/website-maintenance'>
+							<div className={styles.div_content}>
+								<h3>Website Optimization</h3>
+							</div>
+						</Link>
+					</div>
+
+					<div className={`${styles.div3} homepage-card-hover`} data-animate='card-reveal'>
+						<Link href='/website-improvement'>
+							<div className={styles.div_content}>
+								<h3>Digital Growth Strategy</h3>
+							</div>
+						</Link>
+					</div>
+				</div>
+				<div
+					className={styles.build_relationships_container}
+					data-animate='fade-up'
+				>
+					<h2>
+						WE CREATE DIGITAL SOLUTIONS <br /> THAT BUILD RELATIONSHIPS
+					</h2>
+					<hr />
+					<p>
+						We exist to help your business succeed online. Our web specialists
+						can help you design and develop a custom website or app, plan your
+						digital marketing strategy to drive traffic and provide you with
+						killer content. Let&apos;s reshape the way your customers interact
+						with your business online.
+					</p>
+				</div>
+
+				<div className={styles.skills}>
 					<div
-						className={`${styles.full_service_container} w-100`}
-						data-animate='fade-up'
+						className={`${styles.skill_set} homepage-skill-hover`}
+						data-animate='skills-stagger-item'
 					>
-						<h2>
-							A FULL SERVICE DIGITAL <span>&nbsp;AGENCY&nbsp; </span>
-						</h2>
-						<hr />
+						<Image src={rec} alt='Skills bullet image' sizes='96px' />
+						<h4>Custom Design</h4>
 						<p>
-							When you partner with Rock Digital for your online presence needs,
-							you can breathe easy knowing that your business is under the care
-							of skillful web design and marketing experts so you can be
-							confident that you&apos;ll always get the perfect website that
-							fits your style and budget. Let&apos;s create you a jaw-dropping
-							designed, mobile ready, and easy to use website that your
-							customers will love and converts like crazy. Click the area below
-							you are interested in.
+							Get found in search engines and loved by customers with custom
+							website design and development. A great looking, mobile-ready,
+							and user friendly website unique to your brand and optimized for
+							your users and search engines.
 						</p>
 					</div>
-
 					<div
-						className={styles.divs}
+						className={`${styles.skill_set} homepage-skill-hover`}
+						data-animate='skills-stagger-item'
 					>
-						<div className={`${styles.div1} homepage-card-hover`} data-animate='card-reveal'>
-							<Link href='/website-design-and-development'>
-								<div className={styles.div_content}>
-									<h1>Custom Website Design</h1>
-									{/* <h3 id={styles['development']}>& DEVELOPMENT</h3> */}
-								</div>
-							</Link>
-						</div>
-
-						<div className={`${styles.div2} homepage-card-hover`} data-animate='card-reveal'>
-							<Link href='/website-maintenance'>
-								<div className={styles.div_content}>
-									<h3>Website Optimization</h3>
-								</div>
-							</Link>
-						</div>
-
-						<div className={`${styles.div3} homepage-card-hover`} data-animate='card-reveal'>
-							<Link href='/website-improvement'>
-								<div className={styles.div_content}>
-									<h3>Digital Growth Strategy</h3>
-								</div>
-							</Link>
-						</div>
-					</div>
-					<div
-						className={styles.build_relationships_container}
-						data-animate='fade-up'
-					>
-						<h2>
-							WE CREATE DIGITAL SOLUTIONS <br /> THAT BUILD RELATIONSHIPS
-						</h2>
-						<hr />
+						<Image src={rec} alt='Skills bullet image' sizes='96px' />
+						<h4>Responsive Layout</h4>
 						<p>
-							We exist to help your business succeed online. Our web specialists
-							can help you design and develop a custom website or app, plan your
-							digital marketing strategy to drive traffic and provide you with
-							killer content. Let&apos;s reshape the way your customers interact
-							with your business online.
+							From desktop to mobile, have your customers interact with your
+							business on their own terms. Our websites are mobile ready so
+							your customers can browse on the go. They adjust to different
+							screen sizes while still looking amazing.
 						</p>
 					</div>
-
 					<div
-						className={styles.skills}
+						className={`${styles.skill_set} homepage-skill-hover`}
+						data-animate='skills-stagger-item'
 					>
-						<div
-							className={`${styles.skill_set} homepage-skill-hover`}
-							data-animate='skills-stagger-item'
-						>
-							<Image src={rec} alt='Skills bullet image' />
-							<h4>Custom Design</h4>
-							<p>
-								Get found in search engines and loved by customers with custom
-								website design and development. A great looking, mobile-ready,
-								and user friendly website unique to your brand and optimized for
-								your users and search engines.
-							</p>
-						</div>
-						<div
-							className={`${styles.skill_set} homepage-skill-hover`}
-							data-animate='skills-stagger-item'
-						>
-							<Image src={rec} alt='Skills bullet image' />
-							<h4>Responsive Layout</h4>
-							<p>
-								From desktop to mobile, have your customers interact with your
-								business on their own terms. Our websites are mobile ready so
-								your customers can browse on the go. They adjust to different
-								screen sizes while still looking amazing.
-							</p>
-						</div>
-						<div
-							className={`${styles.skill_set} homepage-skill-hover`}
-							data-animate='skills-stagger-item'
-						>
-							<Image src={rec} alt='Skills bullet image' />
-							<h4>Search Engine Optimized</h4>
-							<p>
-								Your website doing what it&apos;s designed to do. Our websites
-								are built with SEO in mind and will get you greater visibility
-								in search engine results pages. This means more visitors to your
-								site and more purchases from your business.
-							</p>
-						</div>
+						<Image src={rec} alt='Skills bullet image' sizes='96px' />
+						<h4>Search Engine Optimized</h4>
+						<p>
+							Your website doing what it&apos;s designed to do. Our websites are
+							built with SEO in mind and will get you greater visibility in
+							search engine results pages. This means more visitors to your
+							site and more purchases from your business.
+						</p>
 					</div>
-					<div className={styles.parallax1}>
-						<div
-							id={styles['parallax_1_text']}
-							data-animate='fade-up'
-						>
-							<div className={styles.parallax_1_heading}>
-								<h3 className='playfair'>
-									Ready to turn your website into a growth engine?
-								</h3>
-								<div className={styles.parallax_btn_container}>
-									<Link
-										href='/contact'
-										className={`${styles.parallax_btn} lato`}
-									>
-										Start Your Project
-									</Link>
-								</div>
+				</div>
+				<div className={styles.parallax1}>
+					<div id={styles['parallax_1_text']} data-animate='fade-up'>
+						<div className={styles.parallax_1_heading}>
+							<h3 className='playfair'>
+								Ready to turn your website into a growth engine?
+							</h3>
+							<div className={styles.parallax_btn_container}>
+								<Link href='/contact' className={`${styles.parallax_btn} lato`}>
+									Start Your Project
+								</Link>
 							</div>
 						</div>
 					</div>
+				</div>
 
 					{/* <div className={styles.reviews_container}>
             <h2 className={styles.reviewer}>REVIEWS</h2>
@@ -229,10 +217,10 @@ const Home = () => {
 
 					{/* <div className={`${styles.parallax2} d-none d-lg-block d-xl-block`}></div> */}
 
-					<section
-						className={styles.process_container}
-						data-animate='process-section'
-					>
+				<section
+					className={styles.process_container}
+					data-animate='process-section'
+				>
 						<h2 data-animate='process-heading'>OUR PROCESS</h2>
 						<hr data-animate='process-heading' />
 						<p data-animate='process-heading'>
@@ -258,32 +246,35 @@ const Home = () => {
 									<div
 										className={`${styles.process_image_wrap} homepage-process-image-hover`}
 									>
-										<Image src={step.image} alt={step.imageAlt} />
+										<Image
+											src={step.image}
+											alt={step.imageAlt}
+											sizes='(max-width: 1023px) 100vw, 40vw'
+										/>
 									</div>
 								</article>
 							))}
 						</div>
-					</section>
-					<div
-						className={styles.ready_container}
-						data-animate='fade-up'
-					>
-						<div className={styles.ready_header}>
-							<h2>WE&apos;RE HERE TO HELP YOUR BUSINESS SUCCEED:</h2>
-							<hr />
-							<p>
-								Ready to step your business&apos; web game up? <br /> It would
-								be our pleasure to create a custom website design experience
-								that represents your brand, communicates your brand message and
-								<strong> converts more leads</strong> which increases your
-								overall revenue. Fill out the form to get started.
-							</p>
-						</div>
-						<ContactForm />
+				</section>
+				<div
+					className={styles.ready_container}
+					data-animate='fade-up'
+				>
+					<div className={styles.ready_header}>
+						<h2>WE&apos;RE HERE TO HELP YOUR BUSINESS SUCCEED:</h2>
+						<hr />
+						<p>
+							Ready to step your business&apos; web game up? <br /> It would be
+							our pleasure to create a custom website design experience that
+							represents your brand, communicates your brand message and
+							<strong> converts more leads</strong> which increases your
+							overall revenue. Fill out the form to get started.
+						</p>
 					</div>
+					<ContactForm />
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

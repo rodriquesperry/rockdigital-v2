@@ -1,22 +1,31 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import { useEffect, useId, useState } from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
-
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Offcanvas from 'react-bootstrap/Offcanvas';
 
 import logo from '@/assets/RockDigitalLogo-196px.jpeg';
 
 import styles from './navigation.module.css';
 
+const navigationLinks = [
+	{ href: '/services', label: 'SERVICES' },
+	{ href: '/portfolio', label: 'PORTFOLIO' },
+	{ href: '/contact', label: 'CONTACT US' },
+	{ href: '/blog', label: 'BLOG' },
+	{ href: '/admin', label: 'LOGIN', prefetch: false },
+	{
+		href: '/website-audit',
+		label: 'Request a Website Audit',
+		className: styles.auditLink,
+	},
+];
+
 const Navigation = () => {
 	const [scroll, setScroll] = useState(false);
 	const [showOffcanvas, setShowOffcanvas] = useState(false);
+	const mobileNavId = useId();
 
 	const closeOffcanvas = () => setShowOffcanvas(false);
 
@@ -37,99 +46,116 @@ const Navigation = () => {
 		};
 	}, []);
 
+	useEffect(() => {
+		document.body.style.overflow = showOffcanvas ? 'hidden' : '';
+
+		return () => {
+			document.body.style.overflow = '';
+		};
+	}, [showOffcanvas]);
+
+	useEffect(() => {
+		const onKeyDown = (event) => {
+			if (event.key === 'Escape') {
+				closeOffcanvas();
+			}
+		};
+
+		window.addEventListener('keydown', onKeyDown);
+		return () => window.removeEventListener('keydown', onKeyDown);
+	}, []);
+
 	return (
-		<>
-			<Navbar expand='lg' className={`mb-3 sticky-top ${styles.navbar}`}>
-				<Container fluid>
-					<Link href='/' className={`${styles.navbar_brand}`}>
+		<header className={styles.header}>
+			<div className={styles.navbar}>
+				<div className={styles.navbarInner}>
+					<Link href='/' className={styles.navbar_brand} aria-label='Rock Digital home'>
 						<Image
 							src={logo}
 							alt='Rock Digital Logo'
-							className={`${scroll ? styles.resize : styles.navbar_brand}`}
+							className={scroll ? styles.resize : styles.brandImage}
 							priority
+							sizes='96px'
 						/>
 					</Link>
 
-					<Navbar.Toggle
-						className={styles.toggler}
-						aria-controls='responsive-navbar-nav'
-						onClick={() => setShowOffcanvas(true)}
-					/>
-
-					<Navbar.Offcanvas
-						id='offcanvasNavbar-expand'
-						aria-labelledby='offcanvasNavbarLabel-expand'
-						placement='end'
-						show={showOffcanvas}
-						onHide={closeOffcanvas}
-					>
-						<Offcanvas.Header closeButton>
-							<Link href='/' onClick={closeOffcanvas}>
-								<Offcanvas.Title
-									id='offcanvasNavbarLabel-expand'
-									className={styles.offCanvasTitle}
-								>
-									<Image
-										src={logo}
-										alt='Rock Digital Logo'
-										className='img-fluid'
-										priority
-									/>
-								</Offcanvas.Title>
-							</Link>
-						</Offcanvas.Header>
-						<Offcanvas.Body>
-							<Nav
-								className={`justify-content-end flex-grow-1 pe-3 lato ${styles.navbar_nav}`}
+					<nav className={styles.desktopNav} aria-label='Primary navigation'>
+						{navigationLinks.map((link) => (
+							<Link
+								key={link.href}
+								href={link.href}
+								prefetch={link.prefetch}
+								className={`${styles.link} ${link.className || ''}`.trim()}
 							>
-								<Link
-									href='/services'
-									className={styles.link}
-									onClick={closeOffcanvas}
-								>
-									SERVICES
-								</Link>
-								<Link
-									href='/portfolio'
-									className={styles.link}
-									onClick={closeOffcanvas}
-								>
-									PORTFOLIO
-								</Link>
-								<Link
-									href='/contact'
-									className={styles.link}
-									onClick={closeOffcanvas}
-								>
-									CONTACT US
-								</Link>
-								<Link
-									href='/blog'
-									className={styles.link}
-									onClick={closeOffcanvas}
-								>
-									BLOG
-								</Link>
-								<Link
-									href='/login'
-									className={styles.link}
-									onClick={closeOffcanvas}
-								>
-									LOGIN
-								</Link>
-								<Link
-									href='/website-audit'
-									className={`${styles.link} ${styles.auditLink}`}
-									onClick={closeOffcanvas}
-								>
-									Get a Website Audit
-								</Link>
-							</Nav>
-						</Offcanvas.Body>
-					</Navbar.Offcanvas>
-				</Container>
-			</Navbar>
-		</>
+								{link.label}
+							</Link>
+						))}
+					</nav>
+
+					<button
+						type='button'
+						className={styles.toggler}
+						aria-controls={mobileNavId}
+						aria-expanded={showOffcanvas}
+						aria-label={showOffcanvas ? 'Close navigation menu' : 'Open navigation menu'}
+						onClick={() => setShowOffcanvas((current) => !current)}
+					>
+						<span />
+						<span />
+						<span />
+					</button>
+				</div>
+			</div>
+
+			<div
+				className={`${styles.backdrop} ${showOffcanvas ? styles.backdropVisible : ''}`}
+				aria-hidden='true'
+				onClick={closeOffcanvas}
+			/>
+
+			<div
+				id={mobileNavId}
+				className={`${styles.mobilePanel} ${
+					showOffcanvas ? styles.mobilePanelOpen : ''
+				}`}
+				role='dialog'
+				aria-modal='true'
+				aria-label='Mobile navigation'
+			>
+				<div className={styles.mobileHeader}>
+					<Link href='/' className={styles.mobileBrand} onClick={closeOffcanvas}>
+						<Image
+							src={logo}
+							alt='Rock Digital Logo'
+							className={styles.mobileBrandImage}
+							sizes='88px'
+						/>
+					</Link>
+					<button
+						type='button'
+						className={styles.closeButton}
+						onClick={closeOffcanvas}
+						aria-label='Close navigation menu'
+					>
+						<span />
+						<span />
+					</button>
+				</div>
+				<nav className={styles.mobileNav} aria-label='Mobile navigation links'>
+					{navigationLinks.map((link) => (
+						<Link
+							key={link.href}
+							href={link.href}
+							prefetch={link.prefetch}
+							className={`${styles.link} ${link.className || ''}`.trim()}
+							onClick={closeOffcanvas}
+						>
+							{link.label}
+						</Link>
+					))}
+				</nav>
+			</div>
+		</header>
 	);
 };
 

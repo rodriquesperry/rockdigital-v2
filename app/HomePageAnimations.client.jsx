@@ -6,6 +6,9 @@ const prefersReducedMotion = () =>
 	typeof window !== 'undefined' &&
 	window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const canHover = () =>
+	typeof window !== 'undefined' && window.matchMedia('(hover: hover)').matches;
+
 const hoverTargets = [
 	'.homepage-card-hover',
 	'.homepage-skill-hover',
@@ -17,6 +20,7 @@ export default function HomePageAnimations() {
 	useEffect(() => {
 		let ctx;
 		let cleanupHover = () => {};
+		let idleId;
 
 		const run = async () => {
 			if (prefersReducedMotion()) {
@@ -138,47 +142,58 @@ export default function HomePageAnimations() {
 					});
 				}
 
-				const listeners = [];
-				hoverTargets.forEach((selector) => {
-					gsap.utils.toArray(selector).forEach((element) => {
-						const hoverIn = () => {
-							gsap.to(element, {
-								y: -3,
-								scale: 1.004,
-								duration: 0.35,
-								ease: 'power3.out',
-								overwrite: 'auto',
-							});
-						};
+				if (canHover()) {
+					const listeners = [];
+					hoverTargets.forEach((selector) => {
+						gsap.utils.toArray(selector).forEach((element) => {
+							const hoverIn = () => {
+								gsap.to(element, {
+									y: -3,
+									scale: 1.004,
+									duration: 0.35,
+									ease: 'power3.out',
+									overwrite: 'auto',
+								});
+							};
 
-						const hoverOut = () => {
-							gsap.to(element, {
-								y: 0,
-								scale: 1,
-								duration: 0.35,
-								ease: 'power3.out',
-								overwrite: 'auto',
-							});
-						};
+							const hoverOut = () => {
+								gsap.to(element, {
+									y: 0,
+									scale: 1,
+									duration: 0.35,
+									ease: 'power3.out',
+									overwrite: 'auto',
+								});
+							};
 
-						element.addEventListener('mouseenter', hoverIn);
-						element.addEventListener('mouseleave', hoverOut);
-						listeners.push(() => {
-							element.removeEventListener('mouseenter', hoverIn);
-							element.removeEventListener('mouseleave', hoverOut);
+							element.addEventListener('mouseenter', hoverIn);
+							element.addEventListener('mouseleave', hoverOut);
+							listeners.push(() => {
+								element.removeEventListener('mouseenter', hoverIn);
+								element.removeEventListener('mouseleave', hoverOut);
+							});
 						});
 					});
-				});
 
-				cleanupHover = () => {
-					listeners.forEach((dispose) => dispose());
-				};
+					cleanupHover = () => {
+						listeners.forEach((dispose) => dispose());
+					};
+				}
 			});
 		};
 
-		run();
+		if ('requestIdleCallback' in window) {
+			idleId = window.requestIdleCallback(run, { timeout: 1800 });
+		} else {
+			idleId = window.setTimeout(run, 900);
+		}
 
 		return () => {
+			if ('cancelIdleCallback' in window) {
+				window.cancelIdleCallback(idleId);
+			} else {
+				window.clearTimeout(idleId);
+			}
 			cleanupHover();
 			ctx?.revert();
 		};

@@ -21,9 +21,7 @@ const BlogPost = ({ params }) => {
 					`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`
 				)
 				.then((data) => {
-          console.log('data: ', data.data.data.reverse());
-          
-          setPosts(data.data.data.reverse());
+					setPosts(data.data.data.reverse());
 				})
 				.catch((error) => setError(error));
 		};

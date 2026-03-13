@@ -11,7 +11,7 @@ const PortfolioItem = () => {
 	const [error, setError] = useState(null);
 	const [portfolioItems, setPortfolioItems] = useState([]);
 
-  const baseURL = config.api || '127.0.0.1:1337';
+	const baseURL = config.api || 'http://127.0.0.1:1337';
 
 	useEffect(() => {
 		const getPortfolioItems = async () => {
@@ -30,8 +30,6 @@ const PortfolioItem = () => {
 	if (error) {
 		return <div>An error occurred: {error.message}</div>;
 	}
-
-  console.log(portfolioItems);
 
 	return (
 		<>

@@ -19,7 +19,7 @@
 }
 
 .main_container h2 span {
-	background-color: var(--color-accent);
+	background-color: var(--color-accent-strong);
 	color: var(--color-white);
 }
 
@@ -135,7 +135,7 @@
 	text-align: center;
 }
 
-.div1 h1 {
+.div1 h3 {
 	top: 48%;
 }
 
@@ -153,6 +153,15 @@
 	grid-template-columns: 1fr;
 	width: 100%;
 	margin-top: 5rem;
+}
+
+.build_relationships_container,
+.skills,
+.parallax1,
+.process_container,
+.ready_container {
+	content-visibility: auto;
+	contain-intrinsic-size: 1px 700px;
 }
 
 .skill_set {

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -13,7 +13,7 @@ import styles from './contactForm.module.css';
 const ContactForm = () => {
 	const baseURL = config.api || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
-	const [uuid, setUuid] = useState('');
+	const leadIdRef = useRef(uuidv4());
 
 	const {
 		register,
@@ -27,7 +27,7 @@ const ContactForm = () => {
 	} = useForm({
 		defaultValues: {
 			active: true,
-			lead_uuid: uuid,
+			lead_uuid: leadIdRef.current,
 			name: '',
 			email: '',
 			phone_num: '',
@@ -38,10 +38,7 @@ const ContactForm = () => {
 	});
 
 	useEffect(() => {
-		const newUuid = uuidv4();
-		console.log('Generated UUID: ', newUuid);
-		setUuid(uuidv4().toString());
-		setValue('lead_uuid', newUuid);
+		setValue('lead_uuid', leadIdRef.current);
 	}, [setValue]);
 
 	useEffect(() => {
@@ -53,10 +50,8 @@ const ContactForm = () => {
 	const postLead = async (data) => {
 		try {
 			const response = await axios.post(`${baseURL}/api/leads`, { data });
-			console.log('API response:', response); // Check the full response
 
 			if (response?.data?.error) {
-				console.error('API Error:', response.data.error);
 				if (response.data.error.message === 'Email already in use.') {
 					setError('email', { message: 'Email is already registered.' });
 				} else {
@@ -66,10 +61,6 @@ const ContactForm = () => {
 			}
 			return response; // Return the successful response
 		} catch (error) {
-			console.error(
-				'Error posting lead:',
-				error.response?.data || error.message,
-			);
 			const errorMessage =
 				error.response?.data?.error?.message || 'An unknown error occurred';
 			const errorDetails =
@@ -82,31 +73,24 @@ const ContactForm = () => {
 	const sendLeadEmail = async (data) => {
 		try {
 			const response = await axios.post('/api/send-email', data);
-			if (response?.data?.userEmailSent === false) {
-				console.warn('User confirmation email was not sent:', response.data);
-			}
 		} catch (error) {
-			console.error(
-				'Error sending email:',
-				error.response?.data || error.message,
-			);
+			return null;
 		}
 	};
 
 	const onSubmit = async (data) => {
-		console.log('Form submitted with data:', data); // Add this for debugging
-
 		try {
 			clearErrors('root');
 			const response = await postLead(data); // Await API call
 
 			if (response?.status === 201) {
 				await sendLeadEmail(data);
-				// Check if the response is successful
+				const nextLeadId = uuidv4();
+				leadIdRef.current = nextLeadId;
 				setIsSubmitSuccessful(true);
 				reset({
 					active: true,
-					lead_uuid: uuidv4(),
+					lead_uuid: nextLeadId,
 					name: '',
 					email: '',
 					phone_num: '',
@@ -116,7 +100,6 @@ const ContactForm = () => {
 				setTimeout(() => setIsSubmitSuccessful(false), 2000); // Hide the success message
 			}
 		} catch (error) {
-			console.error('Form submission failed:', error);
 			setIsSubmitSuccessful(false); // Ensure success message isn't shown
 		}
 	};
@@ -128,8 +111,6 @@ const ContactForm = () => {
 	return (
 		<div className={styles.form_container}>
 			<form id={styles['form']} onSubmit={handleSubmit(onSubmit, onInvalid)}>
-				{console.log('errors: ', errors)}{' '}
-				{/* Log the errors to see if they are populated */}
 				<input type='hidden' {...register('active')} />
 				<input type='hidden' {...register('lead_uuid')} />
 				<label htmlFor='name'>First Name</label>

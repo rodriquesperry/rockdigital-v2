@@ -126,30 +126,30 @@ export default function BlogPageClient() {
 
 	if (error) {
 		return (
-			<main className={styles.page}>
+			<div className={styles.page}>
 				<p className={styles.error}>An error occurred: {error.message}</p>
-			</main>
+			</div>
 		);
 	}
 
 	if (isLoading) {
 		return (
-			<main className={styles.page}>
+			<div className={styles.page}>
 				<p className={styles.status}>Loading blog posts...</p>
-			</main>
+			</div>
 		);
 	}
 
 	if (!posts.length) {
 		return (
-			<main className={styles.page}>
+			<div className={styles.page}>
 				<p className={styles.status}>No posts available right now.</p>
-			</main>
+			</div>
 		);
 	}
 
 	return (
-		<main className={styles.page}>
+		<div className={styles.page}>
 			<section className={styles.heroSection}>
 				<h1 className={styles.heading}>Insights From The Rock Digital Team</h1>
 
@@ -241,6 +241,6 @@ export default function BlogPageClient() {
 					<p className={styles.status}>No posts found in this category.</p>
 				)}
 			</section>
-		</main>
+		</div>
 	);
 }

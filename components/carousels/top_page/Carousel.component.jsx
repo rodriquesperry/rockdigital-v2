@@ -1,10 +1,8 @@
 'use client';
 
-import React from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-
-import Carousel from 'react-bootstrap/Carousel';
 
 import WebDesign1359w from '@/assets/web-design-full_1359px.webp';
 import DigitalMarketing1359w from '@/assets/digital-marketing_1359px.webp';
@@ -12,107 +10,105 @@ import SheratonHotel1359w from '@/assets/sheraton-houston-st-san-antonio-tx_1359
 
 import styles from './carousel.module.css';
 
+const slides = [
+	{
+		image: WebDesign1359w,
+		alt: 'Modern website mockup on desktop and mobile devices.',
+		heading: 'Custom Websites That Turn Visitors Into Customers',
+		description:
+			'Strategically designed websites that showcase your brand and convert visitors into customers.',
+		link: '/website-design-and-development',
+		cta: 'Start Your Website Project',
+	},
+	{
+		image: DigitalMarketing1359w,
+		alt: 'Digital marketing workspace with analytics and campaign planning.',
+		heading: 'Strategic Web Design Built for Growth',
+		description:
+			'Outperform competitors with strategy-driven design and proven digital processes.',
+		link: '/website-improvement',
+		cta: 'Start Growing Online',
+	},
+	{
+		image: SheratonHotel1359w,
+		alt: 'Hospitality website example highlighting a premium destination.',
+		heading: 'Is Your Website Holding Your Business Back?',
+		description:
+			'We design high-performing websites that attract customers and turn visitors into revenue.',
+		link: '/website-audit',
+		cta: 'Get a Website Audit',
+		eyebrow: 'Professional analysis delivered within 48 hours',
+	},
+];
+
 const CarouselTopPage = () => {
+	const [activeSlide, setActiveSlide] = useState(0);
+
+	useEffect(() => {
+		const intervalId = window.setInterval(() => {
+			setActiveSlide((current) => (current + 1) % slides.length);
+		}, 7300);
+
+		return () => window.clearInterval(intervalId);
+	}, []);
+
 	return (
-		<div className={styles.carousel_div}>
-			<Carousel
-				interval={7300}
-				className={`container ${styles.carousel}`}
-				indicators={false}
-				controls={false}
-				fade
-			>
-				<Carousel.Item className={styles.carousel_item}>
-					<Image
-						className={`d-block img-fluid ${styles.web_design}`}
-						src={WebDesign1359w}
-						alt='First slide'
-						fill
-						priority
-						sizes='100%'
-					/>
-					<Carousel.Caption className={styles.carousel_caption}>
-						<div className={styles.carousel_caption_block}>
-							<div className={styles.carousel_heading}>
-								<h3 className='playfair'>
-									Custom Websites That Turn Visitors Into Customers
-								</h3>
-							</div>
-							<p className={styles.carousel_paragraph}>
-								Strategically designed websites that showcase your brand and
-								convert visitors into customers.
-							</p>
-							<Link
-								href='/website-design-and-development'
-								className={`${styles.btn} lato`}
-							>
-								<span>Start Your Website Project</span>
-							</Link>
-						</div>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item className={styles.carousel_item}>
-					<Image
-						className='d-block img-fluid'
-						src={DigitalMarketing1359w}
-						alt='Second slide'
-						fill
-						priority
-						sizes='100%'
-					/>
+		<section className={styles.hero} aria-label='Featured Rock Digital services'>
+			<div className={styles.carousel}>
+				{slides.map((slide, index) => {
+					const HeadingTag = index === 0 ? 'h1' : 'h2';
 
-					<Carousel.Caption className={styles.carousel_caption}>
-						<div className={styles.carousel_caption_block}>
-							<div className={styles.carousel_heading}>
-								<h3 className='playfair'>
-									Strategic Web Design Built for Growth
-								</h3>
+					return (
+						<article
+							key={slide.heading}
+							className={`${styles.carousel_item} ${
+								index === activeSlide ? styles.carousel_item_active : ''
+							}`}
+							aria-hidden={index !== activeSlide}
+						>
+							<Image
+								className={styles.hero_image}
+								src={slide.image}
+								alt={slide.alt}
+								fill
+								priority={index === 0}
+								fetchPriority={index === 0 ? 'high' : 'low'}
+								loading={index === 0 ? 'eager' : 'lazy'}
+								sizes='100vw'
+							/>
+							<div className={styles.carousel_caption}>
+								<div className={styles.carousel_caption_block}>
+									<div className={styles.carousel_heading}>
+										<HeadingTag className='playfair'>{slide.heading}</HeadingTag>
+									</div>
+									<p className={styles.carousel_paragraph}>{slide.description}</p>
+									<Link href={slide.link} className={`${styles.btn} lato`}>
+										<span>{slide.cta}</span>
+									</Link>
+									{slide.eyebrow && (
+										<span className={styles.carousel_span}>{slide.eyebrow}</span>
+									)}
+								</div>
 							</div>
-							<p className={styles.carousel_paragraph}>
-								Outperform competitors with strategy-driven design and proven
-								digital processes.
-							</p>
-							<Link
-								href='/website-improvement'
-								className={`${styles.btn} lato`}
-							>
-								<span>Start Growing Online</span>
-							</Link>
-						</div>
-					</Carousel.Caption>
-				</Carousel.Item>
-				<Carousel.Item className={styles.carousel_item}>
-					<Image
-						className='d-block img-fluid'
-						src={SheratonHotel1359w}
-						alt='Third slide'
-						fill
-						priority
-						sizes='100%'
+						</article>
+					);
+				})}
+			</div>
+			<div className={styles.carousel_controls} aria-label='Hero slide controls'>
+				{slides.map((slide, index) => (
+					<button
+						key={slide.heading}
+						type='button'
+						className={`${styles.carousel_dot} ${
+							index === activeSlide ? styles.carousel_dot_active : ''
+						}`}
+						onClick={() => setActiveSlide(index)}
+						aria-label={`Show slide ${index + 1}: ${slide.heading}`}
+						aria-pressed={index === activeSlide}
 					/>
-
-					<Carousel.Caption className={styles.carousel_caption}>
-						<div className={styles.carousel_caption_block}>
-							<div className={styles.carousel_heading}>
-								<h3 className='playfair'>
-									Is Your Website Holding Your Business Back?
-								</h3>
-							</div>
-							<p className={styles.carousel_paragraph}>
-								We design high-performing websites that attract customers and turn visitors into revenue.{' '}
-							</p>
-							<Link
-								href='/website-audit'
-								className={`${styles.btn} lato`}
-							>
-								<span>Get a Website Audit</span>
-							</Link>
-              <span className={styles.carousel_span}>Professional analysis delivered within 48 hours</span>
-						</div>
-					</Carousel.Caption>
-				</Carousel.Item>
-			</Carousel>
-		</div>
+				))}
+			</div>
+		</section>
 	);
 };
 
