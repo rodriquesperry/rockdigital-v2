@@ -1,72 +1,77 @@
 .website_improvement_container {
-  margin-top: 3rem;
-  padding-right: var(--gutter-desktop);
-  padding-left: var(--gutter-desktop);
+	margin: 3rem auto 0;
+	max-width: var(--container-max);
+	padding-right: var(--gutter-desktop);
+	padding-left: var(--gutter-desktop);
 }
 
 .website_maintenance_img_container {
-  position: relative;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 3rem;
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 100%;
+	min-height: clamp(220px, 32vw, 420px);
+	margin-bottom: 3rem;
+	overflow: hidden;
+	isolation: isolate;
 }
 
 .website_maintenance_img_container::before {
-  content: '';
-  background-image: url('../../assets/website-maintenance.avif');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  bottom: 0px;
-  left: 0px;
-  opacity: 1;
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(rgba(20, 12, 4, 0.42), rgba(20, 12, 4, 0.42)),
+		url('../../assets/website-maintenance.avif') center center / cover no-repeat;
+	transform: scale(1.01);
 }
 
 #website_maintenance_img_container_text {
-  position: relative;
-  color: var(--color-white);
-  background: rgba(128, 128, 128, 0.295);
-  font-size: 2.4rem;
-  line-height: 1;
-  text-align: center;
-  padding: 0 1rem;
-  width: 100%;
+	position: relative;
+	z-index: 1;
+	display: grid;
+	place-items: center;
+	width: 100%;
+	min-height: clamp(220px, 32vw, 420px);
+	margin: 0;
+	padding: 1.5rem;
+	color: var(--color-white);
+	background: rgba(128, 128, 128, 0.2);
+	font-size: clamp(2rem, 5vw, 5.75rem);
+	line-height: 0.95;
+	text-align: center;
+}
+
+.website_maintenance_container {
+	width: min(100%, 1180px);
+	margin: 0 auto 6rem;
 }
 
 .website_maintenance_text {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 1.3rem;
-  align-items: center;
-  text-align: center;
- 
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: clamp(1.05rem, 1.2rem + 0.3vw, 1.3rem);
+	text-align: center;
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .website_maintenance_img_container { 
-    height: 100%;
-  }
+.website_maintenance_text p {
+	margin: 0 0 1.2rem;
+}
 
-  #website_maintenance_img_container_text {
-    font-size: 6.4rem;
-  }
-  
-  .website_maintenance_container {
-    margin: 5rem 0;
-  }
-  
-  .website_maintenance_text {
-    padding: 0 15rem;
-    text-align: left;
-  }
+.contact_form {
+	width: min(100%, 980px);
+	margin: 3rem auto 0;
+}
 
-  .contact_form {
-    margin: 3.5rem 0 10rem;
-  }
+@media screen and (min-width: 1024px) {
+	.website_maintenance_text {
+		padding: 0 clamp(2rem, 10vw, 15rem);
+		text-align: left;
+	}
+
+	.contact_form {
+		margin-top: 5rem;
+	}
 }

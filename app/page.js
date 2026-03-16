@@ -157,7 +157,7 @@ const Home = () => {
 						data-animate='skills-stagger-item'
 					>
 						<Image src={rec} alt='Skills bullet image' sizes='96px' />
-						<h4>Custom Design</h4>
+						<h3>Custom Design</h3>
 						<p>
 							Get found in search engines and loved by customers with custom
 							website design and development. A great looking, mobile-ready,
@@ -170,7 +170,7 @@ const Home = () => {
 						data-animate='skills-stagger-item'
 					>
 						<Image src={rec} alt='Skills bullet image' sizes='96px' />
-						<h4>Responsive Layout</h4>
+						<h3>Responsive Layout</h3>
 						<p>
 							From desktop to mobile, have your customers interact with your
 							business on their own terms. Our websites are mobile ready so
@@ -183,12 +183,11 @@ const Home = () => {
 						data-animate='skills-stagger-item'
 					>
 						<Image src={rec} alt='Skills bullet image' sizes='96px' />
-						<h4>Search Engine Optimized</h4>
+						<h3>Search Engine Optimized</h3>
 						<p>
 							Your website doing what it&apos;s designed to do. Our websites are
 							built with SEO in mind and will get you greater visibility in
-							search engine results pages. This means more visitors to your
-							site and more purchases from your business.
+							search engine results pages. This means more visitors and more purchases.
 						</p>
 					</div>
 				</div>

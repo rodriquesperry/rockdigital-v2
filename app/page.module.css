@@ -176,7 +176,7 @@
 	height: auto;
 }
 
-.skill_set h4 {
+.skill_set h3 {
 	text-align: center;
   min-height: 50px;
   max-width: 350px;
@@ -186,6 +186,7 @@
 	text-align: center;
 	padding: 0 0rem;
 	font-size: 1.1rem;
+  min-height: 187px;
 }
 
 .parallax1 {
@@ -584,7 +585,7 @@
 		font-size: 1.3rem;
 		text-align: center;
 		padding: 0 0.8rem;
-		margin: 1rem 0;
+		margin: -1.5rem 0;
 	}
 
 	.parallax1 {
