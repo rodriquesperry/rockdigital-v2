@@ -10,10 +10,10 @@ import logo from '@/assets/RockDigitalLogo-196px.jpeg';
 import styles from './navigation.module.css';
 
 const navigationLinks = [
+	{ href: '/about', label: 'ABOUT' },
 	{ href: '/services', label: 'SERVICES' },
-	{ href: '/portfolio', label: 'PORTFOLIO' },
-	{ href: '/contact', label: 'CONTACT US' },
 	{ href: '/blog', label: 'BLOG' },
+	{ href: '/contact', label: 'CONTACT US' },
 	{ href: '/admin', label: 'LOGIN', prefetch: false },
 	{
 		href: '/website-audit',
