@@ -5,7 +5,7 @@ export default function robots() {
 		rules: {
 			userAgent: '*',
 			allow: '/',
-			// disallow: ['/private/', '/admin', '/portfolio', '/privacy']
+			disallow: ['/private/', '/admin', '/portfolio', '/privacy']
 		},
 		sitemap: `${config.api}/sitemap.xml`,
 	};

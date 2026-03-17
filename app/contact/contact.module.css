@@ -43,6 +43,119 @@
   padding: 0 1rem;
 }
 
+.app {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.hero {
+  background: #221506;
+  color: #F2F2F2;
+  padding: 120px 20px;
+}
+
+.containerGrid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.h1 {
+  font-size: 52px;
+  font-weight: 600;
+}
+
+.body {
+  margin: 20px 0;
+  color: #f2f2f280;
+}
+
+.primaryBtn {
+  background: rgb(255,183,0);
+  color: #221506;
+  padding: 12px 20px;
+  border-radius: 0px;
+}
+
+.link {
+  margin-left: 16px;
+}
+
+.heroVisual {
+  height: 300px;
+  background: linear-gradient(to bottom right, rgba(255,183,0,0.1), transparent);
+  border-radius: 12px;
+}
+
+.trust {
+  background: #F2F2F2;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.grid3 {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 24px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.cardOutline {
+  border: 1px solid rgba(0,0,0,0.05);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.qualify {
+  background: #221506;
+  color: white;
+  padding: 100px 20px;
+}
+
+.highlightBox {
+  background: #2a1a08;
+  border: 1px solid rgba(255,183,0,0.3);
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.formSection {
+  background: #F9F9F9;
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.placeholder {
+  height: 200px;
+  border: 2px dashed #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.faq {
+  padding: 100px 20px;
+}
+
+.faqItem {
+  border-bottom: 1px solid #eee;
+  padding: 12px 0;
+}
+
+.finalCta {
+  background: linear-gradient(to right, #221506, rgba(255,183,0,0.3));
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+}
+
+
 @media screen and (max-width: 375px) {
   .contact_container {
     padding-right: 0;
