@@ -174,6 +174,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 		const {
 			publishedAt,
 			author,
+      author_image,
 			title,
 			body,
 			read_time,
@@ -193,6 +194,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 				shortDescription={short_description}
 				readTime={read_time}
 				author={author}
+				authorImage={author_image?.url || ''}
 				dateString={date.toDateString()}
 			>
 				<ReactMarkdown>{markdownBody}</ReactMarkdown>

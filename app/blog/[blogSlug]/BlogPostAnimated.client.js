@@ -15,6 +15,7 @@ export default function BlogPostAnimated({
 	shortDescription,
 	readTime,
 	author,
+  authorImage,
 	dateString,
 	children,
 }) {
@@ -123,7 +124,14 @@ export default function BlogPostAnimated({
 				</div>
 
 				<div className={styles.author_info}>
+        {/* <Image
+							src={`${baseURL}${authorImage}`}
+							alt={title || 'Featured Image'}
+							fill
+							sizes='auto'
+						/> */}
 					<div className={`col-3 ${styles.info_pic}`}>
+          
 						<div className={styles.info_text}>
 							<h5 className={styles.author}>{author}</h5>
 							<h6 className={styles.date}>{dateString}</h6>
