@@ -115,7 +115,7 @@ export default function BlogPostAnimated({
 						/>
 					</div>
 					<div className={`col ${styles.header_text}`}>
-						<h2 className={styles.header_text_h2}>{title}</h2>
+						<h1 className={styles.header_text_h1}>{title}</h1>
 						<p className={`${styles.short_description} d-none d-md-block`}>
 							{shortDescription}
 						</p>

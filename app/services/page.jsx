@@ -7,7 +7,7 @@ import WebsiteImprovement from '@/assets/website-improvement-maintenance.webp';
 import styles from './services.module.css';
 
 export const metadata = {
-	title: 'Services',
+	title: 'Web Design Services',
 	description:
 		'Explore Rock Digital services including web design and development, SEO, PPC, and website maintenance to grow traffic, improve rankings, and convert more customers online.',
 };

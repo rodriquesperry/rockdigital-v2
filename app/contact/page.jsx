@@ -1,7 +1,7 @@
 import ContactPageClient from './ContactPage.client';
 
 export const metadata = {
-	title: 'Contact Us',
+	title: 'Contact Us | Website Design',
 	description:
 		'Contact Rock Digital to discuss your website, branding, and growth goals with a web design agency focused on high-performing websites.',
 };

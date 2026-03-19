@@ -3,7 +3,7 @@ import ContactForm from '@/components/contact-forms/ContactForm.component';
 import styles from './designAndDevelopment.module.css';
 
 export const metadata = {
-	title: 'Website Design and Development Services | Rock Digital',
+	title: 'Website Design and Development Services',
 	description:
 		'Rock Digital provides custom website design and development services built to reflect your brand, improve user experience, and turn more visitors into customers.',
 };

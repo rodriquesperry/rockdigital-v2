@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 
 import ContactForm from '@/components/contact-forms/ContactForm.component';
+import HeroVisual from '@/assets/heroVisual.png';
 
 import styles from './contact.module.css';
 
@@ -43,31 +45,30 @@ export default function ContactPageClient() {
 					<section className={styles.hero}>
 						<div className={styles.containerGrid}>
 							<div>
-								<p className={styles.eyebrow}>Web Design Agency</p>
 								<h1 className={styles.h1}>
 									Hiring a Web Design Agency Shouldn’t Feel Like a Risk
 								</h1>
 								<p className={styles.body}>
 									Choosing the right web design agency can feel overwhelming.
-									You’ve likely seen websites that look good but don’t convert,
-									agencies that overpromise and underdeliver, or projects that
-									drag on with no clear direction. The reality is—your website
-									isn’t just a design project. It’s a business asset that should
-									generate leads, build trust, and support your growth. At Rock
-									Digital, we approach web design differently. Every website we
-									build is strategic, performance-driven, and tailored to your
-									business goals.{' '}
+									You need a website that not only looks good, but actually
+									helps your business grow. At Rock Digital, we design websites
+									that are built to perform, convert visitors, and support
+									long-term success.{' '}
 								</p>
 								<div className={styles.ctaRow}>
 									<button className={styles.primaryBtn}>
-										Start Your Project
+										Request a Website Audit
 									</button>
-									<a href='#' className={styles.link}>
-										See Our Work →
-									</a>
 								</div>
 							</div>
-							<div className={styles.heroVisual} />
+							<div className={styles.heroVisual}>
+								<Image
+									src={HeroVisual}
+									alt='Hero Visual'
+									width={500}
+									height={300}
+								/>
+							</div>
 						</div>
 					</section>
 
@@ -75,35 +76,60 @@ export default function ContactPageClient() {
 						<div className={styles.centerBlock}>
 							<h2>A Web Design Agency Focused on Results, Not Just Design</h2>
 							<p>
-								We design and build websites aligned with your business goals.
+								We don’t believe in generic templates or one-size-fits-all
+								solutions.
+								<br /> As a web design agency, our focus is on creating websites
+								that:
+								<ul className={styles.ul}>
+									<li>Turn more of your website visitors into paying customers</li>
+									<li>Create a clear and professional first impression</li>
+									<li>Build trust with your audience from the first visit</li>
+									<li>Support your business growth with a scalable website</li>
+								</ul>
+								Whether you need a brand-new website or a complete redesign, our
+								process is built to deliver clarity, efficiency, and measurable
+								results. We design and build websites aligned with your business
+								goals.
 							</p>
 						</div>
-						<div className={styles.grid3}>
+						{/* <div className={styles.grid3}>
 							{[
 								'Conversion-Focused',
 								'Built for Growth',
 								'Performance-Driven',
 							].map((t, i) => (
 								<div key={i} className={styles.card}>
-									<h3>{t}</h3>
+									<span>{t}</span>
 									<p>Designed to turn visitors into customers</p>
 								</div>
 							))}
-						</div>
+						</div> */}
 					</section>
 
 					<section className={styles.process}>
-						<h2 className={styles.center}>What Happens After You Reach Out</h2>
+						<h2 className={styles.center}>What Happens After You Reach Out?</h2>
 						<div className={styles.grid3}>
 							{['Discovery', 'Strategy', 'Direction'].map((step, i) => (
 								<div key={i} className={styles.cardOutline}>
 									<h3>
 										Step {i + 1} — {step}
 									</h3>
-									<p>We guide you with clarity</p>
+									{/* <p>We guide you with clarity</p> */}
 								</div>
 							))}
 						</div>
+						<p className={styles.processTextBlock}>
+							We keep things simple, intentional, and focused on value. When you
+							contact us:
+							<ul>
+								<li>We learn about your business, audience, and goals</li>
+								<li>We analyze your current online presence</li>
+								<li>We identify opportunities to improve your website</li>
+								<li>We recommend a clear path forward—no fluff, no pressure</li>
+							</ul>
+							You won’t get a generic pitch. You’ll get insight into what will
+							actually move your business forward.
+						</p>
 					</section>
 
 					<section className={styles.qualify}>
@@ -113,14 +139,16 @@ export default function ContactPageClient() {
 								<p>We partner with businesses serious about growth.</p>
 							</div>
 							<div className={styles.highlightBox}>
+								<p>Our clients are typically:</p>
 								<ul>
 									<li>Growth-focused businesses</li>
 									<li>Brands ready to elevate</li>
 									<li>Companies investing long-term</li>
 								</ul>
-								<strong>
-									Not looking for the cheapest option—looking for the right one.
-								</strong>
+								<p>
+									If you’re simply looking for the cheapest option, we may not
+									be the right fit—and that’s okay.
+								</p>
 							</div>
 						</div>
 					</section>
