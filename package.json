@@ -7,6 +7,8 @@
     "fast": "next dev --turbo",
     "build": "next build",
     "start": "next start",
+    "email:dev": "email dev --dir ./emails --port 3001",
+    "email:export": "email export --dir ./emails --outDir ./out/emails",
     "lint": "next lint",
     "log-config": "cat .eslintrc.json"
   },
@@ -14,6 +16,7 @@
     "@babel/core": "^7.26.7",
     "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^3.10.0",
+    "@react-email/components": "1.0.10",
     "@vercel/analytics": "^1.4.1",
     "@vercel/speed-insights": "^1.1.0",
     "bootstrap": "^5.3.2",
@@ -23,6 +26,7 @@
     "react": "^19.0.0",
     "react-bootstrap": "^2.10.8",
     "react-dom": "^19.0.0",
+    "react-email": "^5.2.10",
     "react-hook-form": "^7.54.2",
     "react-markdown": "^10.1.0",
     "resend": "^4.1.2",
@@ -33,6 +37,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
+    "@react-email/preview-server": "^5.2.10",
     "axios": "^1.6.5",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.5"

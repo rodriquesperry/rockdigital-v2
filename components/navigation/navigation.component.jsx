@@ -5,7 +5,7 @@ import { useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import logo from '@/assets/RockDigitalLogo-196px.jpeg';
+import logo from '@/assets/RockDigitalLogo.svg';
 
 import styles from './navigation.module.css';
 

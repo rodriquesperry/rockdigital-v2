@@ -60,6 +60,13 @@
 	color: var(--color-danger);
 }
 
+.error {
+	width: 100%;
+	margin-top: 0.35rem;
+	color: var(--color-danger);
+	font-size: 0.95rem;
+}
+
 .audit_form_button_container {
 	width: 100%;
 	display: flex;
