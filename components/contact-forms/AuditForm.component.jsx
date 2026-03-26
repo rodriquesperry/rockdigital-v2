@@ -7,6 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 
+import AuditBookingButton from '@/components/cal-booking/AuditBookingButton.component';
 import styles from './auditForm.module.css';
 
 const schema = z.object({
@@ -105,8 +106,6 @@ const AuditForm = () => {
 				if (response.data?.emailWarning) {
 					setError('root', { message: response.data.emailWarning });
 				}
-
-				setTimeout(() => setIsSubmitSuccessful(false), 2000);
 			}
 		} catch (error) {
 			setIsSubmitSuccessful(false);
@@ -214,9 +213,18 @@ const AuditForm = () => {
 				</div>
 
 				{isSubmitSuccessful && (
-					<p className={styles.success_message}>
-						Thanks. Your website audit request has been submitted.
-					</p>
+					<div className={styles.success_panel}>
+						<p className={styles.success_message}>
+							Thanks. Your website audit request has been submitted.
+						</p>
+						<p className={styles.success_subtext}>
+							Want to keep things moving? Book a call and we&apos;ll get time
+							on the calendar.
+						</p>
+						<div className={styles.success_button_row}>
+							<AuditBookingButton />
+						</div>
+					</div>
 				)}
 			</form>
 		</div>

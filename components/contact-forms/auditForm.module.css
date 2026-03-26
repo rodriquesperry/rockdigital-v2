@@ -85,6 +85,28 @@
 	font-weight: 600;
 }
 
+.success_panel {
+	width: 100%;
+	margin-top: 1.5rem;
+	padding: 1.5rem;
+	border: 1px solid var(--color-border-soft);
+	border-radius: var(--radius-md);
+	background: rgba(255, 255, 255, 0.85);
+}
+
+.success_subtext {
+	margin: 0.75rem 0 0;
+	text-align: center;
+	color: var(--color-ink-700);
+	line-height: 1.5;
+}
+
+.success_button_row {
+	display: flex;
+	justify-content: center;
+	margin-top: 1rem;
+}
+
 @media screen and (max-width: 767px) {
 	.form_container {
 		padding: 0 1rem;

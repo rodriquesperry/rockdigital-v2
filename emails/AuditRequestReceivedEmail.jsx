@@ -1,9 +1,10 @@
+import AuditBookingButton from '@/components/cal-booking/AuditBookingButton.component';
 import { Img } from '@react-email/img';
 
 const baseUrl = 'https://rockdigital.agency';
 const fallbackFirstName = 'there';
 const defaultLogoSrc = '/static/rock-digital-logo.png';
-
+const fallbackBookingLink = 'https://cal.com/rodriques-perry/website-audit';
 
 export const auditRequestReceivedSubject =
 	'We’ve received your website audit request';
@@ -14,8 +15,10 @@ export const auditRequestReceivedPreview =
 export const getAuditRequestReceivedText = ({
 	firstName = fallbackFirstName,
 	bookingLink = '',
-} = {}) =>
-	[
+} = {}) => {
+	const effectiveBookingLink = bookingLink || fallbackBookingLink;
+
+	return [
 		`Hi ${firstName},`,
 		'',
 		'Thank you for reaching out.',
@@ -25,19 +28,22 @@ export const getAuditRequestReceivedText = ({
 		'Our process is designed to surface meaningful insights, not just observations, so you have a clearer sense of what’s working, what’s underperforming, and where the strongest opportunities for improvement exist.',
 		'',
 		'You’ll hear from us within the next 24–48 hours with next steps.',
-		bookingLink ? '' : null,
-		bookingLink ? `If you’d prefer to move faster, you can book directly here: ${bookingLink}` : null,
+		'',
+		`If you’d prefer to move faster, you can book directly here: ${effectiveBookingLink}`,
 		'',
 		'Rock Digital',
 	]
 		.filter(Boolean)
 		.join('\n');
+};
 
 export function AuditRequestReceivedEmail({
 	firstName = fallbackFirstName,
 	bookingLink = '',
 	logoSrc = defaultLogoSrc,
 }) {
+	const effectiveBookingLink = bookingLink || fallbackBookingLink;
+
 	return (
 		<html lang='en'>
 			<body style={styles.body}>
@@ -78,9 +84,6 @@ export function AuditRequestReceivedEmail({
 												<h1 style={styles.heading}>You&apos;re in.</h1>
 												<p style={styles.paragraph}>Hi {firstName},</p>
 												<p style={styles.paragraph}>
-													Thank you for reaching out.
-												</p>
-												<p style={styles.paragraph}>
 													We&apos;ve received your request for a website audit.
 													This isn&apos;t a generic checklist or an automated
 													review. At Rock Digital, we take a strategic look at
@@ -90,35 +93,29 @@ export function AuditRequestReceivedEmail({
 												</p>
 												<p style={styles.paragraph}>
 													Our process is designed to surface meaningful
-													insights, not just observations, so you have a
-													clearer sense of what&apos;s working, what&apos;s
-													underperforming, and where the strongest
-													opportunities for improvement exist.
+													insights, not just observations, so we can clearly see
+													what&apos;s working, what&apos;s underperforming, and
+													where the greatest opportunities exist.
 												</p>
 												<p style={styles.paragraph}>
 													You&apos;ll hear from us within the next 24–48 hours
 													with next steps.
 												</p>
-												{bookingLink ? (
-													<>
-														<p style={styles.paragraph}>
-															If you&apos;d prefer to move faster, you can book
-															directly here:
-														</p>
-														<p style={styles.buttonRow}>
-															<a href={bookingLink} style={styles.button}>
-																Book a Call
-															</a>
-														</p>
-													</>
-												) : null}
-												<p style={styles.signature}>
-													Rock Digital
+												<p style={styles.paragraph}>
+													If you&apos;d prefer to move faster, you can book
+													directly here:
 												</p>
+												<p style={styles.buttonRow}>
+													<a href={effectiveBookingLink} style={styles.button}>
+														Schedule a Call
+													</a>
+												</p>
+												<p style={styles.signature}>Rock Digital</p>
 											</td>
 										</tr>
 										<tr>
 											<td style={styles.footer}>
+												<div>- Rocky</div>
 												<a href={baseUrl} style={styles.footerLink}>
 													rockdigital.agency
 												</a>
@@ -143,8 +140,7 @@ const styles = {
 		padding: 0,
 		backgroundColor: '#f4efe7',
 		color: '#1d1d1b',
-		fontFamily:
-			'Georgia, Cambria, "Times New Roman", Times, serif',
+		fontFamily: 'Georgia, Cambria, "Times New Roman", Times, serif',
 	},
 	preview: {
 		display: 'none',
