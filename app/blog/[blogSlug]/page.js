@@ -143,7 +143,7 @@ export async function generateStaticParams() {
 	}));
 }
 
-export async function generateMetadata({ params, searchParams }, parent) {
+export async function generateMetadata({ params }) {
 	// Read route params
 	const blogSlug = (await params).blogSlug;
 
@@ -151,12 +151,14 @@ export async function generateMetadata({ params, searchParams }, parent) {
 
 	if (!post) {
 		return {
-			title: 'Rock Digital | Blog',
+			title: 'Web Design, SEO, and Marketing Insights',
+			description:
+				'Read Rock Digital articles on web design, SEO, website performance, digital marketing strategy, and practical tips for growing your business online.',
 		};
 	}
 
 	return {
-		title: `Rock Digital | ${post.title}`,
+		title: post.title,
 		description: post.short_description,
 	};
 }

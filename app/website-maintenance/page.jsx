@@ -5,7 +5,7 @@ import ContactForm from '@/components/contact-forms/ContactForm.component';
 import styles from './websiteMaintenance.module.css';
 
 export const metadata = {
-	title: 'Website Maintenance Services | Rock Digital',
+	title: 'Website Maintenance Services',
 	description:
 		'Keep your website secure, updated, and performing at its best with Rock Digital website maintenance services that protect visibility, support conversions, and save you time.',
 };

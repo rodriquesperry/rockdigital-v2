@@ -13,7 +13,7 @@
 }
 
 .short_description {
-  color: rgba(34, 21, 6, 0.502);
+  color: rgba(0, 0, 0, 0.502);
   font-style: italic;
 }
 
@@ -45,7 +45,7 @@
 
 .read_time {
   margin-top: 0.5rem;
-  color: rgba(34, 21, 6, 0.754);
+  /* color: rgba(34, 21, 6, 0.754); */
 }
 
 .header_content_container img {
@@ -227,13 +227,13 @@
 		/* margin-left: 1rem; */
 	}
 
-	.short-description {
+	.short_description {
 		margin-top: 0.6rem;
 	}
 
 	.read_time {
 		position: absolute;
-		font-weight: bold;
+		/* font-weight: bold; */
 	}
 
 	.author_info {
@@ -337,13 +337,14 @@
 		position: relative;
 	}
 
-	.short-description {
-		margin-top: 0.6rem;
+	.short_description {
+		margin-top: 1rem;
+    line-height: 32px;
 	}
 
 	.read_time {
 		position: absolute;
-		font-weight: bold;
+		/* font-weight: bold; */
 	}
 
 	.author_info {
