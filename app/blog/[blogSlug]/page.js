@@ -191,7 +191,8 @@ export default async function BlogPostPage({ params, searchParams }) {
 		const featImage = featured_image?.url || '';
 		const date = new Date(publishedAt);
 		const markdownBody = normalizeMarkdownContent(body);
-
+    console.log(featImage);
+    
 		return (
 			<BlogPostAnimated
 				baseURL={baseURL}
