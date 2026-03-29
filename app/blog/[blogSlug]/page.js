@@ -1,10 +1,12 @@
 import axios from 'axios';
 import config from '@/config';
-import { notFound } from 'next/navigation';
+import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
+import { notFound, permanentRedirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import BlogPostAnimated from './BlogPostAnimated.client';
 
 const baseURL = config.api || 'http://127.0.0.1:1337';
+export const revalidate = 60;
 
 async function fetchPostBySlug(blogSlug) {
 	const encodedSlug = encodeURIComponent(blogSlug);
@@ -13,6 +15,34 @@ async function fetchPostBySlug(blogSlug) {
 	);
 
 	return data?.data?.[0] || null;
+}
+
+async function fetchPostByOldSlug(blogSlug) {
+	const encodedSlug = encodeURIComponent(blogSlug);
+	const { data } = await axios.get(
+		`${baseURL}/api/posts?filters[oldSlug][$eq]=${encodedSlug}&filters[publishedAt][$notNull]=true&populate=*`
+	);
+
+	return data?.data?.[0] || null;
+}
+
+async function resolvePostRequest(blogSlug) {
+	const post = await fetchPostBySlug(blogSlug);
+
+	if (post) {
+		return { post, redirectSlug: null };
+	}
+
+	const redirectedPost = await fetchPostByOldSlug(blogSlug);
+
+	if (redirectedPost?.slug) {
+		return {
+			post: redirectedPost,
+			redirectSlug: redirectedPost.slug,
+		};
+	}
+
+	return { post: null, redirectSlug: null };
 }
 
 function nodeChildrenToText(children = []) {
@@ -147,7 +177,7 @@ export async function generateMetadata({ params }) {
 	// Read route params
 	const blogSlug = (await params).blogSlug;
 
-	const post = await fetchPostBySlug(blogSlug);
+	const { post } = await resolvePostRequest(blogSlug);
 
 	if (!post) {
 		return {
@@ -171,7 +201,11 @@ export default async function BlogPostPage({ params, searchParams }) {
 	const { blogSlug } = await params;
 
 	try {
-		const post = await fetchPostBySlug(blogSlug);
+		const { post, redirectSlug } = await resolvePostRequest(blogSlug);
+
+		if (redirectSlug && redirectSlug !== blogSlug) {
+			permanentRedirect(`/blog/${redirectSlug}`);
+		}
 
 		if (!post) {
 			return notFound(); // Triggers Next.js 404 page
@@ -180,7 +214,6 @@ export default async function BlogPostPage({ params, searchParams }) {
 		const {
 			publishedAt,
 			author,
-      author_image,
 			title,
 			body,
 			read_time,
@@ -188,20 +221,17 @@ export default async function BlogPostPage({ params, searchParams }) {
 			featured_image,
 		} = post;
 
-		const featImage = featured_image?.url || '';
+		const featImage = getStrapiMediaUrl(featured_image);
 		const date = new Date(publishedAt);
 		const markdownBody = normalizeMarkdownContent(body);
-    console.log(featImage);
-    
+
 		return (
 			<BlogPostAnimated
-				baseURL={baseURL}
 				featImage={featImage}
 				title={title}
 				shortDescription={short_description}
 				readTime={read_time}
 				author={author}
-				authorImage={author_image?.url || ''}
 				dateString={date.toDateString()}
 			>
 				<ReactMarkdown>{markdownBody}</ReactMarkdown>

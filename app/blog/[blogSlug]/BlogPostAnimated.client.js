@@ -9,13 +9,11 @@ const prefersReducedMotion = () =>
 	window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 export default function BlogPostAnimated({
-	baseURL,
 	featImage,
 	title,
 	shortDescription,
 	readTime,
 	author,
-  authorImage,
 	dateString,
 	children,
 }) {
@@ -108,10 +106,10 @@ export default function BlogPostAnimated({
 						data-animate='blog-image'
 					>
 						<Image
-							src={`${baseURL}${featImage}`}
+							src={featImage}
 							alt={title || 'Featured Image'}
 							fill
-							sizes='auto'
+							sizes='(max-width: 767px) 100vw, (max-width: 1023px) calc(100vw - 2rem), 50vw'
 						/>
 					</div>
 					<div className={`col ${styles.header_text}`}>
@@ -124,14 +122,13 @@ export default function BlogPostAnimated({
 				</div>
 
 				<div className={styles.author_info}>
-        {/* <Image
-							src={`${baseURL}${authorImage}`}
+					{/* <Image
+							src={featImage}
 							alt={title || 'Featured Image'}
 							fill
 							sizes='auto'
 						/> */}
 					<div className={`col-3 ${styles.info_pic}`}>
-          
 						<div className={styles.info_text}>
 							<h5 className={styles.author}>{author}</h5>
 							<h6 className={styles.date}>{dateString}</h6>
