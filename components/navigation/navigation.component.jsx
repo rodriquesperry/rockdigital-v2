@@ -162,56 +162,56 @@ const Navigation = () => {
 						</button>
 					</div>
 				</div>
-
-				<div
-					className={`${styles.backdrop} ${showOffcanvas ? styles.backdropVisible : ''}`}
-					aria-hidden='true'
-					onClick={closeOffcanvas}
-				/>
-
-				<div
-					id={mobileNavId}
-					className={`${styles.mobilePanel} ${
-						showOffcanvas ? styles.mobilePanelOpen : ''
-					}`}
-					role='dialog'
-					aria-modal='true'
-					aria-label='Mobile navigation'
-				>
-					<div className={styles.mobileHeader}>
-						<Link href='/' className={styles.mobileBrand} onClick={closeOffcanvas}>
-							<Image
-								src={logo}
-								alt='Rock Digital Logo'
-								className={styles.mobileBrandImage}
-								sizes='88px'
-							/>
-						</Link>
-						<button
-							type='button'
-							className={styles.closeButton}
-							onClick={closeOffcanvas}
-							aria-label='Close navigation menu'
-						>
-							<span />
-							<span />
-						</button>
-					</div>
-					<nav className={styles.mobileNav} aria-label='Mobile navigation links'>
-						{navigationLinks.map((link) => (
-							<Link
-								key={link.href}
-								href={link.href}
-								prefetch={link.prefetch}
-								className={`${styles.link} ${link.className || ''}`.trim()}
-								onClick={closeOffcanvas}
-							>
-								{link.label}
-							</Link>
-						))}
-					</nav>
-				</div>
 			</header>
+
+			<div
+				className={`${styles.backdrop} ${showOffcanvas ? styles.backdropVisible : ''}`}
+				aria-hidden='true'
+				onClick={closeOffcanvas}
+			/>
+
+			<div
+				id={mobileNavId}
+				className={`${styles.mobilePanel} ${
+					showOffcanvas ? styles.mobilePanelOpen : ''
+				}`}
+				role='dialog'
+				aria-modal='true'
+				aria-label='Mobile navigation'
+			>
+				<div className={styles.mobileHeader}>
+					<Link href='/' className={styles.mobileBrand} onClick={closeOffcanvas}>
+						<Image
+							src={logo}
+							alt='Rock Digital Logo'
+							className={styles.mobileBrandImage}
+							sizes='88px'
+						/>
+					</Link>
+					<button
+						type='button'
+						className={styles.closeButton}
+						onClick={closeOffcanvas}
+						aria-label='Close navigation menu'
+					>
+						<span />
+						<span />
+					</button>
+				</div>
+				<nav className={styles.mobileNav} aria-label='Mobile navigation links'>
+					{navigationLinks.map((link) => (
+						<Link
+							key={link.href}
+							href={link.href}
+							prefetch={link.prefetch}
+							className={`${styles.link} ${link.className || ''}`.trim()}
+							onClick={closeOffcanvas}
+						>
+							{link.label}
+						</Link>
+					))}
+				</nav>
+			</div>
 		</>
 	);
 };
