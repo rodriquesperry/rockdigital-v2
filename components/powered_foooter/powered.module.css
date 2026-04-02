@@ -1,7 +1,7 @@
 .powered_by {
   background-color: var(--color-ink-900);
   color: var(--color-white);
-  margin-top: 3rem;
+  /* margin-top: 3rem; */
   font-size: 0.8rem;
   padding: .7rem 0;
 }

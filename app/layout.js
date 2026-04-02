@@ -1,4 +1,5 @@
 import { Lato, Playfair_Display } from 'next/font/google';
+import Script from 'next/script';
 
 import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
@@ -38,6 +39,10 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
+				<Script
+					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
+					strategy='afterInteractive'
+				/>
 				<SpeedInsights />
 				<Analytics />
 				<Powered />
