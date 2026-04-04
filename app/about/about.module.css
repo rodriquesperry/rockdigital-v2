@@ -432,6 +432,7 @@
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--color-accent-strong);
+  font-weight: 300;
 }
 
 .cardRule {
