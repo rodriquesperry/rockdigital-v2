@@ -221,6 +221,7 @@
 	font-size: 2rem;
 	margin: 0;
 	padding: 0;
+  color: var(--color-white);
 }
 
 .parallax_btn_container {
