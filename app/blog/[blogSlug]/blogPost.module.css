@@ -13,13 +13,15 @@
 }
 
 .short_description {
-  color: rgba(0, 0, 0, 0.502);
+  color: rgba(0, 0, 0, 0.82);
   font-style: italic;
+  font-weight: 300;
 }
 
 .read_time {
 	font-style: italic;
 	font-weight: 200;
+  color: rgba(0, 0, 0, 0.82);
 }
 
 .blog_post_header {
@@ -101,6 +103,7 @@
 
 .blog_post p {
   line-height: 30px;
+  font-weight: 300;
 }
 
 @media screen and (min-width: 375px) and (max-width: 424px) {

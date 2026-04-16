@@ -1,5 +1,15 @@
 .page {
 	background: var(--color-white);
+  --page-bg: #f8f5f0;
+	--dark: #120b04;
+	--accent: #ecb64d;
+	--accent-bright: #ffc55c;
+	--label: #886836;
+	--muted-light: rgba(255, 255, 255, 0.8);
+	--container: 1180px;
+	background: var(--page-bg);
+	color: var(--dark);
+	font-family: var(--font-body);
   font-family: Lato, sans-serif;
 }
 
@@ -16,9 +26,31 @@
 
 .heroSection {
 	background:
-		linear-gradient(90deg, rgba(253, 199, 74, 0.07) 0%, rgba(253, 199, 74, 0.07) 100%),
-		linear-gradient(90deg, #221506 0%, #221506 100%);
+		linear-gradient(90deg, rgba(253, 199, 74, 0.07) 0%, rgba(253, 199, 74, 0.06) 0%),
+		linear-gradient(90deg, #221506 100%, #221506 100%);
 	padding: 4.5rem var(--gutter-mobile) 4.6rem;
+}
+
+
+.heroSection {
+	position: relative;
+	overflow: hidden;
+	min-height: 734px;
+	background: var(--dark);
+}
+
+.heroSection::after {
+	content: '';
+	position: absolute;
+	inset: 0 auto 0 20%;
+	width: 40%;
+	background: linear-gradient(
+		105deg,
+		transparent 0%,
+		rgba(236, 180, 75, 0.1) 45%,
+		transparent 72%
+	);
+	pointer-events: none;
 }
 
 .heroInner,

@@ -1,0 +1,1229 @@
+.page {
+	--page-bg: #f8f5f0;
+	--dark: #120b04;
+	--accent: #ecb64d;
+	--accent-bright: #ffc55c;
+	--label: #886836;
+	--muted-light: rgba(255, 255, 255, 0.8);
+	--container: 1180px;
+	background: var(--page-bg);
+	color: var(--dark);
+	font-family: var(--font-body);
+}
+
+.page h1,
+.page h2,
+.page h3,
+.page p {
+	margin: 0;
+}
+
+.page h1,
+.page h2,
+.page h3 {
+	font-family: var(--font-heading);
+}
+
+.page h1,
+.page h2,
+.page h3 {
+	margin-bottom: 2rem;
+}
+
+.sectionInner,
+.heroInner,
+.approachInner,
+.caseStudyInner,
+.faqInner,
+.ctaInner {
+	width: min(var(--container), calc(100% - 260px));
+	margin: 0 auto;
+}
+
+.eyebrow,
+.darkEyebrow {
+	font-family: var(--font-body);
+	font-size: 1.125rem;
+	font-weight: 600;
+	letter-spacing: 0.09em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.eyebrow {
+	color: var(--accent-bright);
+}
+
+.darkEyebrow {
+	color: var(--label);
+}
+
+.primaryButton,
+.secondaryButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 53px;
+	border-radius: 4px;
+	font-family: var(--font-body);
+	font-size: 1.125rem;
+	font-weight: 400;
+	letter-spacing: 0.09em;
+	line-height: 1;
+	text-align: center;
+}
+
+.primaryButton {
+	width: 274px;
+	background: var(--accent);
+	color: #000;
+}
+
+.secondaryButton {
+	width: 170px;
+	border: 1px solid rgba(255, 255, 255, 0.8);
+	color: #fff;
+}
+
+.hero {
+	position: relative;
+	overflow: hidden;
+	min-height: 734px;
+	background: var(--dark);
+}
+
+.hero::after {
+	content: '';
+	position: absolute;
+	inset: 0 auto 0 20%;
+	width: 40%;
+	background: linear-gradient(
+		105deg,
+		transparent 0%,
+		rgba(236, 180, 75, 0.1) 45%,
+		transparent 72%
+	);
+	pointer-events: none;
+}
+
+.heroInner {
+	position: relative;
+	z-index: 1;
+	min-height: 734px;
+}
+
+.heroCopy {
+	position: relative;
+	z-index: 2;
+	min-width: 520px;
+	max-width: 640px;
+	padding: 80px 0;
+}
+
+.heroCopy h1 {
+	margin-top: 20px;
+	color: #fff;
+	font-size: 3.5rem;
+	font-weight: 900;
+	letter-spacing: 0.13em;
+	line-height: 1.285;
+}
+
+.heroCopy h1 span,
+.processSection h2 span,
+.approachCopy h2 span,
+.caseStudyCopy h2 span,
+.faqHeading h2 span,
+.purposeIntro h2 span {
+	display: block;
+}
+
+.heroCopy h1 span:last-child {
+	color: var(--accent);
+}
+
+.heroDescription {
+	width: 464px;
+	margin-top: 20px;
+	color: var(--muted-light);
+	font-size: 1rem;
+	font-weight: 400;
+	letter-spacing: 0.13em;
+	line-height: 2.75;
+}
+
+.heroActions {
+	display: flex;
+	gap: 11px;
+	margin-top: 47px;
+}
+
+.heroImageWrap {
+	position: absolute;
+	top: 100px;
+	right: -184px;
+	width: 959px;
+	height: 543px;
+}
+
+.heroImageWrap img,
+.approachImage img,
+.caseStudyImage img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.purposeSection {
+	padding: 80px 0;
+}
+
+.purposeIntro {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 520px;
+	gap: 48px;
+	align-items: end;
+}
+
+.purposeIntro h2 {
+	margin-top: 25px;
+	color: #000;
+	font-size: 2.25rem;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	line-height: 1.22;
+}
+
+.purposeLead {
+	padding-bottom: 6px;
+	color: #000;
+	font-size: 1.125rem;
+	font-weight: 500;
+	letter-spacing: 0.09em;
+	line-height: 1.67;
+}
+
+.featureGrid {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 29px;
+	margin-top: 116px;
+}
+
+.featureCard {
+	min-height: 273px;
+	padding: 26px 22px 24px;
+	border-radius: 4px;
+	background: #fff;
+	text-align: center;
+}
+
+.featureCard img {
+	width: 60px;
+	height: 60px;
+	margin: 0 auto 18px;
+	object-fit: contain;
+}
+
+.featureCard h3 {
+	color: #000;
+	font-family: var(--font-body);
+	font-size: 1.125rem;
+	font-weight: 800;
+	letter-spacing: 0.09em;
+	line-height: 1.67;
+}
+
+.featureCard p {
+	margin-top: 20px;
+	color: #000;
+	font-size: 1.125rem;
+	font-weight: 400;
+	line-height: 1.67;
+}
+
+.processSection {
+	padding: 80px 0 80px;
+	background: var(--dark);
+}
+
+.processSection h2 {
+	margin-top: 20px;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	line-height: 1.06;
+}
+
+.timeline {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 36px;
+	margin-top: 38px;
+}
+
+.step {
+	position: relative;
+	padding-top: 116px;
+}
+
+.step:not(:last-child)::after {
+	content: '';
+	position: absolute;
+	top: 30px;
+	left: 60px;
+	width: calc(100% - 24px);
+	border-top: 1px dashed rgba(236, 180, 75, 0.75);
+}
+
+.stepNumber {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	display: grid;
+	width: 60px;
+	height: 60px;
+	place-items: center;
+	border: 1px solid var(--accent);
+	border-radius: 50%;
+	color: var(--accent);
+	font-size: 1.5rem;
+	font-weight: 500;
+}
+
+.step h3 {
+	color: #fff;
+	font-size: 1.25rem;
+	font-weight: 500;
+	letter-spacing: 0.09em;
+	line-height: 1.55;
+}
+
+.step p {
+	margin-top: 10px;
+	color: var(--muted-light);
+	font-size: 1.125rem;
+	font-weight: 500;
+	line-height: 1.4;
+}
+
+.approachSection {
+	overflow: hidden;
+	padding: 80px 0;
+}
+
+.approachInner {
+	display: grid;
+	grid-template-columns: 390px minmax(0, 1fr);
+	gap: 19px;
+	align-items: center;
+}
+
+.approachCopy {
+	position: relative;
+	z-index: 2;
+}
+
+.approachCopy h2,
+.caseStudyCopy h2,
+.faqHeading h2 {
+	margin-top: 18px;
+	font-size: 2rem;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	line-height: 1.375;
+}
+
+.approachCopy h2,
+.faqHeading h2 {
+	color: #000;
+}
+
+.bodyCopy {
+	margin-top: 28px;
+	color: #000;
+	font-size: 1.125rem;
+	font-weight: 500;
+	line-height: 2.45;
+}
+
+.checkList {
+	display: grid;
+	gap: 20px;
+	margin: 32px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.checkList li {
+	position: relative;
+	min-height: 44px;
+	padding: 0 0 0 20px;
+	color: #000;
+	font-size: 1.125rem;
+	font-weight: 500;
+	line-height: 2.4;
+}
+
+.checkList li::before {
+	content: '✓';
+	position: absolute;
+	top: 0.45em;
+	left: 0;
+	color: var(--accent);
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.8;
+}
+
+.checkListLight li {
+	color: #fff;
+}
+
+.approachImage {
+	width: min(901px, calc(100vw - 520px));
+	height: 479px;
+}
+
+.caseStudySection,
+.ctaSection {
+	background: var(--dark);
+}
+
+.caseStudySection {
+	padding: 80px 0;
+}
+
+.caseStudyInner {
+	display: grid;
+	grid-template-columns: 515px minmax(0, 1fr);
+	gap: 38px;
+	align-items: center;
+}
+
+.caseStudyCopy h2 {
+	color: #fff;
+}
+
+.caseStudyText {
+	margin-top: 26px;
+	color: var(--muted-light);
+	font-size: 1rem;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	line-height: 2.75;
+}
+
+.caseStudyCopy .primaryButton {
+	margin-top: 26px;
+}
+
+.caseStudyImage {
+	width: min(631px, 100%);
+	height: 442px;
+}
+
+.faqSection {
+	padding: 80px 0 94px;
+}
+
+.faqInner {
+	display: grid;
+	grid-template-columns: 266px minmax(0, 1fr);
+	gap: 39px;
+	align-items: start;
+}
+
+.faqGrid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 72px;
+}
+
+.faqItem {
+	border-bottom: 1px solid rgba(18, 12, 4, 0.45);
+}
+
+.faqItem summary {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 20px;
+	gap: 18px;
+	align-items: center;
+	min-height: 61px;
+	cursor: pointer;
+	list-style: none;
+}
+
+.faqItem summary::-webkit-details-marker {
+	display: none;
+}
+
+.faqItem summary span:first-child {
+	color: var(--dark);
+	font-family: var(--font-heading);
+	font-size: 1.125rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.faqIcon {
+	color: var(--dark);
+	font-size: 1.25rem;
+	line-height: 1;
+	text-align: right;
+	transition: transform var(--duration-base) var(--easing-standard);
+}
+
+.faqItem[open] .faqIcon {
+	transform: rotate(45deg);
+}
+
+.faqAnswer {
+	max-width: 36rem;
+	padding: 0 2.4rem 1.25rem 0;
+	color: rgba(18, 12, 4, 0.78);
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+.ctaSection {
+	padding: 80px 0 84px;
+}
+
+.ctaInner {
+	display: grid;
+	grid-template-columns: 322px minmax(0, 1fr) 274px;
+	gap: 123px;
+	align-items: start;
+}
+
+.ctaHeading h2 {
+	margin-top: 17px;
+	color: #fff;
+	font-size: 2rem;
+	font-weight: 800;
+	letter-spacing: 0.03em;
+	line-height: 1.25;
+}
+
+.ctaInner .checkList {
+	margin-top: 0;
+	gap: 20px;
+}
+
+.ctaAction p {
+	width: 249px;
+	margin-top: 17px;
+	color: var(--muted-light);
+	font-size: 1rem;
+	font-weight: 500;
+	line-height: 1.75;
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1439px) {
+	.sectionInner,
+	.heroInner,
+	.approachInner,
+	.caseStudyInner,
+	.faqInner,
+	.ctaInner {
+		width: calc(100% - 96px);
+	}
+
+	.heroCopy {
+		max-width: 520px;
+	}
+
+	.heroImageWrap {
+		top: 100px;
+		right: -120px;
+		width: 800px;
+		height: 453px;
+	}
+
+	.purposeIntro {
+		grid-template-columns: minmax(0, 1fr) 440px;
+		gap: 28px;
+	}
+
+	.purposeLead {
+		font-style: italic;
+	}
+
+	.ctaInner {
+		grid-template-columns: 322px minmax(0, 1fr) 274px;
+		gap: 32px;
+	}
+
+	.ctaSection .checkList {
+		gap: 20px;
+		width: 100%;
+		justify-content: center;
+	}
+
+	.ctaSection .checkList li {
+		line-height: 1.5;
+	}
+}
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+	.sectionInner,
+	.heroInner,
+	.approachInner,
+	.caseStudyInner,
+	.faqInner,
+	.ctaInner {
+		width: calc(100% - 96px);
+	}
+
+	.eyebrow,
+	.darkEyebrow {
+		font-size: 1rem;
+		letter-spacing: 0.09em;
+	}
+
+	.primaryButton,
+	.secondaryButton {
+		font-size: 1rem;
+	}
+
+	.hero {
+		min-height: 584px;
+	}
+
+	.heroInner {
+		min-height: 584px;
+	}
+
+	.heroCopy {
+		width: 360px;
+		padding-top: 100px;
+	}
+
+	.heroCopy h1 {
+		margin-top: 16px;
+		font-size: 2rem;
+		letter-spacing: 0.13em;
+		line-height: 1.03;
+	}
+
+	.heroDescription {
+		width: 280px;
+		margin-top: 34px;
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.heroActions {
+		margin-top: 46px;
+	}
+
+	.heroImageWrap {
+		top: 115px;
+		right: -41px;
+		width: 500px;
+		height: 284px;
+	}
+
+	.purposeSection {
+		padding: 90px 0 93px;
+	}
+
+	.purposeIntro {
+		grid-template-columns: 353px minmax(0, 334px);
+		gap: 28px;
+	}
+
+	.purposeIntro h2 {
+		margin-top: 18px;
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.purposeLead {
+		font-size: 1rem;
+		line-height: 1.25;
+	}
+
+	.featureGrid {
+		gap: 25px;
+		margin-top: 20px;
+	}
+
+	.featureCard {
+		min-height: 273px;
+		padding: 26px 10px 20px;
+	}
+
+	.featureCard img {
+		width: 36px;
+		height: 36px;
+		margin-bottom: 12px;
+	}
+
+	.featureCard h3,
+	.featureCard p {
+		font-size: 1rem;
+	}
+
+	.featureCard p {
+		margin-top: 20px;
+		line-height: 1.875;
+	}
+
+	.processSection {
+		padding: 98px 0 108px;
+	}
+
+	.processSection h2 {
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.timeline {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 58px 94px;
+		margin-top: 62px;
+	}
+
+	.step {
+		display: grid;
+		grid-template-columns: 40px minmax(0, 1fr);
+		gap: 28px 34px;
+		padding-top: 0;
+	}
+
+	.step:not(:last-child)::after {
+		display: none;
+	}
+
+	.stepNumber {
+		position: static;
+		width: 40px;
+		height: 40px;
+		font-size: 1.5rem;
+	}
+
+	.step h3 {
+		font-size: 1.25rem;
+	}
+
+	.step p {
+		grid-column: 2;
+		margin-top: -18px;
+		font-size: 1rem;
+		letter-spacing: 0.09em;
+		line-height: 1.55;
+	}
+
+	.approachSection {
+		padding: 100px 0;
+	}
+
+	.approachInner {
+		grid-template-columns: 340px minmax(0, 1fr);
+		gap: 0;
+	}
+
+	.approachCopy h2,
+	.caseStudyCopy h2 {
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.bodyCopy {
+		width: 283px;
+		margin-top: 28px;
+		font-size: 1rem;
+		line-height: 2;
+	}
+
+	.checkList {
+		gap: 20px;
+		margin-top: 28px;
+	}
+
+	.checkList li {
+		min-height: auto;
+		padding-left: 33px;
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.approachImage {
+		width: 510px;
+		height: 241px;
+		margin-left: -64px;
+	}
+
+	.caseStudySection {
+		padding: 89px 0 100px;
+	}
+
+	.caseStudyInner {
+		display: flex;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 45px;
+	}
+
+	.caseStudyImage {
+		order: -1;
+		width: 100%;
+		height: 450px;
+	}
+
+	.caseStudyCopy {
+		width: 515px;
+	}
+
+	.caseStudyText {
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 2.75;
+	}
+
+	.faqSection {
+		padding: 100px 0;
+	}
+
+	.faqInner {
+		grid-template-columns: 1fr;
+		gap: 28px;
+	}
+
+	.faqHeading h2 {
+		font-size: 2rem;
+	}
+
+	.faqGrid {
+		width: 404px;
+		grid-template-columns: 1fr;
+		align-self: center;
+		justify-self: center;
+	}
+
+	.ctaSection {
+		padding: 100px 0 120px;
+	}
+
+	.ctaInner {
+		grid-template-columns: 322px minmax(0, 1fr);
+		gap: 48px;
+	}
+
+	.ctaHeading h2 {
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.ctaAction {
+		grid-column: 1;
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.sectionInner,
+	.heroInner,
+	.approachInner,
+	.caseStudyInner,
+	.faqInner,
+	.ctaInner {
+		width: min(370px, calc(100% - 32px));
+	}
+
+	.eyebrow,
+	.darkEyebrow {
+		font-size: 0.875rem;
+		letter-spacing: 0.09em;
+	}
+
+	.hero {
+		height: 874px;
+		min-height: 874px;
+	}
+
+	.hero::after {
+		display: none;
+	}
+
+	.heroInner {
+		width: min(402px, 100%);
+		overflow: hidden;
+		padding: 0 16px;
+		min-height: 874px;
+	}
+
+	.heroCopy {
+		width: 100%;
+		/* max-width: 100px; */
+		min-width: 100px;
+		padding-top: 62px;
+		text-align: center;
+	}
+
+	.heroCopy h1 {
+		margin-top: 26px;
+		font-size: 2rem;
+		letter-spacing: 0.13em;
+		line-height: 1.03;
+	}
+
+	.heroDescription {
+		width: 100%;
+		margin: 34px auto 0;
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.heroActions {
+		justify-content: center;
+		margin-top: 58px;
+	}
+
+	.heroActions .secondaryButton {
+		display: none;
+	}
+
+	.heroActions .primaryButton {
+		width: 284px;
+		min-height: 58px;
+		font-size: 1rem;
+	}
+
+	.heroImageWrap {
+		top: 530px;
+		left: 50%;
+		right: auto;
+		overflow: hidden;
+		width: 402px;
+		height: 284px;
+		transform: translateX(-50%);
+	}
+
+	.heroImageWrap img {
+		width: 134.31%;
+		height: 127%;
+		max-width: none;
+		object-fit: fill;
+		transform: translate(-24.25%, -13.54%);
+	}
+
+	.purposeSection {
+		height: auto;
+		padding: 80px 0;
+	}
+
+	.purposeIntro {
+		display: block;
+		text-align: center;
+	}
+
+	.purposeIntro h2 {
+		margin-top: 31px;
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.purposeLead {
+		width: 334px;
+		max-width: 100%;
+		margin: 28px auto 0;
+		min-height: 60px;
+		font-size: 1rem;
+		line-height: 1.25;
+	}
+
+	.featureGrid {
+		grid-template-columns: 1fr;
+		gap: 60px;
+		width: 273px;
+		margin: 60px auto 0;
+	}
+
+	.featureCard {
+		min-height: 273px;
+		padding: 27px 5px 24px;
+	}
+
+	.featureCard img {
+		width: 60px;
+		height: 60px;
+	}
+
+	.featureCard h3,
+	.featureCard p {
+		font-size: 1.125rem;
+	}
+
+	.processSection {
+		height: 1277px;
+		padding: 60px 0 0;
+	}
+
+	.processSection h2 {
+		margin-top: 28px;
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.timeline {
+		display: block;
+		margin-top: 23px;
+	}
+
+	.step {
+		position: relative;
+		display: block;
+		min-height: 218px;
+		padding-left: 74px;
+		padding-top: 0;
+	}
+
+	.step:not(:last-child)::after {
+		top: 47px;
+		left: 20px;
+		width: 0;
+		height: 171px;
+		border-top: 0;
+		border-left: 1px dashed rgba(236, 180, 75, 0.75);
+	}
+
+	.step:nth-child(3) {
+		min-height: 248px;
+	}
+
+	.step:nth-child(3)::after {
+		top: 43px;
+		height: 205px;
+	}
+
+	.step:nth-child(4) {
+		min-height: 207px;
+	}
+
+	.step:nth-child(4)::after {
+		top: 42px;
+		height: 165px;
+	}
+
+	.step:nth-child(5) {
+		min-height: 170px;
+	}
+
+	.stepNumber {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 40px;
+		height: 40px;
+		font-size: 1.5rem;
+	}
+
+	.step h3 {
+		position: absolute;
+		top: 20px;
+		left: 74px;
+		width: 230px;
+		padding-top: 0;
+		font-size: 1.25rem;
+		line-height: 1.2;
+	}
+
+	.step p {
+		position: absolute;
+		top: 54px;
+		left: 74px;
+		width: 223px;
+		margin-top: 0;
+		font-size: 1rem;
+		letter-spacing: 0.09em;
+		line-height: 1.55;
+	}
+
+	.step:nth-child(2) p {
+		top: 55px;
+	}
+
+	.step:nth-child(3) p {
+		top: 60px;
+	}
+
+	.step:nth-child(4) h3 {
+		top: 21px;
+	}
+
+	.step:nth-child(4) p {
+		top: 62px;
+	}
+
+	.approachSection {
+		height: 911px;
+		padding: 60px 0 0;
+	}
+
+	.approachInner {
+		display: flex;
+		flex-direction: column;
+		gap: 28px;
+		text-align: center;
+	}
+
+	.approachImage {
+		order: -1;
+		width: 402px;
+		height: 190px;
+		margin: 0 calc((100% - 402px) / 2);
+	}
+
+	.approachCopy h2,
+	.caseStudyCopy h2,
+	.faqHeading h2,
+	.ctaHeading h2 {
+		font-size: 1.75rem;
+		line-height: 1.57;
+	}
+
+	.bodyCopy {
+		width: 283px;
+		margin: 28px auto 0;
+		font-size: 1rem;
+		line-height: 2;
+	}
+
+	.checkList {
+		width: 340px;
+		max-width: 100%;
+		gap: 20px;
+		margin: 28px auto 0;
+		text-align: left;
+	}
+
+	.checkList li {
+		min-height: auto;
+		padding-left: 33px;
+		font-size: 1rem;
+		line-height: 1.75;
+	}
+
+	.caseStudySection {
+		height: 1130px;
+		padding: 52px 0 0;
+	}
+
+	.caseStudyInner {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		text-align: center;
+	}
+
+	.caseStudyCopy {
+		display: contents;
+	}
+
+	.caseStudyLabel {
+		order: -3;
+		margin-bottom: 40px;
+	}
+
+	.caseStudyImage {
+		order: -2;
+		width: 466px;
+		height: 274px;
+		margin: 0 calc((100% - 466px) / 2);
+	}
+
+	.caseStudyCopy h2 {
+		order: -1;
+		width: 333px;
+		max-width: 100%;
+		margin: 28px auto 0;
+	}
+
+	.caseStudyText {
+		width: 348px;
+		max-width: 100%;
+		margin: 40px auto 0;
+		font-size: 1rem;
+		font-weight: 500;
+		line-height: 2.75;
+	}
+
+	.caseStudyCopy .checkList {
+		width: 308px;
+		margin-top: 45px;
+	}
+
+	.caseStudyCopy .primaryButton {
+		margin: 41px auto 0;
+	}
+
+	.faqSection {
+		min-height: 673px;
+		padding: 60px 0 0;
+	}
+
+	.faqInner {
+		display: block;
+	}
+
+	.faqHeading h2 {
+		margin-top: 19px;
+	}
+
+	.faqGrid {
+		grid-template-columns: 1fr;
+		margin-top: 28px;
+	}
+
+	.faqItem {
+		min-height: 68px;
+	}
+
+	.faqItem summary {
+		gap: 8px;
+		min-height: 68px;
+	}
+
+	.faqItem summary span:first-child {
+		font-size: 1rem;
+		line-height: 1.35;
+	}
+
+	.faqAnswer {
+		padding-right: 2rem;
+		font-size: 0.95rem;
+		line-height: 1.65;
+	}
+
+	.ctaSection {
+		height: 767px;
+		padding: 60px 0 0;
+	}
+
+	.ctaInner {
+		display: block;
+		text-align: center;
+	}
+
+	.ctaHeading h2 {
+		width: 322px;
+		max-width: 100%;
+		margin: 24px auto 0;
+	}
+
+	.ctaAction {
+		margin-top: 60px;
+	}
+
+	.ctaAction p {
+		margin: 17px auto 0;
+		text-align: center;
+	}
+}
