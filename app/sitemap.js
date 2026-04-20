@@ -4,6 +4,7 @@ import path from 'node:path';
 import axios from 'axios';
 
 import config from '@/config';
+import { caseStudies } from '@/app/case-studies/caseStudies';
 
 const APP_DIRECTORY = path.join(process.cwd(), 'app');
 const PAGE_FILE_PATTERN = /^page\.(js|jsx|ts|tsx)$/;
@@ -80,5 +81,11 @@ export default async function sitemap() {
 		priority: 1,
 	}));
 
-	return [...pageEntries, ...postEntries];
+	const caseStudyEntries = caseStudies.map((caseStudy) => ({
+		url: `${baseURL}/case-studies/${caseStudy.slug}`,
+		changeFrequency: 'monthly',
+		priority: 0.8,
+	}));
+
+	return [...pageEntries, ...caseStudyEntries, ...postEntries];
 }

@@ -188,7 +188,7 @@
 
 .purposeIntro h2 {
 	margin-top: 25px;
-	color: #000;
+	color: #40260a;
 	font-size: 2.25rem;
 	font-weight: 800;
 	letter-spacing: 0.03em;
@@ -197,7 +197,7 @@
 
 .purposeLead {
 	padding-bottom: 6px;
-	color: #000;
+	color: #40260a;
 	font-size: 1.125rem;
 	font-weight: 500;
 	letter-spacing: 0.09em;
@@ -227,7 +227,7 @@
 }
 
 .featureCard h3 {
-	color: #000;
+	color: #40260a;
 	font-family: var(--font-body);
 	font-size: 1.125rem;
 	font-weight: 800;
@@ -237,7 +237,7 @@
 
 .featureCard p {
 	margin-top: 20px;
-	color: #000;
+	color: #40260a;
 	font-size: 1.125rem;
 	font-weight: 400;
 	line-height: 1.67;
@@ -339,12 +339,12 @@
 
 .approachCopy h2,
 .faqHeading h2 {
-	color: #000;
+	color: #40260a;
 }
 
 .bodyCopy {
 	margin-top: 28px;
-	color: #000;
+	color: #40260a;
 	font-size: 1.125rem;
 	font-weight: 500;
 	line-height: 2.45;
@@ -362,7 +362,7 @@
 	position: relative;
 	min-height: 44px;
 	padding: 0 0 0 20px;
-	color: #000;
+	color: #40260a;
 	font-size: 1.125rem;
 	font-weight: 500;
 	line-height: 2.4;
@@ -462,7 +462,7 @@
 }
 
 .faqItem summary span:first-child {
-	color: var(--dark);
+	color: #40260a;
 	font-family: var(--font-heading);
 	font-size: 1.125rem;
 	font-weight: 800;
@@ -470,7 +470,7 @@
 }
 
 .faqIcon {
-	color: var(--dark);
+	color: #40260a;
 	font-size: 1.25rem;
 	line-height: 1;
 	text-align: right;

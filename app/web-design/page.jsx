@@ -237,7 +237,7 @@ const WebDesignPage = () => {
 							more visitors into booked appointments.
 						</p>
 						<CheckList items={caseStudyPoints} light />
-						<Link href='/portfolio' className={styles.primaryButton}>
+						<Link href='/case-studies/chateau-dijon-townhomes-web-design' className={styles.primaryButton}>
 							View Project Details
 						</Link>
 					</div>
