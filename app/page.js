@@ -205,17 +205,6 @@ const Home = () => {
 						</div>
 					</div>
 				</div>
-
-					{/* <div className={styles.reviews_container}>
-            <h2 className={styles.reviewer}>REVIEWS</h2>
-            <hr />
-            <div className={styles.reviews}>
-              <CarouselReview />
-            </div>
-          </div> */}
-
-					{/* <div className={`${styles.parallax2} d-none d-lg-block d-xl-block`}></div> */}
-
 				<section
 					className={styles.process_container}
 					data-animate='process-section'
