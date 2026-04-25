@@ -4,8 +4,10 @@ import { useEffect, useId, useRef, useState } from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 import logo from '@/assets/RockDigitalLogo.svg';
+import darkLogo from '@/assets/DarkThemeLogo.svg';
 
 import styles from './navigation.module.css';
 
@@ -21,13 +23,30 @@ const navigationLinks = [
 	},
 ];
 
+const darkNavigationRouteMatchers = [
+	'/about',
+	'/landing-page',
+	'/web-design',
+	'/case-studies/',
+];
+
+const usesDarkNavigation = (pathname = '/') =>
+	darkNavigationRouteMatchers.some((routePrefix) =>
+		routePrefix.endsWith('/')
+			? pathname.startsWith(routePrefix)
+			: pathname === routePrefix
+	);
+
 const Navigation = () => {
 	const [scroll, setScroll] = useState(false);
 	const [isNavVisible, setIsNavVisible] = useState(true);
 	const [showOffcanvas, setShowOffcanvas] = useState(false);
 	const [headerHeight, setHeaderHeight] = useState(0);
+	const pathname = usePathname();
 	const mobileNavId = useId();
 	const headerRef = useRef(null);
+	const isDarkTheme = usesDarkNavigation(pathname);
+	const brandLogo = isDarkTheme ? darkLogo : logo;
 
 	const closeOffcanvas = () => setShowOffcanvas(false);
 
@@ -118,15 +137,15 @@ const Navigation = () => {
 			<div className={styles.headerSpacer} style={{ height: `${headerHeight}px` }} aria-hidden='true' />
 			<header
 				ref={headerRef}
-				className={`${styles.header} ${
+				className={`${styles.header} ${isDarkTheme ? styles.headerDark : ''} ${
 					!isNavVisible && !showOffcanvas ? styles.headerHidden : ''
 				}`.trim()}
 			>
-				<div className={styles.navbar}>
+				<div className={`${styles.navbar} ${isDarkTheme ? styles.navbarDark : ''}`.trim()}>
 					<div className={styles.navbarInner}>
 						<Link href='/' className={styles.navbar_brand} aria-label='Rock Digital home'>
 							<Image
-								src={logo}
+								src={brandLogo}
 								alt='Rock Digital Logo'
 								className={scroll ? styles.resize : styles.brandImage}
 								priority
@@ -149,7 +168,7 @@ const Navigation = () => {
 
 						<button
 							type='button'
-							className={styles.toggler}
+							className={`${styles.toggler} ${isDarkTheme ? styles.togglerDark : ''}`.trim()}
 							aria-controls={mobileNavId}
 							aria-expanded={showOffcanvas}
 							aria-label={showOffcanvas ? 'Close navigation menu' : 'Open navigation menu'}
@@ -172,6 +191,8 @@ const Navigation = () => {
 			<div
 				id={mobileNavId}
 				className={`${styles.mobilePanel} ${
+					isDarkTheme ? styles.mobilePanelDark : ''
+				} ${
 					showOffcanvas ? styles.mobilePanelOpen : ''
 				}`}
 				role='dialog'
@@ -181,7 +202,7 @@ const Navigation = () => {
 				<div className={styles.mobileHeader}>
 					<Link href='/' className={styles.mobileBrand} onClick={closeOffcanvas}>
 						<Image
-							src={logo}
+							src={brandLogo}
 							alt='Rock Digital Logo'
 							className={styles.mobileBrandImage}
 							sizes='88px'
@@ -189,7 +210,7 @@ const Navigation = () => {
 					</Link>
 					<button
 						type='button'
-						className={styles.closeButton}
+						className={`${styles.closeButton} ${isDarkTheme ? styles.closeButtonDark : ''}`.trim()}
 						onClick={closeOffcanvas}
 						aria-label='Close navigation menu'
 					>

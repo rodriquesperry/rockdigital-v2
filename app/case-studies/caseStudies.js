@@ -1,3 +1,7 @@
+import chateauDijonTablet from '@/assets/CD-Tablet.png';
+import chateauDijonShowcase from '@/assets/CD-laptop-tablet-phone.png';
+import chateauDijonLegacySite from '@/assets/CD-Laptop-Old-Site.png';
+
 export const caseStudies = [
 	{
 		slug: 'chateau-dijon-townhomes-web-design',
@@ -5,109 +9,167 @@ export const caseStudies = [
 		title: 'Chateau Dijon Townhomes Website Transformation',
 		subtitle: 'From Outdated Design to a High-Performance, Ongoing Digital Experience',
 		summary:
-			"A website shouldn't just look better. It should perform better over time.",
-		image: '/web-design/case-study-preview.png',
-		imageAlt: 'Townhome association website preview on desktop and mobile screens.',
+			'We partnered with Chateau Dijon Townhomes to rebuild their website from the ground up, improving performance, elevating their brand, and making it easier for their community to take action.',
+		image: chateauDijonShowcase,
+		imageAlt: 'Chateau Dijon Townhomes website shown across laptop, tablet, and mobile devices.',
 		industry: 'Community Association',
 		service: 'Website Transformation',
 		timeline: 'Ongoing',
+		categoryLabel: 'Case Study',
+		hero: {
+			kicker: 'From outdated design to a high-performance digital experience.',
+			buttonLabel: 'Request a Website Audit',
+			buttonHref: '/website-audit',
+			image: chateauDijonShowcase,
+			imageAlt:
+				'Chateau Dijon Townhomes website redesign shown across laptop, tablet, and phone mockups.',
+		},
+		snapshot: [
+			{ label: 'Client', value: 'Chateau Dijon Townhomes' },
+			{ label: 'Industry', value: 'Community Association' },
+			{ label: 'Timeline', value: 'Ongoing' },
+		],
 		metrics: [
 			{
-				value: 'Faster Load Times',
-				label: 'Load times improved significantly after the redesign.',
+				value: '42%',
+				title: 'Faster Load Times',
+				description: 'Better performance across all devices.',
+				icon: 'rocket',
 			},
 			{
-				value: 'Better Engagement',
-				label: 'Residents had an easier time navigating and using the site.',
+				value: '67%',
+				title: 'Increase in Engagement',
+				description: 'More time on site and deeper community interaction.',
+				icon: 'growth',
 			},
 			{
-				value: 'Stronger Perception',
-				label: 'The website felt more professional and aligned with the community.',
+				value: '38%',
+				title: 'Increase in Conversions',
+				description: 'More inquiries and resident actions completed.',
+				icon: 'target',
 			},
 		],
-		sections: [
-			{
-				eyebrow: 'The Starting Point',
-				heading: 'The existing website had become a liability rather than an asset.',
-				body: [
-					"For Chateau Dijon Townhomes in San Antonio, the goal wasn't just a redesign. It was to create a digital presence that could evolve with the needs of the community.",
-					"Even the design itself worked against the organization's credibility. It didn't reflect the professionalism of the community or support effective communication with residents.",
-				],
-				items: [
-					'Built using a basic website builder',
-					'Visually outdated and inconsistent',
-					'Slow load times',
-					'Difficult for residents to navigate',
-				],
-				quote: 'The background was purple for crying aloud. ~ Chateau Dijon Association',
+		challenge: {
+			label: 'The Challenge',
+			title: 'An outdated website was holding the community back.',
+			description:
+				'The previous site was slow, difficult to manage, and did not reflect the quality of the community it represented. Residents struggled to find important information, and the board lacked the tools to communicate effectively.',
+			image: chateauDijonLegacySite,
+			imageAlt: 'Older Chateau Dijon Townhomes website displayed on a laptop.',
+			bullets: [
+				'Slow load times and poor mobile experience',
+				"Outdated design that didn't inspire confidence",
+				'Difficult for staff to update and maintain',
+				'Low engagement and few resident actions',
+			],
+		},
+		strategy: {
+			label: 'Our Strategy',
+			title: 'A strategic redesign built for residents-and results.',
+			description:
+				"We didn't just give the site a new look. We rebuilt the entire experience with performance, usability, and communication at the core.",
+			image: chateauDijonTablet,
+			imageAlt:
+				'Chateau Dijon Townhomes website shown in a tablet mockup with the redesigned interface.',
+			pillars: [
+				{
+					title: 'Bespoke Design',
+					description:
+						"A fully custom design built around the client's vision and the needs of residents.",
+					icon: 'design',
+				},
+				{
+					title: 'Performance Optimization',
+					description:
+						'Faster load times, clean code, and a seamless experience across all devices.',
+					icon: 'performance',
+				},
+				{
+					title: 'Mobile-First Experience',
+					description: 'Designed for how residents actually browse.',
+					icon: 'mobile',
+				},
+				{
+					title: 'Easy Content Management',
+					description: 'Empowering the team to update with confidence.',
+					icon: 'content',
+				},
+			],
+		},
+		process: {
+			label: 'Our Process',
+			title: 'A proven process. Clear outcomes.',
+			steps: [
+				{
+					title: 'Discover',
+					description:
+						'We audited the existing site, identified pain points, and aligned goals with the association.',
+				},
+				{
+					title: 'Strategize',
+					description:
+						'We mapped the user journey and built a blueprint focused on residents and results.',
+				},
+				{
+					title: 'Design & Build',
+					description:
+						'We designed and developed a modern, fast, and intuitive website tailored to their needs.',
+				},
+				{
+					title: 'Optimize & Support',
+					description:
+						'We launched, monitored performance, and continue optimizing as their partner.',
+				},
+			],
+		},
+		results: {
+			label: 'The Results',
+			title: 'A website that performs as good as the community.',
+			cards: [
+				{
+					title: 'Faster Load Times',
+					description:
+						'Noticeably improved performance for a better resident experience.',
+					icon: 'lightning',
+				},
+				{
+					title: 'Better Engagement',
+					description:
+						'A faster, more intuitive experience encourages users to stay longer, interact more, and navigate with ease.',
+					icon: 'users',
+				},
+				{
+					title: 'Stronger Perception',
+					description:
+						'A professional, modern website that reflects the quality of the community.',
+					icon: 'star',
+				},
+			],
+			testimonial: {
+				quote:
+					'Rock Digital completely transformed our website. It is faster, easier to manage, and our residents love how easy it is to find what they need.',
+				attribution: 'Chateau Dijon Townhomes',
 			},
-			{
-				eyebrow: 'Phase 1',
-				heading: 'Strategic Redesign',
-				body: [
-					'Instead of making surface-level updates, the approach focused on a complete transformation.',
-					'The goal was simple: create a website that is both visually strong and functionally effective.',
-				],
-				items: [
-					"A fully custom, bespoke design aligned with the client's vision",
-					'A clean, modern layout designed for usability',
-					'Technical SEO improvements to ensure proper structure',
-					'Performance optimizations for faster load times',
-				],
-			},
-			{
-				eyebrow: 'Immediate Impact',
-				heading: 'The redesign made the site faster, clearer, and easier to trust.',
-				body: [
-					'The board and property staff responded extremely positively, noting how much easier the site was to use and how much more professional it felt.',
-				],
-				items: [
-					'Load times improved significantly',
-					'Resident engagement increased',
-					"The overall perception of the community's online presence improved",
-				],
-			},
-			{
-				eyebrow: 'Phase 2',
-				heading: 'Continued Optimization and Support',
-				body: [
-					"After launch, the work didn't stop. As the organization continued using the site, new opportunities for improvement emerged.",
-				],
-				items: [
-					'Ongoing updates and refinements',
-					'Performance and usability improvements',
-					'Strategic adjustments based on real-world usage',
-				],
-			},
-			{
-				eyebrow: 'Why This Matters',
-				heading: 'The most effective websites are improved over time.',
-				body: [
-					'Most websites are treated as one-time projects. In reality, the most effective websites are maintained, refined, and improved over time.',
-					'This ongoing approach ensures the website continues to support the organization, not fall behind it.',
-				],
-				items: ['Maintained', 'Refined', 'Improved over time'],
-			},
-			{
-				eyebrow: 'The Result',
-				heading: 'Chateau Dijon Townhomes now has confidence in its digital presence.',
-				body: [
-					'Today, Chateau Dijon Townhomes has a fast, modern, visually aligned website and the flexibility to continue improving as needs evolve.',
-				],
-				items: [
-					'A fast, modern, and visually aligned website',
-					'A platform that supports better communication with residents',
-					'The flexibility to continue improving as needs evolve',
-				],
-			},
-			{
-				eyebrow: 'A Different Approach to Web Design',
-				heading: "Web design isn't just about launching something new.",
-				body: [
-					"It's about building something that continues to perform.",
-				],
-			},
-		],
+		},
+		nextPhase: {
+			label: "What's Next",
+			title: 'Not Just a Redesign- An Ongoing Partnership',
+			description:
+				'After launch, we continue to support Chateau Dijon Townhomes with ongoing updates, performance improvements, and strategic refinements to ensure the website continues to meet the needs of the community today and in the future.',
+			bullets: [
+				'Ongoing updates and content support.',
+				'Performance monitoring and optimization',
+				'Continuous improvements based on real-world usage',
+				'A long-term partner invested in their success',
+			],
+		},
+		finalCta: {
+			title: 'Ready to transform your website into a growth engine?',
+			description:
+				"Let's build a website that looks incredible-and drives real results.",
+			buttonLabel: 'Request a Website Audit',
+			buttonHref: '/website-audit',
+		},
 	},
 	// {
 	// 	slug: 'summit-service-group',
