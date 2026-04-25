@@ -7,7 +7,6 @@ import Powered from '@/components/powered_foooter/powered.component';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
-import 'bootstrap/dist/css/bootstrap.css';
 import './globals.css';
 
 const latoFont = Lato({

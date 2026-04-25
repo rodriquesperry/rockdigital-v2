@@ -1,13 +1,13 @@
 'use client';
 
-import { useEffect, useId, useRef, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 import logo from '@/assets/RockDigitalLogo.svg';
-import darkLogo from '@/assets/DarkThemeLogo.svg';
+import darkLogo from '@/assets/RockDigitalDarkLogo.svg';
 
 import styles from './navigation.module.css';
 
@@ -41,12 +41,15 @@ const Navigation = () => {
 	const [scroll, setScroll] = useState(false);
 	const [isNavVisible, setIsNavVisible] = useState(true);
 	const [showOffcanvas, setShowOffcanvas] = useState(false);
-	const [headerHeight, setHeaderHeight] = useState(0);
 	const pathname = usePathname();
 	const mobileNavId = useId();
-	const headerRef = useRef(null);
 	const isDarkTheme = usesDarkNavigation(pathname);
 	const brandLogo = isDarkTheme ? darkLogo : logo;
+	const brandImageClassName = scroll ? styles.resize : styles.brandImage;
+	const mobileBrandImageClassName = styles.mobileBrandImage;
+	const headerSpacerClassName = `${styles.headerSpacer} ${
+		isDarkTheme ? styles.headerSpacerDark : ''
+	}`.trim();
 
 	const closeOffcanvas = () => setShowOffcanvas(false);
 
@@ -103,40 +106,10 @@ const Navigation = () => {
 		return () => window.removeEventListener('keydown', onKeyDown);
 	}, []);
 
-	useEffect(() => {
-		const headerElement = headerRef.current;
-
-		if (!headerElement) {
-			return undefined;
-		}
-
-		const updateHeaderHeight = () => {
-			setHeaderHeight(headerElement.getBoundingClientRect().height);
-		};
-
-		updateHeaderHeight();
-
-		if (typeof ResizeObserver === 'undefined') {
-			window.addEventListener('resize', updateHeaderHeight);
-			return () => window.removeEventListener('resize', updateHeaderHeight);
-		}
-
-		const resizeObserver = new ResizeObserver(() => {
-			updateHeaderHeight();
-		});
-
-		resizeObserver.observe(headerElement);
-
-		return () => {
-			resizeObserver.disconnect();
-		};
-	}, []);
-
 	return (
 		<>
-			<div className={styles.headerSpacer} style={{ height: `${headerHeight}px` }} aria-hidden='true' />
+			<div className={headerSpacerClassName} aria-hidden='true' />
 			<header
-				ref={headerRef}
 				className={`${styles.header} ${isDarkTheme ? styles.headerDark : ''} ${
 					!isNavVisible && !showOffcanvas ? styles.headerHidden : ''
 				}`.trim()}
@@ -147,7 +120,7 @@ const Navigation = () => {
 							<Image
 								src={brandLogo}
 								alt='Rock Digital Logo'
-								className={scroll ? styles.resize : styles.brandImage}
+								className={brandImageClassName}
 								priority
 								sizes='96px'
 							/>
@@ -204,7 +177,7 @@ const Navigation = () => {
 						<Image
 							src={brandLogo}
 							alt='Rock Digital Logo'
-							className={styles.mobileBrandImage}
+							className={mobileBrandImageClassName}
 							sizes='88px'
 						/>
 					</Link>
