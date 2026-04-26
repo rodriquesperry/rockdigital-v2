@@ -16,6 +16,7 @@
 	text-align: center;
 	height: 100%;
 	width: 100%;
+  font-family: var(--font-heading);
 }
 
 .main_container h2 span {
@@ -187,6 +188,7 @@
 	text-align: center;
 	min-height: 50px;
 	max-width: 350px;
+  font-family: var(--font-heading);
 }
 
 .skill_set p {
@@ -194,6 +196,7 @@
 	padding: 0 0rem;
 	font-size: 1.1rem;
 	min-height: 187px;
+  line-height: 40px;
 }
 
 .parallax1 {
@@ -924,7 +927,7 @@
 		font-size: 1.3rem;
 		text-align: center;
 		padding: 0 1.5rem;
-		margin: 0;
+		margin: -3.5rem 0;
 	}
 
 	.parallax1 {
