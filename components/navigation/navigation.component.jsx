@@ -28,9 +28,9 @@ const darkNavigationRouteMatchers = [
 	'/landing-page',
 	'/web-design',
 	'/case-studies/',
-  '/website-design-and-development',
-  '/website-optimization',
-  '/digital-growth-strategy',
+	'/website-design-and-development',
+	'/website-optimization',
+	'/website-improvement',
 ];
 
 const usesDarkNavigation = (pathname = '/') =>
