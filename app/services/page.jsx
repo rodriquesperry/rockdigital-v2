@@ -40,7 +40,7 @@ const serviceCards = [
 			'Stay ahead of your competition and make sure your website continues to deliver positive returns on your investment. Every website requires upkeep and continual improvement to operate properly. We take these stresses away from you with custom website improvement packages tailored to fit your business vision.',
 		image: WebsiteImprovement,
 		imageAlt: 'Website maintenance and optimization interface preview.',
-		href: '/website-maintenance',
+		href: '/website-optimization',
 		variant: 'accent',
 	},
 ];
@@ -72,7 +72,7 @@ const solutions = [
 	},
 	{
 		label: 'Ongoing Optimization & Growth',
-		href: '/website-maintenance',
+		href: '/website-optimization',
 		paragraph1:
 			'Ongoing optimization and growth built for momentum—not just to maintain your website, but to continuously improve it. We monitor performance, identify opportunities, and refine key areas to keep your site aligned with your goals. Every adjustment is intentional—focused on strengthening results over time, not just maintaining the status quo.',
 		paragraph2:

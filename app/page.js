@@ -119,7 +119,7 @@ const Home = () => {
 					</div>
 
 					<div className={`${styles.div2} homepage-card-hover`} data-animate='card-reveal'>
-						<Link href='/website-maintenance'>
+						<Link href='/website-optimization'>
 							<div className={styles.div_content}>
 								<h3>Website Optimization</h3>
 							</div>

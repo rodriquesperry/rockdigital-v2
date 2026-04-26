@@ -27,6 +27,15 @@ const nextConfig = {
 			},
 		],
 	},
+	async redirects() {
+		return [
+			{
+				source: '/website-maintenance',
+				destination: '/website-optimization',
+				permanent: true,
+			},
+		];
+	},
 	async headers() {
 		return [
 			{

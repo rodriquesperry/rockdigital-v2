@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,10 +10,47 @@ import { v4 as uuidv4 } from 'uuid';
 
 import styles from './contactForm.module.css';
 
-const ContactForm = () => {
+const defaultServiceOptions = [
+	'Web Development',
+	'App Development',
+	'Marketing',
+	'Other',
+];
+
+const createSchema = (serviceOptions) =>
+	z.object({
+		lead_uuid: z.string().uuid('Invalid UUID.'),
+		active: z.boolean(),
+		name: z
+			.string()
+			.min(1, 'First name is required.')
+			.regex(
+				/^[A-Za-z]+$/,
+				'First name must contain only alphabetic characters.',
+			),
+		email: z.string().email('Invalid email address.'),
+		phone_num: z
+			.string()
+			.min(10, 'Phone number must be at least 10 digits.')
+			.regex(/^\d+$/, 'Phone number must contain only numeric characters.'),
+		service: z.string().refine((value) => serviceOptions.includes(value), {
+			message: 'Service must be selected from the provided options.',
+		}),
+		description: z
+			.string()
+			.min(10, 'Description must be at least 10 characters long.')
+			.max(500, 'Description cannot exceed 500 characters.'),
+	});
+
+const ContactForm = ({
+	serviceOptions = defaultServiceOptions,
+	servicePlaceholder = 'Choose Your Service Need',
+	submitLabel = 'Get Started',
+}) => {
 	const baseURL = config.api || 'http://127.0.0.1:1337';
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 	const leadIdRef = useRef(uuidv4());
+	const schema = useMemo(() => createSchema(serviceOptions), [serviceOptions]);
 
 	const {
 		register,
@@ -172,12 +209,13 @@ const ContactForm = () => {
 					defaultValue=''
 				>
 					<option value='' disabled>
-						Choose Your Service Need
+						{servicePlaceholder}
 					</option>
-					<option value='Web Development'>Web Development</option>
-					<option value='App Development'>App Development</option>
-					<option value='Marketing'>Marketing</option>
-					<option value='Other'>Other</option>
+					{serviceOptions.map((option) => (
+						<option key={option} value={option}>
+							{option}
+						</option>
+					))}
 				</select>
 				{errors.service && (
 					<div className={styles.error}>{errors.service.message}</div>
@@ -208,48 +246,12 @@ const ContactForm = () => {
 						type='submit'
 						className='btn btn-warning'
 					>
-						{isSubmitting ? 'Loading...' : 'Get Started'}
+						{isSubmitting ? 'Loading...' : submitLabel}
 					</button>
 				</div>
 			</form>
 		</div>
 	);
 };
-
-const schema = z.object({
-	lead_uuid: z.string().uuid('Invalid UUID.'), // Added UUID validation
-	active: z.boolean(), // Added active field
-	name: z
-		.string()
-		.min(1, 'First name is required.')
-		.regex(
-			/^[A-Za-z]+$/,
-			'First name must contain only alphabetic characters.',
-		),
-	email: z.string().email('Invalid email address.'),
-	// password: z
-	// 	.string()
-	// 	.min(8, 'Password must be at least 8 characters long.')
-	// 	.regex(/[A-Z]/, 'Password must contain at least one uppercase letter.')
-	// 	.regex(/[a-z]/, 'Password must contain at least one lowercase letter.')
-	// 	.regex(/\d/, 'Password must contain at least one number.')
-	// 	.regex(/[\W_]/, 'Password must contain at least one special character.'),
-	phone_num: z
-		.string()
-		.min(10, 'Phone number must be at least 10 digits.')
-		.regex(/^\d+$/, 'Phone number must contain only numeric characters.'),
-	service: z.enum(
-		['Web Development', 'App Development', 'Marketing', 'Other'],
-		{
-			errorMap: () => ({
-				message: 'Service must be selected from the provided options.',
-			}),
-		},
-	),
-	description: z
-		.string()
-		.min(10, 'Description must be at least 10 characters long.')
-		.max(500, 'Description cannot exceed 500 characters.'),
-});
 
 export default ContactForm;
