@@ -259,7 +259,9 @@ const Home = () => {
 							overall revenue. Fill out the form to get started.
 						</p>
 					</div>
-					<ContactForm />
+					<div className={styles.ready_form_card}>
+						<ContactForm />
+					</div>
 				</div>
 			</div>
 		</div>

@@ -269,12 +269,13 @@
 }
 
 .ready_container {
-	background-color: var(--color-surface-muted);
+	background: #faf8f3;
 	width: auto;
 	height: auto;
 	margin: 0 0 3rem;
-	padding: 0 0.8rem;
-	border: 0.01em solid var(--color-ink-900);
+	padding: 3rem 1rem;
+	border: 1px solid rgba(34, 21, 6, 0.08);
+	border-radius: 24px;
 }
 
 .ready_header {
@@ -283,7 +284,103 @@
 	justify-content: center;
 	align-items: center;
 	text-align: center;
-	padding-top: 15%;
+	padding-top: 0;
+}
+
+.ready_header p {
+	max-width: 760px;
+}
+
+.ready_form_card {
+	width: min(760px, 100%);
+	margin: 2.4rem auto 0;
+	padding: 1.75rem;
+	border: 1px solid rgba(34, 21, 6, 0.1);
+	border-radius: 24px;
+	background: #fff;
+	box-shadow: 0 20px 40px rgba(34, 21, 6, 0.06);
+}
+
+.ready_form_card :global(.form_container) {
+	width: 100%;
+}
+
+.ready_form_card :global(#form) {
+	width: 100%;
+	max-width: none;
+	margin: 0;
+	padding-bottom: 0;
+	align-items: stretch;
+}
+
+.ready_form_card :global(#form > label) {
+	width: 100%;
+	min-width: 0;
+	max-width: none;
+	margin-top: 1.2rem;
+	color: #40260a;
+	font-size: 0.95rem;
+	font-weight: 500;
+	line-height: 1.4;
+	align-self: stretch;
+}
+
+.ready_form_card :global(#form > label:first-of-type) {
+	margin-top: 0;
+}
+
+.ready_form_card :global(#form > input),
+.ready_form_card :global(#form > select),
+.ready_form_card :global(#form > textarea) {
+	width: 100%;
+	min-width: 0;
+	min-height: 52px;
+	padding: 0.9rem 1rem;
+	border: 1px solid rgba(34, 21, 6, 0.16) !important;
+	border-radius: 8px;
+	background: #fff;
+	color: #382e30;
+	align-self: stretch;
+}
+
+.ready_form_card :global(#form > textarea) {
+	min-height: 148px;
+	resize: vertical;
+}
+
+.ready_form_card :global(#form > input:focus),
+.ready_form_card :global(#form > select:focus),
+.ready_form_card :global(#form > textarea:focus) {
+	border-color: #d89a00 !important;
+	box-shadow: 0 0 0 3px rgba(216, 154, 0, 0.12);
+	outline: none;
+}
+
+.ready_form_card :global(#form > input::placeholder),
+.ready_form_card :global(#form > textarea::placeholder),
+.ready_form_card :global(#form select) {
+	color: rgba(56, 46, 48, 0.48);
+	font-size: 1rem;
+}
+
+.ready_form_card :global(#form .error) {
+	width: 100%;
+	min-width: 0;
+	margin-top: 0.5rem;
+	color: #b40000;
+	font-size: 0.95rem;
+	font-weight: 400;
+	align-self: stretch;
+}
+
+.ready_form_card :global(.contact_form_button_container) {
+	width: 100%;
+	margin-top: 1.6rem;
+	justify-content: flex-start;
+}
+
+.ready_form_card :global(.contact_form_button_container .btn) {
+	min-width: 180px;
 }
 
 .ready_btn {
@@ -346,6 +443,26 @@
 		width: auto;
 		font-size: clamp(0.9rem, 3.6vw, 1rem);
 		padding: 0.55rem 0.9rem;
+	}
+}
+
+@media screen and (min-width: 768px) {
+	.ready_form_card {
+		padding: 2.25rem;
+	}
+
+	.ready_form_card :global(.contact_form_button_container) {
+		justify-content: flex-end;
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	.ready_container {
+		padding: 4rem 2rem;
+	}
+
+	.ready_form_card {
+		padding: 3rem;
 	}
 }
 
