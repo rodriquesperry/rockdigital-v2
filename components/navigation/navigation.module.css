@@ -4,7 +4,9 @@
 	left: 0;
 	right: 0;
 	z-index: 40;
-	transition: transform 220ms ease, box-shadow 220ms ease;
+	transition:
+		transform 220ms ease,
+		box-shadow 220ms ease;
 	will-change: transform;
 }
 
@@ -27,6 +29,8 @@
 	padding-right: var(--gutter-desktop);
 	padding-left: var(--gutter-desktop);
 	box-shadow: 0 1px 0 rgba(34, 21, 6, 0.06);
+  padding-bottom: .2rem;
+  padding-top: .2rem;
 }
 
 .navbarDark {
@@ -172,7 +176,6 @@
 	opacity: 1;
 	pointer-events: auto;
 }
-
 
 .mobilePanel {
 	position: fixed;

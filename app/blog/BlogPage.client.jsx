@@ -5,18 +5,18 @@ import axios from 'axios';
 import Image from 'next/image';
 import Link from 'next/link';
 import config from '@/config';
+import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
 
 import styles from './blog.module.css';
 
 const baseURL = config.api || 'http://127.0.0.1:1337';
 
 const getImageUrl = (post) => {
+  console.log('post.featured_image: ', post.featured_image);
 	const img = post?.featured_image;
-	const url = img?.url || img?.data?.attributes?.url || '';
-	if (!url) {
-		return '';
-	}
-	return url.startsWith('http') ? url : `${baseURL}${url}`;
+  console.log('getStrapiMediaUrl(img): ', getStrapiMediaUrl(img));
+  
+	return getStrapiMediaUrl(img);
 };
 
 const getCategoriesFromPost = (post) => {
@@ -148,6 +148,8 @@ export default function BlogPageClient() {
 		);
 	}
 
+  
+
 	return (
 		<div className={styles.page}>
 			<section className={styles.heroSection}>
@@ -155,6 +157,7 @@ export default function BlogPageClient() {
 
 				<div className={styles.heroGrid}>
 					{featuredPost && (
+            console.log('getImageUrl(featuredPost) : ', getImageUrl(featuredPost)),
 						<Link href={`/blog/${featuredPost.slug}`} className={styles.mainFeatureCard}>
 							<div className={styles.mainFeatureMedia}>
 								{getImageUrl(featuredPost) && (
@@ -178,6 +181,7 @@ export default function BlogPageClient() {
 					<div className={styles.sideFeatureStack}>
 						{sidePosts.map((post) => (
 							<Link href={`/blog/${post.slug}`} key={post.id} className={styles.sideFeatureCard}>
+               {console.log(getImageUrl('post: ', post))}
 								<div className={styles.sideFeatureMedia}>
 									{getImageUrl(post) && (
 										<Image

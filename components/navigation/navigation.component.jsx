@@ -31,6 +31,7 @@ const darkNavigationRouteMatchers = [
 	'/website-design-and-development',
 	'/website-optimization',
 	'/website-improvement',
+	'/digital-marketing-new-braunfels',
 ];
 
 const usesDarkNavigation = (pathname = '/') =>

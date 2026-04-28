@@ -363,7 +363,7 @@ export default function WebsiteOptimization() {
 									key={item}
 									className={`${styles.securityCard} ${styles[`securityCard${index + 1}`]}`.trim()}
 								>
-									<span className={styles.systemCardLabel}>Trust Layer</span>
+									<span className={styles.systemCardLabel}>Trust Layer</span><br />
 									<strong>{item}</strong>
 								</div>
 							))}
