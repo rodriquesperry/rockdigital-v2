@@ -10,30 +10,71 @@ import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
 import styles from './blog.module.css';
 
 const baseURL = config.api || 'http://127.0.0.1:1337';
+const ALL_CATEGORY_KEY = 'all';
 
 const getImageUrl = (post) => {
-  console.log('post.featured_image: ', post.featured_image);
 	const img = post?.featured_image;
-  console.log('getStrapiMediaUrl(img): ', getStrapiMediaUrl(img));
-  
 	return getStrapiMediaUrl(img);
 };
 
-const getCategoriesFromPost = (post) => {
-	const fromCategory = post?.category ? [post.category] : [];
-	const fromTags = Array.isArray(post?.tags) ? post.tags : [];
-	const fromCategories = Array.isArray(post?.categories) ? post.categories : [];
+const slugifyCategory = (name) =>
+	name
+		.toLowerCase()
+		.trim()
+		.replace(/&/g, 'and')
+		.replace(/[^a-z0-9]+/g, '-')
+		.replace(/^-+|-+$/g, '');
 
-	return [...fromCategory, ...fromTags, ...fromCategories]
-		.map((item) => {
-			if (typeof item === 'string') {
-				return item;
-			}
-			return item?.name || item?.title || item?.slug || '';
-		})
+const getCategoryValueItems = (value) => {
+	if (!value) {
+		return [];
+	}
+	if (Array.isArray(value)) {
+		return value.flatMap(getCategoryValueItems);
+	}
+	if (Array.isArray(value?.data)) {
+		return value.data.flatMap(getCategoryValueItems);
+	}
+	if (value?.data) {
+		return getCategoryValueItems(value.data);
+	}
+	return [value];
+};
+
+const getCategoryName = (item) => {
+	if (typeof item === 'string') {
+		return item;
+	}
+
+	const attributes = item?.attributes;
+	return (
+		item?.name ||
+		item?.title ||
+		item?.label ||
+		attributes?.name ||
+		attributes?.title ||
+		attributes?.label ||
+		item?.slug ||
+		attributes?.slug ||
+		''
+	);
+};
+
+const getCategoriesFromPost = (post) => {
+	const values = [post?.category, post?.tags, post?.categories];
+
+	return values
+		.flatMap(getCategoryValueItems)
+		.map(getCategoryName)
 		.map((name) => name.trim())
 		.filter(Boolean);
 };
+
+const getCategoryOptionsFromPost = (post) =>
+	getCategoriesFromPost(post).map((label) => ({
+		label,
+		key: slugifyCategory(label),
+	}));
 
 const formatDate = (dateValue) => {
 	if (!dateValue) {
@@ -63,7 +104,7 @@ const truncateWords = (text, maxWords = 30) => {
 
 export default function BlogPageClient() {
 	const [posts, setPosts] = useState([]);
-	const [activeCategory, setActiveCategory] = useState('All');
+	const [activeCategory, setActiveCategory] = useState(ALL_CATEGORY_KEY);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
 
@@ -85,25 +126,46 @@ export default function BlogPageClient() {
 		fetchPosts();
 	}, []);
 
+	const filteredPosts = useMemo(() => {
+		if (activeCategory === ALL_CATEGORY_KEY) {
+			return posts;
+		}
+
+		return posts.filter((post) =>
+			getCategoryOptionsFromPost(post).some(
+				(category) => category.key === activeCategory
+			)
+		);
+	}, [posts, activeCategory]);
+
+	const categories = useMemo(() => {
+		const map = new Map();
+		posts.forEach((post) => {
+			getCategoryOptionsFromPost(post).forEach((category) => {
+				if (category.key && !map.has(category.key)) {
+					map.set(category.key, category.label);
+				}
+			});
+		});
+		return [
+			{ key: ALL_CATEGORY_KEY, label: 'All' },
+			...Array.from(map, ([key, label]) => ({ key, label })),
+		];
+	}, [posts]);
+
 	const featuredPost = useMemo(
-		() => posts.find((post) => Boolean(post?.featured)) || posts[0],
-		[posts]
+		() => filteredPosts.find((post) => Boolean(post?.featured)) || filteredPosts[0],
+		[filteredPosts]
 	);
 
 	const sidePosts = useMemo(() => {
 		if (!featuredPost) {
 			return [];
 		}
-		return posts.filter((post) => post.id !== featuredPost.id).slice(0, 2);
-	}, [posts, featuredPost]);
-
-	const categories = useMemo(() => {
-		const set = new Set();
-		posts.forEach((post) => {
-			getCategoriesFromPost(post).forEach((category) => set.add(category));
-		});
-		return ['All', ...Array.from(set)];
-	}, [posts]);
+		return filteredPosts
+			.filter((post) => post.id !== featuredPost.id)
+			.slice(0, 2);
+	}, [filteredPosts, featuredPost]);
 
 	const visiblePosts = useMemo(() => {
 		if (!featuredPost) {
@@ -114,15 +176,8 @@ export default function BlogPageClient() {
 			...sidePosts.map((post) => post.id),
 		]);
 
-		const remaining = posts.filter((post) => !excludedIds.has(post.id));
-		if (activeCategory === 'All') {
-			return remaining;
-		}
-
-		return remaining.filter((post) =>
-			getCategoriesFromPost(post).includes(activeCategory)
-		);
-	}, [posts, featuredPost, sidePosts, activeCategory]);
+		return filteredPosts.filter((post) => !excludedIds.has(post.id));
+	}, [filteredPosts, featuredPost, sidePosts]);
 
 	if (error) {
 		return (
@@ -157,7 +212,6 @@ export default function BlogPageClient() {
 
 				<div className={styles.heroGrid}>
 					{featuredPost && (
-            console.log('getImageUrl(featuredPost) : ', getImageUrl(featuredPost)),
 						<Link href={`/blog/${featuredPost.slug}`} className={styles.mainFeatureCard}>
 							<div className={styles.mainFeatureMedia}>
 								{getImageUrl(featuredPost) && (
@@ -181,7 +235,6 @@ export default function BlogPageClient() {
 					<div className={styles.sideFeatureStack}>
 						{sidePosts.map((post) => (
 							<Link href={`/blog/${post.slug}`} key={post.id} className={styles.sideFeatureCard}>
-               {console.log(getImageUrl('post: ', post))}
 								<div className={styles.sideFeatureMedia}>
 									{getImageUrl(post) && (
 										<Image
@@ -206,14 +259,14 @@ export default function BlogPageClient() {
 				<div className={styles.chipsWrap}>
 					{categories.map((category) => (
 						<button
-							key={category}
+							key={category.key}
 							type='button'
-							onClick={() => setActiveCategory(category)}
+							onClick={() => setActiveCategory(category.key)}
 							className={`${styles.chip} ${
-								activeCategory === category ? styles.chipActive : ''
+								activeCategory === category.key ? styles.chipActive : ''
 							}`}
 						>
-							{category}
+							{category.label}
 						</button>
 					))}
 				</div>
@@ -241,7 +294,7 @@ export default function BlogPageClient() {
 						</Link>
 					))}
 				</div>
-				{!visiblePosts.length && (
+				{!filteredPosts.length && (
 					<p className={styles.status}>No posts found in this category.</p>
 				)}
 			</section>

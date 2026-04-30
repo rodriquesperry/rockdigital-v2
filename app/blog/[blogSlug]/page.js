@@ -219,6 +219,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 			read_time,
 			short_description,
 			featured_image,
+      category,
 		} = post;
 
 		const featImage = getStrapiMediaUrl(featured_image);
@@ -233,6 +234,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 				readTime={read_time}
 				author={author}
 				dateString={date.toDateString()}
+        category={category}
 			>
 				<ReactMarkdown>{markdownBody}</ReactMarkdown>
 			</BlogPostAnimated>

@@ -16,6 +16,7 @@ export default function BlogPostAnimated({
 	author,
 	dateString,
 	children,
+  category,
 }) {
 	const containerRef = useRef(null);
 
@@ -129,13 +130,13 @@ export default function BlogPostAnimated({
 							fill
 							sizes='auto'
 						/> */}
-					<div className={`col-3 ${styles.info_pic}`}>
+					{/* <div className={`col-3 ${styles.info_pic}`}> */}
 						<div className={styles.info_text}>
 							<h5 className={styles.author}>{author}</h5>
 							<h6 className={styles.date}>{dateString}</h6>
-							<small className={styles.category}>Tags, categories, hashtags</small>
+							<small className={styles.category}>{category}</small>
 						</div>
-					</div>
+					{/* </div> */}
 				</div>
 			</div>
 			<div className={styles.blog_post} data-animate='blog-article'>

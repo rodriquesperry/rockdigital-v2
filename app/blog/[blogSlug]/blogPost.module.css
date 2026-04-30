@@ -241,9 +241,11 @@
 
 	.author_info {
 		display: flex;
-		width: 49.5%;
+		width: 100%;
 		position: relative;
-		margin-top: 1.5rem;
+		margin-top: .1rem;
+    left: calc(calc(100% / 2) - 2rem);
+
 	}
 
 	.info_pic {
@@ -352,10 +354,11 @@
 
 	.author_info {
 		display: flex;
-		width: 49.5%;
+		width: 100%;
 		position: relative;
 		left: calc(calc(100% / 2) - 2.3rem);
 		margin-top: 0.5rem;
+    justify-content: flex-start;
 	}
 
 	.info_pic {
@@ -381,8 +384,12 @@
 	.info_text .author,
 	.date,
 	.category {
-		margin: 0 0.5rem;
+		margin: 0 0.8rem;
 	}
+
+  .info_text small {
+    margin-left: 1rem;
+  } 
 
 	.blog_post {
 		padding: 0 10rem;
