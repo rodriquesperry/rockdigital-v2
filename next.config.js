@@ -25,6 +25,11 @@ const nextConfig = {
 				hostname: 'rockdigital-v2.vercel.app',
 				pathname: '/**',
 			},
+      {
+				protocol: 'https',
+				hostname: 'rock-digital-blog-images.sfo3.cdn.digitaloceanspaces.com',
+				pathname: '/**',
+			}
 		],
 	},
 	async redirects() {
