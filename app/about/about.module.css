@@ -42,8 +42,8 @@
 .heroSection::after {
 	content: '';
 	position: absolute;
-	inset: 0 auto 0 20%;
-	width: 40%;
+	inset: 0 auto 0 0%;
+	width: 100%;
 	background: linear-gradient(
 		105deg,
 		transparent 0%,

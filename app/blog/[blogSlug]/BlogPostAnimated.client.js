@@ -106,7 +106,6 @@ export default function BlogPostAnimated({
 						className={`col ${styles.blog_image_container}`}
 						data-animate='blog-image'
 					>
-          {console.log('featImage: ', featImage)}
 						<Image
 							src={featImage}
 							alt={title || 'Featured Image'}

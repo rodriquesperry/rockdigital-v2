@@ -45,19 +45,50 @@ async function resolvePostRequest(blogSlug) {
 	return { post: null, redirectSlug: null };
 }
 
-function nodeChildrenToText(children = []) {
+function escapeMarkdownText(text = '') {
+	return text.replace(/\\/g, '\\\\').replace(/([`*_{}[\]()#+\-.!>])/g, '\\$1');
+}
+
+function applyTextMarks(text = '', node = {}) {
+	let markedText = escapeMarkdownText(text);
+
+	if (node.code) {
+		markedText = `\`${text.replace(/`/g, '\\`')}\``;
+	}
+
+	if (node.bold) {
+		markedText = `**${markedText}**`;
+	}
+
+	if (node.italic) {
+		markedText = `*${markedText}*`;
+	}
+
+	if (node.strikethrough) {
+		markedText = `~~${markedText}~~`;
+	}
+
+	return markedText;
+}
+
+function nodeChildrenToMarkdown(children = []) {
 	return children
 		.map((child) => {
 			if (typeof child === 'string') {
-				return child;
+				return escapeMarkdownText(child);
 			}
 
 			if (child?.type === 'text') {
-				return child.text || '';
+				return applyTextMarks(child.text || '', child);
+			}
+
+			if (child?.type === 'link') {
+				const linkText = nodeChildrenToMarkdown(child.children) || child.url;
+				return child.url ? `[${linkText}](${child.url})` : linkText;
 			}
 
 			if (Array.isArray(child?.children)) {
-				return nodeChildrenToText(child.children);
+				return nodeChildrenToMarkdown(child.children);
 			}
 
 			return '';
@@ -72,7 +103,7 @@ function blocksToMarkdown(blocks = []) {
 				return block;
 			}
 
-			const text = nodeChildrenToText(block?.children).trim();
+			const text = nodeChildrenToMarkdown(block?.children).trim();
 
 			switch (block?.type) {
 				case 'heading': {
@@ -84,7 +115,7 @@ function blocksToMarkdown(blocks = []) {
 				case 'list':
 					return (block.children || [])
 						.map((item, index) => {
-							const itemText = nodeChildrenToText(item.children).trim();
+							const itemText = nodeChildrenToMarkdown(item.children).trim();
 							if (!itemText) {
 								return '';
 							}
@@ -97,6 +128,14 @@ function blocksToMarkdown(blocks = []) {
 						.join('\n');
 				case 'code':
 					return text ? `\`\`\`\n${text}\n\`\`\`` : '';
+				case 'image': {
+					const image = block.image || {};
+					const imageUrl = getStrapiMediaUrl(image);
+					const altText = escapeMarkdownText(
+						image.alternativeText || image.caption || ''
+					);
+					return imageUrl ? `![${altText}](${imageUrl})` : '';
+				}
 				case 'paragraph':
 				default:
 					return text;
@@ -104,6 +143,32 @@ function blocksToMarkdown(blocks = []) {
 		})
 		.filter(Boolean)
 		.join('\n\n');
+}
+
+function getSafeLinkTarget(href = '') {
+	if (!href) {
+		return '_self';
+	}
+
+	return href.startsWith('/') || href.startsWith('#') ? '_self' : '_blank';
+}
+
+function MarkdownLink({ href = '', children }) {
+	const target = getSafeLinkTarget(href);
+
+	return (
+		<a
+			href={href}
+			target={target}
+			rel={target === '_blank' ? 'noopener noreferrer' : undefined}
+		>
+			{children}
+		</a>
+	);
+}
+
+function MarkdownImage({ src = '', alt = '' }) {
+	return <img src={getStrapiMediaUrl(src)} alt={alt} loading='lazy' />;
 }
 
 function extractTextDeep(value) {
@@ -219,7 +284,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 			read_time,
 			short_description,
 			featured_image,
-      category,
+			category,
 		} = post;
 
 		const featImage = getStrapiMediaUrl(featured_image);
@@ -234,9 +299,16 @@ export default async function BlogPostPage({ params, searchParams }) {
 				readTime={read_time}
 				author={author}
 				dateString={date.toDateString()}
-        category={category}
+				category={category}
 			>
-				<ReactMarkdown>{markdownBody}</ReactMarkdown>
+				<ReactMarkdown
+					components={{
+						a: MarkdownLink,
+						img: MarkdownImage,
+					}}
+				>
+					{markdownBody}
+				</ReactMarkdown>
 			</BlogPostAnimated>
 		);
 	} catch (error) {
