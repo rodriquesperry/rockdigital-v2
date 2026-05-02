@@ -296,6 +296,7 @@
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr));
 	gap: 1rem;
+  
 }
 
 .heroSystemCard {
@@ -327,19 +328,19 @@
 }
 
 .heroSystemCard1 {
-	transform: translateY(6px);
+	transform: translateY(-5px);
 }
 
 .heroSystemCard2 {
-	transform: translateY(-10px);
+	transform: translateY(-5px);
 }
 
 .heroSystemCard3 {
-	transform: translateY(14px);
+	transform: translateY(-10px);
 }
 
 .heroSystemCard4 {
-	transform: translateY(-4px);
+	transform: translateY(-10px);
 }
 
 .metaSection {
