@@ -4,6 +4,7 @@ import Script from 'next/script';
 import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
+import { GoogleAnalytics } from '@next/third-parties/google'
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -45,6 +46,7 @@ export default function RootLayout({ children }) {
 				<SpeedInsights />
 				<Analytics />
 				<Powered />
+        <GoogleAnalytics gaId="G-YJKD269K62" />
 			</body>
 		</html>
 	);

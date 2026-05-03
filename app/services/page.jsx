@@ -63,7 +63,7 @@ const solutions = [
 			'That means clean architecture, optimized performance, and scalable systems that work behind the scenes—so your website stays fast, stable, and ready to grow with you.',
 	},
 	{
-		label: 'Traffic & SEO Growth',
+		label: 'Digital Marketing',
 		href: '/website-improvement',
 		paragraph1:
 			'Traffic & SEO growth built with strategy—not just to increase visibility, but to attract the right audience. We help your business get found through search by improving your site’s structure, content, and authority. Every move is intentional—focused on bringing in qualified traffic that supports real, measurable growth.',
