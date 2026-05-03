@@ -39,7 +39,7 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
-        {/* <GoogleAnalytics gaId="G-YJKD269K62" /> */}
+        <GoogleAnalytics gaId="G-YJKD269K62" />
 				<Script
 					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
 					strategy='afterInteractive'
