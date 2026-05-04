@@ -4,7 +4,7 @@ import Script from 'next/script';
 import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -39,11 +39,19 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
-        <GoogleAnalytics gaId="G-YJKD269K62" />
+				<GoogleAnalytics gaId='G-YJKD269K62' />
 				<Script
 					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
 					strategy='afterInteractive'
 				/>
+				<Script
+					async
+					src='https://googletagmanager.com'
+					strategy='afterInteractive'
+				/>
+				<Script id='google-analytics' strategy='afterInteractive'>
+					{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-YJKD269K62');`}
+				</Script>
 				<SpeedInsights />
 				<Analytics />
 				<Powered />

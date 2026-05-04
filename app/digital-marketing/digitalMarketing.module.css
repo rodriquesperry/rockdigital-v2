@@ -410,6 +410,10 @@
 	line-height: 1.82;
 }
 
+.editorialCopy p {
+  margin-top: 1.3rem;
+}
+
 .systemSection {
 	padding: 102px 0;
 	background:
