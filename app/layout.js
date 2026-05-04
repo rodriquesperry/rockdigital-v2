@@ -44,14 +44,6 @@ export default function RootLayout({ children }) {
 					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
 					strategy='afterInteractive'
 				/>
-				<Script
-					async
-					src='https://googletagmanager.com'
-					strategy='afterInteractive'
-				/>
-				<Script id='google-analytics' strategy='afterInteractive'>
-					{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-YJKD269K62');`}
-				</Script>
 				<SpeedInsights />
 				<Analytics />
 				<Powered />
