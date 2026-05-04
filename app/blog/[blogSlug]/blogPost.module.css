@@ -20,7 +20,7 @@
 
 .read_time {
 	font-style: italic;
-	font-weight: 200;
+	font-weight: 300;
   color: rgba(0, 0, 0, 0.82);
 }
 
@@ -252,7 +252,8 @@
 
 	.read_time {
 		position: absolute;
-		/* font-weight: bold; */
+		font-weight: bold;
+    font-size: 14px !important;
 	}
 
 	.author_info {
@@ -365,7 +366,8 @@
 
 	.read_time {
 		position: absolute;
-		/* font-weight: bold; */
+		font-weight: bold;
+    font-size: 14px !important;
 	}
 
 	.author_info {

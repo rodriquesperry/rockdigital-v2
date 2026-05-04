@@ -28,28 +28,14 @@ export const metadata = {
 		default: 'Web Design, SEO, and Marketing Insights',
 		template: '%s | Rock Digital',
 	},
-	// verification: {
-	// 	google: '2ULkPhhcwPOfnN7-fHJTH5gUVStrrWUa3OSmVRvXR8s',
-	// },
+	verification: {
+		google: '2ULkPhhcwPOfnN7-fHJTH5gUVStrrWUa3OSmVRvXR8s',
+	},
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
-			<head>
-				<Script
-					src='https://www.googletagmanager.com/gtag/js?id=G-YJKD269K62'
-					strategy='afterInteractive'
-				/>
-				<Script id='google-analytics' strategy='afterInteractive'>
-					{`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-YJKD269K62');
-          `}
-				</Script>
-			</head>
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
