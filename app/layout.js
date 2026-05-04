@@ -28,18 +28,20 @@ export const metadata = {
 		default: 'Web Design, SEO, and Marketing Insights',
 		template: '%s | Rock Digital',
 	},
-	verification: {
-		google: '2ULkPhhcwPOfnN7-fHJTH5gUVStrrWUa3OSmVRvXR8s',
-	},
+	// verification: {
+	// 	google: '2ULkPhhcwPOfnN7-fHJTH5gUVStrrWUa3OSmVRvXR8s',
+	// },
 };
 
 export default function RootLayout({ children }) {
 	return (
 		<html lang='en'>
+			<head>
+				<GoogleAnalytics gaId='G-YJKD269K62' />
+			</head>
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
-				<GoogleAnalytics gaId='G-YJKD269K62' />
 				<Script
 					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
 					strategy='afterInteractive'
