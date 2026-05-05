@@ -709,7 +709,7 @@
 
 .conversionCard {
 	position: absolute;
-	width: min(100%, 240px);
+	width: min(100%, 200px);
 	padding: 1.4rem 1.35rem;
 	border-radius: 20px;
 	box-shadow: 0 18px 34px rgba(34, 21, 6, 0.1);

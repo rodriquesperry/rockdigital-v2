@@ -381,6 +381,7 @@ export default function WebsiteImprovement() {
 									className={`${styles.conversionCard} ${styles[`conversionCard${index + 1}`]}`.trim()}
 								>
 									<span className={styles.systemCardLabel}>Growth Step</span>
+                  <br />
 									<strong>{item}</strong>
 								</div>
 							))}
