@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from '@/config';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
+import { draftMode } from 'next/headers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import BlogPostAnimated from './BlogPostAnimated.client';
@@ -8,32 +9,59 @@ import BlogPostAnimated from './BlogPostAnimated.client';
 const baseURL = config.api || 'http://127.0.0.1:1337';
 export const revalidate = 60;
 
-async function fetchPostBySlug(blogSlug) {
-	const encodedSlug = encodeURIComponent(blogSlug);
+const getPostQuery = (field, value, includeDraft = false) => {
+	const searchParams = new URLSearchParams({
+		[`filters[${field}][$eq]`]: value,
+		populate: '*',
+	});
+
+	if (includeDraft) {
+		searchParams.set('status', 'draft');
+	} else {
+		searchParams.set('filters[publishedAt][$notNull]', 'true');
+	}
+
+	return `${baseURL}/api/posts?${searchParams}`;
+};
+
+const getStrapiRequestConfig = (includeDraft = false) => {
+	if (!includeDraft || !process.env.STRAPI_API_TOKEN) {
+		return undefined;
+	}
+
+	return {
+		headers: {
+			Authorization: `Bearer ${process.env.STRAPI_API_TOKEN}`,
+		},
+	};
+};
+
+async function fetchPostBySlug(blogSlug, includeDraft = false) {
 	const { data } = await axios.get(
-		`${baseURL}/api/posts?filters[slug][$eq]=${encodedSlug}&filters[publishedAt][$notNull]=true&populate=*`
+		getPostQuery('slug', blogSlug, includeDraft),
+		getStrapiRequestConfig(includeDraft)
 	);
 
 	return data?.data?.[0] || null;
 }
 
-async function fetchPostByOldSlug(blogSlug) {
-	const encodedSlug = encodeURIComponent(blogSlug);
+async function fetchPostByOldSlug(blogSlug, includeDraft = false) {
 	const { data } = await axios.get(
-		`${baseURL}/api/posts?filters[oldSlug][$eq]=${encodedSlug}&filters[publishedAt][$notNull]=true&populate=*`
+		getPostQuery('oldSlug', blogSlug, includeDraft),
+		getStrapiRequestConfig(includeDraft)
 	);
 
 	return data?.data?.[0] || null;
 }
 
-async function resolvePostRequest(blogSlug) {
-	const post = await fetchPostBySlug(blogSlug);
+async function resolvePostRequest(blogSlug, includeDraft = false) {
+	const post = await fetchPostBySlug(blogSlug, includeDraft);
 
 	if (post) {
 		return { post, redirectSlug: null };
 	}
 
-	const redirectedPost = await fetchPostByOldSlug(blogSlug);
+	const redirectedPost = await fetchPostByOldSlug(blogSlug, includeDraft);
 
 	if (redirectedPost?.slug) {
 		return {
@@ -228,21 +256,27 @@ function normalizeMarkdownContent(content) {
 
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
-	const { data } = await axios.get(
-		`${baseURL}/api/posts?filters[publishedAt][$notNull]=true`
-	);
+	try {
+		const { data } = await axios.get(
+			`${baseURL}/api/posts?filters[publishedAt][$notNull]=true`
+		);
 
-	// Return an array of slugs that will be used so that the page can be built stacically instead of dynamic/ good for seo (page speed)
-	return data.data.map((post) => ({
-		blogSlug: post.slug,
-	}));
+		// Return slugs that can be pre-rendered when Strapi is reachable.
+		return data.data.map((post) => ({
+			blogSlug: post.slug,
+		}));
+	} catch (error) {
+		console.warn(`Failed to fetch blog slugs for static params: ${error.message}`);
+		return [];
+	}
 }
 
 export async function generateMetadata({ params }) {
 	// Read route params
 	const blogSlug = (await params).blogSlug;
+	const { isEnabled: isDraftMode } = await draftMode();
 
-	const { post } = await resolvePostRequest(blogSlug);
+	const { post } = await resolvePostRequest(blogSlug, isDraftMode);
 
 	if (!post) {
 		return {
@@ -264,9 +298,10 @@ export async function generateMetadata({ params }) {
 
 export default async function BlogPostPage({ params, searchParams }) {
 	const { blogSlug } = await params;
+	const { isEnabled: isDraftMode } = await draftMode();
 
 	try {
-		const { post, redirectSlug } = await resolvePostRequest(blogSlug);
+		const { post, redirectSlug } = await resolvePostRequest(blogSlug, isDraftMode);
 
 		if (redirectSlug && redirectSlug !== blogSlug) {
 			permanentRedirect(`/blog/${redirectSlug}`);
@@ -288,7 +323,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 		} = post;
 
 		const featImage = getStrapiMediaUrl(featured_image);
-		const date = new Date(publishedAt);
+		const date = new Date(publishedAt || post.updatedAt || post.createdAt);
 		const markdownBody = normalizeMarkdownContent(body);
 
 		return (

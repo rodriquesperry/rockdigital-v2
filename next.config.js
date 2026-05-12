@@ -1,3 +1,13 @@
+const getFrameAncestors = () => {
+	const strapiOrigin =
+		process.env.STRAPI_ADMIN_ORIGIN ||
+		process.env.STRAPI_API_URL ||
+		process.env.NEXT_PUBLIC_STRAPI_API_URL ||
+		'http://localhost:1337';
+
+	return `'self' ${strapiOrigin.replace(/\/$/, '')}`;
+};
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	poweredByHeader: false,
@@ -55,8 +65,8 @@ const nextConfig = {
 						value: 'strict-origin-when-cross-origin',
 					},
 					{
-						key: 'X-Frame-Options',
-						value: 'SAMEORIGIN',
+						key: 'Content-Security-Policy',
+						value: `frame-ancestors ${getFrameAncestors()};`,
 					},
 					{
 						key: 'Cross-Origin-Opener-Policy',
