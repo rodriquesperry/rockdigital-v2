@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from './blogPost.module.css';
+import BlogShareMenu from './BlogShareMenu.client';
 
 const prefersReducedMotion = () =>
 	typeof window !== 'undefined' &&
@@ -16,7 +17,8 @@ export default function BlogPostAnimated({
 	author,
 	dateString,
 	children,
-  category,
+	category,
+	slug,
 }) {
 	const containerRef = useRef(null);
 
@@ -49,7 +51,7 @@ export default function BlogPostAnimated({
 							start: 'top 78%',
 							once: true,
 						},
-					}
+					},
 				);
 
 				gsap.fromTo(
@@ -65,7 +67,7 @@ export default function BlogPostAnimated({
 							start: 'top 78%',
 							once: true,
 						},
-					}
+					},
 				);
 
 				gsap.fromTo(
@@ -82,7 +84,7 @@ export default function BlogPostAnimated({
 							start: 'top 82%',
 							once: true,
 						},
-					}
+					},
 				);
 			}, containerRef);
 		};
@@ -118,7 +120,12 @@ export default function BlogPostAnimated({
 						<p className={`${styles.short_description} d-none d-md-block`}>
 							{shortDescription}
 						</p>
-						<p className={styles.read_time}>READ TIME: {readTime} mins</p>
+						<div className={styles.post_actions}>
+							<p className={styles.read_time}>READ TIME: {readTime} mins</p>
+						</div>
+						<div className={styles.share_menu_container}>
+            Share <BlogShareMenu slug={slug} title={title} />
+						</div>
 					</div>
 				</div>
 
@@ -130,16 +137,19 @@ export default function BlogPostAnimated({
 							sizes='auto'
 						/> */}
 					{/* <div className={`col-3 ${styles.info_pic}`}> */}
-						<div className={styles.info_text}>
-							<h5 className={styles.author}>{author}</h5>
-							<h6 className={styles.date}>{dateString}</h6>
-							<small className={styles.category}>{category}</small>
-						</div>
+					<div className={styles.info_text}>
+						<h5 className={styles.author}>{author}</h5>
+						<h6 className={styles.date}>{dateString}</h6>
+						<small className={styles.category}>{category}</small>
+					</div>
 					{/* </div> */}
 				</div>
 			</div>
 			<div className={styles.blog_post} data-animate='blog-article'>
 				{children}
+			<div className={styles.share_menu_container2}>
+				Share <BlogShareMenu slug={slug} title={title} />
+			</div>
 			</div>
 		</div>
 	);

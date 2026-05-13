@@ -335,6 +335,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 				author={author}
 				dateString={date.toDateString()}
 				category={category}
+				slug={post.slug || blogSlug}
 			>
 				<ReactMarkdown
 					components={{
