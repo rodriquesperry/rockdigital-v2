@@ -92,10 +92,10 @@ export default async function Image() {
 					<div
 						style={{
 							display: 'flex',
-							fontSize: 62,
+							fontSize: 60,
 							lineHeight: 1.05,
 							fontWeight: 800,
-							marginBottom: 28,
+							marginBottom: 70,
 							maxWidth: 680,
 						}}
 					>
