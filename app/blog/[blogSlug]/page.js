@@ -1,6 +1,7 @@
 import axios from 'axios';
 import config from '@/config';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
+import { formatBlogDate } from '@/lib/formatBlogDate';
 import { draftMode } from 'next/headers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
@@ -323,7 +324,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 		} = post;
 
 		const featImage = getStrapiMediaUrl(featured_image);
-		const date = new Date(publishedAt || post.updatedAt || post.createdAt);
+		const date = publishedAt || post.updatedAt || post.createdAt;
 		const markdownBody = normalizeMarkdownContent(body);
 
 		return (
@@ -333,7 +334,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 				shortDescription={short_description}
 				readTime={read_time}
 				author={author}
-				dateString={date.toDateString()}
+				dateString={formatBlogDate(date)}
 				category={category}
 				slug={post.slug || blogSlug}
 			>

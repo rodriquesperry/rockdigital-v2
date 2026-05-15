@@ -11,28 +11,28 @@ import SheratonHotel1359w from '@/assets/sheraton-houston-st-san-antonio-tx_1359
 import styles from './carousel.module.css';
 
 const slides = [
-	{
-		image: WebDesign1359w,
-		alt: 'Modern website mockup on desktop and mobile devices.',
-		heading: 'Custom Websites That Turn Visitors Into Customers',
-		description:
-			'Strategically designed websites that showcase your brand and convert visitors into customers.',
-		link: '/website-design-and-development',
-		cta: 'Start Your Website Project',
-	},
-	{
-		image: DigitalMarketing1359w,
-		alt: 'Digital marketing workspace with analytics and campaign planning.',
-		heading: 'Strategic Web Design Built for Growth',
-		description:
-			'Outperform competitors with strategy-driven design and proven digital processes.',
-		link: '/website-improvement',
-		cta: 'Start Growing Online',
-	},
+	// {
+	// 	image: WebDesign1359w,
+	// 	alt: 'Modern website mockup on desktop and mobile devices.',
+	// 	heading: 'Custom Websites That Turn Visitors Into Customers',
+	// 	description:
+	// 		'Strategically designed websites that showcase your brand and convert visitors into customers.',
+	// 	link: '/website-design-and-development',
+	// 	cta: 'Start Your Website Project',
+	// },
+	// {
+	// 	image: DigitalMarketing1359w,
+	// 	alt: 'Digital marketing workspace with analytics and campaign planning.',
+	// 	heading: 'Strategic Web Design Built for Growth',
+	// 	description:
+	// 		'Outperform competitors with strategy-driven design and proven digital processes.',
+	// 	link: '/website-improvement',
+	// 	cta: 'Start Growing Online',
+	// },
 	{
 		image: SheratonHotel1359w,
 		alt: 'Hospitality website example highlighting a premium destination.',
-		heading: 'Is Your Website Holding Your Business Back?',
+		heading: 'Don\’t Let an Underperforming Website Hold Your Business Back',
 		description:
 			'We design high-performing websites that attract customers and turn visitors into revenue.',
 		link: '/website-audit',

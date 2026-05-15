@@ -164,6 +164,7 @@
 
 	.carousel_heading :is(h1, h2) {
 		font-size: 3rem;
+    width: 740px;
 	}
 
 	.carousel_paragraph {

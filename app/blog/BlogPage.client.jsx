@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import config from '@/config';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
+import { formatBlogDate } from '@/lib/formatBlogDate';
 
 import styles from './blog.module.css';
 
@@ -75,21 +76,6 @@ const getCategoryOptionsFromPost = (post) =>
 		label,
 		key: slugifyCategory(label),
 	}));
-
-const formatDate = (dateValue) => {
-	if (!dateValue) {
-		return '';
-	}
-	const date = new Date(dateValue);
-	if (Number.isNaN(date.getTime())) {
-		return '';
-	}
-	return date.toLocaleDateString('en-US', {
-		month: 'long',
-		day: 'numeric',
-		year: 'numeric',
-	});
-};
 
 const truncateWords = (text, maxWords = 30) => {
 	if (!text || typeof text !== 'string') {
@@ -225,7 +211,7 @@ export default function BlogPageClient() {
 								)}
 							</div>
 							<div className={styles.mainFeatureContent}>
-								<p className={styles.cardDate}>{formatDate(featuredPost.publishedAt)}</p>
+								<p className={styles.cardDate}>{formatBlogDate(featuredPost.publishedAt)}</p>
 								<h2>{featuredPost.title}</h2>
 								<p>{truncateWords(featuredPost.short_description, 30)}</p>
 							</div>
@@ -246,7 +232,7 @@ export default function BlogPageClient() {
 									)}
 								</div>
 								<div className={styles.sideFeatureContent}>
-									<p className={styles.cardDate}>{formatDate(post.publishedAt)}</p>
+									<p className={styles.cardDate}>{formatBlogDate(post.publishedAt)}</p>
 									<h3>{post.title}</h3>
 								</div>
 							</Link>
@@ -287,7 +273,7 @@ export default function BlogPageClient() {
 								)}
 							</div>
 							<div className={styles.postBody}>
-								<p className={styles.cardDate}>{formatDate(post.publishedAt)}</p>
+								<p className={styles.cardDate}>{formatBlogDate(post.publishedAt)}</p>
 								<h3>{post.title}</h3>
 								<p>{truncateWords(post.short_description, 30)}</p>
 							</div>
