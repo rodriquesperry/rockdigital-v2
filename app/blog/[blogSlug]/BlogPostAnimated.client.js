@@ -15,7 +15,8 @@ export default function BlogPostAnimated({
 	shortDescription,
 	readTime,
 	author,
-	dateString,
+	publishedDateString,
+	updatedDateString,
 	children,
 	category,
 	slug,
@@ -139,8 +140,15 @@ export default function BlogPostAnimated({
 					{/* <div className={`col-3 ${styles.info_pic}`}> */}
 					<div className={styles.info_text}>
 						<h5 className={styles.author}>{author}</h5>
-						<h6 className={styles.date}>{dateString}</h6>
-						<small className={styles.category}>{category}</small>
+						<div className={styles.postDates}>
+							{publishedDateString ? (
+								<h6 className={styles.date}>Published {publishedDateString}</h6>
+							) : null}
+							{updatedDateString ? (
+								<h6 className={styles.date}>Last updated {updatedDateString}</h6>
+							) : null}
+						</div>
+						<small className={styles.category}>{category.toUpperCase()}</small>
 					</div>
 					{/* </div> */}
 				</div>

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import config from '@/config';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
-import { formatBlogDate } from '@/lib/formatBlogDate';
+import { formatBlogDate, getOriginalPublishedDate } from '@/lib/formatBlogDate';
 
 import styles from './blog.module.css';
 
@@ -211,7 +211,9 @@ export default function BlogPageClient() {
 								)}
 							</div>
 							<div className={styles.mainFeatureContent}>
-								<p className={styles.cardDate}>{formatBlogDate(featuredPost.publishedAt)}</p>
+								<p className={styles.cardDate}>
+									{formatBlogDate(getOriginalPublishedDate(featuredPost))}
+								</p>
 								<h2>{featuredPost.title}</h2>
 								<p>{truncateWords(featuredPost.short_description, 30)}</p>
 							</div>
@@ -232,7 +234,9 @@ export default function BlogPageClient() {
 									)}
 								</div>
 								<div className={styles.sideFeatureContent}>
-									<p className={styles.cardDate}>{formatBlogDate(post.publishedAt)}</p>
+									<p className={styles.cardDate}>
+										{formatBlogDate(getOriginalPublishedDate(post))}
+									</p>
 									<h3>{post.title}</h3>
 								</div>
 							</Link>
@@ -273,7 +277,9 @@ export default function BlogPageClient() {
 								)}
 							</div>
 							<div className={styles.postBody}>
-								<p className={styles.cardDate}>{formatBlogDate(post.publishedAt)}</p>
+								<p className={styles.cardDate}>
+									{formatBlogDate(getOriginalPublishedDate(post))}
+								</p>
 								<h3>{post.title}</h3>
 								<p>{truncateWords(post.short_description, 30)}</p>
 							</div>

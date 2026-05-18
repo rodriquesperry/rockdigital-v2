@@ -1,13 +1,20 @@
 import axios from 'axios';
 import config from '@/config';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
-import { formatBlogDate } from '@/lib/formatBlogDate';
+import {
+	formatBlogDate,
+	getModifiedDate,
+	getOriginalPublishedDate,
+	shouldShowUpdatedDate,
+} from '@/lib/formatBlogDate';
+import JsonLd from '@/components/seo/JsonLd';
 import { draftMode } from 'next/headers';
 import { notFound, permanentRedirect } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import BlogPostAnimated from './BlogPostAnimated.client';
 
 const baseURL = config.api || 'http://127.0.0.1:1337';
+const siteURL = 'https://rockdigital.agency';
 export const revalidate = 60;
 
 const getPostQuery = (field, value, includeDraft = false) => {
@@ -255,6 +262,37 @@ function normalizeMarkdownContent(content) {
 	return '';
 }
 
+function buildBlogPostSchema({
+	post,
+	featImage,
+	blogSlug,
+	publishedDate,
+	modifiedDate,
+}) {
+	const pageUrl = `${siteURL}/blog/${post.slug || blogSlug}`;
+
+	return {
+		'@context': 'https://schema.org',
+		'@type': 'BlogPosting',
+		headline: post.title,
+		description: post.short_description,
+		mainEntityOfPage: pageUrl,
+		url: pageUrl,
+		datePublished: publishedDate,
+		dateModified: modifiedDate || publishedDate,
+		image: featImage || undefined,
+		author: {
+			'@type': post.author ? 'Person' : 'Organization',
+			name: post.author || 'Rock Digital',
+		},
+		publisher: {
+			'@type': 'Organization',
+			name: 'Rock Digital',
+			url: siteURL,
+		},
+	};
+}
+
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
 	try {
@@ -313,7 +351,6 @@ export default async function BlogPostPage({ params, searchParams }) {
 		}
 
 		const {
-			publishedAt,
 			author,
 			title,
 			body,
@@ -324,29 +361,44 @@ export default async function BlogPostPage({ params, searchParams }) {
 		} = post;
 
 		const featImage = getStrapiMediaUrl(featured_image);
-		const date = publishedAt || post.updatedAt || post.createdAt;
+		const publishedDate = getOriginalPublishedDate(post);
+		const modifiedDate = getModifiedDate(post);
+		const updatedDateString = shouldShowUpdatedDate(publishedDate, modifiedDate)
+			? formatBlogDate(modifiedDate)
+			: '';
+		const blogPostSchema = buildBlogPostSchema({
+			post,
+			featImage,
+			blogSlug,
+			publishedDate,
+			modifiedDate,
+		});
 		const markdownBody = normalizeMarkdownContent(body);
 
 		return (
-			<BlogPostAnimated
-				featImage={featImage}
-				title={title}
-				shortDescription={short_description}
-				readTime={read_time}
-				author={author}
-				dateString={formatBlogDate(date)}
-				category={category}
-				slug={post.slug || blogSlug}
-			>
-				<ReactMarkdown
-					components={{
-						a: MarkdownLink,
-						img: MarkdownImage,
-					}}
+			<>
+				<JsonLd data={blogPostSchema} />
+				<BlogPostAnimated
+					featImage={featImage}
+					title={title}
+					shortDescription={short_description}
+					readTime={read_time}
+					author={author}
+					publishedDateString={formatBlogDate(publishedDate)}
+					updatedDateString={updatedDateString}
+					category={category}
+					slug={post.slug || blogSlug}
 				>
-					{markdownBody}
-				</ReactMarkdown>
-			</BlogPostAnimated>
+					<ReactMarkdown
+						components={{
+							a: MarkdownLink,
+							img: MarkdownImage,
+						}}
+					>
+						{markdownBody}
+					</ReactMarkdown>
+				</BlogPostAnimated>
+			</>
 		);
 	} catch (error) {
 		return (
