@@ -396,7 +396,7 @@
 
 .sidebarCard,
 .tocCard {
-	padding: 1.5rem;
+	padding: 1rem;
 	border: 1px solid rgba(34, 21, 6, 0.1);
 	border-radius: 22px;
 	background: #fff;
@@ -414,7 +414,7 @@
 	margin: 0;
 	color: #221506;
 	font-family: var(--font-heading);
-	font-size: 1.55rem;
+	font-size: 1.25rem;
 	font-weight: 700;
 	line-height: 1.14;
 }
@@ -440,6 +440,7 @@
 	font-size: 0.98rem;
 	font-weight: 600;
 	line-height: 1.4;
+  justify-content: center;
 }
 
 .sidebarLink:hover {

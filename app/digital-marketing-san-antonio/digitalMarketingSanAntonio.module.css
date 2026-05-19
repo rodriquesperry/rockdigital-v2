@@ -1,0 +1,874 @@
+.pageShell {
+	overflow: hidden;
+	background:
+		radial-gradient(circle at 18% 14%, rgba(255, 183, 0, 0.08), transparent 34rem),
+		linear-gradient(180deg, #221506 0%, #1a1208 34%, #221506 100%);
+	color: #f2f2f2;
+}
+
+.container {
+	width: min(1180px, calc(100% - (var(--gutter-mobile) * 2)));
+	margin: 0 auto;
+}
+
+.heroSection {
+	position: relative;
+	padding: 122px 0 96px;
+	background:
+		radial-gradient(circle at 78% 26%, rgba(255, 183, 0, 0.16), transparent 28rem),
+		radial-gradient(circle at 10% 82%, rgba(207, 168, 68, 0.1), transparent 26rem),
+		#221506;
+}
+
+.heroSection::before,
+.contentWrap::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+	background-size: 78px 78px;
+	mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.48), transparent 92%);
+	opacity: 0.28;
+	pointer-events: none;
+}
+
+.heroSection::after {
+	content: '';
+	position: absolute;
+	inset: auto 0 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 183, 0, 0.42), transparent);
+}
+
+.heroGrid {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	gap: 3rem;
+	align-items: center;
+	min-height: 650px;
+}
+
+.heroCopy {
+	max-width: 760px;
+}
+
+.eyebrow {
+	margin: 0 0 1rem;
+	color: #ffb700;
+	font-size: 0.82rem;
+	font-weight: 700;
+	letter-spacing: 0.14em;
+	line-height: 1.35;
+	text-transform: uppercase;
+}
+
+.heroCopy h1 {
+	max-width: 800px;
+	margin: 0;
+	color: #f2f2f2;
+	font-family: var(--font-heading);
+	font-size: clamp(2.45rem, 6vw, 5.05rem);
+	font-weight: 800;
+	line-height: 0.98;
+	letter-spacing: 0;
+}
+
+.heroLead {
+	max-width: 675px;
+	margin: 1.65rem 0 0;
+	color: #d6d1ca;
+	font-size: clamp(1.03rem, 1.6vw, 1.2rem);
+	font-weight: 300;
+	line-height: 1.82;
+}
+
+.heroActions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.9rem;
+	margin-top: 2rem;
+}
+
+.primaryButton {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 54px;
+	padding: 0.95rem 1.45rem;
+	border: 1px solid rgba(255, 183, 0, 0.58);
+	border-radius: 4px;
+	background: linear-gradient(180deg, #ffb700 0%, #d89a00 100%);
+	box-shadow:
+		0 18px 36px rgba(0, 0, 0, 0.28),
+		0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+	color: #221506;
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1;
+	text-align: center;
+}
+
+.primaryButton:hover,
+.primaryButton:focus-visible {
+	background: linear-gradient(180deg, #ffc62b 0%, #d89a00 100%);
+	box-shadow:
+		0 22px 42px rgba(0, 0, 0, 0.34),
+		0 0 28px rgba(255, 183, 0, 0.18);
+}
+
+.primaryButton:focus-visible,
+.inlineLink:focus-visible {
+	outline: 2px solid #ffb700;
+	outline-offset: 3px;
+}
+
+.heroVisual {
+	position: relative;
+	min-height: 480px;
+}
+
+.heroVisual::before {
+	content: '';
+	position: absolute;
+	inset: 14% -5% auto auto;
+	width: 58%;
+	aspect-ratio: 1;
+	border-radius: 999px;
+	background: rgba(255, 183, 0, 0.12);
+	filter: blur(74px);
+}
+
+.systemPanel {
+	position: relative;
+	overflow: hidden;
+	min-height: 470px;
+	padding: 1rem;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 26px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
+		rgba(18, 11, 4, 0.9);
+	box-shadow:
+		0 34px 78px rgba(0, 0, 0, 0.42),
+		inset 0 1px 0 rgba(255, 255, 255, 0.08);
+	backdrop-filter: blur(10px);
+}
+
+.systemPanel::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background:
+		linear-gradient(120deg, transparent, rgba(255, 183, 0, 0.11), transparent 58%),
+		radial-gradient(circle at 78% 20%, rgba(255, 183, 0, 0.16), transparent 28%);
+	pointer-events: none;
+}
+
+.panelChrome {
+	position: relative;
+	z-index: 1;
+	display: flex;
+	gap: 0.45rem;
+	margin-bottom: 1rem;
+}
+
+.panelChrome span {
+	width: 0.68rem;
+	height: 0.68rem;
+	border-radius: 999px;
+	background: rgba(255, 255, 255, 0.24);
+}
+
+.signalMap {
+	position: relative;
+	z-index: 1;
+	height: 265px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 20px;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
+	background-size: 52px 52px, 52px 52px, auto;
+}
+
+.signalLineOne,
+.signalLineTwo,
+.signalLineThree {
+	position: absolute;
+	height: 2px;
+	border-radius: 999px;
+	background: linear-gradient(90deg, rgba(255, 183, 0, 0), #ffb700, rgba(255, 183, 0, 0.22));
+	box-shadow: 0 0 18px rgba(255, 183, 0, 0.22);
+}
+
+.signalLineOne {
+	left: 12%;
+	right: 18%;
+	top: 64%;
+	transform: rotate(-16deg);
+}
+
+.signalLineTwo {
+	left: 18%;
+	right: 13%;
+	top: 42%;
+	transform: rotate(9deg);
+}
+
+.signalLineThree {
+	left: 28%;
+	right: 23%;
+	top: 24%;
+	transform: rotate(-7deg);
+}
+
+.signalNodeOne,
+.signalNodeTwo,
+.signalNodeThree {
+	position: absolute;
+	width: 14px;
+	height: 14px;
+	border-radius: 999px;
+	background: #ffb700;
+	box-shadow:
+		0 0 0 7px rgba(255, 183, 0, 0.12),
+		0 0 24px rgba(255, 183, 0, 0.28);
+}
+
+.signalNodeOne {
+	left: 23%;
+	top: 59%;
+}
+
+.signalNodeTwo {
+	left: 52%;
+	top: 37%;
+}
+
+.signalNodeThree {
+	right: 17%;
+	top: 21%;
+}
+
+.panelGrid {
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 0.85rem;
+	margin-top: 1rem;
+}
+
+.panelGrid span {
+	min-height: 78px;
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 16px;
+	background:
+		linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025)),
+		rgba(255, 255, 255, 0.03);
+	box-shadow: 0 16px 30px rgba(0, 0, 0, 0.16);
+}
+
+.panelGrid span:nth-child(2),
+.panelGrid span:nth-child(5) {
+	border-color: rgba(255, 183, 0, 0.22);
+	background:
+		linear-gradient(180deg, rgba(255, 183, 0, 0.14), rgba(255, 255, 255, 0.025)),
+		rgba(255, 255, 255, 0.035);
+}
+
+.contentWrap {
+	position: relative;
+	padding: 5rem 0 6.5rem;
+	background:
+		radial-gradient(circle at 82% 18%, rgba(255, 183, 0, 0.08), transparent 30rem),
+		linear-gradient(180deg, #1a1208 0%, #221506 38%, #1a1208 100%);
+}
+
+.contentWrap::before {
+	mask-image: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.35) 16%, transparent 94%);
+	opacity: 0.18;
+}
+
+.problemSection,
+.strategySection,
+.systemSection,
+.outcomesSection,
+.marketSection,
+.ctaSection,
+.faqSection {
+	position: relative;
+	z-index: 1;
+}
+
+.problemSection,
+.strategySection,
+.systemSection,
+.outcomesSection,
+.marketSection,
+.faqSection {
+	margin-top: 5.75rem;
+}
+
+.problemSection {
+	margin-top: 0;
+	display: grid;
+	gap: 1.4rem;
+}
+
+.sectionIntro {
+	max-width: 800px;
+}
+
+.sectionIntroCenter {
+	max-width: 820px;
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+
+.sectionIntro h2,
+.ctaSection h2 {
+	margin: 0;
+	color: #f2f2f2;
+	font-family: var(--font-heading);
+	font-size: clamp(2rem, 4.8vw, 4rem);
+	font-weight: 800;
+	line-height: 1.02;
+	letter-spacing: 0;
+}
+
+.sectionIntro p:not(.eyebrow),
+.ctaSubheading {
+	max-width: 720px;
+	margin: 1rem 0 0;
+	color: #d6d1ca;
+	font-size: clamp(1.03rem, 1.6vw, 1.18rem);
+	font-weight: 400;
+	line-height: 1.74;
+}
+
+.sectionIntroCenter p:not(.eyebrow) {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.largeBody,
+.problemPoint p,
+.positioningCard p,
+.systemRow p,
+.fitCard p,
+.marketSection p,
+.ctaSection p,
+.faqItem p,
+.outcomeCard p {
+	color: #b8b1a7;
+	font-size: 1.03rem;
+	font-weight: 300;
+	line-height: 1.82;
+}
+
+.largeBody {
+	max-width: 1120px;
+	margin: 1.4rem 0 0;
+}
+
+.strategyPanel,
+.marketSection,
+.ctaSection {
+	position: relative;
+	overflow: hidden;
+	padding: clamp(1.6rem, 4vw, 3rem);
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 26px;
+	background:
+		radial-gradient(circle at 92% 18%, rgba(255, 183, 0, 0.1), transparent 25rem),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02)),
+		rgba(42, 27, 10, 0.66);
+	box-shadow: 0 28px 64px rgba(0, 0, 0, 0.28);
+}
+
+.strategyPanel::after,
+.ctaSection::after {
+	content: '';
+	position: absolute;
+	inset: auto 0 0;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 183, 0, 0.34), transparent);
+}
+
+.problemLead {
+	position: relative;
+	width: min(1500px, calc(100vw - (var(--gutter-mobile) * 2)));
+	margin-left: 50%;
+	padding: clamp(1.8rem, 4vw, 3.2rem) 0 clamp(2.2rem, 5vw, 4rem);
+	transform: translateX(-50%);
+}
+
+.problemLead::before {
+	content: '';
+	position: absolute;
+	inset: 0 0 auto;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, rgba(255, 183, 0, 0.42), transparent);
+}
+
+.problemLead .sectionIntro {
+	max-width: 1120px;
+}
+
+.problemLead .sectionIntro p:not(.eyebrow) {
+	max-width: 900px;
+}
+
+.problemPoints {
+	display: grid;
+	gap: 2rem;
+	padding-top: 0.4rem;
+}
+
+.positioningCard,
+.outcomeCard,
+.fitCard,
+.faqItem {
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 18px;
+	background:
+		linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018)),
+		rgba(26, 18, 8, 0.78);
+	box-shadow: 0 20px 42px rgba(0, 0, 0, 0.18);
+}
+
+.positioningCard,
+.fitCard {
+	padding: 1.45rem;
+}
+
+.problemPoint h3,
+.positioningCard h3,
+.systemRow h3,
+.outcomeCard h3,
+.fitCard h3 {
+	margin: 0;
+	color: #f2f2f2;
+	font-family: var(--font-heading);
+	font-size: clamp(1.35rem, 2vw, 1.9rem);
+	font-weight: 750;
+	line-height: 1.12;
+	letter-spacing: 0;
+}
+
+.cardSubheading {
+	margin: 0.85rem 0 0;
+	color: #d6d1ca;
+	font-weight: 400;
+	line-height: 1.68;
+}
+
+.problemPoint {
+	position: relative;
+	padding-top: 1.5rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.problemPoint::before {
+	content: '';
+	position: absolute;
+	top: -1px;
+	left: 0;
+	width: min(110px, 40%);
+	height: 1px;
+	background: rgba(255, 183, 0, 0.66);
+}
+
+.problemPoint p:not(.eyebrow),
+.positioningCard p:not(.eyebrow),
+.systemRow p,
+.fitCard p:not(.eyebrow) {
+	margin: 1rem 0 0;
+}
+
+.strategySection {
+	display: grid;
+	gap: 1.25rem;
+	align-items: stretch;
+}
+
+.strategyPanel {
+	min-height: 100%;
+}
+
+.positioningCard {
+	border-color: rgba(255, 183, 0, 0.18);
+	background:
+		radial-gradient(circle at 90% 10%, rgba(255, 183, 0, 0.11), transparent 18rem),
+		linear-gradient(145deg, rgba(255, 183, 0, 0.075), rgba(255, 255, 255, 0.02)),
+		rgba(34, 21, 6, 0.84);
+}
+
+.systemSection {
+	overflow: hidden;
+	padding: clamp(1.8rem, 4vw, 3.2rem);
+	border: 1px solid rgba(255, 255, 255, 0.075);
+	border-radius: 28px;
+	background:
+		radial-gradient(circle at 88% 14%, rgba(255, 183, 0, 0.085), transparent 26rem),
+		linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012)),
+		rgba(18, 11, 4, 0.56);
+	box-shadow: 0 30px 70px rgba(0, 0, 0, 0.22);
+}
+
+.systemList {
+	position: relative;
+	display: grid;
+	margin-top: 2.5rem;
+}
+
+.systemList::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 1px;
+	background: linear-gradient(180deg, rgba(255, 183, 0, 0.7), rgba(255, 255, 255, 0.08));
+}
+
+.systemRow {
+	position: relative;
+	display: grid;
+	gap: 0.85rem;
+	padding: 1.6rem 0 1.6rem 1.4rem;
+	border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.systemRow:first-child {
+	border-top: 0;
+}
+
+.systemRow::before {
+	content: '';
+	position: absolute;
+	top: 1.95rem;
+	left: -4px;
+	width: 9px;
+	height: 9px;
+	border-radius: 999px;
+	background: #ffb700;
+	box-shadow: 0 0 0 7px rgba(255, 183, 0, 0.11);
+}
+
+.systemLabel {
+	color: #d6d1ca;
+	font-size: 0.88rem;
+	font-weight: 800;
+	line-height: 1.35;
+}
+
+.systemRowContent {
+	max-width: 850px;
+}
+
+.outcomesSection {
+	display: grid;
+	gap: 1.35rem;
+}
+
+.outcomesGrid {
+	display: grid;
+	gap: 1rem;
+}
+
+.outcomeCard {
+	padding: 1.35rem;
+	background:
+		linear-gradient(180deg, rgba(255, 183, 0, 0.055), rgba(255, 255, 255, 0.016)),
+		rgba(42, 27, 10, 0.52);
+}
+
+.outcomeCard h3 {
+	font-family: var(--font-body);
+	font-size: 1rem;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+.outcomeCard p {
+	margin: 0.8rem 0 0;
+}
+
+.fitCard {
+	margin-top: 0.2rem;
+}
+
+.marketSection {
+	display: grid;
+	gap: 2rem;
+	align-items: center;
+	background:
+		radial-gradient(circle at 18% 20%, rgba(255, 183, 0, 0.13), transparent 24rem),
+		linear-gradient(145deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.02)),
+		rgba(26, 18, 8, 0.86);
+}
+
+.marketVisual {
+	position: relative;
+	min-height: 260px;
+	border: 1px solid rgba(255, 255, 255, 0.08);
+	border-radius: 22px;
+	background:
+		linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+		radial-gradient(circle at 42% 44%, rgba(255, 183, 0, 0.16), transparent 34%),
+		rgba(18, 11, 4, 0.52);
+	background-size: 44px 44px, 44px 44px, auto, auto;
+}
+
+.marketVisual span {
+	position: absolute;
+	border-radius: 999px;
+	background: #ffb700;
+	box-shadow:
+		0 0 0 8px rgba(255, 183, 0, 0.12),
+		0 0 30px rgba(255, 183, 0, 0.3);
+}
+
+.marketVisual span:nth-child(1) {
+	width: 14px;
+	height: 14px;
+	left: 22%;
+	top: 56%;
+}
+
+.marketVisual span:nth-child(2) {
+	width: 18px;
+	height: 18px;
+	left: 47%;
+	top: 35%;
+}
+
+.marketVisual span:nth-child(3) {
+	width: 12px;
+	height: 12px;
+	right: 22%;
+	top: 52%;
+}
+
+.marketVisual span:nth-child(4) {
+	width: 10px;
+	height: 10px;
+	left: 58%;
+	bottom: 22%;
+}
+
+.ctaSection {
+	display: grid;
+	gap: 1.8rem;
+	align-items: center;
+	margin-top: 5.75rem;
+	border-color: rgba(255, 183, 0, 0.26);
+	background:
+		radial-gradient(circle at 84% 24%, rgba(255, 183, 0, 0.16), transparent 24rem),
+		linear-gradient(145deg, rgba(255, 183, 0, 0.1), rgba(255, 255, 255, 0.025)),
+		rgba(34, 21, 6, 0.94);
+}
+
+.ctaSection p:not(.eyebrow):not(.ctaSubheading) {
+	max-width: 840px;
+	margin: 1.2rem 0 0;
+}
+
+.faqGrid {
+	display: grid;
+	gap: 0.85rem;
+	margin-top: 2rem;
+}
+
+.faqItem {
+	overflow: hidden;
+}
+
+.faqItem summary {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1.15rem 1.25rem;
+	color: #f2f2f2;
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.45;
+	cursor: pointer;
+}
+
+.faqItem summary::after {
+	content: '+';
+	color: #ffb700;
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.faqItem[open] summary::after {
+	content: '-';
+}
+
+.faqItem p {
+	margin: 0;
+	padding: 0 1.25rem 1.2rem;
+}
+
+.inlineLink {
+	color: #ffb700;
+	font-weight: 700;
+	text-decoration: underline;
+	text-decoration-color: rgba(255, 183, 0, 0.44);
+	text-underline-offset: 0.18em;
+}
+
+.inlineLink:hover {
+	color: #ffd15c;
+	text-decoration-color: rgba(255, 209, 92, 0.7);
+}
+
+@media (min-width: 920px) {
+	.container {
+		width: min(1180px, calc(100% - (var(--gutter-desktop) * 2)));
+	}
+
+	.heroGrid {
+		grid-template-columns: minmax(0, 1.05fr) minmax(360px, 0.75fr);
+	}
+
+	.problemLead {
+		width: min(1500px, calc(100vw - (var(--gutter-desktop) * 2)));
+	}
+
+	.problemPoints {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.strategySection {
+		grid-template-columns: minmax(0, 1fr) minmax(300px, 0.62fr);
+	}
+
+	.systemRow {
+		grid-template-columns: minmax(160px, 220px) minmax(0, 1fr);
+		gap: 2rem;
+		padding-left: 2rem;
+	}
+
+	.outcomesGrid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+
+	.marketSection {
+		grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1fr);
+	}
+
+	.ctaSection {
+		grid-template-columns: minmax(0, 1fr) auto;
+	}
+
+	.faqGrid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		align-items: start;
+	}
+}
+
+@media (max-width: 919px) {
+	.heroSection {
+		padding: 104px 0 76px;
+	}
+
+	.heroGrid {
+		min-height: 0;
+	}
+
+	.heroVisual {
+		min-height: 390px;
+	}
+
+	.systemPanel {
+		min-height: 390px;
+	}
+
+	.signalMap {
+		height: 210px;
+	}
+
+	.contentWrap {
+		padding: 3.2rem 0 4.5rem;
+	}
+
+	.problemSection,
+	.strategySection,
+	.systemSection,
+	.outcomesSection,
+	.marketSection,
+	.faqSection,
+	.ctaSection {
+		margin-top: 4rem;
+	}
+
+	.problemSection {
+		margin-top: 0;
+	}
+}
+
+@media (max-width: 640px) {
+	.heroSection {
+		padding: 92px 0 62px;
+	}
+
+	.heroActions,
+	.primaryButton {
+		width: 100%;
+	}
+
+	.heroVisual {
+		min-height: 315px;
+	}
+
+	.systemPanel {
+		min-height: 315px;
+		border-radius: 22px;
+	}
+
+	.signalMap {
+		height: 165px;
+	}
+
+	.panelGrid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.panelGrid span {
+		min-height: 48px;
+	}
+
+	.problemLead,
+	.strategyPanel,
+	.systemSection,
+	.marketSection,
+	.ctaSection {
+		border-radius: 20px;
+	}
+
+	.positioningCard,
+	.outcomeCard,
+	.fitCard {
+		border-radius: 16px;
+		padding: 1.2rem;
+	}
+
+	.sectionIntroCenter {
+		text-align: left;
+	}
+
+	.marketVisual {
+		min-height: 190px;
+	}
+}
