@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import CarouselTopPage from '@/components/carousels/top_page/Carousel.component';
-import ContactForm from '@/components/contact-forms/ContactForm.component';
+import HomepageContactForm from './HomepageContactForm.client';
 import HomePageAnimations from './HomePageAnimations.client';
 
 import rec from '@/assets/rec.png';
@@ -260,7 +260,7 @@ const Home = () => {
 						</p>
 					</div>
 					<div className={styles.ready_form_card}>
-						<ContactForm />
+						<HomepageContactForm />
 					</div>
 				</div>
 			</div>

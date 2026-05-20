@@ -1,6 +1,3 @@
-'use client';
-
-import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -42,16 +39,6 @@ const slides = [
 ];
 
 const CarouselTopPage = () => {
-	const [activeSlide, setActiveSlide] = useState(0);
-
-	useEffect(() => {
-		const intervalId = window.setInterval(() => {
-			setActiveSlide((current) => (current + 1) % slides.length);
-		}, 7300);
-
-		return () => window.clearInterval(intervalId);
-	}, []);
-
 	return (
 		<section className={styles.hero} aria-label='Featured Rock Digital services'>
 			<div className={styles.carousel}>
@@ -61,10 +48,7 @@ const CarouselTopPage = () => {
 					return (
 						<article
 							key={slide.heading}
-							className={`${styles.carousel_item} ${
-								index === activeSlide ? styles.carousel_item_active : ''
-							}`}
-							aria-hidden={index !== activeSlide}
+							className={`${styles.carousel_item} ${styles.carousel_item_active}`}
 						>
 							<Image
 								className={styles.hero_image}
@@ -74,7 +58,7 @@ const CarouselTopPage = () => {
 								priority={index === 0}
 								fetchPriority={index === 0 ? 'high' : 'low'}
 								loading={index === 0 ? 'eager' : 'lazy'}
-								sizes='100vw'
+								sizes='(max-width: 767px) calc(100vw - 2.5rem), (max-width: 1023px) calc(100vw - 5rem), 100vw'
 							/>
 							<div className={styles.carousel_caption}>
 								<div className={styles.carousel_caption_block}>
@@ -99,12 +83,9 @@ const CarouselTopPage = () => {
 					<button
 						key={slide.heading}
 						type='button'
-						className={`${styles.carousel_dot} ${
-							index === activeSlide ? styles.carousel_dot_active : ''
-						}`}
-						onClick={() => setActiveSlide(index)}
+						className={`${styles.carousel_dot} ${styles.carousel_dot_active}`}
 						aria-label={`Show slide ${index + 1}: ${slide.heading}`}
-						aria-pressed={index === activeSlide}
+						aria-pressed='true'
 					/>
 				))}
 			</div>

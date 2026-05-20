@@ -32,8 +32,8 @@ const getPostQuery = (field, value, includeDraft = false) => {
 	return `${baseURL}/api/posts?${searchParams}`;
 };
 
-const getStrapiRequestConfig = (includeDraft = false) => {
-	if (!includeDraft || !process.env.STRAPI_API_TOKEN) {
+const getStrapiRequestConfig = () => {
+	if (!process.env.STRAPI_API_TOKEN) {
 		return undefined;
 	}
 
@@ -47,7 +47,7 @@ const getStrapiRequestConfig = (includeDraft = false) => {
 async function fetchPostBySlug(blogSlug, includeDraft = false) {
 	const { data } = await axios.get(
 		getPostQuery('slug', blogSlug, includeDraft),
-		getStrapiRequestConfig(includeDraft)
+		getStrapiRequestConfig()
 	);
 
 	return data?.data?.[0] || null;
@@ -56,7 +56,7 @@ async function fetchPostBySlug(blogSlug, includeDraft = false) {
 async function fetchPostByOldSlug(blogSlug, includeDraft = false) {
 	const { data } = await axios.get(
 		getPostQuery('oldSlug', blogSlug, includeDraft),
-		getStrapiRequestConfig(includeDraft)
+		getStrapiRequestConfig()
 	);
 
 	return data?.data?.[0] || null;

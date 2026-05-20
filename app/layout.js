@@ -4,7 +4,6 @@ import Script from 'next/script';
 import Navigation from '@/components/navigation/navigation.component';
 import Powered from '@/components/powered_foooter/powered.component';
 
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -21,6 +20,9 @@ const pfDisplay = Playfair_Display({
 	weight: ['400', '500', '600', '700', '800', '900'],
 	variable: '--font-playfair_display',
 });
+
+const GA_ID = 'G-YJKD269K62';
+const shouldLoadFigmaCapture = process.env.NODE_ENV === 'development';
 
 export const metadata = {
 	metadataBase: new URL('https://rockdigital.agency'),
@@ -39,11 +41,24 @@ export default function RootLayout({ children }) {
 			<body className={`${latoFont.variable} ${pfDisplay.variable}`}>
 				<Navigation />
 				<main id='main-content'>{children}</main>
-				<GoogleAnalytics gaId='G-YJKD269K62' />
 				<Script
-					src='https://mcp.figma.com/mcp/html-to-design/capture.js'
-					strategy='afterInteractive'
+					src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+					strategy='lazyOnload'
 				/>
+				<Script id='google-analytics' strategy='lazyOnload'>
+					{`
+						window.dataLayer = window.dataLayer || [];
+						function gtag(){dataLayer.push(arguments);}
+						gtag('js', new Date());
+						gtag('config', '${GA_ID}');
+					`}
+				</Script>
+				{shouldLoadFigmaCapture ? (
+					<Script
+						src='https://mcp.figma.com/mcp/html-to-design/capture.js'
+						strategy='lazyOnload'
+					/>
+				) : null}
 				<SpeedInsights />
 				<Analytics />
 				<Powered />
