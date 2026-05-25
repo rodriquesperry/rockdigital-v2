@@ -269,7 +269,7 @@
 		height: 214px;
 	}
 
-  .share_menu_container {
+	.share_menu_container {
 		justify-content: flex-end;
 		margin-right: 1.5rem;
 	}
@@ -292,9 +292,9 @@
 		margin-top: 0.1rem;
 	}
 
-	 .share_menu_container {
+	.share_menu_container {
 		justify-content: flex-end;
-		margin-right: .8rem;
+		margin-right: 0.8rem;
 	}
 }
 
@@ -325,7 +325,7 @@
 	}
 
 	.header_content_container img {
-		width: 95%;
+		width: 195%;
 		height: 550px;
 		position: relative;
 		border: 2px solid var(--color-white);
@@ -492,14 +492,15 @@
 	}
 
 	.blog_image_container {
-		height: 566px;
+		height: 600px;
 		margin: 0 1rem;
 	}
 
 	.header_content_container img {
-		height: 550px;
+		width: 95% !important;
+		height: 600px;
 		position: relative;
-		left: 2.5rem;
+		left: 2rem !important;
 		border: 2px solid var(--color-white);
 		object-fit: cover;
 	}

@@ -125,7 +125,7 @@ export default function BlogPostAnimated({
 							<p className={styles.read_time}>READ TIME: {readTime} mins</p>
 						</div>
 						<div className={styles.share_menu_container}>
-            Share <BlogShareMenu slug={slug} title={title} />
+							Share <BlogShareMenu slug={slug} title={title} />
 						</div>
 					</div>
 				</div>
@@ -145,7 +145,9 @@ export default function BlogPostAnimated({
 								<h6 className={styles.date}>Published {publishedDateString}</h6>
 							) : null}
 							{updatedDateString ? (
-								<h6 className={styles.date}>Last updated {updatedDateString}</h6>
+								<h6 className={styles.date}>
+									Last updated {updatedDateString}
+								</h6>
 							) : null}
 						</div>
 						<small className={styles.category}>{category.toUpperCase()}</small>
@@ -155,9 +157,9 @@ export default function BlogPostAnimated({
 			</div>
 			<div className={styles.blog_post} data-animate='blog-article'>
 				{children}
-			<div className={styles.share_menu_container2}>
-				Share <BlogShareMenu slug={slug} title={title} />
-			</div>
+				<div className={styles.share_menu_container2}>
+					Share <BlogShareMenu slug={slug} title={title} />
+				</div>
 			</div>
 		</div>
 	);
