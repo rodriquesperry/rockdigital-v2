@@ -2,12 +2,28 @@
 
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
+import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
+import { formatBlogDate, getOriginalPublishedDate } from '@/lib/formatBlogDate';
 import styles from './blogPost.module.css';
 import BlogShareMenu from './BlogShareMenu.client';
 
 const prefersReducedMotion = () =>
 	typeof window !== 'undefined' &&
 	window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const truncateWords = (text, maxWords = 22) => {
+	if (!text || typeof text !== 'string') {
+		return '';
+	}
+
+	const words = text.trim().split(/\s+/);
+	if (words.length <= maxWords) {
+		return text.trim();
+	}
+
+	return `${words.slice(0, maxWords).join(' ')}...`;
+};
 
 export default function BlogPostAnimated({
 	featImage,
@@ -20,6 +36,7 @@ export default function BlogPostAnimated({
 	children,
 	category,
 	slug,
+	relatedPosts = [],
 }) {
 	const containerRef = useRef(null);
 
@@ -161,6 +178,45 @@ export default function BlogPostAnimated({
 					Share <BlogShareMenu slug={slug} title={title} />
 				</div>
 			</div>
+			{relatedPosts.length > 0 ? (
+				<section className={styles.relatedSection} aria-labelledby='related-posts'>
+					<div className={styles.relatedHeader}>
+						<p>Keep Reading</p>
+						<h2 id='related-posts'>Related Articles</h2>
+					</div>
+					<div className={styles.relatedGrid}>
+						{relatedPosts.map((post) => {
+							const imageUrl = getStrapiMediaUrl(post.featured_image);
+
+							return (
+								<Link
+									href={`/blog/${post.slug}`}
+									key={post.id || post.slug}
+									className={styles.relatedCard}
+								>
+									<div className={styles.relatedMedia}>
+										{imageUrl ? (
+											<Image
+												src={imageUrl}
+												alt={post.title || 'Related blog post image'}
+												fill
+												sizes='(max-width: 767px) 100vw, (max-width: 1200px) 33vw, 280px'
+											/>
+										) : null}
+									</div>
+									<div className={styles.relatedBody}>
+										<p className={styles.relatedDate}>
+											{formatBlogDate(getOriginalPublishedDate(post))}
+										</p>
+										<h3>{post.title}</h3>
+										<p>{truncateWords(post.short_description)}</p>
+									</div>
+								</Link>
+							);
+						})}
+					</div>
+				</section>
+			) : null}
 		</div>
 	);
 }

@@ -506,7 +506,14 @@ export default function DigitalMarketingSanAntonioPage() {
 						</div>
 						<div className={styles.problemPoints}>
 							{sections.slice(1, 3).map((section) => (
-								<section key={section.heading} className={styles.problemPoint}>
+								<section
+									key={section.heading}
+									className={`${styles.problemPoint} ${
+										section.eyebrow === 'The Market Has Changed'
+											? styles.marketChangedPoint
+											: ''
+									}`.trim()}
+								>
 									<p className={styles.eyebrow}>{section.eyebrow}</p>
 									<h3>{section.heading}</h3>
 									<p className={styles.cardSubheading}>{section.subheading}</p>

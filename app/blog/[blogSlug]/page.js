@@ -293,6 +293,73 @@ function buildBlogPostSchema({
 	};
 }
 
+function getCategoryValue(category) {
+	if (typeof category === 'string') {
+		return category.trim().toLowerCase();
+	}
+
+	const attributes = category?.attributes || {};
+	return (
+		category?.name ||
+		category?.title ||
+		category?.label ||
+		category?.slug ||
+		attributes?.name ||
+		attributes?.title ||
+		attributes?.label ||
+		attributes?.slug ||
+		''
+	)
+		.trim()
+		.toLowerCase();
+}
+
+function normalizeRelatedPost(post = {}) {
+	return {
+		id: post.id,
+		slug: post.slug,
+		title: post.title,
+		short_description: post.short_description,
+		featured_image: post.featured_image,
+		publishedAt: post.publishedAt,
+		createdAt: post.createdAt,
+		originalPublishedAt: post.originalPublishedAt,
+		category: post.category,
+	};
+}
+
+async function fetchRelatedPosts(currentPost) {
+	try {
+		const { data } = await axios.get(
+			`${baseURL}/api/posts?filters[publishedAt][$notNull]=true&populate=*`,
+			getStrapiRequestConfig()
+		);
+		const posts = Array.isArray(data?.data) ? data.data : [];
+		const currentCategory = getCategoryValue(currentPost.category);
+		const currentSlug = currentPost.slug;
+		const currentId = currentPost.id;
+		const otherPosts = posts
+			.filter((post) => post.id !== currentId && post.slug !== currentSlug)
+			.reverse();
+
+		const categoryMatches = currentCategory
+			? otherPosts.filter(
+					(post) => getCategoryValue(post.category) === currentCategory
+				)
+			: [];
+		const fallbackPosts = otherPosts.filter(
+			(post) => !categoryMatches.some((match) => match.id === post.id)
+		);
+
+		return [...categoryMatches, ...fallbackPosts]
+			.slice(0, 3)
+			.map(normalizeRelatedPost);
+	} catch (error) {
+		console.warn(`Failed to fetch related blog posts: ${error.message}`);
+		return [];
+	}
+}
+
 // Generates paths at build time (optional, for static generation)
 export async function generateStaticParams() {
 	try {
@@ -374,6 +441,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 			modifiedDate,
 		});
 		const markdownBody = normalizeMarkdownContent(body);
+		const relatedPosts = await fetchRelatedPosts(post);
 
 		return (
 			<>
@@ -388,6 +456,7 @@ export default async function BlogPostPage({ params, searchParams }) {
 					updatedDateString={updatedDateString}
 					category={category}
 					slug={post.slug || blogSlug}
+					relatedPosts={relatedPosts}
 				>
 					<ReactMarkdown
 						components={{
