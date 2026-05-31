@@ -17,6 +17,11 @@ const baseURL = config.api || 'http://127.0.0.1:1337';
 const siteURL = 'https://rockdigital.agency';
 export const revalidate = 60;
 
+const legacySlugRedirects = {
+	'how-to-build-a-website-that-actually-drives-growth':
+		'how-to-build-a-website-that-actually-drives-growth-san-antonio',
+};
+
 const getPostQuery = (field, value, includeDraft = false) => {
 	const searchParams = new URLSearchParams({
 		[`filters[${field}][$eq]`]: value,
@@ -63,6 +68,7 @@ async function fetchPostByOldSlug(blogSlug, includeDraft = false) {
 }
 
 async function resolvePostRequest(blogSlug, includeDraft = false) {
+	const normalizedSlug = legacySlugRedirects[blogSlug] || blogSlug;
 	const post = await fetchPostBySlug(blogSlug, includeDraft);
 
 	if (post) {
@@ -75,6 +81,15 @@ async function resolvePostRequest(blogSlug, includeDraft = false) {
 		return {
 			post: redirectedPost,
 			redirectSlug: redirectedPost.slug,
+		};
+	}
+
+	if (normalizedSlug !== blogSlug) {
+		const normalizedPost = await fetchPostBySlug(normalizedSlug, includeDraft);
+
+		return {
+			post: normalizedPost,
+			redirectSlug: normalizedSlug,
 		};
 	}
 
@@ -406,74 +421,66 @@ export default async function BlogPostPage({ params, searchParams }) {
 	const { blogSlug } = await params;
 	const { isEnabled: isDraftMode } = await draftMode();
 
-	try {
-		const { post, redirectSlug } = await resolvePostRequest(blogSlug, isDraftMode);
+	const { post, redirectSlug } = await resolvePostRequest(blogSlug, isDraftMode);
 
-		if (redirectSlug && redirectSlug !== blogSlug) {
-			permanentRedirect(`/blog/${redirectSlug}`);
-		}
-
-		if (!post) {
-			return notFound(); // Triggers Next.js 404 page
-		}
-
-		const {
-			author,
-			title,
-			body,
-			read_time,
-			short_description,
-			featured_image,
-			category,
-		} = post;
-
-		const featImage = getStrapiMediaUrl(featured_image);
-		const publishedDate = getOriginalPublishedDate(post);
-		const modifiedDate = getModifiedDate(post);
-		const updatedDateString = shouldShowUpdatedDate(publishedDate, modifiedDate)
-			? formatBlogDate(modifiedDate)
-			: '';
-		const blogPostSchema = buildBlogPostSchema({
-			post,
-			featImage,
-			blogSlug,
-			publishedDate,
-			modifiedDate,
-		});
-		const markdownBody = normalizeMarkdownContent(body);
-		const relatedPosts = await fetchRelatedPosts(post);
-
-		return (
-			<>
-				<JsonLd data={blogPostSchema} />
-				<BlogPostAnimated
-					featImage={featImage}
-					title={title}
-					shortDescription={short_description}
-					readTime={read_time}
-					author={author}
-					publishedDateString={formatBlogDate(publishedDate)}
-					updatedDateString={updatedDateString}
-					category={category}
-					slug={post.slug || blogSlug}
-					relatedPosts={relatedPosts}
-				>
-					<ReactMarkdown
-						components={{
-							a: MarkdownLink,
-							img: MarkdownImage,
-						}}
-					>
-						{markdownBody}
-					</ReactMarkdown>
-				</BlogPostAnimated>
-			</>
-		);
-	} catch (error) {
-		return (
-			<div>
-				<p>An error occurred: {error.message}</p>
-			</div>
-		);
+	if (redirectSlug && redirectSlug !== blogSlug) {
+		permanentRedirect(`/blog/${redirectSlug}`);
 	}
+
+	if (!post) {
+		return notFound(); // Triggers Next.js 404 page
+	}
+
+	const {
+		author,
+		title,
+		body,
+		read_time,
+		short_description,
+		featured_image,
+		category,
+	} = post;
+
+	const featImage = getStrapiMediaUrl(featured_image);
+	const publishedDate = getOriginalPublishedDate(post);
+	const modifiedDate = getModifiedDate(post);
+	const updatedDateString = shouldShowUpdatedDate(publishedDate, modifiedDate)
+		? formatBlogDate(modifiedDate)
+		: '';
+	const blogPostSchema = buildBlogPostSchema({
+		post,
+		featImage,
+		blogSlug,
+		publishedDate,
+		modifiedDate,
+	});
+	const markdownBody = normalizeMarkdownContent(body);
+	const relatedPosts = await fetchRelatedPosts(post);
+
+	return (
+		<>
+			<JsonLd data={blogPostSchema} />
+			<BlogPostAnimated
+				featImage={featImage}
+				title={title}
+				shortDescription={short_description}
+				readTime={read_time}
+				author={author}
+				publishedDateString={formatBlogDate(publishedDate)}
+				updatedDateString={updatedDateString}
+				category={category}
+				slug={post.slug || blogSlug}
+				relatedPosts={relatedPosts}
+			>
+				<ReactMarkdown
+					components={{
+						a: MarkdownLink,
+						img: MarkdownImage,
+					}}
+				>
+					{markdownBody}
+				</ReactMarkdown>
+			</BlogPostAnimated>
+		</>
+	);
 }

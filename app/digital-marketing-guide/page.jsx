@@ -21,7 +21,7 @@ const chateauDijonCaseStudyHref =
 	'/case-studies/chateau-dijon-townhomes-web-design';
 const websiteDesignDevelopmentHref = '/website-design-and-development';
 const growthWebsiteBlogHref =
-	'/blog/how-to-build-a-website-that-actually-drives-growth';
+	'/blog/how-to-build-a-website-that-actually-drives-growth-san-antonio';
 const googleVisibilityBlogHref = '/blog/how-to-get-your-website-found-on-google';
 const aboutHref = '/about';
 const digitalMarketingNewBraunfelsHref = '/digital-marketing-new-braunfels';
