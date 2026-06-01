@@ -300,7 +300,8 @@
 .outcomesSection,
 .marketSection,
 .ctaSection,
-.faqSection {
+.faqSection,
+.resourcesSection {
 	position: relative;
 	z-index: 1;
 }
@@ -310,7 +311,8 @@
 .systemSection,
 .outcomesSection,
 .marketSection,
-.faqSection {
+.faqSection,
+.resourcesSection {
 	margin-top: 5.75rem;
 }
 
@@ -438,7 +440,8 @@
 .positioningCard,
 .outcomeCard,
 .fitCard,
-.faqItem {
+.faqItem,
+.resourceCard {
 	border: 1px solid rgba(255, 255, 255, 0.08);
 	border-radius: 18px;
 	background:
@@ -724,6 +727,52 @@
 	padding: 0 1.25rem 1.2rem;
 }
 
+.resourcesGrid {
+	display: grid;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.resourceCard {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	min-height: 100%;
+	padding: 1.2rem 1.25rem;
+	color: #f2f2f2;
+	font-size: 1rem;
+	font-weight: 800;
+	line-height: 1.45;
+	text-decoration: none;
+	transition:
+		border-color 180ms ease,
+		background 180ms ease,
+		transform 180ms ease;
+}
+
+.resourceCard::after {
+	content: '->';
+	flex: 0 0 auto;
+	color: #ffb700;
+	font-size: 1.15rem;
+	line-height: 1;
+}
+
+.resourceCard:hover,
+.resourceCard:focus-visible {
+	border-color: rgba(255, 183, 0, 0.3);
+	background:
+		linear-gradient(145deg, rgba(255, 183, 0, 0.075), rgba(255, 255, 255, 0.02)),
+		rgba(34, 21, 6, 0.84);
+	transform: translateY(-2px);
+}
+
+.resourceCard:focus-visible {
+	outline: 2px solid #ffb700;
+	outline-offset: 3px;
+}
+
 .inlineLink {
 	color: #ffb700;
 	font-weight: 700;
@@ -780,6 +829,10 @@
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		align-items: start;
 	}
+
+	.resourcesGrid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 }
 
 @media (min-width: 1440px) {
@@ -820,6 +873,7 @@
 	.outcomesSection,
 	.marketSection,
 	.faqSection,
+	.resourcesSection,
 	.ctaSection {
 		margin-top: 4rem;
 	}
@@ -870,7 +924,8 @@
 
 	.positioningCard,
 	.outcomeCard,
-	.fitCard {
+	.fitCard,
+	.resourceCard {
 		border-radius: 16px;
 		padding: 1.2rem;
 	}

@@ -350,6 +350,25 @@ const faqItems = [
 	},
 ];
 
+const additionalResources = [
+	{
+		title: 'Top San Antonio Digital Marketing Strategies',
+		href: 'https://rockdigital.agency/blog/top-san-antonio-digital-marketing-strategies',
+	},
+	{
+		title: 'How to Market Your Business Online',
+		href: 'https://rockdigital.agency/blog/how-to-market-your-business-online',
+	},
+	{
+		title: 'Digital Marketing Mistakes Small Businesses Make',
+		href: 'https://rockdigital.agency/blog/digital-marketing-mistakes-small-businesses-make',
+	},
+	{
+		title: "Why Your Business Isn't Showing Up on Google",
+		href: 'https://rockdigital.agency/blog/business-not-showing-up-on-google',
+	},
+];
+
 function slugify(value) {
 	return value
 		.toLowerCase()
@@ -663,6 +682,25 @@ export default function DigitalMarketingSanAntonioPage() {
 									<summary>{item.question}</summary>
 									<p>{item.answer}</p>
 								</details>
+							))}
+						</div>
+					</section>
+
+					<section className={styles.resourcesSection}>
+						<SectionIntro
+							eyebrow='Resources'
+							heading='Additional Resources for San Antonio Businesses'
+							subheading='Explore practical guides for improving visibility, avoiding common marketing mistakes, and building a stronger online presence.'
+						/>
+						<div className={styles.resourcesGrid}>
+							{additionalResources.map((resource) => (
+								<Link
+									key={resource.href}
+									href={resource.href}
+									className={styles.resourceCard}
+								>
+									<span>{resource.title}</span>
+								</Link>
 							))}
 						</div>
 					</section>
