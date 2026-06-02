@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import { getSiteOrigin, normalizeIndexNowUrls, submitToIndexNow } from '@/lib/indexnow';
 
 const BLOG_MODELS = new Set(['post', 'posts', 'blog', 'blog-post', 'blog-posts']);
+const STRAPI_TEST_EVENTS = new Set(['trigger-test', 'test']);
 
 const getAuthToken = (request, body) => {
 	const authHeader = request.headers.get('authorization') || '';
@@ -30,16 +31,51 @@ const isAuthorized = (request, body) => {
 	return getAuthToken(request, body) === secret;
 };
 
+const getContentNodes = (body = {}) =>
+	[
+		body,
+		body.entry,
+		body.entry?.attributes,
+		body.data,
+		body.data?.attributes,
+		body.result,
+		body.result?.attributes,
+		body.entity,
+		body.entity?.attributes,
+		body.payload,
+		body.payload?.entry,
+		body.payload?.entry?.attributes,
+		body.payload?.data,
+		body.payload?.data?.attributes,
+		body.params?.data,
+	].filter((node) => node && typeof node === 'object');
+
+const getFirstString = (values = []) =>
+	values.find((value) => typeof value === 'string' && value.trim())?.trim() || '';
+
 const getModelName = (body = {}) =>
-	String(body.model || body.uid || body.contentType || body.entry?.contentType || '')
+	String(
+		getFirstString([
+			body.model,
+			body.uid,
+			body.contentType,
+			body.contentType?.uid,
+			body.entry?.contentType,
+			body.entry?.contentType?.uid,
+			body.data?.contentType,
+			body.data?.contentType?.uid,
+			body.result?.contentType,
+			body.result?.contentType?.uid,
+		])
+	)
 		.split('.')
 		.at(-1)
 		.toLowerCase();
 
 const getSlugUrl = (body = {}) => {
-	const slug = body.entry?.slug || body.slug;
+	const slug = getFirstString(getContentNodes(body).map((node) => node.slug));
 
-	if (typeof slug !== 'string' || !slug.trim()) {
+	if (!slug) {
 		return null;
 	}
 
@@ -62,18 +98,36 @@ const toUrlArray = (value) => {
 };
 
 const getWebhookUrls = (body = {}) => {
+	const contentNodes = getContentNodes(body);
 	const explicitUrls = [
 		...toUrlArray(body.urls),
 		...toUrlArray(body.urlList),
-		body.url,
-		body.path,
-		body.entry?.url,
-		body.entry?.path,
+		...contentNodes.flatMap((node) => [node.url, node.path, node.canonicalUrl]),
 		getSlugUrl(body),
 	].filter(Boolean);
 
 	return normalizeIndexNowUrls(explicitUrls);
 };
+
+const isStrapiTestPayload = (body = {}) => {
+	const event = String(body.event || body.action || '').toLowerCase();
+
+	return (
+		STRAPI_TEST_EVENTS.has(event) ||
+		(event.includes('test') && !body.entry && !body.data && !body.result)
+	);
+};
+
+const isStrapiPayload = (body = {}) =>
+	Boolean(
+		body.event ||
+			body.model ||
+			body.uid ||
+			body.contentType ||
+			body.entry ||
+			body.data ||
+			body.result
+	);
 
 const getRevalidationPaths = (urls = []) => {
 	const siteOrigin = getSiteOrigin();
@@ -95,6 +149,18 @@ export async function POST(request) {
 		const urls = getWebhookUrls(body);
 
 		if (urls.length === 0) {
+			if (isStrapiTestPayload(body) || isStrapiPayload(body)) {
+				return NextResponse.json(
+					{
+						success: true,
+						skipped: true,
+						message:
+							'Webhook received, but no publishable Rock Digital URL was included in the payload.',
+					},
+					{ status: 202 }
+				);
+			}
+
 			return NextResponse.json(
 				{ error: 'Provide one or more Rock Digital URLs in `urls`.' },
 				{ status: 400 }
