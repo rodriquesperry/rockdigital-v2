@@ -107,6 +107,17 @@ const createSchema = (serviceOptions, showQualificationFields) =>
 			: optionalQualificationFields),
 	});
 
+const getStrapiErrorDetails = (error) => ({
+	message: error.response?.data?.error?.message || 'An unknown error occurred',
+	path: error.response?.data?.error?.details?.errors?.[0]?.path?.[0] || '',
+});
+
+const isInvalidStrapiKeyError = (error) => {
+	const { message } = getStrapiErrorDetails(error);
+
+	return message.toLowerCase().includes('invalid key');
+};
+
 const ContactForm = ({
 	serviceOptions = defaultServiceOptions,
 	servicePlaceholder = 'Choose Your Service Need',
@@ -161,25 +172,26 @@ const ContactForm = ({
 		}
 	}, [errors.root, setFocus]);
 
-	const postLead = async (data) => {
+	const postLead = async (data, { showErrors = true } = {}) => {
 		try {
 			const response = await axios.post(`${baseURL}/api/leads`, { data });
 
 			if (response?.data?.error) {
-				if (response.data.error.message === 'Email already in use.') {
-					setError('email', { message: 'Email is already registered.' });
-				} else {
-					setError('root', { message: response.data.error.message });
+				if (showErrors) {
+					if (response.data.error.message === 'Email already in use.') {
+						setError('email', { message: 'Email is already registered.' });
+					} else {
+						setError('root', { message: response.data.error.message });
+					}
 				}
 				throw new Error(response.data.error.message || 'Unknown error');
 			}
 			return response; // Return the successful response
 		} catch (error) {
-			const errorMessage =
-				error.response?.data?.error?.message || 'An unknown error occurred';
-			const errorDetails =
-				error.response?.data?.error?.details?.errors?.[0]?.path?.[0] || '';
-			setError('root', { message: `${errorMessage}: ${errorDetails}` });
+			if (showErrors) {
+				const { message, path } = getStrapiErrorDetails(error);
+				setError('root', { message: `${message}: ${path}` });
+			}
 			throw error; // Re-throw the error to handle it in `onSubmit`
 		}
 	};
@@ -195,7 +207,7 @@ const ContactForm = ({
 	const onSubmit = async (data) => {
 		try {
 			clearErrors('root');
-			const leadData = {
+			const baseLeadData = {
 				active: data.active,
 				lead_uuid: data.lead_uuid,
 				name: data.name,
@@ -204,16 +216,40 @@ const ContactForm = ({
 				service: data.service,
 				description: data.description,
 			};
+			let leadData = baseLeadData;
+
 			if (showQualificationFields) {
-				leadData.company_name = data.company_name;
-				leadData.website_url = data.website_url;
-				leadData.monthly_marketing_investment =
-					data.monthly_marketing_investment;
-				leadData.project_timeline = data.project_timeline;
-				leadData.business_description = data.business_description;
-				leadData.action_prompt = data.action_prompt;
+				leadData = {
+					...baseLeadData,
+					company_name: data.company_name,
+					website_url: data.website_url,
+					monthly_marketing_investment: data.monthly_marketing_investment,
+					project_timeline: data.project_timeline,
+					business_description: data.business_description,
+					action_prompt: data.action_prompt,
+          growth_investment_acknowledgement: data.growth_investment_acknowledgement,
+				};
 			}
-			const response = await postLead(leadData); // Await API call
+
+			let response;
+
+			try {
+				response = await postLead(leadData, {
+					showErrors: !showQualificationFields,
+				});
+			} catch (error) {
+				if (!showQualificationFields) {
+					throw error;
+				}
+
+				if (!isInvalidStrapiKeyError(error)) {
+					const { message, path } = getStrapiErrorDetails(error);
+					setError('root', { message: `${message}: ${path}` });
+					throw error;
+				}
+
+				response = await postLead(baseLeadData);
+			}
 
 			if (response?.status === 201) {
 				await sendLeadEmail(data);
