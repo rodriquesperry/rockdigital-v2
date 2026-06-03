@@ -100,7 +100,24 @@
 
 .alert_div {
 	position: fixed;
-	/* bottom: 0; */
+	z-index: 1000;
+	top: 1rem;
+	left: 50%;
+	width: min(34rem, calc(100% - 2rem));
+	padding: 1rem 1.15rem;
+	border: 1px solid rgba(26, 127, 55, 0.22);
+	border-radius: 8px;
+	background: #eaf7ee;
+	box-shadow: 0 18px 42px rgba(25, 70, 41, 0.16);
+	color: #14532d;
+	font-size: 0.98rem;
+	line-height: 1.45;
+	text-align: left;
+	transform: translateX(-50%);
+}
+
+.alert_div strong {
+	color: #0f3d22;
 }
 
 #form.qualification_form {

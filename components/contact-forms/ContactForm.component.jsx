@@ -274,7 +274,7 @@ const ContactForm = ({
 					business_description: '',
 					growth_investment_acknowledgement: false,
 				}); // Reset the form with default values
-				setTimeout(() => setIsSubmitSuccessful(false), 2000); // Hide the success message
+				setTimeout(() => setIsSubmitSuccessful(false), 6500); // Hide the success message
 			}
 		} catch (error) {
 			setIsSubmitSuccessful(false); // Ensure success message isn't shown
@@ -524,11 +524,10 @@ const ContactForm = ({
 					</>
 				)}
 				{isSubmitSuccessful && (
-					<div
-						className={`${styles.alert_div} sticky-top alert alert-success`}
-						role='alert'
-					>
-						Success! Check your email for Login information.
+					<div className={styles.alert_div} role='status' aria-live='polite'>
+						<strong>Success.</strong> Your project details were submitted.
+						We&apos;ll review everything and follow up if it looks like a strong
+						fit.
 					</div>
 				)}
 				<div className={styles.contact_form_button_container}>
