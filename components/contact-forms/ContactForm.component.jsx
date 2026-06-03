@@ -13,7 +13,7 @@ import styles from './contactForm.module.css';
 const defaultServiceOptions = [
 	'Web Development',
 	'App Development',
-	'DIgital Marketing',
+	'Digital Marketing',
 	'Other',
 ];
 
