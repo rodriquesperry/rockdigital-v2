@@ -15,7 +15,7 @@ const navigationLinks = [
 	{ href: '/about', label: 'ABOUT' },
 	{ href: '/services', label: 'SERVICES' },
 	{ href: '/blog', label: 'BLOG' },
-	{ href: '/contact', label: 'CONTACT US' },
+	{ href: '/contact', label: 'START THE CONVERSATION' },
 	{
 		href: '/website-audit',
 		label: 'Request a Website Audit',
