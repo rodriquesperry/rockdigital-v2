@@ -55,7 +55,7 @@ const optionalQualificationFields = {
 
 const requiredQualificationFields = {
 	company_name: z.string().min(1, 'Company name is required.'),
-	website_url: z.string().min(1, 'Website URL is required.'),
+	// website_url: z.string().min(1, 'Website URL is required.'),
 	monthly_marketing_investment: z
 		.string()
 		.refine((value) => monthlyMarketingInvestmentOptions.includes(value), {
