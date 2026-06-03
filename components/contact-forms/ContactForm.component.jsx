@@ -11,9 +11,11 @@ import { v4 as uuidv4 } from 'uuid';
 import styles from './contactForm.module.css';
 
 const defaultServiceOptions = [
-	'Web Development',
+	'Web Design',
+  'Web Development',
 	'App Development',
 	'Digital Marketing',
+  'Design and Development',
 	'Other',
 ];
 
