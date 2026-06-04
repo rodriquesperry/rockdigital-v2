@@ -55,7 +55,7 @@ const optionalQualificationFields = {
 
 const requiredQualificationFields = {
 	company_name: z.string().min(1, 'Company name is required.'),
-	// website_url: z.string().min(1, 'Website URL is required.'),
+	website_url: z.string().optional(),
 	monthly_marketing_investment: z
 		.string()
 		.refine((value) => monthlyMarketingInvestmentOptions.includes(value), {
@@ -118,6 +118,20 @@ const isInvalidStrapiKeyError = (error) => {
 	const { message } = getStrapiErrorDetails(error);
 
 	return message.toLowerCase().includes('invalid key');
+};
+
+const normalizeWebsiteUrl = (value) => {
+	const trimmedValue = value?.trim();
+
+	if (!trimmedValue) {
+		return '';
+	}
+
+	if (/^https?:\/\//i.test(trimmedValue)) {
+		return trimmedValue;
+	}
+
+	return `https://${trimmedValue}`;
 };
 
 const ContactForm = ({
@@ -209,27 +223,33 @@ const ContactForm = ({
 	const onSubmit = async (data) => {
 		try {
 			clearErrors('root');
+			const normalizedData = {
+				...data,
+				website_url: normalizeWebsiteUrl(data.website_url),
+			};
 			const baseLeadData = {
-				active: data.active,
-				lead_uuid: data.lead_uuid,
-				name: data.name,
-				email: data.email,
-				phone_num: data.phone_num,
-				service: data.service,
-				description: data.description,
+				active: normalizedData.active,
+				lead_uuid: normalizedData.lead_uuid,
+				name: normalizedData.name,
+				email: normalizedData.email,
+				phone_num: normalizedData.phone_num,
+				service: normalizedData.service,
+				description: normalizedData.description,
 			};
 			let leadData = baseLeadData;
 
 			if (showQualificationFields) {
 				leadData = {
 					...baseLeadData,
-					company_name: data.company_name,
-					website_url: data.website_url,
-					monthly_marketing_investment: data.monthly_marketing_investment,
-					project_timeline: data.project_timeline,
-					business_description: data.business_description,
-					action_prompt: data.action_prompt,
-          growth_investment_acknowledgement: data.growth_investment_acknowledgement,
+					company_name: normalizedData.company_name,
+					website_url: normalizedData.website_url,
+					monthly_marketing_investment:
+						normalizedData.monthly_marketing_investment,
+					project_timeline: normalizedData.project_timeline,
+					business_description: normalizedData.business_description,
+					action_prompt: normalizedData.action_prompt,
+					growth_investment_acknowledgement:
+						normalizedData.growth_investment_acknowledgement,
 				};
 			}
 
@@ -254,7 +274,7 @@ const ContactForm = ({
 			}
 
 			if (response?.status === 201) {
-				await sendLeadEmail(data);
+				await sendLeadEmail(normalizedData);
 				const nextLeadId = uuidv4();
 				leadIdRef.current = nextLeadId;
 				setIsSubmitSuccessful(true);
@@ -342,14 +362,17 @@ const ContactForm = ({
 				{showQualificationFields && (
 					<>
 						<label htmlFor='website_url'>Website URL</label>
-						<input
-							id='website_url'
-							{...register('website_url')}
-							className={styles.form_field}
-							type='text'
-							name='website_url'
-							placeholder='https://example.com'
-						/>
+						<div className={styles.url_input_group}>
+							<span className={styles.url_prefix}>https://</span>
+							<input
+								id='website_url'
+								{...register('website_url')}
+								className={styles.form_field}
+								type='text'
+								name='website_url'
+								placeholder='example.com'
+							/>
+						</div>
 						{errors.website_url && (
 							<div className={styles.error}>{errors.website_url.message}</div>
 						)}

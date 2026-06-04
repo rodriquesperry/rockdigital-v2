@@ -36,7 +36,11 @@ export const metadata = {
 const auditHref = '/website-audit';
 const webDesignHref = '/web-design';
 const digitalGrowthHref = '/website-improvement';
-const sanAntonioHref = '/web-design';
+const sanAntonioHref =
+	'/blog/how-to-build-a-website-that-actually-drives-growth-san-antonio';
+const leadsArticleHref = '/blog/why-your-website-isn-t-generating-leads';
+const whatWebDesignHref = '/blog/what-is-web-design'
+const highQualityHref = '/blog/what-makes-a-high-converting-website';
 
 const tocItems = [
 	{ id: 'why-most-websites-fail', label: 'Why Most Websites Fail' },
@@ -304,7 +308,8 @@ const faqItems = [
 const articleSchema = {
 	'@context': 'https://schema.org',
 	'@type': 'Article',
-	headline: 'Web Design: The Complete Guide to Building a High-Converting Website',
+	headline:
+		'Web Design: The Complete Guide to Building a High-Converting Website',
 	description: pageDescription,
 	mainEntityOfPage: pageUrl,
 	author: {
@@ -561,7 +566,7 @@ export default function WebDesignGuidePage() {
 							<StrategicCtaBlock
 								id='website-performing'
 								title='When Your Website Isn’t Performing, There’s a Reason'
-								body='Most websites don’t fail because of effort. They fail because of structure.'
+								body='Your website quietly fails, not because you lack effort but because you lack structure.'
 								secondaryBody='On the surface, everything may look right. The design is clean. The messaging seems clear. The site functions as expected. But underneath, there are gaps, missed opportunities that prevent your website from generating consistent results.'
 								primaryHref={auditHref}
 								primaryLabel='Request a Website Audit'
@@ -570,7 +575,9 @@ export default function WebDesignGuidePage() {
 								dark
 							>
 								<p>
-									If your website isn’t producing leads, driving engagement, or
+									If your <Link href={leadsArticleHref} className={styles.textLink}>
+										website isn’t producing leads
+									</Link>{' '}, driving engagement, or
 									supporting your business goals, it is not random. It is a
 									performance issue, and performance can be improved.
 								</p>
@@ -624,6 +631,10 @@ export default function WebDesignGuidePage() {
 									instantly reduce trust, while a clean, modern, and strategic
 									design can position your business as established and reliable.
 								</p>
+                <p>
+                  <Link href={whatWebDesignHref} className={styles.textLink}>Learn what web design really is </Link>
+                  and why it plays a critical role in business growth.
+                </p>
 								<p>
 									Web design for business goes beyond aesthetics. It includes
 									layout, user flow, responsiveness, speed, and conversion
@@ -731,6 +742,7 @@ export default function WebDesignGuidePage() {
 											user flow, plays a role in how effectively your website
 											performs.
 										</p>
+                    <p>Gain clarity on key elements that drive results in <Link href={highQualityHref} className={styles.textLink}>What Makes a High Converting Website</Link>.</p>
 										<p>
 											Small improvements compound over time. Clearer messaging
 											increases engagement. Faster load times reduce drop-off.
@@ -1162,7 +1174,8 @@ export default function WebDesignGuidePage() {
 										href={sanAntonioHref}
 										className={styles.inlineActionLink}
 									>
-										Explore Web Design in San Antonio
+										Explore How to Build a Website That Actually Drives Growth
+										in San Antonio
 									</Link>
 								</div>
 							</section>
@@ -1247,8 +1260,7 @@ export default function WebDesignGuidePage() {
 								<Link href={webDesignHref} className={styles.textLink}>
 									web design services
 								</Link>{' '}
-								to see how we build high-performing websites from the ground
-								up.
+								to see how we build high-performing websites from the ground up.
 							</p>
 							<p>
 								With that insight, you can make informed decisions and move
