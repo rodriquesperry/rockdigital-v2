@@ -39,8 +39,10 @@ const digitalGrowthHref = '/website-improvement';
 const sanAntonioHref =
 	'/blog/how-to-build-a-website-that-actually-drives-growth-san-antonio';
 const leadsArticleHref = '/blog/why-your-website-isn-t-generating-leads';
-const whatWebDesignHref = '/blog/what-is-web-design'
+const whatWebDesignHref = '/blog/what-is-web-design';
 const highQualityHref = '/blog/what-makes-a-high-converting-website';
+const webDesignPricingHref = '/blog/how-much-does-web-design-cost-in-2026';
+const chooseHref = '/blog/how-to-choose-a-web-design-company-in-san-antonio';
 
 const tocItems = [
 	{ id: 'why-most-websites-fail', label: 'Why Most Websites Fail' },
@@ -575,11 +577,13 @@ export default function WebDesignGuidePage() {
 								dark
 							>
 								<p>
-									If your <Link href={leadsArticleHref} className={styles.textLink}>
+									If your{' '}
+									<Link href={leadsArticleHref} className={styles.textLink}>
 										website isn’t producing leads
-									</Link>{' '}, driving engagement, or
-									supporting your business goals, it is not random. It is a
-									performance issue, and performance can be improved.
+									</Link>{' '}
+									, driving engagement, or supporting your business goals, it is
+									not random. It is a performance issue, and performance can be
+									improved.
 								</p>
 								<p>
 									The key is identifying where your website is falling short and
@@ -631,10 +635,12 @@ export default function WebDesignGuidePage() {
 									instantly reduce trust, while a clean, modern, and strategic
 									design can position your business as established and reliable.
 								</p>
-                <p>
-                  <Link href={whatWebDesignHref} className={styles.textLink}>Learn what web design really is </Link>
-                  and why it plays a critical role in business growth.
-                </p>
+								<p>
+									<Link href={whatWebDesignHref} className={styles.textLink}>
+										Learn what web design really is{' '}
+									</Link>
+									and why it plays a critical role in business growth.
+								</p>
 								<p>
 									Web design for business goes beyond aesthetics. It includes
 									layout, user flow, responsiveness, speed, and conversion
@@ -742,7 +748,13 @@ export default function WebDesignGuidePage() {
 											user flow, plays a role in how effectively your website
 											performs.
 										</p>
-                    <p>Gain clarity on key elements that drive results in <Link href={highQualityHref} className={styles.textLink}>What Makes a High Converting Website</Link>.</p>
+										<p>
+											Gain clarity on key elements that drive results in{' '}
+											<Link href={highQualityHref} className={styles.textLink}>
+												What Makes a High Converting Website
+											</Link>
+											.
+										</p>
 										<p>
 											Small improvements compound over time. Clearer messaging
 											increases engagement. Faster load times reduce drop-off.
@@ -1114,7 +1126,13 @@ export default function WebDesignGuidePage() {
 								<p>
 									A well-designed website can generate leads, increase
 									conversions, and support long-term growth. In this sense, it
-									should be viewed as an investment rather than an expense.
+									should be viewed as an investment rather than an expense. To
+									understand the{' '}
+									<Link href={webDesignPricingHref} className={styles.textLink}>
+										cost of web design
+									</Link>{' '}
+									and how to evaluate the return on your investment, explore our
+									detailed guide on web design pricing and value.
 								</p>
 							</section>
 
@@ -1140,12 +1158,20 @@ export default function WebDesignGuidePage() {
 									design project.
 								</p>
 								<div className={styles.inlineActionWrap}>
-									<Link
-										href={webDesignHref}
-										className={styles.inlineActionLink}
-									>
-										Learn more about our Web Design Services
-									</Link>
+									<p>
+										<Link
+											href={webDesignHref}
+											className={styles.inlineActionLink}
+										>
+											Learn more about our Web Design Services
+										</Link>{' '}
+										or check out our article on
+										<Link href={chooseHref} className={styles.inlineActionLink}>
+											How to Choose a Web Design Company in San Antonio
+										</Link>{' '}
+										for a local perspective on selecting the right partner in
+										your area.
+									</p>
 								</div>
 							</section>
 
