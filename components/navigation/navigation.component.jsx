@@ -28,7 +28,7 @@ const darkNavigationRouteMatchers = [
 	'/about',
 	'/landing-page',
 	'/web-design',
-	'/case-studies/',
+	'/case-studies',
 	'/website-design-and-development',
 	'/website-optimization',
 	'/website-improvement',
