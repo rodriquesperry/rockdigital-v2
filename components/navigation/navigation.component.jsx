@@ -14,6 +14,7 @@ import styles from './navigation.module.css';
 const navigationLinks = [
 	{ href: '/about', label: 'ABOUT' },
 	{ href: '/services', label: 'SERVICES' },
+	{ href: '/case-studies', label: 'CASE STUDIES' },
 	{ href: '/blog', label: 'BLOG' },
 	{ href: '/contact', label: 'START THE CONVERSATION' },
 	{
