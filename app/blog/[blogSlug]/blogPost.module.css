@@ -472,9 +472,9 @@
 		padding-left: var(--gutter-desktop);
 	}
 
-  .blog_post_header {
-    margin-bottom: 10rem;    
-  }
+	.blog_post_header {
+		margin-bottom: 15rem;
+	}
 
 	.blog_post_header_background {
 		height: 450px;
@@ -597,6 +597,10 @@
 	.blog_post_container {
 		padding-right: var(--gutter-desktop);
 		padding-left: var(--gutter-desktop);
+	}
+
+  .blog_post_header {
+		margin-bottom: 15rem;
 	}
 
 	.blog_post_header_background {
