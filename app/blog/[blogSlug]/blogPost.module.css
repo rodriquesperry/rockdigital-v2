@@ -43,6 +43,7 @@
 .blog_image_container {
 	position: relative;
 	height: 179px;
+	object-fit: contain;
 }
 
 .read_time {
@@ -470,6 +471,10 @@
 		padding-right: var(--gutter-desktop);
 		padding-left: var(--gutter-desktop);
 	}
+
+  .blog_post_header {
+    margin-bottom: 10rem;    
+  }
 
 	.blog_post_header_background {
 		height: 450px;

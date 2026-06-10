@@ -156,7 +156,7 @@ export default function BlogPostAnimated({
 						/> */}
 					{/* <div className={`col-3 ${styles.info_pic}`}> */}
 					<div className={styles.info_text}>
-						<h5 className={styles.author}>{author}</h5>
+						{/* <h5 className={styles.author}>{author}</h5> */}
 						<div className={styles.postDates}>
 							{publishedDateString ? (
 								<h6 className={styles.date}>Published {publishedDateString}</h6>
@@ -179,7 +179,10 @@ export default function BlogPostAnimated({
 				</div>
 			</div>
 			{relatedPosts.length > 0 ? (
-				<section className={styles.relatedSection} aria-labelledby='related-posts'>
+				<section
+					className={styles.relatedSection}
+					aria-labelledby='related-posts'
+				>
 					<div className={styles.relatedHeader}>
 						<p>Keep Reading</p>
 						<h2 id='related-posts'>Related Articles</h2>
