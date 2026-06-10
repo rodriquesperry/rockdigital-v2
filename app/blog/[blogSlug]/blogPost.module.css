@@ -271,7 +271,7 @@
 	padding: 3rem 1rem;
 	background:
 		linear-gradient(135deg, rgba(34, 21, 6, 0.08), rgba(34, 21, 6, 0)),
-		#d5ad58;
+		#d5ad5854;
 	transform: translateX(-50%);
 }
 
