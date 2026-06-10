@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getStrapiMediaUrl } from '@/lib/getStrapiMediaUrl';
 import { formatBlogDate, getOriginalPublishedDate } from '@/lib/formatBlogDate';
+import authorPic from '@/assets/AuthorPic.png';
 import styles from './blogPost.module.css';
 import BlogShareMenu from './BlogShareMenu.client';
 
@@ -178,6 +179,43 @@ export default function BlogPostAnimated({
 					Share <BlogShareMenu slug={slug} title={title} />
 				</div>
 			</div>
+			<section className={styles.authorBioSection} aria-labelledby='author-bio'>
+				<div className={styles.authorBioCard}>
+					<div className={styles.authorBioImageWrap}>
+						<Image
+							src={authorPic}
+							alt='Rocky Perry'
+							fill
+							sizes='(max-width: 767px) 132px, 176px'
+							className={styles.authorBioImage}
+						/>
+					</div>
+					<div className={styles.authorBioContent}>
+						<h2 id='author-bio'>rocky</h2>
+						<p>
+							Rodriques &quot;Rocky&quot; Perry is the founder of Rock Digital,
+							a web design and digital marketing agency focused on helping
+							businesses grow online. With a background in software engineering
+							and digital strategy, he helps organizations build websites that
+							do more than look professional; they generate leads, strengthen
+							brand credibility, and support long-term business growth.
+						</p>
+						<p>
+							Rocky believes that a website should be one of a company&apos;s
+							most valuable business assets. His work combines thoughtful
+							design, technical expertise, search engine optimization, and
+							digital marketing strategy to create online experiences that drive
+							measurable results.
+						</p>
+						<p>
+							He regularly shares insights on web design, digital marketing,
+							SEO, and business growth to help business owners better understand
+							the opportunities available online and make smarter decisions for
+							their organizations.
+						</p>
+					</div>
+				</div>
+			</section>
 			{relatedPosts.length > 0 ? (
 				<section
 					className={styles.relatedSection}

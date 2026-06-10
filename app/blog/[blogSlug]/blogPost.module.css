@@ -265,6 +265,67 @@
 	border-radius: 8px;
 }
 
+.authorBioSection {
+	width: 100vw;
+	margin: 0 0 4rem 50%;
+	padding: 3rem 1rem;
+	background:
+		linear-gradient(135deg, rgba(34, 21, 6, 0.08), rgba(34, 21, 6, 0)),
+		#d5ad58;
+	transform: translateX(-50%);
+}
+
+.authorBioCard {
+	display: grid;
+	grid-template-columns: minmax(8.5rem, 11rem) minmax(0, 1fr);
+	gap: 1.8rem;
+	align-items: start;
+	width: min(100%, 1200px);
+	margin: 0 auto;
+	padding: 1.45rem;
+	border: 1px solid rgba(34, 21, 6, 0.08);
+	border-radius: 8px;
+	background: var(--color-white);
+	box-shadow: 0 18px 38px rgba(34, 21, 6, 0.13);
+}
+
+.authorBioImageWrap {
+	position: relative;
+	overflow: hidden;
+	width: 100%;
+	aspect-ratio: 1 / 1;
+	border: 1px solid rgba(34, 21, 6, 0.13);
+	border-radius: 34% 16% 34% 16%;
+	background: var(--color-neutral-75);
+	box-shadow: inset 0 0 0 0.35rem rgba(255, 255, 255, 0.55);
+}
+
+.authorBioImage {
+	object-fit: cover;
+	object-position: center;
+}
+
+.authorBioContent h2 {
+	margin: 0 0 0.8rem;
+	color: var(--color-ink-700);
+	font-family: var(--font-heading);
+	font-size: clamp(1.7rem, 2.2vw, 2.35rem);
+	font-weight: 700;
+	line-height: 1;
+}
+
+.authorBioContent p {
+	margin: 0;
+	color: rgba(64, 38, 10, 0.82);
+	font-size: 1rem;
+	font-weight: 300;
+	line-height: 1.72;
+}
+
+.authorBioContent p + p {
+	margin-top: 0.8rem;
+}
+
 .relatedSection {
 	max-width: 1070px;
 	margin: 0 auto 4.5rem;
@@ -408,6 +469,32 @@
 	}
 }
 
+@media screen and (max-width: 767px) {
+	.authorBioSection {
+		margin-bottom: 3rem;
+		padding: 2.25rem 1rem;
+	}
+
+	.authorBioCard {
+		grid-template-columns: 1fr;
+		gap: 1.2rem;
+		padding: 1rem;
+	}
+
+	.authorBioImageWrap {
+		width: min(8.25rem, 48vw);
+	}
+
+	.authorBioContent h2 {
+		margin-bottom: 0.65rem;
+	}
+
+	.authorBioContent p {
+		font-size: 0.96rem;
+		line-height: 1.65;
+	}
+}
+
 @media screen and (min-width: 768px) and (max-width: 1023px) {
 	.blog_post_header {
 		margin-bottom: 1rem;
@@ -459,6 +546,11 @@
 
 	.relatedSection {
 		padding: 0 4rem;
+	}
+
+	.authorBioSection {
+		padding-right: 4rem;
+		padding-left: 4rem;
 	}
 
 	.relatedGrid {
