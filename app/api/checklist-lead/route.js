@@ -2,9 +2,16 @@ import { NextResponse } from 'next/server';
 
 import config from '@/config';
 
-const checklistDownloadUrl =
-	process.env.CHECKLIST_DOWNLOAD_URL ||
-	'https://nnuvcjkozpiborbkurhp.supabase.co/storage/v1/object/public/downloads/DM-Checklist.pdf';
+const checklistDownloads = {
+	'digital-marketing-guide':
+		process.env.CHECKLIST_DOWNLOAD_URL ||
+		'https://nnuvcjkozpiborbkurhp.supabase.co/storage/v1/object/public/downloads/DM-Checklist.pdf',
+	'premium-website-launch-checklist':
+		process.env.PREMIUM_WEBSITE_LAUNCH_CHECKLIST_DOWNLOAD_URL ||
+		'https://nnuvcjkozpiborbkurhp.supabase.co/storage/v1/object/public/downloads/Premium%20Website%20Launch%20Checklist.pdf',
+};
+
+const defaultChecklistKey = 'digital-marketing-guide';
 
 const getStrapiBaseUrl = () =>
 	process.env.STRAPI_API_URL ||
@@ -50,6 +57,9 @@ export async function POST(request) {
 	try {
 		const body = await request.json();
 		const email = body?.email?.trim().toLowerCase();
+		const checklistKey = Object.hasOwn(checklistDownloads, body?.checklist)
+			? body.checklist
+			: defaultChecklistKey;
 
 		if (!email || !isValidEmail(email)) {
 			return NextResponse.json(
@@ -101,7 +111,7 @@ export async function POST(request) {
 		return NextResponse.json(
 			{
 				checklistLead: strapiPayload?.data ?? null,
-				downloadUrl: checklistDownloadUrl,
+				downloadUrl: checklistDownloads[checklistKey],
 			},
 			{ status: 201 },
 		);
