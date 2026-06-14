@@ -1,21 +1,21 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 
 import styles from './premiumWebsiteLaunchChecklist.module.css';
 
-const checklistDownloadUrl =
-	'https://nnuvcjkozpiborbkurhp.supabase.co/storage/v1/object/public/downloads/Premium%20Website%20Launch%20Checklist.pdf';
+const checklistKey = 'premium-website-launch-checklist';
 
 const schema = z.object({
 	email: z.string().trim().email('Enter a valid email address.'),
 });
 
 export default function ChecklistLeadForm() {
-	const pendingDownloadWindow = useRef(null);
+	const router = useRouter();
 	const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
 
 	const {
@@ -31,28 +31,9 @@ export default function ChecklistLeadForm() {
 		resolver: zodResolver(schema),
 	});
 
-	const openPendingDownloadWindow = () => {
-		const downloadWindow = window.open('about:blank', '_blank');
-		if (downloadWindow) {
-			downloadWindow.opener = null;
-			pendingDownloadWindow.current = downloadWindow;
-		}
-	};
-
-	const closePendingDownloadWindow = () => {
-		pendingDownloadWindow.current?.close();
-		pendingDownloadWindow.current = null;
-	};
-
-	const onInvalidSubmit = () => {
-		closePendingDownloadWindow();
-	};
-
 	const onSubmit = async (data) => {
 		clearErrors('root');
 		setIsSubmitSuccessful(false);
-
-		const downloadWindow = pendingDownloadWindow.current;
 
 		try {
 			const response = await fetch('/api/checklist-lead', {
@@ -62,7 +43,7 @@ export default function ChecklistLeadForm() {
 				},
 				body: JSON.stringify({
 					...data,
-					checklist: 'premium-website-launch-checklist',
+					checklistKey,
 				}),
 			});
 			const payload = await response.json().catch(() => null);
@@ -73,16 +54,9 @@ export default function ChecklistLeadForm() {
 				);
 			}
 
-			if (downloadWindow) {
-				downloadWindow.location.href = payload?.downloadUrl || checklistDownloadUrl;
-				pendingDownloadWindow.current = null;
-			} else {
-				window.open(payload?.downloadUrl || checklistDownloadUrl, '_blank');
-			}
-
 			setIsSubmitSuccessful(true);
+			router.push(`/thank-you/${payload?.checklistKey || checklistKey}`);
 		} catch (error) {
-			closePendingDownloadWindow();
 			setIsSubmitSuccessful(false);
 			setError('root', {
 				message:
@@ -95,7 +69,7 @@ export default function ChecklistLeadForm() {
 	return (
 		<form
 			className={styles.checklistLeadForm}
-			onSubmit={handleSubmit(onSubmit, onInvalidSubmit)}
+			onSubmit={handleSubmit(onSubmit)}
 		>
 			<label htmlFor='premium-checklist-email'>Email address</label>
 			<div className={styles.checklistInputRow}>
@@ -110,7 +84,6 @@ export default function ChecklistLeadForm() {
 				<button
 					type='submit'
 					disabled={isSubmitting}
-					onClick={openPendingDownloadWindow}
 				>
 					{isSubmitting ? 'Opening...' : 'Download the Checklist'}
 				</button>
@@ -123,7 +96,7 @@ export default function ChecklistLeadForm() {
 			) : null}
 			{isSubmitSuccessful ? (
 				<p className={styles.formSuccess}>
-					Your checklist is opening in a new window.
+					Your checklist is ready. Taking you to the download page.
 				</p>
 			) : null}
 			<p className={styles.checklistTrustBlurb}>

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import config from '@/config';
+import { sendChecklistSequenceEmails } from '@/lib/server/checklistEmailSequence';
 
 const checklistDownloads = {
 	'digital-marketing-guide':
@@ -12,6 +13,17 @@ const checklistDownloads = {
 };
 
 const defaultChecklistKey = 'digital-marketing-guide';
+const getChecklistKey = (body) => {
+	const requestedChecklistKey = body?.checklistKey || body?.checklist;
+
+	if (!requestedChecklistKey) {
+		return defaultChecklistKey;
+	}
+
+	return Object.hasOwn(checklistDownloads, requestedChecklistKey)
+		? requestedChecklistKey
+		: null;
+};
 
 const getStrapiBaseUrl = () =>
 	process.env.STRAPI_API_URL ||
@@ -41,11 +53,15 @@ const getStrapiErrorMessage = (payload, fallback) => {
 
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-const createChecklistLead = async ({ email, includeAuthorization = true }) => {
+const createChecklistLead = async ({
+	email,
+	checklistKey,
+	includeAuthorization = true,
+}) => {
 	const response = await fetch(`${getStrapiBaseUrl()}/api/checklist-leads`, {
 		method: 'POST',
 		headers: getStrapiHeaders({ includeAuthorization }),
-		body: JSON.stringify({ data: { email } }),
+		body: JSON.stringify({ data: { email, checklistKey } }),
 		cache: 'no-store',
 	});
 	const payload = await response.json().catch(() => null);
@@ -57,9 +73,7 @@ export async function POST(request) {
 	try {
 		const body = await request.json();
 		const email = body?.email?.trim().toLowerCase();
-		const checklistKey = Object.hasOwn(checklistDownloads, body?.checklist)
-			? body.checklist
-			: defaultChecklistKey;
+		const checklistKey = getChecklistKey(body);
 
 		if (!email || !isValidEmail(email)) {
 			return NextResponse.json(
@@ -68,8 +82,15 @@ export async function POST(request) {
 			);
 		}
 
+		if (!checklistKey) {
+			return NextResponse.json(
+				{ error: 'Enter a valid checklist key.' },
+				{ status: 400 },
+			);
+		}
+
 		let { response: strapiResponse, payload: strapiPayload } =
-			await createChecklistLead({ email });
+			await createChecklistLead({ email, checklistKey });
 
 		if (strapiResponse.status === 401 && process.env.STRAPI_API_TOKEN) {
 			console.error(
@@ -77,6 +98,7 @@ export async function POST(request) {
 			);
 			const retryResult = await createChecklistLead({
 				email,
+				checklistKey,
 				includeAuthorization: false,
 			});
 			strapiResponse = retryResult.response;
@@ -108,10 +130,34 @@ export async function POST(request) {
 			);
 		}
 
+		let emailSequence = null;
+		let emailWarning = null;
+
+		try {
+			emailSequence = await sendChecklistSequenceEmails({
+				to: email,
+				checklistKey,
+			});
+			if (!emailSequence.firstStepSent) {
+				emailWarning =
+					emailSequence.errorMessage ||
+					'The checklist lead was saved, but the checklist email could not be sent.';
+			}
+		} catch (error) {
+			console.error('checklist-lead email sequence error:', error);
+			emailWarning =
+				error?.message ||
+				'The checklist lead was saved, but the checklist email could not be sent.';
+		}
+
 		return NextResponse.json(
 			{
 				checklistLead: strapiPayload?.data ?? null,
+				checklistKey,
 				downloadUrl: checklistDownloads[checklistKey],
+				emailSequence,
+				userEmailSent: emailSequence?.firstStepSent ?? false,
+				emailWarning,
 			},
 			{ status: 201 },
 		);
