@@ -159,7 +159,7 @@
 @media screen and (min-width: 1024px) {
 	.carousel,
 	.carousel_caption {
-		min-height: 520px;
+		min-height: 620px;
 	}
 
 	.carousel_heading :is(h1, h2) {

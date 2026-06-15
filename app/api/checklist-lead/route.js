@@ -51,6 +51,23 @@ const getStrapiErrorMessage = (payload, fallback) => {
 	return errorDetails ? `${message}: ${errorDetails}` : message;
 };
 
+const getFetchErrorCause = (error) => error?.cause || error;
+
+const isConnectionRefusedError = (error) => {
+	const cause = getFetchErrorCause(error);
+
+	return cause?.code === 'ECONNREFUSED';
+};
+
+const getStrapiUnavailableMessage = (error) => {
+	const cause = getFetchErrorCause(error);
+	const host = cause?.address && cause?.port
+		? `${cause.address}:${cause.port}`
+		: getStrapiBaseUrl();
+
+	return `Strapi is not reachable at ${host}. Start your local Strapi server or update STRAPI_API_URL in .env.local.`;
+};
+
 const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
 const createChecklistLead = async ({
@@ -89,8 +106,32 @@ export async function POST(request) {
 			);
 		}
 
-		let { response: strapiResponse, payload: strapiPayload } =
-			await createChecklistLead({ email, checklistKey });
+		let strapiResponse;
+		let strapiPayload;
+
+		try {
+			const strapiResult = await createChecklistLead({ email, checklistKey });
+			strapiResponse = strapiResult.response;
+			strapiPayload = strapiResult.payload;
+		} catch (error) {
+			if (isConnectionRefusedError(error)) {
+				const errorMessage = getStrapiUnavailableMessage(error);
+
+				console.error('checklist-lead Strapi connection error:', {
+					message: errorMessage,
+					cause: getFetchErrorCause(error),
+				});
+
+				return NextResponse.json(
+					{
+						error: errorMessage,
+					},
+					{ status: 503 },
+				);
+			}
+
+			throw error;
+		}
 
 		if (strapiResponse.status === 401 && process.env.STRAPI_API_TOKEN) {
 			console.error(

@@ -78,7 +78,7 @@ const CarouselTopPage = () => {
 					);
 				})}
 			</div>
-			<div className={styles.carousel_controls} aria-label='Hero slide controls'>
+			{/* <div className={styles.carousel_controls} aria-label='Hero slide controls'>
 				{slides.map((slide, index) => (
 					<button
 						key={slide.heading}
@@ -88,7 +88,7 @@ const CarouselTopPage = () => {
 						aria-pressed='true'
 					/>
 				))}
-			</div>
+			</div> */}
 		</section>
 	);
 };

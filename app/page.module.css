@@ -16,7 +16,7 @@
 	text-align: center;
 	height: 100%;
 	width: 100%;
-  font-family: var(--font-heading);
+	font-family: var(--font-heading);
 }
 
 .main_container h2 span {
@@ -188,7 +188,7 @@
 	text-align: center;
 	min-height: 50px;
 	max-width: 350px;
-  font-family: var(--font-heading);
+	font-family: var(--font-heading);
 }
 
 .skill_set p {
@@ -196,7 +196,7 @@
 	padding: 0 0rem;
 	font-size: 1.1rem;
 	min-height: 187px;
-  line-height: 40px;
+	line-height: 40px;
 }
 
 .parallax1 {
@@ -507,7 +507,7 @@
 		-ms-transform: translate(-50%, -50%);
 		transform: translate(-50%, -50%);
 		text-align: center;
-    line-height: 2rem;
+		line-height: 2rem;
 	}
 
 	.div1 {
@@ -894,7 +894,7 @@
 	.divs h1,
 	.divs h3 {
 		font-size: 3rem;
-    line-height: 4rem;
+		line-height: 4rem;
 	}
 
 	.skills {

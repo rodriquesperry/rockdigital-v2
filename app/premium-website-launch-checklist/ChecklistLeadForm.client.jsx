@@ -42,7 +42,7 @@ export default function ChecklistLeadForm() {
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					...data,
+					email: data.email,
 					checklistKey,
 				}),
 			});
